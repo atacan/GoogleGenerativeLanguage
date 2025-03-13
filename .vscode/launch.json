@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:GoogleGenerativeLanguage}",
+            "name": "Debug Prepare",
+            "program": "${workspaceFolder:GoogleGenerativeLanguage}/.build/debug/Prepare",
+            "preLaunchTask": "swift: Build Debug Prepare"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:GoogleGenerativeLanguage}",
+            "name": "Release Prepare",
+            "program": "${workspaceFolder:GoogleGenerativeLanguage}/.build/release/Prepare",
+            "preLaunchTask": "swift: Build Release Prepare"
+        }
+    ]
+}
