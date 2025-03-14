@@ -51,9 +51,7 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
                     contents: [
                         .init(
                             parts: [
-                                .init(
-                                    text: "What is the best feature of dictop app? Take a look at dictop.com"
-                                )
+                                .TextPart(.init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?"))
                             ],
                             role: "user"
                         )
@@ -87,7 +85,7 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
                     contents: [
                         .init(
                             parts: [
-                                .init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?")
+                                .TextPart(.init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?"))
                             ],
                             role: "user"
                         )
@@ -140,9 +138,10 @@ let f2 = Components.Schemas.FunctionDeclaration(
                         description: "where to search", _type: .init(value1: .STRING),
                         _enum: ["google", "bing", "yahoo"]
                     )
-                ]
+                ],
             ),
             _type: .init(value1: .OBJECT),
+            required: ["search_term", "search_engine"]
         )
     ),
     name: "search_web",

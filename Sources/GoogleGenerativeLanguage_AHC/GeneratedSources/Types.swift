@@ -5968,6 +5968,113 @@ public enum Components {
                 case error
             }
         }
+        /// - Remark: Generated from `#/components/schemas/TextPart`.
+        public struct TextPart: Codable, Hashable, Sendable {
+            /// Inline text.
+            ///
+            /// - Remark: Generated from `#/components/schemas/TextPart/text`.
+            public var text: Swift.String
+            /// Creates a new `TextPart`.
+            ///
+            /// - Parameters:
+            ///   - text: Inline text.
+            public init(text: Swift.String) {
+                self.text = text
+            }
+            public enum CodingKeys: String, CodingKey {
+                case text
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InlineDataPart`.
+        public struct InlineDataPart: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InlineDataPart/inlineData`.
+            public var inlineData: Components.Schemas.Blob
+            /// Creates a new `InlineDataPart`.
+            ///
+            /// - Parameters:
+            ///   - inlineData:
+            public init(inlineData: Components.Schemas.Blob) {
+                self.inlineData = inlineData
+            }
+            public enum CodingKeys: String, CodingKey {
+                case inlineData
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/FunctionCallPart`.
+        public struct FunctionCallPart: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/FunctionCallPart/functionCall`.
+            public var functionCall: Components.Schemas.FunctionCall
+            /// Creates a new `FunctionCallPart`.
+            ///
+            /// - Parameters:
+            ///   - functionCall:
+            public init(functionCall: Components.Schemas.FunctionCall) {
+                self.functionCall = functionCall
+            }
+            public enum CodingKeys: String, CodingKey {
+                case functionCall
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/FunctionResponsePart`.
+        public struct FunctionResponsePart: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/FunctionResponsePart/functionResponse`.
+            public var functionResponse: Components.Schemas.FunctionResponse
+            /// Creates a new `FunctionResponsePart`.
+            ///
+            /// - Parameters:
+            ///   - functionResponse:
+            public init(functionResponse: Components.Schemas.FunctionResponse) {
+                self.functionResponse = functionResponse
+            }
+            public enum CodingKeys: String, CodingKey {
+                case functionResponse
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/FileDataPart`.
+        public struct FileDataPart: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/FileDataPart/fileData`.
+            public var fileData: Components.Schemas.FileData
+            /// Creates a new `FileDataPart`.
+            ///
+            /// - Parameters:
+            ///   - fileData:
+            public init(fileData: Components.Schemas.FileData) {
+                self.fileData = fileData
+            }
+            public enum CodingKeys: String, CodingKey {
+                case fileData
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/ExecutableCodePart`.
+        public struct ExecutableCodePart: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/ExecutableCodePart/executableCode`.
+            public var executableCode: Components.Schemas.ExecutableCode
+            /// Creates a new `ExecutableCodePart`.
+            ///
+            /// - Parameters:
+            ///   - executableCode:
+            public init(executableCode: Components.Schemas.ExecutableCode) {
+                self.executableCode = executableCode
+            }
+            public enum CodingKeys: String, CodingKey {
+                case executableCode
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/CodeExecutionResultPart`.
+        public struct CodeExecutionResultPart: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/CodeExecutionResultPart/codeExecutionResult`.
+            public var codeExecutionResult: Components.Schemas.CodeExecutionResult
+            /// Creates a new `CodeExecutionResultPart`.
+            ///
+            /// - Parameters:
+            ///   - codeExecutionResult:
+            public init(codeExecutionResult: Components.Schemas.CodeExecutionResult) {
+                self.codeExecutionResult = codeExecutionResult
+            }
+            public enum CodingKeys: String, CodingKey {
+                case codeExecutionResult
+            }
+        }
         /// A datatype containing media that is part of a multi-part `Content` message.
         ///
         /// A `Part` consists of data which has an associated datatype. A `Part` can only
@@ -5977,200 +6084,88 @@ public enum Components {
         /// of the media if the `inline_data` field is filled with raw bytes.
         ///
         /// - Remark: Generated from `#/components/schemas/Part`.
-        public struct Part: Codable, Hashable, Sendable {
-            /// Result of executing the `ExecutableCode`.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/codeExecutionResult`.
-            public struct codeExecutionResultPayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/Part/codeExecutionResult/value1`.
-                public var value1: Components.Schemas.CodeExecutionResult
-                /// Creates a new `codeExecutionResultPayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.CodeExecutionResult) {
-                    self.value1 = value1
+        @frozen public enum Part: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/Part/case1`.
+            case TextPart(Components.Schemas.TextPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case2`.
+            case InlineDataPart(Components.Schemas.InlineDataPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case3`.
+            case FunctionCallPart(Components.Schemas.FunctionCallPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case4`.
+            case FunctionResponsePart(Components.Schemas.FunctionResponsePart)
+            /// - Remark: Generated from `#/components/schemas/Part/case5`.
+            case FileDataPart(Components.Schemas.FileDataPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case6`.
+            case ExecutableCodePart(Components.Schemas.ExecutableCodePart)
+            /// - Remark: Generated from `#/components/schemas/Part/case7`.
+            case CodeExecutionResultPart(Components.Schemas.CodeExecutionResultPart)
+            public init(from decoder: any Decoder) throws {
+                var errors: [any Error] = []
+                do {
+                    self = .TextPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
                 }
-                public init(from decoder: any Decoder) throws {
-                    self.value1 = try .init(from: decoder)
+                do {
+                    self = .InlineDataPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
                 }
-                public func encode(to encoder: any Encoder) throws {
-                    try self.value1.encode(to: encoder)
+                do {
+                    self = .FunctionCallPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
                 }
+                do {
+                    self = .FunctionResponsePart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .FileDataPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .ExecutableCodePart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .CodeExecutionResultPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
             }
-            /// Result of executing the `ExecutableCode`.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/codeExecutionResult`.
-            public var codeExecutionResult: Components.Schemas.Part.codeExecutionResultPayload?
-            /// The result output of a `FunctionCall` that contains a string
-            /// representing the `FunctionDeclaration.name` and a structured JSON
-            /// object containing any output from the function is used as context to
-            /// the model.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/functionResponse`.
-            public struct functionResponsePayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/Part/functionResponse/value1`.
-                public var value1: Components.Schemas.FunctionResponse
-                /// Creates a new `functionResponsePayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.FunctionResponse) {
-                    self.value1 = value1
+            public func encode(to encoder: any Encoder) throws {
+                switch self {
+                case let .TextPart(value):
+                    try value.encode(to: encoder)
+                case let .InlineDataPart(value):
+                    try value.encode(to: encoder)
+                case let .FunctionCallPart(value):
+                    try value.encode(to: encoder)
+                case let .FunctionResponsePart(value):
+                    try value.encode(to: encoder)
+                case let .FileDataPart(value):
+                    try value.encode(to: encoder)
+                case let .ExecutableCodePart(value):
+                    try value.encode(to: encoder)
+                case let .CodeExecutionResultPart(value):
+                    try value.encode(to: encoder)
                 }
-                public init(from decoder: any Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// The result output of a `FunctionCall` that contains a string
-            /// representing the `FunctionDeclaration.name` and a structured JSON
-            /// object containing any output from the function is used as context to
-            /// the model.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/functionResponse`.
-            public var functionResponse: Components.Schemas.Part.functionResponsePayload?
-            /// URI based data.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/fileData`.
-            public struct fileDataPayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/Part/fileData/value1`.
-                public var value1: Components.Schemas.FileData
-                /// Creates a new `fileDataPayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.FileData) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// URI based data.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/fileData`.
-            public var fileData: Components.Schemas.Part.fileDataPayload?
-            /// Code generated by the model that is meant to be executed.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/executableCode`.
-            public struct executableCodePayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/Part/executableCode/value1`.
-                public var value1: Components.Schemas.ExecutableCode
-                /// Creates a new `executableCodePayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.ExecutableCode) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// Code generated by the model that is meant to be executed.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/executableCode`.
-            public var executableCode: Components.Schemas.Part.executableCodePayload?
-            /// Inline text.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/text`.
-            public var text: Swift.String?
-            /// A predicted `FunctionCall` returned from the model that contains
-            /// a string representing the `FunctionDeclaration.name` with the
-            /// arguments and their values.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/functionCall`.
-            public struct functionCallPayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/Part/functionCall/value1`.
-                public var value1: Components.Schemas.FunctionCall
-                /// Creates a new `functionCallPayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.FunctionCall) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// A predicted `FunctionCall` returned from the model that contains
-            /// a string representing the `FunctionDeclaration.name` with the
-            /// arguments and their values.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/functionCall`.
-            public var functionCall: Components.Schemas.Part.functionCallPayload?
-            /// Inline media bytes.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/inlineData`.
-            public struct inlineDataPayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/Part/inlineData/value1`.
-                public var value1: Components.Schemas.Blob
-                /// Creates a new `inlineDataPayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.Blob) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// Inline media bytes.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Part/inlineData`.
-            public var inlineData: Components.Schemas.Part.inlineDataPayload?
-            /// Creates a new `Part`.
-            ///
-            /// - Parameters:
-            ///   - codeExecutionResult: Result of executing the `ExecutableCode`.
-            ///   - functionResponse: The result output of a `FunctionCall` that contains a string
-            ///   - fileData: URI based data.
-            ///   - executableCode: Code generated by the model that is meant to be executed.
-            ///   - text: Inline text.
-            ///   - functionCall: A predicted `FunctionCall` returned from the model that contains
-            ///   - inlineData: Inline media bytes.
-            public init(
-                codeExecutionResult: Components.Schemas.Part.codeExecutionResultPayload? = nil,
-                functionResponse: Components.Schemas.Part.functionResponsePayload? = nil,
-                fileData: Components.Schemas.Part.fileDataPayload? = nil,
-                executableCode: Components.Schemas.Part.executableCodePayload? = nil,
-                text: Swift.String? = nil,
-                functionCall: Components.Schemas.Part.functionCallPayload? = nil,
-                inlineData: Components.Schemas.Part.inlineDataPayload? = nil
-            ) {
-                self.codeExecutionResult = codeExecutionResult
-                self.functionResponse = functionResponse
-                self.fileData = fileData
-                self.executableCode = executableCode
-                self.text = text
-                self.functionCall = functionCall
-                self.inlineData = inlineData
-            }
-            public enum CodingKeys: String, CodingKey {
-                case codeExecutionResult
-                case functionResponse
-                case fileData
-                case executableCode
-                case text
-                case functionCall
-                case inlineData
             }
         }
         /// Metadata for a video `File`.
