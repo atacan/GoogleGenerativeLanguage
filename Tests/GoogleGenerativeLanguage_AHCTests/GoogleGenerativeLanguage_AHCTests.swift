@@ -1,3 +1,4 @@
+import Foundation
 import GoogleGenerativeLanguage_AHC
 import OpenAPIAsyncHTTPClient
 import OpenAPIRuntime
@@ -42,9 +43,9 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
                     tools: [
                         .init(
                             googleSearch: .init(value1: .init())
-//                            codeExecution: .init(value1: .init())
-//                            googleSearchRetrieval: .init(value1: .init())
-//                            functionDeclarations: []
+                            //                            codeExecution: .init(value1: .init())
+                            //                            googleSearchRetrieval: .init(value1: .init())
+                            //                            functionDeclarations: []
                         )
                     ],
                     contents: [
@@ -58,27 +59,40 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
                         )
                     ],
                     model: "gemini-2.0-flash"
-//                    generationConfig: .init(
-//                        value1: .init(
-//                            topK: <#T##Int32?#>,
-//                            responseLogprobs: <#T##Bool?#>,
-//                            candidateCount: <#T##Int32?#>,
-//                            logprobs: <#T##Int32?#>,
-//                            stopSequences: <#T##[String]?#>,
-//                            enableEnhancedCivicAnswers: <#T##Bool?#>,
-//                            responseModalities: <#T##Components.Schemas.GenerationConfig.responseModalitiesPayload?#>,
-//                            responseMimeType: <#T##String?#>,
-//                            seed: <#T##Int32?#>,
-//                            topP: <#T##Float?#>,
-//                            mediaResolution: <#T##Components.Schemas.GenerationConfig.mediaResolutionPayload?#>,
-//                            temperature: <#T##Float?#>,
-//                            frequencyPenalty: <#T##Float?#>,
-//                            presencePenalty: <#T##Float?#>,
-//                            maxOutputTokens: <#T##Int32?#>,
-//                            speechConfig: <#T##Components.Schemas.GenerationConfig.speechConfigPayload?#>,
-//                            responseSchema: <#T##Components.Schemas.GenerationConfig.responseSchemaPayload?#>
-//                        )
-//                    )
+                )
+            )
+        )
+
+        dump(response)
+    }
+
+    @Test
+    func encodeFunctionDeclarations() async throws {
+        
+        try print(prettyEncode(f2))
+    }
+
+    @Test func functionDeclarations() async throws {
+        let response = try await client.GenerateContent(
+            path: .init(model: "gemini-2.0-flash"),
+            body: .json(
+                .init(
+                    tools: [
+                        .init(
+                            functionDeclarations: [
+                                f, f2
+                            ]
+                        )
+                    ],
+                    contents: [
+                        .init(
+                            parts: [
+                                .init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?")
+                            ],
+                            role: "user"
+                        )
+                    ],
+                    model: "gemini-2.0-flash"
                 )
             )
         )
@@ -86,3 +100,52 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
         dump(response)
     }
 }
+
+func prettyEncode<T: Encodable>(_ thing: T) throws -> String {
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = [.prettyPrinted]
+    let data = try encoder.encode(thing)
+    return String(data: data, encoding: .utf8)!
+}
+
+let f = Components.Schemas.FunctionDeclaration(
+    parameters: .init(
+        value1: Components.Schemas.Schema(
+            properties: .init(
+                additionalProperties: [
+                    "city" : Components.Schemas.Schema(
+                        description: "the city to find the weather for",
+                        _type: .init(value1: .STRING)
+                    )
+                ]
+            ),
+            _type: .init(value1: .OBJECT),
+        )
+    ),
+    name: "search_web",
+    response: nil,
+    description: "to search the web"
+)
+
+let f2 = Components.Schemas.FunctionDeclaration(
+    parameters: .init(
+        value1: Components.Schemas.Schema(
+            properties: .init(
+                additionalProperties: [
+                    "search_term" : Components.Schemas.Schema(
+                        description: "the keyword to search for",
+                        _type: .init(value1: .STRING)
+                    ),
+                    "search_engine": Components.Schemas.Schema(
+                        description: "where to search", _type: .init(value1: .STRING),
+                        _enum: ["google", "bing", "yahoo"]
+                    )
+                ]
+            ),
+            _type: .init(value1: .OBJECT),
+        )
+    ),
+    name: "search_web",
+    response: nil,
+    description: "to search the web"
+)
