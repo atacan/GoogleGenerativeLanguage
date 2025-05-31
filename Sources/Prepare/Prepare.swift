@@ -7,11 +7,43 @@ let remoteOpenAPIUrl = URL(string: "https://generativelanguage.googleapis.com/$d
 let originalOpenAPIUrl = rootDirectoryUrl.appendingPathComponent("assets/original.json")
 let outputOpenAPIUrl = rootDirectoryUrl.appendingPathComponent("assets/openapi.json")
 
+func sortJsonPropertiesRecursively(_ jsonObject: Any) -> Any {
+    if let dictionary = jsonObject as? [String: Any] {
+        // Sort the dictionary by keys and recursively sort all values
+        var sortedDict: [String: Any] = [:]
+        for key in dictionary.keys.sorted() {
+            sortedDict[key] = sortJsonPropertiesRecursively(dictionary[key]!)
+        }
+        return sortedDict
+    } else if let array = jsonObject as? [Any] {
+        // Recursively sort all elements in the array
+        return array.map { sortJsonPropertiesRecursively($0) }
+    } else {
+        // Return primitive values as-is
+        return jsonObject
+    }
+}
+
 func saveOriginalOpenAPI() throws -> String {
     let originalOpenAPI = try! String(contentsOf: remoteOpenAPIUrl, encoding: .utf8)
-    try originalOpenAPI.write(to: originalOpenAPIUrl, atomically: true, encoding: .utf8)
-    print("Saved original OpenAPI to \(originalOpenAPIUrl)")
-    return originalOpenAPI
+    
+    // Parse the JSON and sort all properties alphabetically
+    guard let jsonData = originalOpenAPI.data(using: .utf8) else {
+        throw NSError(domain: "Invalid JSON string", code: 1, userInfo: nil)
+    }
+    
+    let originalJsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
+    let sortedJsonObject = sortJsonPropertiesRecursively(originalJsonObject)
+    
+    // Convert back to JSON string with sorted keys
+    let sortedJsonData = try JSONSerialization.data(withJSONObject: sortedJsonObject, options: [.prettyPrinted, .sortedKeys])
+    guard let sortedJsonString = String(data: sortedJsonData, encoding: .utf8) else {
+        throw NSError(domain: "Failed to convert sorted JSON to string", code: 2, userInfo: nil)
+    }
+    
+    try sortedJsonString.write(to: originalOpenAPIUrl, atomically: true, encoding: .utf8)
+    print("Saved original OpenAPI (with sorted properties) to \(originalOpenAPIUrl)")
+    return sortedJsonString
 }
 
 func createNewPartSchemas() -> [String: Any] {

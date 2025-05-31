@@ -40,14 +40,6 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
             // headers: Operations.GenerateContent.Input.Headers,
             body: .json(
                 .init(
-                    tools: [
-                        .init(
-                            googleSearch: .init(value1: .init())
-                            //                            codeExecution: .init(value1: .init())
-                            //                            googleSearchRetrieval: .init(value1: .init())
-                            //                            functionDeclarations: []
-                        )
-                    ],
                     contents: [
                         .init(
                             parts: [
@@ -56,7 +48,15 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
                             role: "user"
                         )
                     ],
-                    model: "gemini-2.0-flash"
+                    model: "gemini-2.0-flash",
+                    tools: [
+                        .init(
+                            googleSearch: .init(value1: .init())
+                            //                            codeExecution: .init(value1: .init())
+                            //                            googleSearchRetrieval: .init(value1: .init())
+                            //                            functionDeclarations: []
+                        )
+                    ]
                 )
             )
         )
@@ -66,7 +66,7 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
 
     @Test
     func encodeFunctionDeclarations() async throws {
-        
+
         try print(prettyEncode(f2))
     }
 
@@ -75,13 +75,6 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
             path: .init(model: "gemini-2.0-flash"),
             body: .json(
                 .init(
-                    tools: [
-                        .init(
-                            functionDeclarations: [
-                                f, f2
-                            ]
-                        )
-                    ],
                     contents: [
                         .init(
                             parts: [
@@ -90,11 +83,18 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
                             role: "user"
                         )
                     ],
-                    model: "gemini-2.0-flash"
+                    model: "gemini-2.0-flash",
+                    tools: [
+                        .init(
+                            functionDeclarations: [
+                                f, f2,
+                            ]
+                        )
+                    ]
                 )
             )
         )
-        
+
         dump(response)
     }
 }
@@ -107,11 +107,13 @@ func prettyEncode<T: Encodable>(_ thing: T) throws -> String {
 }
 
 let f = Components.Schemas.FunctionDeclaration(
+    description: "to search the web",
+    name: "search_web",
     parameters: .init(
         value1: Components.Schemas.Schema(
             properties: .init(
                 additionalProperties: [
-                    "city" : Components.Schemas.Schema(
+                    "city": Components.Schemas.Schema(
                         description: "the city to find the weather for",
                         _type: .init(value1: .STRING)
                     )
@@ -120,31 +122,30 @@ let f = Components.Schemas.FunctionDeclaration(
             _type: .init(value1: .OBJECT),
         )
     ),
-    name: "search_web",
-    response: nil,
-    description: "to search the web"
+    response: nil
 )
 
 let f2 = Components.Schemas.FunctionDeclaration(
+    description: "to search the web",
+    name: "search_web",
     parameters: .init(
         value1: Components.Schemas.Schema(
             properties: .init(
                 additionalProperties: [
-                    "search_term" : Components.Schemas.Schema(
+                    "search_term": Components.Schemas.Schema(
                         description: "the keyword to search for",
                         _type: .init(value1: .STRING)
                     ),
                     "search_engine": Components.Schemas.Schema(
-                        description: "where to search", _type: .init(value1: .STRING),
-                        _enum: ["google", "bing", "yahoo"]
-                    )
+                        description: "where to search",
+                        _enum: ["google", "bing", "yahoo"],
+                        _type: .init(value1: .STRING)
+                    ),
                 ],
             ),
-            _type: .init(value1: .OBJECT),
-            required: ["search_term", "search_engine"]
+            required: ["search_term", "search_engine"],
+            _type: .init(value1: .OBJECT)
         )
     ),
-    name: "search_web",
-    response: nil,
-    description: "to search the web"
+    response: nil
 )
