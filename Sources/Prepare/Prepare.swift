@@ -2,13 +2,17 @@ import Foundation
 
 let thisFileUrl = URL(fileURLWithPath: #filePath)
 let rootDirectoryUrl = thisFileUrl.deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+let geminiApiKey = getEnvironmentVariable("GEMINI_API_KEY")!
+let remoteOpenAPIUrl = URL(string: "https://generativelanguage.googleapis.com/$discovery/OPENAPI3_0?version=v1&key=\(geminiApiKey)")!
 let originalOpenAPIUrl = rootDirectoryUrl.appendingPathComponent("assets/original.json")
 let outputOpenAPIUrl = rootDirectoryUrl.appendingPathComponent("assets/openapi.json")
 
 @main
 struct PrepareMain {
     static func main() throws {
-        let originalOpenAPI = try! String(contentsOf: originalOpenAPIUrl, encoding: .utf8)
+        let originalOpenAPI = try! String(contentsOf: remoteOpenAPIUrl, encoding: .utf8)
+        try! originalOpenAPI.write(to: originalOpenAPIUrl, atomically: true, encoding: .utf8)
+        print("Saved original OpenAPI to \(originalOpenAPIUrl)")
 
         let newOpenAPI = originalOpenAPI.replacingOccurrences(of: ###"""
       "Part": {
