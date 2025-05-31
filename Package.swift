@@ -27,6 +27,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-openapi-generator", from: "1.7.1"),
         .package(url: "https://github.com/apple/swift-openapi-runtime", from: "1.8.0"),
         .package(url: "https://github.com/swift-server/swift-openapi-async-http-client", from: "1.1.0"),
+        .package(url: "https://github.com/pointfreeco/swift-custom-dump", from: "1.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -48,7 +49,7 @@ let package = Package(
         .executableTarget(name: "Prepare"),
         .testTarget(
             name: "GoogleGenerativeLanguage_AHCTests",
-            dependencies: ["GoogleGenerativeLanguage_AHC"]
+            dependencies: ["GoogleGenerativeLanguage_AHC", .product(name: "CustomDump", package: "swift-custom-dump")]
         ),
     ]
 )

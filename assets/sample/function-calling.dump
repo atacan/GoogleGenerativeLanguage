@@ -1,0 +1,84 @@
+Components.Schemas.GenerateContentResponse(
+  candidates: [
+    [0]: Components.Schemas.Candidate(
+      avgLogprobs: -0.0013235434889793396,
+      citationMetadata: nil,
+      content: Components.Schemas.Candidate.contentPayload(
+        value1: Components.Schemas.Content(
+          parts: [
+            [0]: .FunctionCallPart(
+              Components.Schemas.FunctionCallPart(
+                functionCall: Components.Schemas.FunctionCall(
+                  args: Components.Schemas.FunctionCall.argsPayload(
+                    additionalProperties: [
+                      "city": OpenAPIValueContainer(
+                        value: "Tokyo"
+                      )
+                    ]
+                  ),
+                  id: nil,
+                  name: "get_weather"
+                )
+              )
+            ),
+            [1]: .FunctionCallPart(
+              Components.Schemas.FunctionCallPart(
+                functionCall: Components.Schemas.FunctionCall(
+                  args: Components.Schemas.FunctionCall.argsPayload(
+                    additionalProperties: [
+                      "search_engine": OpenAPIValueContainer(
+                        value: "google"
+                      ),
+                      "search_term": OpenAPIValueContainer(
+                        value: "current population of Tokyo"
+                      )
+                    ]
+                  ),
+                  id: nil,
+                  name: "search_web"
+                )
+              )
+            )
+          ],
+          role: "model"
+        )
+      ),
+      finishReason: .STOP,
+      groundingAttributions: nil,
+      groundingMetadata: nil,
+      index: nil,
+      logprobsResult: nil,
+      safetyRatings: nil,
+      tokenCount: nil,
+      urlContextMetadata: nil,
+      urlRetrievalMetadata: nil
+    )
+  ],
+  modelVersion: "gemini-2.0-flash",
+  promptFeedback: nil,
+  responseId: "D786aP7RFa-R1PIPn56f8QM",
+  usageMetadata: Components.Schemas.GenerateContentResponse.usageMetadataPayload(
+    value1: Components.Schemas.UsageMetadata(
+      cachedContentTokenCount: nil,
+      cacheTokensDetails: nil,
+      candidatesTokenCount: 19,
+      candidatesTokensDetails: [
+        [0]: Components.Schemas.ModalityTokenCount(
+          modality: Components.Schemas.ModalityTokenCount.modalityPayload(value1: .TEXT),
+          tokenCount: 19
+        )
+      ],
+      promptTokenCount: 71,
+      promptTokensDetails: [
+        [0]: Components.Schemas.ModalityTokenCount(
+          modality: Components.Schemas.ModalityTokenCount.modalityPayload(value1: .TEXT),
+          tokenCount: 71
+        )
+      ],
+      thoughtsTokenCount: nil,
+      toolUsePromptTokenCount: nil,
+      toolUsePromptTokensDetails: nil,
+      totalTokenCount: 90
+    )
+  )
+)

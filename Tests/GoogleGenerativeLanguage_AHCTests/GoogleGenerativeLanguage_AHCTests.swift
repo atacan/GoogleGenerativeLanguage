@@ -1,4 +1,5 @@
 import Foundation
+import CustomDump
 import GoogleGenerativeLanguage_AHC
 import OpenAPIAsyncHTTPClient
 import OpenAPIRuntime
@@ -61,7 +62,7 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
             )
         )
 
-        dump(response)
+        try customDump(response)
     }
 
     @Test
@@ -95,7 +96,7 @@ struct GoogleGenerativeLanguage_AHCTestsTests {
             )
         )
 
-        dump(response)
+        try customDump(response.default.body.json)
     }
 }
 
@@ -107,8 +108,8 @@ func prettyEncode<T: Encodable>(_ thing: T) throws -> String {
 }
 
 let f = Components.Schemas.FunctionDeclaration(
-    description: "to search the web",
-    name: "search_web",
+    description: "get the weather in a city",
+    name: "get_weather",
     parameters: .init(
         value1: Components.Schemas.Schema(
             properties: .init(
