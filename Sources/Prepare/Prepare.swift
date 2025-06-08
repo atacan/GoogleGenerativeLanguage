@@ -26,107 +26,131 @@ func sortJsonPropertiesRecursively(_ jsonObject: Any) -> Any {
 
 func saveOriginalOpenAPI() throws -> String {
     let originalOpenAPI = try! String(contentsOf: remoteOpenAPIUrl, encoding: .utf8)
-    
+
     // Parse the JSON and sort all properties alphabetically
     guard let jsonData = originalOpenAPI.data(using: .utf8) else {
         throw NSError(domain: "Invalid JSON string", code: 1, userInfo: nil)
     }
-    
+
     let originalJsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
     let sortedJsonObject = sortJsonPropertiesRecursively(originalJsonObject)
-    
+
     // Convert back to JSON string with sorted keys
     let sortedJsonData = try JSONSerialization.data(withJSONObject: sortedJsonObject, options: [.prettyPrinted, .sortedKeys])
     guard let sortedJsonString = String(data: sortedJsonData, encoding: .utf8) else {
         throw NSError(domain: "Failed to convert sorted JSON to string", code: 2, userInfo: nil)
     }
-    
+
     try sortedJsonString.write(to: originalOpenAPIUrl, atomically: true, encoding: .utf8)
     print("Saved original OpenAPI (with sorted properties) to \(originalOpenAPIUrl)")
     return sortedJsonString
 }
 
 func createNewPartSchemas() -> [String: Any] {
-    return [
+    [
+        "ModelID": [
+            "type": "string",
+            "description": "Unique identifier for a Gemini model variant.",
+            "enum": [
+                "gemini-2.5-flash-preview-05-20",
+                "gemini-2.5-flash-preview-native-audio-dialog",
+                "gemini-2.5-flash-exp-native-audio-thinking-dialog",
+                "gemini-2.5-flash-preview-tts",
+                "gemini-2.5-pro-preview-06-05",
+                "gemini-2.5-pro-preview-tts",
+                "gemini-2.0-flash",
+                "gemini-2.0-flash-preview-image-generation",
+                "gemini-2.0-flash-lite",
+                "gemini-1.5-flash",
+                "gemini-1.5-flash-8b",
+                "gemini-1.5-pro",
+                "gemini-embedding-exp",
+                "imagen-3.0-generate-002",
+                "veo-2.0-generate-001",
+                "gemini-2.0-flash-live-001",
+            ],
+        ],
         "TextPart": [
             "type": "object",
             "properties": [
                 "text": [
                     "type": "string",
-                    "description": "Inline text."
+                    "description": "Inline text.",
                 ]
             ],
-            "required": ["text"]
+            "required": ["text"],
         ],
         "InlineDataPart": [
             "type": "object",
             "properties": [
                 "inlineData": [
                     "description": "Inline media bytes.",
-                    "$ref": "#/components/schemas/Blob"
+                    "$ref": "#/components/schemas/Blob",
                 ]
             ],
-            "required": ["inlineData"]
+            "required": ["inlineData"],
         ],
         "FunctionCallPart": [
             "type": "object",
             "properties": [
                 "functionCall": [
-                    "description": "A predicted `FunctionCall` returned from the model that contains\na string representing the `FunctionDeclaration.name` with the\narguments and their values.",
-                    "$ref": "#/components/schemas/FunctionCall"
+                    "description":
+                        "A predicted `FunctionCall` returned from the model that contains\na string representing the `FunctionDeclaration.name` with the\narguments and their values.",
+                    "$ref": "#/components/schemas/FunctionCall",
                 ]
             ],
-            "required": ["functionCall"]
+            "required": ["functionCall"],
         ],
         "FunctionResponsePart": [
             "type": "object",
             "properties": [
                 "functionResponse": [
-                    "description": "The result output of a `FunctionCall` that contains a string\nrepresenting the `FunctionDeclaration.name` and a structured JSON\nobject containing any output from the function is used as context to\nthe model.",
-                    "$ref": "#/components/schemas/FunctionResponse"
+                    "description":
+                        "The result output of a `FunctionCall` that contains a string\nrepresenting the `FunctionDeclaration.name` and a structured JSON\nobject containing any output from the function is used as context to\nthe model.",
+                    "$ref": "#/components/schemas/FunctionResponse",
                 ]
             ],
-            "required": ["functionResponse"]
+            "required": ["functionResponse"],
         ],
         "FileDataPart": [
             "type": "object",
             "properties": [
                 "fileData": [
                     "description": "URI based data.",
-                    "$ref": "#/components/schemas/FileData"
+                    "$ref": "#/components/schemas/FileData",
                 ]
             ],
-            "required": ["fileData"]
+            "required": ["fileData"],
         ],
         "ExecutableCodePart": [
             "type": "object",
             "properties": [
                 "executableCode": [
                     "description": "Code generated by the model that is meant to be executed.",
-                    "$ref": "#/components/schemas/ExecutableCode"
+                    "$ref": "#/components/schemas/ExecutableCode",
                 ]
             ],
-            "required": ["executableCode"]
+            "required": ["executableCode"],
         ],
         "CodeExecutionResultPart": [
             "type": "object",
             "properties": [
                 "codeExecutionResult": [
                     "description": "Result of executing the `ExecutableCode`.",
-                    "$ref": "#/components/schemas/CodeExecutionResult"
+                    "$ref": "#/components/schemas/CodeExecutionResult",
                 ]
             ],
-            "required": ["codeExecutionResult"]
+            "required": ["codeExecutionResult"],
         ],
         "VideoMetadataPart": [
             "type": "object",
             "properties": [
                 "videoMetadata": [
                     "description": "Video metadata.",
-                    "$ref": "#/components/schemas/VideoMetadata"
+                    "$ref": "#/components/schemas/VideoMetadata",
                 ]
             ],
-            "required": ["videoMetadata"]
+            "required": ["videoMetadata"],
         ],
         "ThoughtSignaturePart": [
             "type": "object",
@@ -134,13 +158,14 @@ func createNewPartSchemas() -> [String: Any] {
                 "thoughtSignature": [
                     "type": "string",
                     "format": "byte",
-                    "description": "Optional. An opaque signature for the thought so it can be reused in subsequent\nrequests."
+                    "description": "Optional. An opaque signature for the thought so it can be reused in subsequent\nrequests.",
                 ]
-            ]
+            ],
         ],
         "Part": [
             "type": "object",
-            "description": "A datatype containing media that is part of a multi-part `Content` message.\n\nA `Part` consists of data which has an associated datatype. A `Part` can only\ncontain one of the accepted types in `Part.data`.\n\nA `Part` must have a fixed IANA MIME type identifying the type and subtype\nof the media if the `inline_data` field is filled with raw bytes.",
+            "description":
+                "A datatype containing media that is part of a multi-part `Content` message.\n\nA `Part` consists of data which has an associated datatype. A `Part` can only\ncontain one of the accepted types in `Part.data`.\n\nA `Part` must have a fixed IANA MIME type identifying the type and subtype\nof the media if the `inline_data` field is filled with raw bytes.",
             "oneOf": [
                 ["$ref": "#/components/schemas/TextPart"],
                 ["$ref": "#/components/schemas/InlineDataPart"],
@@ -150,9 +175,9 @@ func createNewPartSchemas() -> [String: Any] {
                 ["$ref": "#/components/schemas/ExecutableCodePart"],
                 ["$ref": "#/components/schemas/CodeExecutionResultPart"],
                 ["$ref": "#/components/schemas/ThoughtSignaturePart"],
-                ["$ref": "#/components/schemas/VideoMetadataPart"]
-            ]
-        ]
+                ["$ref": "#/components/schemas/VideoMetadataPart"],
+            ],
+        ],
     ]
 }
 
@@ -160,31 +185,32 @@ func modifyOpenAPIJson(_ originalJson: String) throws -> String {
     guard let jsonData = originalJson.data(using: .utf8) else {
         throw NSError(domain: "Invalid JSON string", code: 1, userInfo: nil)
     }
-    
+
     var openApiDict = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
-    
+
     // Navigate to components.schemas
     guard var components = openApiDict["components"] as? [String: Any],
-          var schemas = components["schemas"] as? [String: Any] else {
+        var schemas = components["schemas"] as? [String: Any]
+    else {
         throw NSError(domain: "Missing components.schemas in OpenAPI", code: 2, userInfo: nil)
     }
-    
+
     // Add the new Part schemas
     let newPartSchemas = createNewPartSchemas()
     for (key, value) in newPartSchemas {
         schemas[key] = value
     }
-    
+
     // Update the components and openApiDict
     components["schemas"] = schemas
     openApiDict["components"] = components
-    
+
     // Convert back to JSON string
     let modifiedJsonData = try JSONSerialization.data(withJSONObject: openApiDict, options: [.prettyPrinted, .sortedKeys])
     guard let modifiedJsonString = String(data: modifiedJsonData, encoding: .utf8) else {
         throw NSError(domain: "Failed to convert modified JSON to string", code: 3, userInfo: nil)
     }
-    
+
     return modifiedJsonString
 }
 
