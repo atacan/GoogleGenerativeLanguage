@@ -13,14 +13,9 @@ let package = Package(
         .visionOS("1.0"),
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "GoogleGenerativeLanguage",
             targets: ["GoogleGenerativeLanguage"]
-        ),
-        .library(
-            name: "GoogleGenerativeLanguage_AHC",
-            targets: ["GoogleGenerativeLanguage_AHC"]
         ),
     ],
     dependencies: [
@@ -30,17 +25,8 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-custom-dump", from: "1.0.0"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "GoogleGenerativeLanguage"
-        ),
-        .testTarget(
-            name: "GoogleGenerativeLanguageTests",
-            dependencies: ["GoogleGenerativeLanguage"]
-        ),
-        .target(
-            name: "GoogleGenerativeLanguage_AHC",
+            name: "GoogleGenerativeLanguage",
             dependencies: [
                 .product(name: "OpenAPIRuntime", package: "swift-openapi-runtime"),
                 .product(name: "OpenAPIAsyncHTTPClient", package: "swift-openapi-async-http-client"),
@@ -48,8 +34,8 @@ let package = Package(
         ),
         .executableTarget(name: "Prepare"),
         .testTarget(
-            name: "GoogleGenerativeLanguage_AHCTests",
-            dependencies: ["GoogleGenerativeLanguage_AHC", .product(name: "CustomDump", package: "swift-custom-dump")]
+            name: "GoogleGenerativeLanguageTests",
+            dependencies: ["GoogleGenerativeLanguage", .product(name: "CustomDump", package: "swift-custom-dump")]
         ),
     ]
 )

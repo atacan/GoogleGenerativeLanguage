@@ -1,11 +1,11 @@
 import Foundation
 import CustomDump
-import GoogleGenerativeLanguage_AHC
+import GoogleGenerativeLanguage
 import OpenAPIAsyncHTTPClient
 import OpenAPIRuntime
 import Testing
 
-@testable import GoogleGenerativeLanguage_AHC
+@testable import GoogleGenerativeLanguage
 
 #if os(Linux)
 @preconcurrency import struct Foundation.URL
@@ -17,7 +17,7 @@ import struct Foundation.Data
 import struct Foundation.Date
 #endif
 
-struct GoogleGenerativeLanguage_AHCTestsTests {
+struct GoogleGenerativeLanguageTestsTests {
 
     let client = {
         let apiKey = getEnvironmentVariable("GEMINI_API_KEY")!

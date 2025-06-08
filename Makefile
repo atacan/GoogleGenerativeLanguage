@@ -35,6 +35,6 @@ download-openapi:
 
 generate-openapi:
 	swift run swift-openapi-generator generate \
-		--output-directory Sources/GoogleGenerativeLanguage_AHC/GeneratedSources \
+		--output-directory Sources/GoogleGenerativeLanguage/GeneratedSources \
 		--config assets/openapi-generator-config.yaml \
 		assets/openapi.json
