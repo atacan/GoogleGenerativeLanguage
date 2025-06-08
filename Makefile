@@ -33,6 +33,9 @@ clean_spm_cache:
 download-openapi:
 	swift run Prepare
 
+overlay-openapi:
+	openapi-format assets/openapi.json --overlayFile assets/overlay.json -o assets/openapi.json
+
 generate-openapi:
 	swift run swift-openapi-generator generate \
 		--output-directory Sources/GoogleGenerativeLanguage/GeneratedSources \

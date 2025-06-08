@@ -1,5 +1,5 @@
-import Foundation
 import CustomDump
+import Foundation
 import GoogleGenerativeLanguage
 import OpenAPIAsyncHTTPClient
 import OpenAPIRuntime
@@ -46,7 +46,7 @@ struct GoogleGenerativeLanguageTestsTests {
                             parts: [
                                 .TextPart(.init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?"))
                             ],
-                            role: "user"
+                            role: .user
                         )
                     ],
                     model: "gemini-2.0-flash",
@@ -81,7 +81,7 @@ struct GoogleGenerativeLanguageTestsTests {
                             parts: [
                                 .TextPart(.init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?"))
                             ],
-                            role: "user"
+                            role: .user
                         )
                     ],
                     model: "gemini-2.0-flash",
@@ -96,6 +96,36 @@ struct GoogleGenerativeLanguageTestsTests {
             )
         )
 
+        try customDump(response.default.body.json)
+    }
+
+    @Test func transcribeAudio() async throws {
+        let audioData = try Data(contentsOf: URL(fileURLWithPath: "/Users/atacan/Developer/Repositories/GoogleGenerativeLanguage/assets/speech.mp3"))
+        let modelID = Components.Schemas.ModelID.gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_05_hyphen_20.rawValue
+        let response = try await client.GenerateContent(
+            path: .init(model: modelID),
+            body: .json(
+                .init(
+                    contents: [
+                        .init(
+                            parts: [
+                                .InlineDataPart(
+                                    .init(
+                                        inlineData: .init(
+                                            data: Base64EncodedData(audioData),
+                                            mimeType: "audio/mpeg"
+                                        )
+                                    )
+                                ),
+                                .TextPart(.init(text: "transcribe the audio")),
+                            ],
+                            role: .user
+                        )
+                    ],
+                    model: modelID
+                )
+            )
+        )
         try customDump(response.default.body.json)
     }
 }
