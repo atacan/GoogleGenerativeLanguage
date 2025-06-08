@@ -1,0 +1,33 @@
+{
+    "overlay": "1.0.0",
+    "info": {
+        "title": "Fix OpenAPI spec validation errors for all the FalAI models",
+        "version": "1.0.0"
+    },
+    "actions": [
+        {
+            "target": "$.components.schemas.Content.properties.role",
+            "remove": true
+        },
+        {
+            "target": "$.components.schemas",
+            "update": {
+                "Role": {
+                    "type": "string",
+                    "enum": [
+                        "user",
+                        "model"
+                    ]
+                }
+            }
+        },
+        {
+            "target": "$.components.schemas.Content.properties",
+            "update": {
+                "role": {
+                    "$ref": "#/components/schemas/Role"
+                }
+            }
+        }
+    ]
+}
