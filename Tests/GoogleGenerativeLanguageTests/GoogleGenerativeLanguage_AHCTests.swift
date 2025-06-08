@@ -126,7 +126,7 @@ struct GoogleGenerativeLanguageTestsTests {
                 )
             )
         )
-        try customDump(response.default.body.json)
+        try customDump(response.default.body.json.candidates?.first?.content?.value1.parts)
     }
 }
 
