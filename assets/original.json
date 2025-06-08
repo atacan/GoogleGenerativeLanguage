@@ -471,15 +471,6 @@
             ],
             "description" : "Output only. Metadata related to url context retrieval tool.",
             "readOnly" : true
-          },
-          "urlRetrievalMetadata" : {
-            "allOf" : [
-              {
-                "$ref" : "#\/components\/schemas\/UrlRetrievalMetadata"
-              }
-            ],
-            "description" : "Output only. Metadata related to url context retrieval tool.",
-            "readOnly" : true
           }
         },
         "type" : "object"
@@ -1451,6 +1442,9 @@
             ],
             "description" : "Optional. Describes the parameters to this function. Reflects the Open API 3.03\nParameter Object string Key: the name of the parameter. Parameter names are\ncase sensitive. Schema Value: the Schema defining the type used for the\nparameter."
           },
+          "parametersJsonSchema" : {
+            "description" : "Optional. Describes the parameters to the function in JSON Schema format. The schema\nmust describe an object where the properties are the parameters to the\nfunction. For example:\n\n```\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": { \"type\": \"string\" },\n    \"age\": { \"type\": \"integer\" }\n  },\n  \"additionalProperties\": false,\n  \"required\": [\"name\", \"age\"],\n  \"propertyOrdering\": [\"name\", \"age\"]\n}\n```\n\nThis field is mutually exclusive with `parameters`."
+          },
           "response" : {
             "allOf" : [
               {
@@ -1458,6 +1452,9 @@
               }
             ],
             "description" : "Optional. Describes the output from this function in JSON Schema format. Reflects the\nOpen API 3.03 Response Object. The Schema defines the type used for the\nresponse value of the function."
+          },
+          "responseJsonSchema" : {
+            "description" : "Optional. Describes the output from this function in JSON Schema format. The value\nspecified by the schema is the response value of the function.\n\nThis field is mutually exclusive with `response`."
           }
         },
         "required" : [
@@ -1963,6 +1960,9 @@
             "description" : "Optional. Presence penalty applied to the next token's logprobs if the token has\nalready been seen in the response.\n\nThis penalty is binary on\/off and not dependant on the number of times the\ntoken is used (after the first). Use\nfrequency_penalty\nfor a penalty that increases with each use.\n\nA positive penalty will discourage the use of tokens that have already\nbeen used in the response, increasing the vocabulary.\n\nA negative penalty will encourage the use of tokens that have already been\nused in the response, decreasing the vocabulary.",
             "format" : "float",
             "type" : "number"
+          },
+          "responseJsonSchema" : {
+            "description" : "Optional. Output schema of the generated response. This is an alternative to\n`response_schema` that accepts [JSON Schema](https:\/\/json-schema.org\/).\n\nIf set, `response_schema` must be omitted, but `response_mime_type` is\nrequired.\n\nWhile the full JSON Schema may be sent, not all features are supported.\nSpecifically, only the following properties are supported:\n\n- `$id`\n- `$defs`\n- `$ref`\n- `$anchor`\n- `type`\n- `format`\n- `title`\n- `description`\n- `enum` (for strings and numbers)\n- `items`\n- `prefixItems`\n- `minItems`\n- `maxItems`\n- `minimum`\n- `maximum`\n- `anyOf`\n- `oneOf` (interpreted the same as `anyOf`)\n- `properties`\n- `additionalProperties`\n- `required`\n\nThe non-standard `propertyOrdering` property may also be set.\n\nCyclic references are unrolled to a limited degree and, as such, may only\nbe used within non-required properties. (Nullable properties are not\nsufficient.) If `$ref` is set on a sub-schema, no other properties, except\nfor than those starting as a `$`, may be set."
           },
           "responseLogprobs" : {
             "description" : "Optional. If true, export the logprobs results in response.",
@@ -4036,29 +4036,6 @@
         },
         "type" : "object"
       },
-      "UrlRetrievalContext" : {
-        "description" : "Context of the a single url retrieval.",
-        "properties" : {
-          "retrievedUrl" : {
-            "description" : "Retrieved url by the tool.",
-            "type" : "string"
-          }
-        },
-        "type" : "object"
-      },
-      "UrlRetrievalMetadata" : {
-        "description" : "Metadata related to url context retrieval tool.",
-        "properties" : {
-          "urlRetrievalContexts" : {
-            "description" : "List of url retrieval contexts.",
-            "items" : {
-              "$ref" : "#\/components\/schemas\/UrlRetrievalContext"
-            },
-            "type" : "array"
-          }
-        },
-        "type" : "object"
-      },
       "UsageMetadata" : {
         "description" : "Metadata on the generation request's token usage.",
         "properties" : {
@@ -4217,7 +4194,7 @@
     "description" : "The Gemini API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.",
     "title" : "Generative Language API",
     "version" : "v1beta",
-    "x-google-revision" : "20250529"
+    "x-google-revision" : "20250606"
   },
   "openapi" : "3.0.3",
   "paths" : {

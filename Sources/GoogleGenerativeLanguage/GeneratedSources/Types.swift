@@ -2512,30 +2512,6 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/urlContextMetadata`.
             public var urlContextMetadata: Components.Schemas.Candidate.urlContextMetadataPayload?
-            /// Output only. Metadata related to url context retrieval tool.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Candidate/urlRetrievalMetadata`.
-            public struct urlRetrievalMetadataPayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/Candidate/urlRetrievalMetadata/value1`.
-                public var value1: Components.Schemas.UrlRetrievalMetadata
-                /// Creates a new `urlRetrievalMetadataPayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.UrlRetrievalMetadata) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// Output only. Metadata related to url context retrieval tool.
-            ///
-            /// - Remark: Generated from `#/components/schemas/Candidate/urlRetrievalMetadata`.
-            public var urlRetrievalMetadata: Components.Schemas.Candidate.urlRetrievalMetadataPayload?
             /// Creates a new `Candidate`.
             ///
             /// - Parameters:
@@ -2550,7 +2526,6 @@ public enum Components {
             ///   - safetyRatings: List of ratings for the safety of a response candidate.
             ///   - tokenCount: Output only. Token count for this candidate.
             ///   - urlContextMetadata: Output only. Metadata related to url context retrieval tool.
-            ///   - urlRetrievalMetadata: Output only. Metadata related to url context retrieval tool.
             public init(
                 avgLogprobs: Swift.Double? = nil,
                 citationMetadata: Components.Schemas.Candidate.citationMetadataPayload? = nil,
@@ -2562,8 +2537,7 @@ public enum Components {
                 logprobsResult: Components.Schemas.Candidate.logprobsResultPayload? = nil,
                 safetyRatings: [Components.Schemas.SafetyRating]? = nil,
                 tokenCount: Swift.Int32? = nil,
-                urlContextMetadata: Components.Schemas.Candidate.urlContextMetadataPayload? = nil,
-                urlRetrievalMetadata: Components.Schemas.Candidate.urlRetrievalMetadataPayload? = nil
+                urlContextMetadata: Components.Schemas.Candidate.urlContextMetadataPayload? = nil
             ) {
                 self.avgLogprobs = avgLogprobs
                 self.citationMetadata = citationMetadata
@@ -2576,7 +2550,6 @@ public enum Components {
                 self.safetyRatings = safetyRatings
                 self.tokenCount = tokenCount
                 self.urlContextMetadata = urlContextMetadata
-                self.urlRetrievalMetadata = urlRetrievalMetadata
             }
             public enum CodingKeys: String, CodingKey {
                 case avgLogprobs
@@ -2590,7 +2563,6 @@ public enum Components {
                 case safetyRatings
                 case tokenCount
                 case urlContextMetadata
-                case urlRetrievalMetadata
             }
         }
         /// A `Chunk` is a subpart of a `Document` that is treated as an independent unit
@@ -4540,6 +4512,27 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/parameters`.
             public var parameters: Components.Schemas.FunctionDeclaration.parametersPayload?
+            /// Optional. Describes the parameters to the function in JSON Schema format. The schema
+            /// must describe an object where the properties are the parameters to the
+            /// function. For example:
+            ///
+            /// ```
+            /// {
+            ///   "type": "object",
+            ///   "properties": {
+            ///     "name": { "type": "string" },
+            ///     "age": { "type": "integer" }
+            ///   },
+            ///   "additionalProperties": false,
+            ///   "required": ["name", "age"],
+            ///   "propertyOrdering": ["name", "age"]
+            /// }
+            /// ```
+            ///
+            /// This field is mutually exclusive with `parameters`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/parametersJsonSchema`.
+            public var parametersJsonSchema: OpenAPIRuntime.OpenAPIValueContainer?
             /// Optional. Describes the output from this function in JSON Schema format. Reflects the
             /// Open API 3.03 Response Object. The Schema defines the type used for the
             /// response value of the function.
@@ -4568,6 +4561,13 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/response`.
             public var response: Components.Schemas.FunctionDeclaration.responsePayload?
+            /// Optional. Describes the output from this function in JSON Schema format. The value
+            /// specified by the schema is the response value of the function.
+            ///
+            /// This field is mutually exclusive with `response`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/responseJsonSchema`.
+            public var responseJsonSchema: OpenAPIRuntime.OpenAPIValueContainer?
             /// Creates a new `FunctionDeclaration`.
             ///
             /// - Parameters:
@@ -4575,26 +4575,34 @@ public enum Components {
             ///   - description: Required. A brief description of the function.
             ///   - name: Required. The name of the function.
             ///   - parameters: Optional. Describes the parameters to this function. Reflects the Open API 3.03
+            ///   - parametersJsonSchema: Optional. Describes the parameters to the function in JSON Schema format. The schema
             ///   - response: Optional. Describes the output from this function in JSON Schema format. Reflects the
+            ///   - responseJsonSchema: Optional. Describes the output from this function in JSON Schema format. The value
             public init(
                 behavior: Components.Schemas.FunctionDeclaration.behaviorPayload? = nil,
                 description: Swift.String,
                 name: Swift.String,
                 parameters: Components.Schemas.FunctionDeclaration.parametersPayload? = nil,
-                response: Components.Schemas.FunctionDeclaration.responsePayload? = nil
+                parametersJsonSchema: OpenAPIRuntime.OpenAPIValueContainer? = nil,
+                response: Components.Schemas.FunctionDeclaration.responsePayload? = nil,
+                responseJsonSchema: OpenAPIRuntime.OpenAPIValueContainer? = nil
             ) {
                 self.behavior = behavior
                 self.description = description
                 self.name = name
                 self.parameters = parameters
+                self.parametersJsonSchema = parametersJsonSchema
                 self.response = response
+                self.responseJsonSchema = responseJsonSchema
             }
             public enum CodingKeys: String, CodingKey {
                 case behavior
                 case description
                 case name
                 case parameters
+                case parametersJsonSchema
                 case response
+                case responseJsonSchema
             }
         }
         /// The result output from a `FunctionCall` that contains a string
@@ -5774,6 +5782,45 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/presencePenalty`.
             public var presencePenalty: Swift.Float?
+            /// Optional. Output schema of the generated response. This is an alternative to
+            /// `response_schema` that accepts [JSON Schema](https://json-schema.org/).
+            ///
+            /// If set, `response_schema` must be omitted, but `response_mime_type` is
+            /// required.
+            ///
+            /// While the full JSON Schema may be sent, not all features are supported.
+            /// Specifically, only the following properties are supported:
+            ///
+            /// - `$id`
+            /// - `$defs`
+            /// - `$ref`
+            /// - `$anchor`
+            /// - `type`
+            /// - `format`
+            /// - `title`
+            /// - `description`
+            /// - `enum` (for strings and numbers)
+            /// - `items`
+            /// - `prefixItems`
+            /// - `minItems`
+            /// - `maxItems`
+            /// - `minimum`
+            /// - `maximum`
+            /// - `anyOf`
+            /// - `oneOf` (interpreted the same as `anyOf`)
+            /// - `properties`
+            /// - `additionalProperties`
+            /// - `required`
+            ///
+            /// The non-standard `propertyOrdering` property may also be set.
+            ///
+            /// Cyclic references are unrolled to a limited degree and, as such, may only
+            /// be used within non-required properties. (Nullable properties are not
+            /// sufficient.) If `$ref` is set on a sub-schema, no other properties, except
+            /// for than those starting as a `$`, may be set.
+            ///
+            /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseJsonSchema`.
+            public var responseJsonSchema: OpenAPIRuntime.OpenAPIValueContainer?
             /// Optional. If true, export the logprobs results in response.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseLogprobs`.
@@ -5972,6 +6019,7 @@ public enum Components {
             ///   - maxOutputTokens: Optional. The maximum number of tokens to include in a response candidate.
             ///   - mediaResolution: Optional. If specified, the media resolution specified will be used.
             ///   - presencePenalty: Optional. Presence penalty applied to the next token's logprobs if the token has
+            ///   - responseJsonSchema: Optional. Output schema of the generated response. This is an alternative to
             ///   - responseLogprobs: Optional. If true, export the logprobs results in response.
             ///   - responseMimeType: Optional. MIME type of the generated candidate text.
             ///   - responseModalities: Optional. The requested modalities of the response. Represents the set of modalities
@@ -5991,6 +6039,7 @@ public enum Components {
                 maxOutputTokens: Swift.Int32? = nil,
                 mediaResolution: Components.Schemas.GenerationConfig.mediaResolutionPayload? = nil,
                 presencePenalty: Swift.Float? = nil,
+                responseJsonSchema: OpenAPIRuntime.OpenAPIValueContainer? = nil,
                 responseLogprobs: Swift.Bool? = nil,
                 responseMimeType: Swift.String? = nil,
                 responseModalities: Components.Schemas.GenerationConfig.responseModalitiesPayload? = nil,
@@ -6010,6 +6059,7 @@ public enum Components {
                 self.maxOutputTokens = maxOutputTokens
                 self.mediaResolution = mediaResolution
                 self.presencePenalty = presencePenalty
+                self.responseJsonSchema = responseJsonSchema
                 self.responseLogprobs = responseLogprobs
                 self.responseMimeType = responseMimeType
                 self.responseModalities = responseModalities
@@ -6030,6 +6080,7 @@ public enum Components {
                 case maxOutputTokens
                 case mediaResolution
                 case presencePenalty
+                case responseJsonSchema
                 case responseLogprobs
                 case responseMimeType
                 case responseModalities
@@ -7454,6 +7505,27 @@ public enum Components {
                 case topP
                 case version
             }
+        }
+        /// Unique identifier for a Gemini model variant.
+        ///
+        /// - Remark: Generated from `#/components/schemas/ModelID`.
+        @frozen public enum ModelID: String, Codable, Hashable, Sendable, CaseIterable {
+            case gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_05_hyphen_20 = "gemini-2.5-flash-preview-05-20"
+            case gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_native_hyphen_audio_hyphen_dialog = "gemini-2.5-flash-preview-native-audio-dialog"
+            case gemini_hyphen_2_period_5_hyphen_flash_hyphen_exp_hyphen_native_hyphen_audio_hyphen_thinking_hyphen_dialog = "gemini-2.5-flash-exp-native-audio-thinking-dialog"
+            case gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_tts = "gemini-2.5-flash-preview-tts"
+            case gemini_hyphen_2_period_5_hyphen_pro_hyphen_preview_hyphen_06_hyphen_05 = "gemini-2.5-pro-preview-06-05"
+            case gemini_hyphen_2_period_5_hyphen_pro_hyphen_preview_hyphen_tts = "gemini-2.5-pro-preview-tts"
+            case gemini_hyphen_2_period_0_hyphen_flash = "gemini-2.0-flash"
+            case gemini_hyphen_2_period_0_hyphen_flash_hyphen_preview_hyphen_image_hyphen_generation = "gemini-2.0-flash-preview-image-generation"
+            case gemini_hyphen_2_period_0_hyphen_flash_hyphen_lite = "gemini-2.0-flash-lite"
+            case gemini_hyphen_1_period_5_hyphen_flash = "gemini-1.5-flash"
+            case gemini_hyphen_1_period_5_hyphen_flash_hyphen_8b = "gemini-1.5-flash-8b"
+            case gemini_hyphen_1_period_5_hyphen_pro = "gemini-1.5-pro"
+            case gemini_hyphen_embedding_hyphen_exp = "gemini-embedding-exp"
+            case imagen_hyphen_3_period_0_hyphen_generate_hyphen_002 = "imagen-3.0-generate-002"
+            case veo_hyphen_2_period_0_hyphen_generate_hyphen_001 = "veo-2.0-generate-001"
+            case gemini_hyphen_2_period_0_hyphen_flash_hyphen_live_hyphen_001 = "gemini-2.0-flash-live-001"
         }
         /// The configuration for the multi-speaker setup.
         ///
@@ -10467,44 +10539,6 @@ public enum Components {
             public enum CodingKeys: String, CodingKey {
                 case retrievedUrl
                 case urlRetrievalStatus
-            }
-        }
-        /// Context of the a single url retrieval.
-        ///
-        /// - Remark: Generated from `#/components/schemas/UrlRetrievalContext`.
-        public struct UrlRetrievalContext: Codable, Hashable, Sendable {
-            /// Retrieved url by the tool.
-            ///
-            /// - Remark: Generated from `#/components/schemas/UrlRetrievalContext/retrievedUrl`.
-            public var retrievedUrl: Swift.String?
-            /// Creates a new `UrlRetrievalContext`.
-            ///
-            /// - Parameters:
-            ///   - retrievedUrl: Retrieved url by the tool.
-            public init(retrievedUrl: Swift.String? = nil) {
-                self.retrievedUrl = retrievedUrl
-            }
-            public enum CodingKeys: String, CodingKey {
-                case retrievedUrl
-            }
-        }
-        /// Metadata related to url context retrieval tool.
-        ///
-        /// - Remark: Generated from `#/components/schemas/UrlRetrievalMetadata`.
-        public struct UrlRetrievalMetadata: Codable, Hashable, Sendable {
-            /// List of url retrieval contexts.
-            ///
-            /// - Remark: Generated from `#/components/schemas/UrlRetrievalMetadata/urlRetrievalContexts`.
-            public var urlRetrievalContexts: [Components.Schemas.UrlRetrievalContext]?
-            /// Creates a new `UrlRetrievalMetadata`.
-            ///
-            /// - Parameters:
-            ///   - urlRetrievalContexts: List of url retrieval contexts.
-            public init(urlRetrievalContexts: [Components.Schemas.UrlRetrievalContext]? = nil) {
-                self.urlRetrievalContexts = urlRetrievalContexts
-            }
-            public enum CodingKeys: String, CodingKey {
-                case urlRetrievalContexts
             }
         }
         /// Metadata on the generation request's token usage.
