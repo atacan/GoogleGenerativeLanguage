@@ -38,19 +38,220 @@ public struct Client: APIProtocol {
     private var converter: Converter {
         client.converter
     }
-    /// Generates a response from the model given an input `MessagePrompt`.
+    /// Lists operations that match the specified filter in the request. If the
+    /// server doesn't support this method, it returns `UNIMPLEMENTED`.
     ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:generateMessage`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateMessage/post(GenerateMessage)`.
-    public func GenerateMessage(_ input: Operations.GenerateMessage.Input) async throws -> Operations.GenerateMessage.Output {
+    /// - Remark: HTTP `GET /v1beta/batches`.
+    /// - Remark: Generated from `#/paths//v1beta/batches/get(ListOperationsBy)`.
+    public func ListOperationsBy(_ input: Operations.ListOperationsBy.Input) async throws -> Operations.ListOperationsBy.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.GenerateMessage.id,
+            forOperation: Operations.ListOperationsBy.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:generateMessage",
+                    template: "/v1beta/batches",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "filter",
+                    value: input.query.filter
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.ListOperationsBy.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.ListOperationsResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Gets the latest state of a long-running operation.  Clients can use this
+    /// method to poll the operation result at intervals as recommended by the API
+    /// service.
+    ///
+    /// - Remark: HTTP `GET /v1beta/batches/{generateContentBatch}`.
+    /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/get(GetOperationByGenerateContentBatch)`.
+    public func GetOperationByGenerateContentBatch(_ input: Operations.GetOperationByGenerateContentBatch.Input) async throws -> Operations.GetOperationByGenerateContentBatch.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetOperationByGenerateContentBatch.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/batches/{}",
                     parameters: [
-                        input.path.model
+                        input.path.generateContentBatch
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GetOperationByGenerateContentBatch.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Operation.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Starts asynchronous cancellation on a long-running operation.  The server
+    /// makes a best effort to cancel the operation, but success is not
+    /// guaranteed.  If the server doesn't support this method, it returns
+    /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+    /// Operations.GetOperation or
+    /// other methods to check whether the cancellation succeeded or whether the
+    /// operation completed despite cancellation. On successful cancellation,
+    /// the operation is not deleted; instead, it becomes an operation with
+    /// an Operation.error value with a google.rpc.Status.code of `1`,
+    /// corresponding to `Code.CANCELLED`.
+    ///
+    /// - Remark: HTTP `POST /v1beta/batches/{generateContentBatch}:cancel`.
+    /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}:cancel/post(CancelOperation)`.
+    public func CancelOperation(_ input: Operations.CancelOperation.Input) async throws -> Operations.CancelOperation.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.CancelOperation.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/batches/{}:cancel",
+                    parameters: [
+                        input.path.generateContentBatch
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -90,24 +291,13 @@ public struct Client: APIProtocol {
                     in: &request.headerFields,
                     contentTypes: input.headers.accept
                 )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
+                return (request, nil)
             },
             deserializer: { response, responseBody in
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GenerateMessage.Output.Default.Body
+                    let body: Operations.CancelOperation.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -117,7 +307,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GenerateMessageResponse.self,
+                            Components.Schemas.Empty.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -134,17 +324,17 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Lists the generated files owned by the requesting project.
+    /// Lists CachedContents.
     ///
-    /// - Remark: HTTP `GET /v1beta/generatedFiles`.
-    /// - Remark: Generated from `#/paths//v1beta/generatedFiles/get(ListGeneratedFiles)`.
-    public func ListGeneratedFiles(_ input: Operations.ListGeneratedFiles.Input) async throws -> Operations.ListGeneratedFiles.Output {
+    /// - Remark: HTTP `GET /v1beta/cachedContents`.
+    /// - Remark: Generated from `#/paths//v1beta/cachedContents/get(ListCachedContents)`.
+    public func ListCachedContents(_ input: Operations.ListCachedContents.Input) async throws -> Operations.ListCachedContents.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.ListGeneratedFiles.id,
+            forOperation: Operations.ListCachedContents.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/generatedFiles",
+                    template: "/v1beta/cachedContents",
                     parameters: []
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -204,7 +394,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListGeneratedFiles.Output.Default.Body
+                    let body: Operations.ListCachedContents.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -214,7 +404,101 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListGeneratedFilesResponse.self,
+                            Components.Schemas.ListCachedContentsResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Creates CachedContent resource.
+    ///
+    /// - Remark: HTTP `POST /v1beta/cachedContents`.
+    /// - Remark: Generated from `#/paths//v1beta/cachedContents/post(CreateCachedContent)`.
+    public func CreateCachedContent(_ input: Operations.CreateCachedContent.Input) async throws -> Operations.CreateCachedContent.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.CreateCachedContent.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/cachedContents",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.CreateCachedContent.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.CachedContent.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -488,6 +772,197 @@ public struct Client: APIProtocol {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
                             Components.Schemas.Empty.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Lists all `Corpora` owned by the user.
+    ///
+    /// - Remark: HTTP `GET /v1beta/corpora`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/get(ListCorpora)`.
+    public func ListCorpora(_ input: Operations.ListCorpora.Input) async throws -> Operations.ListCorpora.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.ListCorpora.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/corpora",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.ListCorpora.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.ListCorporaResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Creates an empty `Corpus`.
+    ///
+    /// - Remark: HTTP `POST /v1beta/corpora`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/post(CreateCorpus)`.
+    public func CreateCorpus(_ input: Operations.CreateCorpus.Input) async throws -> Operations.CreateCorpus.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.CreateCorpus.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/corpora",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.CreateCorpus.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Corpus.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -784,128 +1259,20 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Lists created tuned models.
+    /// Performs semantic search over a `Corpus`.
     ///
-    /// - Remark: HTTP `GET /v1beta/tunedModels`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/get(ListTunedModels)`.
-    public func ListTunedModels(_ input: Operations.ListTunedModels.Input) async throws -> Operations.ListTunedModels.Output {
+    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}:query`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}:query/post(QueryCorpus)`.
+    public func QueryCorpus(_ input: Operations.QueryCorpus.Input) async throws -> Operations.QueryCorpus.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.ListTunedModels.id,
+            forOperation: Operations.QueryCorpus.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels",
-                    parameters: []
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "filter",
-                    value: input.query.filter
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListTunedModels.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListTunedModelsResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Creates a tuned model.
-    /// Check intermediate tuning progress (if any) through the
-    /// [google.longrunning.Operations] service.
-    ///
-    /// Access status and results through the Operations service.
-    /// Example:
-    ///   GET /v1/tunedModels/az2mb0bpw6i/operations/000-111-222
-    ///
-    /// - Remark: HTTP `POST /v1beta/tunedModels`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/post(CreateTunedModel)`.
-    public func CreateTunedModel(_ input: Operations.CreateTunedModel.Input) async throws -> Operations.CreateTunedModel.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.CreateTunedModel.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels",
-                    parameters: []
+                    template: "/v1beta/corpora/{}:query",
+                    parameters: [
+                        input.path.corpus
+                    ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
                     soar_path: path,
@@ -940,13 +1307,6 @@ public struct Client: APIProtocol {
                     name: "$.xgafv",
                     value: input.query._dollar__period_xgafv
                 )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "tunedModelId",
-                    value: input.query.tunedModelId
-                )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
                     contentTypes: input.headers.accept
@@ -968,7 +1328,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CreateTunedModel.Output.Default.Body
+                    let body: Operations.QueryCorpus.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -978,7 +1338,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.CreateTunedModelOperation.self,
+                            Components.Schemas.QueryCorpusResponse.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -995,386 +1355,20 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Gets information about a specific `Chunk`.
+    /// Lists all `Document`s in a `Corpus`.
     ///
-    /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/get(GetChunk)`.
-    public func GetChunk(_ input: Operations.GetChunk.Input) async throws -> Operations.GetChunk.Output {
+    /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/get(ListDocuments)`.
+    public func ListDocuments(_ input: Operations.ListDocuments.Input) async throws -> Operations.ListDocuments.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.GetChunk.id,
+            forOperation: Operations.ListDocuments.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/documents/{}/chunks/{}",
+                    template: "/v1beta/corpora/{}/documents",
                     parameters: [
-                        input.path.corpus,
-                        input.path.document,
-                        input.path.chunk
+                        input.path.corpus
                     ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetChunk.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Chunk.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Updates a `Chunk`.
-    ///
-    /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/patch(UpdateChunk)`.
-    public func UpdateChunk(_ input: Operations.UpdateChunk.Input) async throws -> Operations.UpdateChunk.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.UpdateChunk.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/documents/{}/chunks/{}",
-                    parameters: [
-                        input.path.corpus,
-                        input.path.document,
-                        input.path.chunk
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .patch
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "updateMask",
-                    value: input.query.updateMask
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.UpdateChunk.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Chunk.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Deletes a `Chunk`.
-    ///
-    /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/delete(DeleteChunk)`.
-    public func DeleteChunk(_ input: Operations.DeleteChunk.Input) async throws -> Operations.DeleteChunk.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.DeleteChunk.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/documents/{}/chunks/{}",
-                    parameters: [
-                        input.path.corpus,
-                        input.path.document,
-                        input.path.chunk
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .delete
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.DeleteChunk.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Empty.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Gets the latest state of a long-running operation.  Clients can use this
-    /// method to poll the operation result at intervals as recommended by the API
-    /// service.
-    ///
-    /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}/operations/{operation}`.
-    /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/operations/{operation}/get(GetOperationByGeneratedFileAndOperation)`.
-    public func GetOperationByGeneratedFileAndOperation(_ input: Operations.GetOperationByGeneratedFileAndOperation.Input) async throws -> Operations.GetOperationByGeneratedFileAndOperation.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.GetOperationByGeneratedFileAndOperation.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/generatedFiles/{}/operations/{}",
-                    parameters: [
-                        input.path.generatedFile,
-                        input.path.operation
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetOperationByGeneratedFileAndOperation.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Operation.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini)
-    /// available through the Gemini API.
-    ///
-    /// - Remark: HTTP `GET /v1beta/models`.
-    /// - Remark: Generated from `#/paths//v1beta/models/get(ListModels)`.
-    public func ListModels(_ input: Operations.ListModels.Input) async throws -> Operations.ListModels.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListModels.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models",
-                    parameters: []
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
                     soar_path: path,
@@ -1433,7 +1427,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListModels.Output.Default.Body
+                    let body: Operations.ListDocuments.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -1443,7 +1437,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListModelsResponse.self,
+                            Components.Schemas.ListDocumentsResponse.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -1460,19 +1454,19 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Runs a model's tokenizer on a text and returns the token count.
+    /// Creates an empty `Document`.
     ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:countTextTokens`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTextTokens/post(CountTextTokens)`.
-    public func CountTextTokens(_ input: Operations.CountTextTokens.Input) async throws -> Operations.CountTextTokens.Output {
+    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/post(CreateDocument)`.
+    public func CreateDocument(_ input: Operations.CreateDocument.Input) async throws -> Operations.CreateDocument.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.CountTextTokens.id,
+            forOperation: Operations.CreateDocument.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:countTextTokens",
+                    template: "/v1beta/corpora/{}/documents",
                     parameters: [
-                        input.path.model
+                        input.path.corpus
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -1529,7 +1523,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CountTextTokens.Output.Default.Body
+                    let body: Operations.CreateDocument.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -1539,591 +1533,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.CountTextTokensResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Generates multiple embeddings from the model given input text in a
-    /// synchronous call.
-    ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedText`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedText/post(BatchEmbedText)`.
-    public func BatchEmbedText(_ input: Operations.BatchEmbedText.Input) async throws -> Operations.BatchEmbedText.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.BatchEmbedText.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:batchEmbedText",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.BatchEmbedText.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.BatchEmbedTextResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Generates a model response given an input `GenerateContentRequest`.
-    /// Refer to the [text generation
-    /// guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed
-    /// usage information. Input capabilities differ between models, including
-    /// tuned models. Refer to the [model
-    /// guide](https://ai.google.dev/gemini-api/docs/models/gemini) and [tuning
-    /// guide](https://ai.google.dev/gemini-api/docs/model-tuning) for details.
-    ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:generateContent`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateContent/post(GenerateContent)`.
-    public func GenerateContent(_ input: Operations.GenerateContent.Input) async throws -> Operations.GenerateContent.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.GenerateContent.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:generateContent",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GenerateContent.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GenerateContentResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Generates a model response given an input `GenerateContentRequest`.
-    /// Refer to the [text generation
-    /// guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed
-    /// usage information. Input capabilities differ between models, including
-    /// tuned models. Refer to the [model
-    /// guide](https://ai.google.dev/gemini-api/docs/models/gemini) and [tuning
-    /// guide](https://ai.google.dev/gemini-api/docs/model-tuning) for details.
-    ///
-    /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:generateContent`.
-    /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:generateContent/post(GenerateContentByDynamicId)`.
-    public func GenerateContentByDynamicId(_ input: Operations.GenerateContentByDynamicId.Input) async throws -> Operations.GenerateContentByDynamicId.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.GenerateContentByDynamicId.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/dynamic/{}:generateContent",
-                    parameters: [
-                        input.path.dynamicId
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GenerateContentByDynamicId.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GenerateContentResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Generates a [streamed
-    /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
-    /// from the model given an input `GenerateContentRequest`.
-    ///
-    /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:streamGenerateContent`.
-    /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:streamGenerateContent/post(StreamGenerateContentByDynamicId)`.
-    public func StreamGenerateContentByDynamicId(_ input: Operations.StreamGenerateContentByDynamicId.Input) async throws -> Operations.StreamGenerateContentByDynamicId.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.StreamGenerateContentByDynamicId.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/dynamic/{}:streamGenerateContent",
-                    parameters: [
-                        input.path.dynamicId
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.StreamGenerateContentByDynamicId.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GenerateContentResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Batch create `Chunk`s.
-    ///
-    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/post(BatchCreateChunks)`.
-    public func BatchCreateChunks(_ input: Operations.BatchCreateChunks.Input) async throws -> Operations.BatchCreateChunks.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.BatchCreateChunks.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/documents/{}/chunks:batchCreate",
-                    parameters: [
-                        input.path.corpus,
-                        input.path.document
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.BatchCreateChunks.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.BatchCreateChunksResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Gets the latest state of a long-running operation.  Clients can use this
-    /// method to poll the operation result at intervals as recommended by the API
-    /// service.
-    ///
-    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations/{operation}`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/{operation}/get(GetOperation)`.
-    public func GetOperation(_ input: Operations.GetOperation.Input) async throws -> Operations.GetOperation.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.GetOperation.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}/operations/{}",
-                    parameters: [
-                        input.path.tunedModel,
-                        input.path.operation
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetOperation.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Operation.self,
+                            Components.Schemas.Document.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -2423,391 +1833,20 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Gets information about a specific TunedModel.
+    /// Performs semantic search over a `Document`.
     ///
-    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/get(GetTunedModel)`.
-    public func GetTunedModel(_ input: Operations.GetTunedModel.Input) async throws -> Operations.GetTunedModel.Output {
+    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}:query`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}:query/post(QueryDocument)`.
+    public func QueryDocument(_ input: Operations.QueryDocument.Input) async throws -> Operations.QueryDocument.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.GetTunedModel.id,
+            forOperation: Operations.QueryDocument.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}",
+                    template: "/v1beta/corpora/{}/documents/{}:query",
                     parameters: [
-                        input.path.tunedModel
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetTunedModel.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.TunedModel.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Updates a tuned model.
-    ///
-    /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/patch(UpdateTunedModel)`.
-    public func UpdateTunedModel(_ input: Operations.UpdateTunedModel.Input) async throws -> Operations.UpdateTunedModel.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.UpdateTunedModel.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}",
-                    parameters: [
-                        input.path.tunedModel
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .patch
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "updateMask",
-                    value: input.query.updateMask
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.UpdateTunedModel.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.TunedModel.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Deletes a tuned model.
-    ///
-    /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/delete(DeleteTunedModel)`.
-    public func DeleteTunedModel(_ input: Operations.DeleteTunedModel.Input) async throws -> Operations.DeleteTunedModel.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.DeleteTunedModel.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}",
-                    parameters: [
-                        input.path.tunedModel
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .delete
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.DeleteTunedModel.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Empty.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists all `Document`s in a `Corpus`.
-    ///
-    /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/get(ListDocuments)`.
-    public func ListDocuments(_ input: Operations.ListDocuments.Input) async throws -> Operations.ListDocuments.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListDocuments.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/documents",
-                    parameters: [
-                        input.path.corpus
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListDocuments.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListDocumentsResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Creates an empty `Document`.
-    ///
-    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/post(CreateDocument)`.
-    public func CreateDocument(_ input: Operations.CreateDocument.Input) async throws -> Operations.CreateDocument.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.CreateDocument.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/documents",
-                    parameters: [
-                        input.path.corpus
+                        input.path.corpus,
+                        input.path.document
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -2864,7 +1903,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CreateDocument.Output.Default.Body
+                    let body: Operations.QueryDocument.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -2874,7 +1913,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Document.self,
+                            Components.Schemas.QueryDocumentResponse.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -3088,19 +2127,20 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Generates a response from the model given an input message.
+    /// Batch create `Chunk`s.
     ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:generateText`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateText/post(GenerateText)`.
-    public func GenerateText(_ input: Operations.GenerateText.Input) async throws -> Operations.GenerateText.Output {
+    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/post(BatchCreateChunks)`.
+    public func BatchCreateChunks(_ input: Operations.BatchCreateChunks.Input) async throws -> Operations.BatchCreateChunks.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.GenerateText.id,
+            forOperation: Operations.BatchCreateChunks.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:generateText",
+                    template: "/v1beta/corpora/{}/documents/{}/chunks:batchCreate",
                     parameters: [
-                        input.path.model
+                        input.path.corpus,
+                        input.path.document
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -3157,7 +2197,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GenerateText.Output.Default.Body
+                    let body: Operations.BatchCreateChunks.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -3167,7 +2207,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GenerateTextResponse.self,
+                            Components.Schemas.BatchCreateChunksResponse.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -3184,21 +2224,20 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Generates a [streamed
-    /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
-    /// from the model given an input `GenerateContentRequest`.
+    /// Batch delete `Chunk`s.
     ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:streamGenerateContent`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:streamGenerateContent/post(StreamGenerateContent)`.
-    public func StreamGenerateContent(_ input: Operations.StreamGenerateContent.Input) async throws -> Operations.StreamGenerateContent.Output {
+    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/post(BatchDeleteChunks)`.
+    public func BatchDeleteChunks(_ input: Operations.BatchDeleteChunks.Input) async throws -> Operations.BatchDeleteChunks.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.StreamGenerateContent.id,
+            forOperation: Operations.BatchDeleteChunks.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:streamGenerateContent",
+                    template: "/v1beta/corpora/{}/documents/{}/chunks:batchDelete",
                     parameters: [
-                        input.path.model
+                        input.path.corpus,
+                        input.path.document
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -3255,668 +2294,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.StreamGenerateContent.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GenerateContentResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists CachedContents.
-    ///
-    /// - Remark: HTTP `GET /v1beta/cachedContents`.
-    /// - Remark: Generated from `#/paths//v1beta/cachedContents/get(ListCachedContents)`.
-    public func ListCachedContents(_ input: Operations.ListCachedContents.Input) async throws -> Operations.ListCachedContents.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListCachedContents.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/cachedContents",
-                    parameters: []
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListCachedContents.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListCachedContentsResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Creates CachedContent resource.
-    ///
-    /// - Remark: HTTP `POST /v1beta/cachedContents`.
-    /// - Remark: Generated from `#/paths//v1beta/cachedContents/post(CreateCachedContent)`.
-    public func CreateCachedContent(_ input: Operations.CreateCachedContent.Input) async throws -> Operations.CreateCachedContent.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.CreateCachedContent.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/cachedContents",
-                    parameters: []
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CreateCachedContent.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.CachedContent.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Generates a text embedding vector from the input `Content` using the
-    /// specified [Gemini Embedding
-    /// model](https://ai.google.dev/gemini-api/docs/models/gemini#text-embedding).
-    ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:embedContent`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedContent/post(EmbedContent)`.
-    public func EmbedContent(_ input: Operations.EmbedContent.Input) async throws -> Operations.EmbedContent.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.EmbedContent.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:embedContent",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.EmbedContent.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.EmbedContentResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Performs a prediction request.
-    ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:predict`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:predict/post(Predict)`.
-    public func Predict(_ input: Operations.Predict.Input) async throws -> Operations.Predict.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.Predict.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:predict",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.Predict.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.PredictResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Gets information about a specific Permission.
-    ///
-    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/get(GetPermission)`.
-    public func GetPermission(_ input: Operations.GetPermission.Input) async throws -> Operations.GetPermission.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.GetPermission.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}/permissions/{}",
-                    parameters: [
-                        input.path.tunedModel,
-                        input.path.permission
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetPermission.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Permission.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Updates the permission.
-    ///
-    /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/patch(UpdatePermission)`.
-    public func UpdatePermission(_ input: Operations.UpdatePermission.Input) async throws -> Operations.UpdatePermission.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.UpdatePermission.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}/permissions/{}",
-                    parameters: [
-                        input.path.tunedModel,
-                        input.path.permission
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .patch
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "updateMask",
-                    value: input.query.updateMask
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.UpdatePermission.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Permission.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Deletes the permission.
-    ///
-    /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/delete(DeletePermission)`.
-    public func DeletePermission(_ input: Operations.DeletePermission.Input) async throws -> Operations.DeletePermission.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.DeletePermission.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}/permissions/{}",
-                    parameters: [
-                        input.path.tunedModel,
-                        input.path.permission
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .delete
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.DeletePermission.Output.Default.Body
+                    let body: Operations.BatchDeleteChunks.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -4040,990 +2418,21 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Gets information about a specific `Model` such as its version number, token
-    /// limits,
-    /// [parameters](https://ai.google.dev/gemini-api/docs/models/generative-models#model-parameters)
-    /// and other metadata. Refer to the [Gemini models
-    /// guide](https://ai.google.dev/gemini-api/docs/models/gemini) for detailed
-    /// model information.
+    /// Gets information about a specific `Chunk`.
     ///
-    /// - Remark: HTTP `GET /v1beta/models/{model}`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}/get(GetModel)`.
-    public func GetModel(_ input: Operations.GetModel.Input) async throws -> Operations.GetModel.Output {
+    /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/get(GetChunk)`.
+    public func GetChunk(_ input: Operations.GetChunk.Input) async throws -> Operations.GetChunk.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.GetModel.id,
+            forOperation: Operations.GetChunk.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetModel.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Model.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Generates a grounded answer from the model given an input
-    /// `GenerateAnswerRequest`.
-    ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:generateAnswer`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateAnswer/post(GenerateAnswer)`.
-    public func GenerateAnswer(_ input: Operations.GenerateAnswer.Input) async throws -> Operations.GenerateAnswer.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.GenerateAnswer.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:generateAnswer",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GenerateAnswer.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GenerateAnswerResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Batch delete `Chunk`s.
-    ///
-    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/post(BatchDeleteChunks)`.
-    public func BatchDeleteChunks(_ input: Operations.BatchDeleteChunks.Input) async throws -> Operations.BatchDeleteChunks.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.BatchDeleteChunks.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/documents/{}/chunks:batchDelete",
+                    template: "/v1beta/corpora/{}/documents/{}/chunks/{}",
                     parameters: [
                         input.path.corpus,
-                        input.path.document
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.BatchDeleteChunks.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Empty.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists all `Corpora` owned by the user.
-    ///
-    /// - Remark: HTTP `GET /v1beta/corpora`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/get(ListCorpora)`.
-    public func ListCorpora(_ input: Operations.ListCorpora.Input) async throws -> Operations.ListCorpora.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListCorpora.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora",
-                    parameters: []
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListCorpora.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListCorporaResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Creates an empty `Corpus`.
-    ///
-    /// - Remark: HTTP `POST /v1beta/corpora`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/post(CreateCorpus)`.
-    public func CreateCorpus(_ input: Operations.CreateCorpus.Input) async throws -> Operations.CreateCorpus.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.CreateCorpus.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora",
-                    parameters: []
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CreateCorpus.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Corpus.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Runs a model's tokenizer on a string and returns the token count.
-    ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:countMessageTokens`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:countMessageTokens/post(CountMessageTokens)`.
-    public func CountMessageTokens(_ input: Operations.CountMessageTokens.Input) async throws -> Operations.CountMessageTokens.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.CountMessageTokens.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:countMessageTokens",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CountMessageTokens.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.CountMessageTokensResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists permissions for the specific resource.
-    ///
-    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/get(ListPermissions)`.
-    public func ListPermissions(_ input: Operations.ListPermissions.Input) async throws -> Operations.ListPermissions.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListPermissions.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}/permissions",
-                    parameters: [
-                        input.path.tunedModel
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListPermissions.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListPermissionsResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Create a permission to a specific resource.
-    ///
-    /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}/permissions`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/post(CreatePermission)`.
-    public func CreatePermission(_ input: Operations.CreatePermission.Input) async throws -> Operations.CreatePermission.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.CreatePermission.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}/permissions",
-                    parameters: [
-                        input.path.tunedModel
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CreatePermission.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Permission.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists operations that match the specified filter in the request. If the
-    /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-    ///
-    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/get(ListOperations)`.
-    public func ListOperations(_ input: Operations.ListOperations.Input) async throws -> Operations.ListOperations.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListOperations.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}/operations",
-                    parameters: [
-                        input.path.tunedModel
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "filter",
-                    value: input.query.filter
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListOperations.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListOperationsResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Generates a [streamed
-    /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
-    /// from the model given an input `GenerateContentRequest`.
-    ///
-    /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:streamGenerateContent`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:streamGenerateContent/post(StreamGenerateContentByTunedModel)`.
-    public func StreamGenerateContentByTunedModel(_ input: Operations.StreamGenerateContentByTunedModel.Input) async throws -> Operations.StreamGenerateContentByTunedModel.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.StreamGenerateContentByTunedModel.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}:streamGenerateContent",
-                    parameters: [
-                        input.path.tunedModel
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.StreamGenerateContentByTunedModel.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GenerateContentResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Gets the metadata for the given `File`.
-    ///
-    /// - Remark: HTTP `GET /v1beta/files/{file}`.
-    /// - Remark: Generated from `#/paths//v1beta/files/{file}/get(GetFile)`.
-    public func GetFile(_ input: Operations.GetFile.Input) async throws -> Operations.GetFile.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.GetFile.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/files/{}",
-                    parameters: [
-                        input.path.file
+                        input.path.document,
+                        input.path.chunk
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -5069,7 +2478,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetFile.Output.Default.Body
+                    let body: Operations.GetChunk.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -5079,7 +2488,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.File.self,
+                            Components.Schemas.Chunk.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -5096,19 +2505,126 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Deletes the `File`.
+    /// Updates a `Chunk`.
     ///
-    /// - Remark: HTTP `DELETE /v1beta/files/{file}`.
-    /// - Remark: Generated from `#/paths//v1beta/files/{file}/delete(DeleteFile)`.
-    public func DeleteFile(_ input: Operations.DeleteFile.Input) async throws -> Operations.DeleteFile.Output {
+    /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/patch(UpdateChunk)`.
+    public func UpdateChunk(_ input: Operations.UpdateChunk.Input) async throws -> Operations.UpdateChunk.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.DeleteFile.id,
+            forOperation: Operations.UpdateChunk.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/files/{}",
+                    template: "/v1beta/corpora/{}/documents/{}/chunks/{}",
                     parameters: [
-                        input.path.file
+                        input.path.corpus,
+                        input.path.document,
+                        input.path.chunk
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .patch
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "updateMask",
+                    value: input.query.updateMask
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.UpdateChunk.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Chunk.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Deletes a `Chunk`.
+    ///
+    /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/delete(DeleteChunk)`.
+    public func DeleteChunk(_ input: Operations.DeleteChunk.Input) async throws -> Operations.DeleteChunk.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.DeleteChunk.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/corpora/{}/documents/{}/chunks/{}",
+                    parameters: [
+                        input.path.corpus,
+                        input.path.document,
+                        input.path.chunk
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -5154,7 +2670,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.DeleteFile.Output.Default.Body
+                    let body: Operations.DeleteChunk.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -5181,21 +2697,19 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Gets the latest state of a long-running operation.  Clients can use this
-    /// method to poll the operation result at intervals as recommended by the API
-    /// service.
+    /// Lists permissions for the specific resource.
     ///
-    /// - Remark: HTTP `GET /v1beta/batches/{generateContentBatch}`.
-    /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/get(GetOperationByGenerateContentBatch)`.
-    public func GetOperationByGenerateContentBatch(_ input: Operations.GetOperationByGenerateContentBatch.Input) async throws -> Operations.GetOperationByGenerateContentBatch.Output {
+    /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/permissions`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/get(ListPermissionsByCorpus)`.
+    public func ListPermissionsByCorpus(_ input: Operations.ListPermissionsByCorpus.Input) async throws -> Operations.ListPermissionsByCorpus.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.GetOperationByGenerateContentBatch.id,
+            forOperation: Operations.ListPermissionsByCorpus.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/batches/{}",
+                    template: "/v1beta/corpora/{}/permissions",
                     parameters: [
-                        input.path.generateContentBatch
+                        input.path.corpus
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -5231,6 +2745,20 @@ public struct Client: APIProtocol {
                     name: "$.xgafv",
                     value: input.query._dollar__period_xgafv
                 )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
                     contentTypes: input.headers.accept
@@ -5241,7 +2769,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetOperationByGenerateContentBatch.Output.Default.Body
+                    let body: Operations.ListPermissionsByCorpus.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -5251,7 +2779,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Operation.self,
+                            Components.Schemas.ListPermissionsResponse.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -5268,115 +2796,17 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Transfers ownership of the tuned model.
-    /// This is the only way to change ownership of the tuned model.
-    /// The current owner will be downgraded to writer role.
+    /// Create a permission to a specific resource.
     ///
-    /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:transferOwnership`.
-    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:transferOwnership/post(TransferOwnership)`.
-    public func TransferOwnership(_ input: Operations.TransferOwnership.Input) async throws -> Operations.TransferOwnership.Output {
+    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/permissions`.
+    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/post(CreatePermissionByCorpus)`.
+    public func CreatePermissionByCorpus(_ input: Operations.CreatePermissionByCorpus.Input) async throws -> Operations.CreatePermissionByCorpus.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.TransferOwnership.id,
+            forOperation: Operations.CreatePermissionByCorpus.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/tunedModels/{}:transferOwnership",
-                    parameters: [
-                        input.path.tunedModel
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.TransferOwnership.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.TransferOwnershipResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Performs semantic search over a `Corpus`.
-    ///
-    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}:query`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}:query/post(QueryCorpus)`.
-    public func QueryCorpus(_ input: Operations.QueryCorpus.Input) async throws -> Operations.QueryCorpus.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.QueryCorpus.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}:query",
+                    template: "/v1beta/corpora/{}/permissions",
                     parameters: [
                         input.path.corpus
                     ]
@@ -5435,7 +2865,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.QueryCorpus.Output.Default.Body
+                    let body: Operations.CreatePermissionByCorpus.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -5445,7 +2875,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.QueryCorpusResponse.self,
+                            Components.Schemas.Permission.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -5738,20 +3168,25 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Performs semantic search over a `Document`.
+    /// Generates a model response given an input `GenerateContentRequest`.
+    /// Refer to the [text generation
+    /// guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed
+    /// usage information. Input capabilities differ between models, including
+    /// tuned models. Refer to the [model
+    /// guide](https://ai.google.dev/gemini-api/docs/models/gemini) and [tuning
+    /// guide](https://ai.google.dev/gemini-api/docs/model-tuning) for details.
     ///
-    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}:query`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}:query/post(QueryDocument)`.
-    public func QueryDocument(_ input: Operations.QueryDocument.Input) async throws -> Operations.QueryDocument.Output {
+    /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:generateContent`.
+    /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:generateContent/post(GenerateContentByDynamicId)`.
+    public func GenerateContentByDynamicId(_ input: Operations.GenerateContentByDynamicId.Input) async throws -> Operations.GenerateContentByDynamicId.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.QueryDocument.id,
+            forOperation: Operations.GenerateContentByDynamicId.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/documents/{}:query",
+                    template: "/v1beta/dynamic/{}:generateContent",
                     parameters: [
-                        input.path.corpus,
-                        input.path.document
+                        input.path.dynamicId
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -5808,7 +3243,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.QueryDocument.Output.Default.Body
+                    let body: Operations.GenerateContentByDynamicId.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -5818,7 +3253,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.QueryDocumentResponse.self,
+                            Components.Schemas.GenerateContentResponse.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -5835,21 +3270,21 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Runs a model's tokenizer on input `Content` and returns the token count.
-    /// Refer to the [tokens guide](https://ai.google.dev/gemini-api/docs/tokens)
-    /// to learn more about tokens.
+    /// Generates a [streamed
+    /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
+    /// from the model given an input `GenerateContentRequest`.
     ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:countTokens`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTokens/post(CountTokens)`.
-    public func CountTokens(_ input: Operations.CountTokens.Input) async throws -> Operations.CountTokens.Output {
+    /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:streamGenerateContent`.
+    /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:streamGenerateContent/post(StreamGenerateContentByDynamicId)`.
+    public func StreamGenerateContentByDynamicId(_ input: Operations.StreamGenerateContentByDynamicId.Input) async throws -> Operations.StreamGenerateContentByDynamicId.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.CountTokens.id,
+            forOperation: Operations.StreamGenerateContentByDynamicId.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:countTokens",
+                    template: "/v1beta/dynamic/{}:streamGenerateContent",
                     parameters: [
-                        input.path.model
+                        input.path.dynamicId
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -5906,7 +3341,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CountTokens.Output.Default.Body
+                    let body: Operations.StreamGenerateContentByDynamicId.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -5916,508 +3351,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.CountTokensResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Starts asynchronous cancellation on a long-running operation.  The server
-    /// makes a best effort to cancel the operation, but success is not
-    /// guaranteed.  If the server doesn't support this method, it returns
-    /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-    /// Operations.GetOperation or
-    /// other methods to check whether the cancellation succeeded or whether the
-    /// operation completed despite cancellation. On successful cancellation,
-    /// the operation is not deleted; instead, it becomes an operation with
-    /// an Operation.error value with a google.rpc.Status.code of `1`,
-    /// corresponding to `Code.CANCELLED`.
-    ///
-    /// - Remark: HTTP `POST /v1beta/batches/{generateContentBatch}:cancel`.
-    /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}:cancel/post(CancelOperation)`.
-    public func CancelOperation(_ input: Operations.CancelOperation.Input) async throws -> Operations.CancelOperation.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.CancelOperation.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/batches/{}:cancel",
-                    parameters: [
-                        input.path.generateContentBatch
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CancelOperation.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Empty.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists permissions for the specific resource.
-    ///
-    /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/permissions`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/get(ListPermissionsByCorpus)`.
-    public func ListPermissionsByCorpus(_ input: Operations.ListPermissionsByCorpus.Input) async throws -> Operations.ListPermissionsByCorpus.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListPermissionsByCorpus.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/permissions",
-                    parameters: [
-                        input.path.corpus
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListPermissionsByCorpus.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListPermissionsResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Create a permission to a specific resource.
-    ///
-    /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/permissions`.
-    /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/post(CreatePermissionByCorpus)`.
-    public func CreatePermissionByCorpus(_ input: Operations.CreatePermissionByCorpus.Input) async throws -> Operations.CreatePermissionByCorpus.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.CreatePermissionByCorpus.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/corpora/{}/permissions",
-                    parameters: [
-                        input.path.corpus
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.CreatePermissionByCorpus.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Permission.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists operations that match the specified filter in the request. If the
-    /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-    ///
-    /// - Remark: HTTP `GET /v1beta/batches`.
-    /// - Remark: Generated from `#/paths//v1beta/batches/get(ListOperationsBy)`.
-    public func ListOperationsBy(_ input: Operations.ListOperationsBy.Input) async throws -> Operations.ListOperationsBy.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListOperationsBy.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/batches",
-                    parameters: []
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "filter",
-                    value: input.query.filter
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListOperationsBy.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListOperationsResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Lists operations that match the specified filter in the request. If the
-    /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-    ///
-    /// - Remark: HTTP `GET /v1beta/models/{model}/operations`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/get(ListOperationsByModel)`.
-    public func ListOperationsByModel(_ input: Operations.ListOperationsByModel.Input) async throws -> Operations.ListOperationsByModel.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.ListOperationsByModel.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}/operations",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "filter",
-                    value: input.query.filter
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageSize",
-                    value: input.query.pageSize
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "pageToken",
-                    value: input.query.pageToken
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.ListOperationsByModel.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.ListOperationsResponse.self,
+                            Components.Schemas.GenerateContentResponse.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -6625,6 +3559,1887 @@ public struct Client: APIProtocol {
             }
         )
     }
+    /// Gets the metadata for the given `File`.
+    ///
+    /// - Remark: HTTP `GET /v1beta/files/{file}`.
+    /// - Remark: Generated from `#/paths//v1beta/files/{file}/get(GetFile)`.
+    public func GetFile(_ input: Operations.GetFile.Input) async throws -> Operations.GetFile.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetFile.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/files/{}",
+                    parameters: [
+                        input.path.file
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GetFile.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.File.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Deletes the `File`.
+    ///
+    /// - Remark: HTTP `DELETE /v1beta/files/{file}`.
+    /// - Remark: Generated from `#/paths//v1beta/files/{file}/delete(DeleteFile)`.
+    public func DeleteFile(_ input: Operations.DeleteFile.Input) async throws -> Operations.DeleteFile.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.DeleteFile.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/files/{}",
+                    parameters: [
+                        input.path.file
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .delete
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.DeleteFile.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Empty.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Download the `File`.
+    ///
+    /// - Remark: HTTP `GET /v1beta/files/{file}:download`.
+    /// - Remark: Generated from `#/paths//v1beta/files/{file}:download/get(DownloadFile)`.
+    public func DownloadFile(_ input: Operations.DownloadFile.Input) async throws -> Operations.DownloadFile.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.DownloadFile.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/files/{}:download",
+                    parameters: [
+                        input.path.file
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.DownloadFile.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.DownloadFileResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Lists the generated files owned by the requesting project.
+    ///
+    /// - Remark: HTTP `GET /v1beta/generatedFiles`.
+    /// - Remark: Generated from `#/paths//v1beta/generatedFiles/get(ListGeneratedFiles)`.
+    public func ListGeneratedFiles(_ input: Operations.ListGeneratedFiles.Input) async throws -> Operations.ListGeneratedFiles.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.ListGeneratedFiles.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/generatedFiles",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.ListGeneratedFiles.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.ListGeneratedFilesResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Gets a generated file. When calling this method via REST, only the metadata
+    /// of the generated file is returned. To retrieve the file content via REST,
+    /// add alt=media as a query parameter.
+    ///
+    /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}`.
+    /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/get(GetGeneratedFile)`.
+    public func GetGeneratedFile(_ input: Operations.GetGeneratedFile.Input) async throws -> Operations.GetGeneratedFile.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetGeneratedFile.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/generatedFiles/{}",
+                    parameters: [
+                        input.path.generatedFile
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GetGeneratedFile.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.GeneratedFile.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Gets the latest state of a long-running operation.  Clients can use this
+    /// method to poll the operation result at intervals as recommended by the API
+    /// service.
+    ///
+    /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}/operations/{operation}`.
+    /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/operations/{operation}/get(GetOperationByGeneratedFileAndOperation)`.
+    public func GetOperationByGeneratedFileAndOperation(_ input: Operations.GetOperationByGeneratedFileAndOperation.Input) async throws -> Operations.GetOperationByGeneratedFileAndOperation.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetOperationByGeneratedFileAndOperation.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/generatedFiles/{}/operations/{}",
+                    parameters: [
+                        input.path.generatedFile,
+                        input.path.operation
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GetOperationByGeneratedFileAndOperation.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Operation.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini)
+    /// available through the Gemini API.
+    ///
+    /// - Remark: HTTP `GET /v1beta/models`.
+    /// - Remark: Generated from `#/paths//v1beta/models/get(ListModels)`.
+    public func ListModels(_ input: Operations.ListModels.Input) async throws -> Operations.ListModels.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.ListModels.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.ListModels.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.ListModelsResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Gets information about a specific `Model` such as its version number, token
+    /// limits,
+    /// [parameters](https://ai.google.dev/gemini-api/docs/models/generative-models#model-parameters)
+    /// and other metadata. Refer to the [Gemini models
+    /// guide](https://ai.google.dev/gemini-api/docs/models/gemini) for detailed
+    /// model information.
+    ///
+    /// - Remark: HTTP `GET /v1beta/models/{model}`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}/get(GetModel)`.
+    public func GetModel(_ input: Operations.GetModel.Input) async throws -> Operations.GetModel.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetModel.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GetModel.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Model.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates multiple embedding vectors from the input `Content` which
+    /// consists of a batch of strings represented as `EmbedContentRequest`
+    /// objects.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedContents`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedContents/post(BatchEmbedContents)`.
+    public func BatchEmbedContents(_ input: Operations.BatchEmbedContents.Input) async throws -> Operations.BatchEmbedContents.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.BatchEmbedContents.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:batchEmbedContents",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.BatchEmbedContents.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.BatchEmbedContentsResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates multiple embeddings from the model given input text in a
+    /// synchronous call.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedText`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedText/post(BatchEmbedText)`.
+    public func BatchEmbedText(_ input: Operations.BatchEmbedText.Input) async throws -> Operations.BatchEmbedText.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.BatchEmbedText.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:batchEmbedText",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.BatchEmbedText.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.BatchEmbedTextResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Runs a model's tokenizer on a string and returns the token count.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:countMessageTokens`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:countMessageTokens/post(CountMessageTokens)`.
+    public func CountMessageTokens(_ input: Operations.CountMessageTokens.Input) async throws -> Operations.CountMessageTokens.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.CountMessageTokens.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:countMessageTokens",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.CountMessageTokens.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.CountMessageTokensResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Runs a model's tokenizer on a text and returns the token count.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:countTextTokens`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTextTokens/post(CountTextTokens)`.
+    public func CountTextTokens(_ input: Operations.CountTextTokens.Input) async throws -> Operations.CountTextTokens.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.CountTextTokens.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:countTextTokens",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.CountTextTokens.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.CountTextTokensResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Runs a model's tokenizer on input `Content` and returns the token count.
+    /// Refer to the [tokens guide](https://ai.google.dev/gemini-api/docs/tokens)
+    /// to learn more about tokens.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:countTokens`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTokens/post(CountTokens)`.
+    public func CountTokens(_ input: Operations.CountTokens.Input) async throws -> Operations.CountTokens.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.CountTokens.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:countTokens",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.CountTokens.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.CountTokensResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates a text embedding vector from the input `Content` using the
+    /// specified [Gemini Embedding
+    /// model](https://ai.google.dev/gemini-api/docs/models/gemini#text-embedding).
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:embedContent`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedContent/post(EmbedContent)`.
+    public func EmbedContent(_ input: Operations.EmbedContent.Input) async throws -> Operations.EmbedContent.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.EmbedContent.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:embedContent",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.EmbedContent.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.EmbedContentResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates an embedding from the model given an input message.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:embedText`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedText/post(EmbedText)`.
+    public func EmbedText(_ input: Operations.EmbedText.Input) async throws -> Operations.EmbedText.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.EmbedText.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:embedText",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.EmbedText.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.EmbedTextResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates a grounded answer from the model given an input
+    /// `GenerateAnswerRequest`.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:generateAnswer`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateAnswer/post(GenerateAnswer)`.
+    public func GenerateAnswer(_ input: Operations.GenerateAnswer.Input) async throws -> Operations.GenerateAnswer.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GenerateAnswer.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:generateAnswer",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GenerateAnswer.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.GenerateAnswerResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates a model response given an input `GenerateContentRequest`.
+    /// Refer to the [text generation
+    /// guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed
+    /// usage information. Input capabilities differ between models, including
+    /// tuned models. Refer to the [model
+    /// guide](https://ai.google.dev/gemini-api/docs/models/gemini) and [tuning
+    /// guide](https://ai.google.dev/gemini-api/docs/model-tuning) for details.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:generateContent`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateContent/post(GenerateContent)`.
+    public func GenerateContent(_ input: Operations.GenerateContent.Input) async throws -> Operations.GenerateContent.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GenerateContent.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:generateContent",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GenerateContent.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.GenerateContentResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates a response from the model given an input `MessagePrompt`.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:generateMessage`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateMessage/post(GenerateMessage)`.
+    public func GenerateMessage(_ input: Operations.GenerateMessage.Input) async throws -> Operations.GenerateMessage.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GenerateMessage.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:generateMessage",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GenerateMessage.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.GenerateMessageResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates a response from the model given an input message.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:generateText`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateText/post(GenerateText)`.
+    public func GenerateText(_ input: Operations.GenerateText.Input) async throws -> Operations.GenerateText.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GenerateText.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:generateText",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GenerateText.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.GenerateTextResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Performs a prediction request.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:predict`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:predict/post(Predict)`.
+    public func Predict(_ input: Operations.Predict.Input) async throws -> Operations.Predict.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.Predict.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:predict",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.Predict.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.PredictResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
     /// Same as Predict but returns an LRO.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:predictLongRunning`.
@@ -6705,6 +5520,783 @@ public struct Client: APIProtocol {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
                             Components.Schemas.PredictLongRunningOperation.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Generates a [streamed
+    /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
+    /// from the model given an input `GenerateContentRequest`.
+    ///
+    /// - Remark: HTTP `POST /v1beta/models/{model}:streamGenerateContent`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}:streamGenerateContent/post(StreamGenerateContent)`.
+    public func StreamGenerateContent(_ input: Operations.StreamGenerateContent.Input) async throws -> Operations.StreamGenerateContent.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.StreamGenerateContent.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}:streamGenerateContent",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.StreamGenerateContent.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.GenerateContentResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Lists operations that match the specified filter in the request. If the
+    /// server doesn't support this method, it returns `UNIMPLEMENTED`.
+    ///
+    /// - Remark: HTTP `GET /v1beta/models/{model}/operations`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/get(ListOperationsByModel)`.
+    public func ListOperationsByModel(_ input: Operations.ListOperationsByModel.Input) async throws -> Operations.ListOperationsByModel.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.ListOperationsByModel.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}/operations",
+                    parameters: [
+                        input.path.model
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "filter",
+                    value: input.query.filter
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.ListOperationsByModel.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.ListOperationsResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Gets the latest state of a long-running operation.  Clients can use this
+    /// method to poll the operation result at intervals as recommended by the API
+    /// service.
+    ///
+    /// - Remark: HTTP `GET /v1beta/models/{model}/operations/{operation}`.
+    /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/{operation}/get(GetOperationByModelAndOperation)`.
+    public func GetOperationByModelAndOperation(_ input: Operations.GetOperationByModelAndOperation.Input) async throws -> Operations.GetOperationByModelAndOperation.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetOperationByModelAndOperation.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/models/{}/operations/{}",
+                    parameters: [
+                        input.path.model,
+                        input.path.operation
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GetOperationByModelAndOperation.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Operation.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Lists created tuned models.
+    ///
+    /// - Remark: HTTP `GET /v1beta/tunedModels`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/get(ListTunedModels)`.
+    public func ListTunedModels(_ input: Operations.ListTunedModels.Input) async throws -> Operations.ListTunedModels.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.ListTunedModels.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "filter",
+                    value: input.query.filter
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.ListTunedModels.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.ListTunedModelsResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Creates a tuned model.
+    /// Check intermediate tuning progress (if any) through the
+    /// [google.longrunning.Operations] service.
+    ///
+    /// Access status and results through the Operations service.
+    /// Example:
+    ///   GET /v1/tunedModels/az2mb0bpw6i/operations/000-111-222
+    ///
+    /// - Remark: HTTP `POST /v1beta/tunedModels`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/post(CreateTunedModel)`.
+    public func CreateTunedModel(_ input: Operations.CreateTunedModel.Input) async throws -> Operations.CreateTunedModel.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.CreateTunedModel.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "tunedModelId",
+                    value: input.query.tunedModelId
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.CreateTunedModel.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.CreateTunedModelOperation.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Gets information about a specific TunedModel.
+    ///
+    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/get(GetTunedModel)`.
+    public func GetTunedModel(_ input: Operations.GetTunedModel.Input) async throws -> Operations.GetTunedModel.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetTunedModel.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}",
+                    parameters: [
+                        input.path.tunedModel
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.GetTunedModel.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.TunedModel.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Updates a tuned model.
+    ///
+    /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/patch(UpdateTunedModel)`.
+    public func UpdateTunedModel(_ input: Operations.UpdateTunedModel.Input) async throws -> Operations.UpdateTunedModel.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.UpdateTunedModel.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}",
+                    parameters: [
+                        input.path.tunedModel
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .patch
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "updateMask",
+                    value: input.query.updateMask
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.UpdateTunedModel.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.TunedModel.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Deletes a tuned model.
+    ///
+    /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/delete(DeleteTunedModel)`.
+    public func DeleteTunedModel(_ input: Operations.DeleteTunedModel.Input) async throws -> Operations.DeleteTunedModel.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.DeleteTunedModel.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}",
+                    parameters: [
+                        input.path.tunedModel
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .delete
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.DeleteTunedModel.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Empty.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -6823,192 +6415,6 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Gets the latest state of a long-running operation.  Clients can use this
-    /// method to poll the operation result at intervals as recommended by the API
-    /// service.
-    ///
-    /// - Remark: HTTP `GET /v1beta/models/{model}/operations/{operation}`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/{operation}/get(GetOperationByModelAndOperation)`.
-    public func GetOperationByModelAndOperation(_ input: Operations.GetOperationByModelAndOperation.Input) async throws -> Operations.GetOperationByModelAndOperation.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.GetOperationByModelAndOperation.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}/operations/{}",
-                    parameters: [
-                        input.path.model,
-                        input.path.operation
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .get
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                return (request, nil)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetOperationByModelAndOperation.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.Operation.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
-    /// Generates multiple embedding vectors from the input `Content` which
-    /// consists of a batch of strings represented as `EmbedContentRequest`
-    /// objects.
-    ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedContents`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedContents/post(BatchEmbedContents)`.
-    public func BatchEmbedContents(_ input: Operations.BatchEmbedContents.Input) async throws -> Operations.BatchEmbedContents.Output {
-        try await client.send(
-            input: input,
-            forOperation: Operations.BatchEmbedContents.id,
-            serializer: { input in
-                let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:batchEmbedContents",
-                    parameters: [
-                        input.path.model
-                    ]
-                )
-                var request: HTTPTypes.HTTPRequest = .init(
-                    soar_path: path,
-                    method: .post
-                )
-                suppressMutabilityWarning(&request)
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$alt",
-                    value: input.query._dollar_alt
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$callback",
-                    value: input.query._dollar_callback
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$prettyPrint",
-                    value: input.query._dollar_prettyPrint
-                )
-                try converter.setQueryItemAsURI(
-                    in: &request,
-                    style: .form,
-                    explode: true,
-                    name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
-                )
-                converter.setAcceptHeader(
-                    in: &request.headerFields,
-                    contentTypes: input.headers.accept
-                )
-                let body: OpenAPIRuntime.HTTPBody?
-                switch input.body {
-                case .none:
-                    body = nil
-                case let .json(value):
-                    body = try converter.setOptionalRequestBodyAsJSON(
-                        value,
-                        headerFields: &request.headerFields,
-                        contentType: "application/json; charset=utf-8"
-                    )
-                }
-                return (request, body)
-            },
-            deserializer: { response, responseBody in
-                switch response.status.code {
-                default:
-                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.BatchEmbedContents.Output.Default.Body
-                    let chosenContentType = try converter.bestContentType(
-                        received: contentType,
-                        options: [
-                            "application/json"
-                        ]
-                    )
-                    switch chosenContentType {
-                    case "application/json":
-                        body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.BatchEmbedContentsResponse.self,
-                            from: responseBody,
-                            transforming: { value in
-                                .json(value)
-                            }
-                        )
-                    default:
-                        preconditionFailure("bestContentType chose an invalid content type.")
-                    }
-                    return .`default`(
-                        statusCode: response.status.code,
-                        .init(body: body)
-                    )
-                }
-            }
-        )
-    }
     /// Generates a response from the model given an input message.
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:generateText`.
@@ -7105,19 +6511,21 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Generates an embedding from the model given an input message.
+    /// Generates a [streamed
+    /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
+    /// from the model given an input `GenerateContentRequest`.
     ///
-    /// - Remark: HTTP `POST /v1beta/models/{model}:embedText`.
-    /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedText/post(EmbedText)`.
-    public func EmbedText(_ input: Operations.EmbedText.Input) async throws -> Operations.EmbedText.Output {
+    /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:streamGenerateContent`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:streamGenerateContent/post(StreamGenerateContentByTunedModel)`.
+    public func StreamGenerateContentByTunedModel(_ input: Operations.StreamGenerateContentByTunedModel.Input) async throws -> Operations.StreamGenerateContentByTunedModel.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.EmbedText.id,
+            forOperation: Operations.StreamGenerateContentByTunedModel.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/models/{}:embedText",
+                    template: "/v1beta/tunedModels/{}:streamGenerateContent",
                     parameters: [
-                        input.path.model
+                        input.path.tunedModel
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -7174,7 +6582,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.EmbedText.Output.Default.Body
+                    let body: Operations.StreamGenerateContentByTunedModel.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -7184,7 +6592,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.EmbedTextResponse.self,
+                            Components.Schemas.GenerateContentResponse.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -7201,21 +6609,227 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Gets a generated file. When calling this method via REST, only the metadata
-    /// of the generated file is returned. To retrieve the file content via REST,
-    /// add alt=media as a query parameter.
+    /// Transfers ownership of the tuned model.
+    /// This is the only way to change ownership of the tuned model.
+    /// The current owner will be downgraded to writer role.
     ///
-    /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}`.
-    /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/get(GetGeneratedFile)`.
-    public func GetGeneratedFile(_ input: Operations.GetGeneratedFile.Input) async throws -> Operations.GetGeneratedFile.Output {
+    /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:transferOwnership`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:transferOwnership/post(TransferOwnership)`.
+    public func TransferOwnership(_ input: Operations.TransferOwnership.Input) async throws -> Operations.TransferOwnership.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.GetGeneratedFile.id,
+            forOperation: Operations.TransferOwnership.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/generatedFiles/{}",
+                    template: "/v1beta/tunedModels/{}:transferOwnership",
                     parameters: [
-                        input.path.generatedFile
+                        input.path.tunedModel
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.TransferOwnership.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.TransferOwnershipResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Lists operations that match the specified filter in the request. If the
+    /// server doesn't support this method, it returns `UNIMPLEMENTED`.
+    ///
+    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/get(ListOperations)`.
+    public func ListOperations(_ input: Operations.ListOperations.Input) async throws -> Operations.ListOperations.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.ListOperations.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}/operations",
+                    parameters: [
+                        input.path.tunedModel
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "filter",
+                    value: input.query.filter
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.ListOperations.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.ListOperationsResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Gets the latest state of a long-running operation.  Clients can use this
+    /// method to poll the operation result at intervals as recommended by the API
+    /// service.
+    ///
+    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations/{operation}`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/{operation}/get(GetOperation)`.
+    public func GetOperation(_ input: Operations.GetOperation.Input) async throws -> Operations.GetOperation.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetOperation.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}/operations/{}",
+                    parameters: [
+                        input.path.tunedModel,
+                        input.path.operation
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -7261,7 +6875,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.GetGeneratedFile.Output.Default.Body
+                    let body: Operations.GetOperation.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -7271,7 +6885,7 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.GeneratedFile.self,
+                            Components.Schemas.Operation.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)
@@ -7288,19 +6902,215 @@ public struct Client: APIProtocol {
             }
         )
     }
-    /// Download the `File`.
+    /// Lists permissions for the specific resource.
     ///
-    /// - Remark: HTTP `GET /v1beta/files/{file}:download`.
-    /// - Remark: Generated from `#/paths//v1beta/files/{file}:download/get(DownloadFile)`.
-    public func DownloadFile(_ input: Operations.DownloadFile.Input) async throws -> Operations.DownloadFile.Output {
+    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/get(ListPermissions)`.
+    public func ListPermissions(_ input: Operations.ListPermissions.Input) async throws -> Operations.ListPermissions.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.DownloadFile.id,
+            forOperation: Operations.ListPermissions.id,
             serializer: { input in
                 let path = try converter.renderedPath(
-                    template: "/v1beta/files/{}:download",
+                    template: "/v1beta/tunedModels/{}/permissions",
                     parameters: [
-                        input.path.file
+                        input.path.tunedModel
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .get
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageSize",
+                    value: input.query.pageSize
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "pageToken",
+                    value: input.query.pageToken
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.ListPermissions.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.ListPermissionsResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Create a permission to a specific resource.
+    ///
+    /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}/permissions`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/post(CreatePermission)`.
+    public func CreatePermission(_ input: Operations.CreatePermission.Input) async throws -> Operations.CreatePermission.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.CreatePermission.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}/permissions",
+                    parameters: [
+                        input.path.tunedModel
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.CreatePermission.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Permission.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Gets information about a specific Permission.
+    ///
+    /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/get(GetPermission)`.
+    public func GetPermission(_ input: Operations.GetPermission.Input) async throws -> Operations.GetPermission.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.GetPermission.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}/permissions/{}",
+                    parameters: [
+                        input.path.tunedModel,
+                        input.path.permission
                     ]
                 )
                 var request: HTTPTypes.HTTPRequest = .init(
@@ -7346,7 +7156,7 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 default:
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.DownloadFile.Output.Default.Body
+                    let body: Operations.GetPermission.Output.Default.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [
@@ -7356,7 +7166,197 @@ public struct Client: APIProtocol {
                     switch chosenContentType {
                     case "application/json":
                         body = try await converter.getResponseBodyAsJSON(
-                            Components.Schemas.DownloadFileResponse.self,
+                            Components.Schemas.Permission.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Updates the permission.
+    ///
+    /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/patch(UpdatePermission)`.
+    public func UpdatePermission(_ input: Operations.UpdatePermission.Input) async throws -> Operations.UpdatePermission.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.UpdatePermission.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}/permissions/{}",
+                    parameters: [
+                        input.path.tunedModel,
+                        input.path.permission
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .patch
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "updateMask",
+                    value: input.query.updateMask
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case .none:
+                    body = nil
+                case let .json(value):
+                    body = try converter.setOptionalRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.UpdatePermission.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Permission.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
+    /// Deletes the permission.
+    ///
+    /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
+    /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/delete(DeletePermission)`.
+    public func DeletePermission(_ input: Operations.DeletePermission.Input) async throws -> Operations.DeletePermission.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.DeletePermission.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/tunedModels/{}/permissions/{}",
+                    parameters: [
+                        input.path.tunedModel,
+                        input.path.permission
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .delete
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__period_xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.DeletePermission.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Empty.self,
                             from: responseBody,
                             transforming: { value in
                                 .json(value)

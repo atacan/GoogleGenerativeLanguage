@@ -23,6 +23,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-openapi-runtime", from: "1.8.0"),
         .package(url: "https://github.com/swift-server/swift-openapi-async-http-client", from: "1.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-custom-dump", from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-collections", from: "1.1.0"),
     ],
     targets: [
         .target(
@@ -32,7 +33,12 @@ let package = Package(
                 .product(name: "OpenAPIAsyncHTTPClient", package: "swift-openapi-async-http-client"),
             ]
         ),
-        .executableTarget(name: "Prepare"),
+        .executableTarget(
+            name: "Prepare",
+            dependencies: [
+                .product(name: "OrderedCollections", package: "swift-collections"),
+            ]
+        ),
         .testTarget(
             name: "GoogleGenerativeLanguageTests",
             dependencies: ["GoogleGenerativeLanguage", .product(name: "CustomDump", package: "swift-custom-dump")]
