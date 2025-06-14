@@ -30,7 +30,8 @@ format: check_uncommitted
 clean_spm_cache:
 	swift package purge-cache
 
-download-openapi:
+prepare-openapi:
+	# download and overlay the openapi
 	swift run Prepare
 
 overlay-openapi:

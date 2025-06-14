@@ -21869,16 +21869,40 @@ public enum Operations {
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/responses/default/content`.
                 @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/responses/default/content/application\/json`.
-                    case json(Components.Schemas.GenerateContentResponse)
+                    case json([Components.Schemas.GenerateContentResponse])
                     /// The associated value of the enum case if `self` is `.json`.
                     ///
                     /// - Throws: An error if `self` is not `.json`.
                     /// - SeeAlso: `.json`.
-                    public var json: Components.Schemas.GenerateContentResponse {
+                    public var json: [Components.Schemas.GenerateContentResponse] {
                         get throws {
                             switch self {
                             case let .json(body):
                                 return body
+                            default:
+                                try throwUnexpectedResponseBody(
+                                    expectedContent: "application/json",
+                                    body: self
+                                )
+                            }
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/responses/default/content/text\/event-stream`.
+                    case text_event_hyphen_stream(OpenAPIRuntime.HTTPBody)
+                    /// The associated value of the enum case if `self` is `.text_event_hyphen_stream`.
+                    ///
+                    /// - Throws: An error if `self` is not `.text_event_hyphen_stream`.
+                    /// - SeeAlso: `.text_event_hyphen_stream`.
+                    public var text_event_hyphen_stream: OpenAPIRuntime.HTTPBody {
+                        get throws {
+                            switch self {
+                            case let .text_event_hyphen_stream(body):
+                                return body
+                            default:
+                                try throwUnexpectedResponseBody(
+                                    expectedContent: "text/event-stream",
+                                    body: self
+                                )
                             }
                         }
                     }
@@ -21919,11 +21943,14 @@ public enum Operations {
         }
         @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
+            case text_event_hyphen_stream
             case other(Swift.String)
             public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
+                case "text/event-stream":
+                    self = .text_event_hyphen_stream
                 default:
                     self = .other(rawValue)
                 }
@@ -21934,11 +21961,14 @@ public enum Operations {
                     return string
                 case .json:
                     return "application/json"
+                case .text_event_hyphen_stream:
+                    return "text/event-stream"
                 }
             }
             public static var allCases: [Self] {
                 [
-                    .json
+                    .json,
+                    .text_event_hyphen_stream
                 ]
             }
         }

@@ -5,7 +5,7 @@ import OpenAPIAsyncHTTPClient
 import OpenAPIRuntime
 import Testing
 
-@testable import GoogleGenerativeLanguage
+import GoogleGenerativeLanguage
 
 #if os(Linux)
 @preconcurrency import struct Foundation.URL
@@ -62,7 +62,27 @@ struct GoogleGenerativeLanguageTestsTests {
             )
         )
 
-        try customDump(response)
+        customDump(response)
+    }
+
+    @Test 
+    func streamingResponse() async throws {
+        let response = try await client.StreamGenerateContent(
+            path: .init(model: "gemini-2.0-flash"),
+            body: .json(
+                .init(
+                    contents: [
+                        .init(
+                            parts: [.TextPart(.init(text: "Write me a long poem about the Swift programming language's compilation speed"))],
+                            role: .user
+                        )
+                    ],
+                    model: "gemini-2.0-flash"
+                )
+            )
+        )
+
+        dump(response)
     }
 
     @Test

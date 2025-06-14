@@ -189,6 +189,30 @@
                     "$ref": "#/components/schemas/Role"
                 }
             }
+        },
+        {
+            "target": "$.paths[\"/v1beta/models/{model}:streamGenerateContent\"].post.responses.default.content",
+            "remove": true
+        },
+        {
+            "target": "$.paths[\"/v1beta/models/{model}:streamGenerateContent\"].post.responses.default",
+            "update": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/GenerateContentResponse"
+                            }
+                        }
+                    },
+                    "text/event-stream": {
+                        "schema": {
+                            "$ref": "#/components/schemas/GenerateContentResponse"
+                        }
+                    }
+                }
+            }
         }
     ]
 }
