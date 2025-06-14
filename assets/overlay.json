@@ -219,6 +219,19 @@
             "update": [
                 "sse"
             ]
+        },
+        {
+            "target": "$.components.schemas.Model.required",
+            "remove": true
+        },
+        {
+            "target": "$.components.schemas.Model",
+            "update": {
+                "required": [
+                    "name",
+                    "version"
+                ]
+            }
         }
     ]
 }

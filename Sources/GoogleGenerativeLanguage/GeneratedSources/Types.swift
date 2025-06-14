@@ -7273,7 +7273,7 @@ public enum Components {
             /// * `gemini-1.5-flash`
             ///
             /// - Remark: Generated from `#/components/schemas/Model/baseModelId`.
-            public var baseModelId: Swift.String
+            public var baseModelId: Swift.String?
             /// A short description of the model.
             ///
             /// - Remark: Generated from `#/components/schemas/Model/description`.
@@ -7370,7 +7370,7 @@ public enum Components {
             ///   - topP: For [Nucleus
             ///   - version: Required. The version number of the model.
             public init(
-                baseModelId: Swift.String,
+                baseModelId: Swift.String? = nil,
                 description: Swift.String? = nil,
                 displayName: Swift.String? = nil,
                 inputTokenLimit: Swift.Int32? = nil,
