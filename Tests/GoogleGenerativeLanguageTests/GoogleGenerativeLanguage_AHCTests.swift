@@ -5,8 +5,6 @@ import OpenAPIAsyncHTTPClient
 import OpenAPIRuntime
 import Testing
 
-import GoogleGenerativeLanguage
-
 #if os(Linux)
 @preconcurrency import struct Foundation.URL
 @preconcurrency import struct Foundation.Data
@@ -65,7 +63,7 @@ struct GoogleGenerativeLanguageTestsTests {
         customDump(response)
     }
 
-    @Test 
+    @Test
     func streamingResponse() async throws {
         let response = try await client.StreamGenerateContent(
             path: .init(model: "gemini-2.0-flash"),
@@ -83,7 +81,17 @@ struct GoogleGenerativeLanguageTestsTests {
             )
         )
 
-        dump(response)
+        let stream = try response.default.body.text_event_hyphen_stream
+            .asDecodedServerSentEventsWithJSONData(of: Components.Schemas.GenerateContentResponse.self)
+
+        for try await event in stream {
+            switch event.data?.candidates?.first?.content?.value1.parts?.first {
+                case .TextPart(let textPart):
+                    print(textPart.text, terminator: "")
+                default:
+                    break
+            }
+        }
     }
 
     @Test
