@@ -213,6 +213,12 @@
                     }
                 }
             }
+        },
+        {
+            "target": "$.components.parameters.alt.schema.enum",
+            "update": [
+                "sse"
+            ]
         }
     ]
 }

@@ -10824,6 +10824,7 @@ public enum Components {
             case json = "json"
             case media = "media"
             case proto = "proto"
+            case sse = "sse"
         }
         /// JSONP
         ///
@@ -10859,6 +10860,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -11057,6 +11059,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -11244,6 +11247,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -11407,6 +11411,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -11589,6 +11594,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -11773,6 +11779,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -11951,6 +11958,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -12145,6 +12153,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -12308,6 +12317,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -12492,6 +12502,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -12676,6 +12687,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -12854,6 +12866,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -13049,6 +13062,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -13238,6 +13252,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -13425,6 +13440,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -13627,6 +13643,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -13823,6 +13840,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -14010,6 +14028,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -14215,6 +14234,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -14413,6 +14433,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -14609,6 +14630,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -14820,6 +14842,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -15016,6 +15039,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -15212,6 +15236,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -15408,6 +15433,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -15611,6 +15637,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -15805,6 +15832,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -16016,6 +16044,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -16194,6 +16223,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -16397,6 +16427,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -16593,6 +16624,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -16780,6 +16812,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -16984,6 +17017,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -17170,6 +17204,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -17361,6 +17396,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -17533,6 +17569,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -17708,6 +17745,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -17892,6 +17930,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -18070,6 +18109,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -18248,6 +18288,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -18411,6 +18452,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -18603,6 +18645,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -18792,6 +18835,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -18956,6 +19000,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -19160,6 +19205,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -19340,6 +19386,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -19528,6 +19575,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -19715,6 +19763,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -19902,6 +19951,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -20091,6 +20141,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -20280,6 +20331,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -20467,6 +20519,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -20655,6 +20708,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -20848,6 +20902,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -21035,6 +21090,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -21222,6 +21278,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -21409,6 +21466,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -21596,6 +21654,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -21785,6 +21844,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -22003,6 +22063,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -22213,6 +22274,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -22376,6 +22438,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -22587,6 +22650,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -22781,6 +22845,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -22959,6 +23024,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -23153,6 +23219,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -23337,6 +23404,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -23524,6 +23592,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -23713,6 +23782,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -23902,6 +23972,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -24090,6 +24161,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -24300,6 +24372,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -24478,6 +24551,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -24681,6 +24755,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -24877,6 +24952,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -25064,6 +25140,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///
@@ -25268,6 +25345,7 @@ public enum Operations {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
+                    case sse = "sse"
                 }
                 /// Data format for response.
                 ///

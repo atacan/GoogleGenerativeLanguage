@@ -69,6 +69,7 @@ struct GoogleGenerativeLanguageTestsTests {
     func streamingResponse() async throws {
         let response = try await client.StreamGenerateContent(
             path: .init(model: "gemini-2.0-flash"),
+            query: .init(_dollar_alt: .sse),
             body: .json(
                 .init(
                     contents: [
