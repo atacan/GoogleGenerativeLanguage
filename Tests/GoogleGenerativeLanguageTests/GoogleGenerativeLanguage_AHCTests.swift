@@ -23,9 +23,11 @@ struct GoogleGenerativeLanguageTestsTests {
 
         let client = Client(
             serverURL: serverURL,
+            configuration: .init(dateTranscoder: .iso8601WithFractionalSeconds),
             transport: AsyncHTTPClientTransport(),
             middlewares: [
-                AuthenticationMiddleware(apiKey: apiKey)
+                AuthenticationMiddleware(apiKey: apiKey),
+                UnescapeUploadCommandHeaderMiddleware(),
             ]
         )
         return client
@@ -86,10 +88,10 @@ struct GoogleGenerativeLanguageTestsTests {
 
         for try await event in stream {
             switch event.data?.candidates?.first?.content?.value1.parts?.first {
-                case .TextPart(let textPart):
-                    print(textPart.text, terminator: "")
-                default:
-                    break
+            case .TextPart(let textPart):
+                print(textPart.text, terminator: "")
+            default:
+                break
             }
         }
     }
@@ -160,7 +162,72 @@ struct GoogleGenerativeLanguageTestsTests {
 
     @Test func uploadFile() async throws {
         let file = try Data(contentsOf: URL(fileURLWithPath: "/Users/atacan/Developer/Repositories/GoogleGenerativeLanguage/assets/speech.mp3"))
-        let response = try await client.
+
+        // Step 1: Create upload session
+        let sessionResponse = try await client.UploadFiles(
+            headers: .init(
+                X_hyphen_Goog_hyphen_Upload_hyphen_Command: .start,
+                X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: .resumable,
+                X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: file.count,
+                X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: .audio_sol_mpeg
+            ),
+            body: .json(
+                .init(
+                    file: .init(
+                        value1: .init(
+                            mimeType: "audio/mpeg",
+                            sizeBytes: String(file.count)
+                        )
+                    )
+                )
+            )
+        )
+
+        // Extract upload ID from response headers
+        guard let uploadID = try sessionResponse.ok.headers.X_hyphen_GUploader_hyphen_UploadID else {
+            throw NSError(domain: "UploadError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Upload ID not found in response"])
+        }
+
+        // Step 2: Upload the file data
+        let uploadResponse = try await client.UploadFiles(
+            query: .init(
+                upload_id: uploadID,
+                upload_protocol: .resumable
+            ),
+            headers: .init(
+                X_hyphen_Goog_hyphen_Upload_hyphen_Command: .upload_comma__space_finalize,
+                X_hyphen_Goog_hyphen_Upload_hyphen_Offset: 0
+            ),
+            body: .binary(HTTPBody(file))
+        )
+
+        customDump(uploadResponse)
+
+        guard let uri = try uploadResponse.ok.body.json.file?.value1.uri else {
+            throw NSError(domain: "UploadError", code: 1, userInfo: [NSLocalizedDescriptionKey: "File URI not found in response"])
+        }
+
+        let modelID = Components.Schemas.ModelID.gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_05_hyphen_20.rawValue
+        let response = try await client.GenerateContent(
+            path: .init(model: modelID),
+            body: .json(
+                .init(
+                    contents: [
+                        .init(
+                            parts: [
+                                .TextPart(
+                                    Components.Schemas.TextPart(text: "describe the audio")
+                                ),
+                                .FileDataPart(.init(fileData: .init(fileUri: uri)))
+                            ],
+                            role: .user
+                        )
+                    ],
+                    model: modelID
+                )
+            )
+        )
+        try customDump(response.default.body.json)
     }
 }
 
