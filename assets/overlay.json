@@ -240,7 +240,7 @@
                     "parameters": [],
                     "post": {
                         "description": "",
-                        "operationId": "postUploadV1BetaFiles",
+                        "operationId": "UploadFiles",
                         "parameters": [
                             {
                                 "description": "upload_id",

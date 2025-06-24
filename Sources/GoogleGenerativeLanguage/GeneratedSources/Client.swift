@@ -7385,11 +7385,11 @@ public struct Client: APIProtocol {
     ///
     ///
     /// - Remark: HTTP `POST /upload/v1beta/files`.
-    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)`.
-    public func postUploadV1BetaFiles(_ input: Operations.postUploadV1BetaFiles.Input) async throws -> Operations.postUploadV1BetaFiles.Output {
+    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)`.
+    public func UploadFiles(_ input: Operations.UploadFiles.Input) async throws -> Operations.UploadFiles.Output {
         try await client.send(
             input: input,
-            forOperation: Operations.postUploadV1BetaFiles.id,
+            forOperation: Operations.UploadFiles.id,
             serializer: { input in
                 let path = try converter.renderedPath(
                     template: "/upload/v1beta/files",
@@ -7463,7 +7463,7 @@ public struct Client: APIProtocol {
             deserializer: { response, responseBody in
                 switch response.status.code {
                 case 200:
-                    let headers: Operations.postUploadV1BetaFiles.Output.Ok.Headers = .init(
+                    let headers: Operations.UploadFiles.Output.Ok.Headers = .init(
                         X_hyphen_GUploader_hyphen_UploadID: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-GUploader-UploadID",
@@ -7526,7 +7526,7 @@ public struct Client: APIProtocol {
                         )
                     )
                     let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
-                    let body: Operations.postUploadV1BetaFiles.Output.Ok.Body
+                    let body: Operations.UploadFiles.Output.Ok.Body
                     let chosenContentType = try converter.bestContentType(
                         received: contentType,
                         options: [

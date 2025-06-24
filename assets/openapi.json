@@ -4158,7 +4158,7 @@
     "/upload/v1beta/files": {
       "parameters": [],
       "post": {
-        "operationId": "postUploadV1BetaFiles",
+        "operationId": "UploadFiles",
         "description": "",
         "parameters": [
           {

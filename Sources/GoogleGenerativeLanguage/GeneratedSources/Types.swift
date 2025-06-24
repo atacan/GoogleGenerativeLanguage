@@ -467,8 +467,8 @@ public protocol APIProtocol: Sendable {
     ///
     ///
     /// - Remark: HTTP `POST /upload/v1beta/files`.
-    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)`.
-    func postUploadV1BetaFiles(_ input: Operations.postUploadV1BetaFiles.Input) async throws -> Operations.postUploadV1BetaFiles.Output
+    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)`.
+    func UploadFiles(_ input: Operations.UploadFiles.Input) async throws -> Operations.UploadFiles.Output
 }
 
 /// Convenience overloads for operation inputs.
@@ -1757,13 +1757,13 @@ extension APIProtocol {
     ///
     ///
     /// - Remark: HTTP `POST /upload/v1beta/files`.
-    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)`.
-    public func postUploadV1BetaFiles(
-        query: Operations.postUploadV1BetaFiles.Input.Query = .init(),
-        headers: Operations.postUploadV1BetaFiles.Input.Headers = .init(),
-        body: Operations.postUploadV1BetaFiles.Input.Body
-    ) async throws -> Operations.postUploadV1BetaFiles.Output {
-        try await postUploadV1BetaFiles(Operations.postUploadV1BetaFiles.Input(
+    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)`.
+    public func UploadFiles(
+        query: Operations.UploadFiles.Input.Query = .init(),
+        headers: Operations.UploadFiles.Input.Headers = .init(),
+        body: Operations.UploadFiles.Input.Body
+    ) async throws -> Operations.UploadFiles.Output {
+        try await UploadFiles(Operations.UploadFiles.Input(
             query: query,
             headers: headers,
             body: body
@@ -25518,9 +25518,9 @@ public enum Operations {
     ///
     ///
     /// - Remark: HTTP `POST /upload/v1beta/files`.
-    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)`.
-    public enum postUploadV1BetaFiles {
-        public static let id: Swift.String = "postUploadV1BetaFiles"
+    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)`.
+    public enum UploadFiles {
+        public static let id: Swift.String = "UploadFiles"
         public struct Input: Sendable, Hashable {
             /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query`.
             public struct Query: Sendable, Hashable {
@@ -25535,7 +25535,7 @@ public enum Operations {
                 /// upload_protocol
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query/upload_protocol`.
-                public var upload_protocol: Operations.postUploadV1BetaFiles.Input.Query.upload_protocolPayload?
+                public var upload_protocol: Operations.UploadFiles.Input.Query.upload_protocolPayload?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
@@ -25543,13 +25543,13 @@ public enum Operations {
                 ///   - upload_protocol: upload_protocol
                 public init(
                     upload_id: Swift.String? = nil,
-                    upload_protocol: Operations.postUploadV1BetaFiles.Input.Query.upload_protocolPayload? = nil
+                    upload_protocol: Operations.UploadFiles.Input.Query.upload_protocolPayload? = nil
                 ) {
                     self.upload_id = upload_id
                     self.upload_protocol = upload_protocol
                 }
             }
-            public var query: Operations.postUploadV1BetaFiles.Input.Query
+            public var query: Operations.UploadFiles.Input.Query
             /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header`.
             public struct Headers: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Command`.
@@ -25560,7 +25560,7 @@ public enum Operations {
                 /// X-Goog-Upload-Command
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Command`.
-                public var X_hyphen_Goog_hyphen_Upload_hyphen_Command: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload?
+                public var X_hyphen_Goog_hyphen_Upload_hyphen_Command: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload?
                 /// X-Goog-Upload-Offset
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Offset`.
@@ -25572,7 +25572,7 @@ public enum Operations {
                 /// X-Goog-Upload-Protocol
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Protocol`.
-                public var X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload?
+                public var X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload?
                 /// X-Goog-Upload-Header-Content-Length
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Header-Content-Length`.
@@ -25591,8 +25591,8 @@ public enum Operations {
                 /// X-Goog-Upload-Header-Content-Type
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Header-Content-Type`.
-                public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload?
-                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postUploadV1BetaFiles.AcceptableContentType>]
+                public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload?
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UploadFiles.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
@@ -25603,12 +25603,12 @@ public enum Operations {
                 ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: X-Goog-Upload-Header-Content-Type
                 ///   - accept:
                 public init(
-                    X_hyphen_Goog_hyphen_Upload_hyphen_Command: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload? = nil,
+                    X_hyphen_Goog_hyphen_Upload_hyphen_Command: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload? = nil,
                     X_hyphen_Goog_hyphen_Upload_hyphen_Offset: Swift.Int? = nil,
-                    X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload? = nil,
+                    X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload? = nil,
                     X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: Swift.Int? = nil,
-                    X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload? = nil,
-                    accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postUploadV1BetaFiles.AcceptableContentType>] = .defaultValues()
+                    X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload? = nil,
+                    accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UploadFiles.AcceptableContentType>] = .defaultValues()
                 ) {
                     self.X_hyphen_Goog_hyphen_Upload_hyphen_Command = X_hyphen_Goog_hyphen_Upload_hyphen_Command
                     self.X_hyphen_Goog_hyphen_Upload_hyphen_Offset = X_hyphen_Goog_hyphen_Upload_hyphen_Offset
@@ -25618,7 +25618,7 @@ public enum Operations {
                     self.accept = accept
                 }
             }
-            public var headers: Operations.postUploadV1BetaFiles.Input.Headers
+            public var headers: Operations.UploadFiles.Input.Headers
             /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/requestBody`.
             @frozen public enum Body: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/requestBody/content/application\/json`.
@@ -25626,7 +25626,7 @@ public enum Operations {
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/requestBody/content/application\/octet-stream`.
                 case binary(OpenAPIRuntime.HTTPBody)
             }
-            public var body: Operations.postUploadV1BetaFiles.Input.Body
+            public var body: Operations.UploadFiles.Input.Body
             /// Creates a new `Input`.
             ///
             /// - Parameters:
@@ -25634,9 +25634,9 @@ public enum Operations {
             ///   - headers:
             ///   - body:
             public init(
-                query: Operations.postUploadV1BetaFiles.Input.Query = .init(),
-                headers: Operations.postUploadV1BetaFiles.Input.Headers = .init(),
-                body: Operations.postUploadV1BetaFiles.Input.Body
+                query: Operations.UploadFiles.Input.Query = .init(),
+                headers: Operations.UploadFiles.Input.Headers = .init(),
+                body: Operations.UploadFiles.Input.Body
             ) {
                 self.query = query
                 self.headers = headers
@@ -25739,7 +25739,7 @@ public enum Operations {
                     }
                 }
                 /// Received HTTP response headers
-                public var headers: Operations.postUploadV1BetaFiles.Output.Ok.Headers
+                public var headers: Operations.UploadFiles.Output.Ok.Headers
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/content`.
                 @frozen public enum Body: Sendable, Hashable {
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/content/application\/json`.
@@ -25782,15 +25782,15 @@ public enum Operations {
                     }
                 }
                 /// Received HTTP response body
-                public var body: Operations.postUploadV1BetaFiles.Output.Ok.Body
+                public var body: Operations.UploadFiles.Output.Ok.Body
                 /// Creates a new `Ok`.
                 ///
                 /// - Parameters:
                 ///   - headers: Received HTTP response headers
                 ///   - body: Received HTTP response body
                 public init(
-                    headers: Operations.postUploadV1BetaFiles.Output.Ok.Headers = .init(),
-                    body: Operations.postUploadV1BetaFiles.Output.Ok.Body
+                    headers: Operations.UploadFiles.Output.Ok.Headers = .init(),
+                    body: Operations.UploadFiles.Output.Ok.Body
                 ) {
                     self.headers = headers
                     self.body = body
@@ -25798,15 +25798,15 @@ public enum Operations {
             }
             ///
             ///
-            /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)/responses/200`.
+            /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)/responses/200`.
             ///
             /// HTTP response code: `200 ok`.
-            case ok(Operations.postUploadV1BetaFiles.Output.Ok)
+            case ok(Operations.UploadFiles.Output.Ok)
             /// The associated value of the enum case if `self` is `.ok`.
             ///
             /// - Throws: An error if `self` is not `.ok`.
             /// - SeeAlso: `.ok`.
-            public var ok: Operations.postUploadV1BetaFiles.Output.Ok {
+            public var ok: Operations.UploadFiles.Output.Ok {
                 get throws {
                     switch self {
                     case let .ok(response):

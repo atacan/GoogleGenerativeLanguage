@@ -160,14 +160,7 @@ struct GoogleGenerativeLanguageTestsTests {
 
     @Test func uploadFile() async throws {
         let file = try Data(contentsOf: URL(fileURLWithPath: "/Users/atacan/Developer/Repositories/GoogleGenerativeLanguage/assets/speech.mp3"))
-        let response = try await client.CreateFile(
-            body: .json(
-                .init(
-                    file: .init(value1: .init())
-                )
-            )
-        )
-        try customDump(response.default.body.json)
+        let response = try await client.
     }
 }
 
