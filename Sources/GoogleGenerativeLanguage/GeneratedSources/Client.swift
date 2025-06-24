@@ -7382,4 +7382,192 @@ public struct Client: APIProtocol {
             }
         )
     }
+    ///
+    ///
+    /// - Remark: HTTP `POST /upload/v1beta/files`.
+    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)`.
+    public func postUploadV1BetaFiles(_ input: Operations.postUploadV1BetaFiles.Input) async throws -> Operations.postUploadV1BetaFiles.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.postUploadV1BetaFiles.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/upload/v1beta/files",
+                    parameters: []
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .post
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "upload_id",
+                    value: input.query.upload_id
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "upload_protocol",
+                    value: input.query.upload_protocol
+                )
+                try converter.setHeaderFieldAsURI(
+                    in: &request.headerFields,
+                    name: "X-Goog-Upload-Command",
+                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Command
+                )
+                try converter.setHeaderFieldAsURI(
+                    in: &request.headerFields,
+                    name: "X-Goog-Upload-Offset",
+                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Offset
+                )
+                try converter.setHeaderFieldAsURI(
+                    in: &request.headerFields,
+                    name: "X-Goog-Upload-Protocol",
+                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Protocol
+                )
+                try converter.setHeaderFieldAsURI(
+                    in: &request.headerFields,
+                    name: "X-Goog-Upload-Header-Content-Length",
+                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length
+                )
+                try converter.setHeaderFieldAsURI(
+                    in: &request.headerFields,
+                    name: "X-Goog-Upload-Header-Content-Type",
+                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                let body: OpenAPIRuntime.HTTPBody?
+                switch input.body {
+                case let .json(value):
+                    body = try converter.setRequiredRequestBodyAsJSON(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/json; charset=utf-8"
+                    )
+                case let .binary(value):
+                    body = try converter.setRequiredRequestBodyAsBinary(
+                        value,
+                        headerFields: &request.headerFields,
+                        contentType: "application/octet-stream"
+                    )
+                }
+                return (request, body)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                case 200:
+                    let headers: Operations.postUploadV1BetaFiles.Output.Ok.Headers = .init(
+                        X_hyphen_GUploader_hyphen_UploadID: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-GUploader-UploadID",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Chunk-Granularity",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Control-URL",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Header-Content-Type",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Header-Vary",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Header-X-Google-Backends",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Header-X-Google-Security-Signals",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Header-X-Google-Session-Info",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Header-x-google-esf-cloud-client-params",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Status: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-Status",
+                            as: Swift.String.self
+                        ),
+                        X_hyphen_Goog_hyphen_Upload_hyphen_URL: try converter.getOptionalHeaderFieldAsURI(
+                            in: response.headerFields,
+                            name: "X-Goog-Upload-URL",
+                            as: Swift.String.self
+                        )
+                    )
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.postUploadV1BetaFiles.Output.Ok.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json",
+                            "text/plain"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.CreateFileResponse.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    case "text/plain":
+                        body = try converter.getResponseBodyAsBinary(
+                            OpenAPIRuntime.HTTPBody.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .plainText(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .ok(.init(
+                        headers: headers,
+                        body: body
+                    ))
+                default:
+                    return .undocumented(
+                        statusCode: response.status.code,
+                        .init(
+                            headerFields: response.headerFields,
+                            body: responseBody
+                        )
+                    )
+                }
+            }
+        )
+    }
 }

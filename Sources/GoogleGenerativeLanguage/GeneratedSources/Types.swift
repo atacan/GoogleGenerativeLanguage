@@ -464,6 +464,11 @@ public protocol APIProtocol: Sendable {
     /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/delete(DeletePermission)`.
     func DeletePermission(_ input: Operations.DeletePermission.Input) async throws -> Operations.DeletePermission.Output
+    ///
+    ///
+    /// - Remark: HTTP `POST /upload/v1beta/files`.
+    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)`.
+    func postUploadV1BetaFiles(_ input: Operations.postUploadV1BetaFiles.Input) async throws -> Operations.postUploadV1BetaFiles.Output
 }
 
 /// Convenience overloads for operation inputs.
@@ -1747,6 +1752,21 @@ extension APIProtocol {
             path: path,
             query: query,
             headers: headers
+        ))
+    }
+    ///
+    ///
+    /// - Remark: HTTP `POST /upload/v1beta/files`.
+    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)`.
+    public func postUploadV1BetaFiles(
+        query: Operations.postUploadV1BetaFiles.Input.Query = .init(),
+        headers: Operations.postUploadV1BetaFiles.Input.Headers = .init(),
+        body: Operations.postUploadV1BetaFiles.Input.Body
+    ) async throws -> Operations.postUploadV1BetaFiles.Output {
+        try await postUploadV1BetaFiles(Operations.postUploadV1BetaFiles.Input(
+            query: query,
+            headers: headers,
+            body: body
         ))
     }
 }
@@ -4897,7 +4917,7 @@ public enum Components {
             }
         }
         /// Request to generate a completion from the model.
-        /// NEXT ID: 13
+        /// NEXT ID: 14
         ///
         /// - Remark: Generated from `#/components/schemas/GenerateContentRequest`.
         public struct GenerateContentRequest: Codable, Hashable, Sendable {
@@ -25491,6 +25511,347 @@ public enum Operations {
             public static var allCases: [Self] {
                 [
                     .json
+                ]
+            }
+        }
+    }
+    ///
+    ///
+    /// - Remark: HTTP `POST /upload/v1beta/files`.
+    /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)`.
+    public enum postUploadV1BetaFiles {
+        public static let id: Swift.String = "postUploadV1BetaFiles"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query`.
+            public struct Query: Sendable, Hashable {
+                /// upload_id
+                ///
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query/upload_id`.
+                public var upload_id: Swift.String?
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query/upload_protocol`.
+                @frozen public enum upload_protocolPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case resumable = "resumable"
+                }
+                /// upload_protocol
+                ///
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query/upload_protocol`.
+                public var upload_protocol: Operations.postUploadV1BetaFiles.Input.Query.upload_protocolPayload?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - upload_id: upload_id
+                ///   - upload_protocol: upload_protocol
+                public init(
+                    upload_id: Swift.String? = nil,
+                    upload_protocol: Operations.postUploadV1BetaFiles.Input.Query.upload_protocolPayload? = nil
+                ) {
+                    self.upload_id = upload_id
+                    self.upload_protocol = upload_protocol
+                }
+            }
+            public var query: Operations.postUploadV1BetaFiles.Input.Query
+            /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Command`.
+                @frozen public enum X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case start = "start"
+                    case upload_comma__space_finalize = "upload, finalize"
+                }
+                /// X-Goog-Upload-Command
+                ///
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Command`.
+                public var X_hyphen_Goog_hyphen_Upload_hyphen_Command: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload?
+                /// X-Goog-Upload-Offset
+                ///
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Offset`.
+                public var X_hyphen_Goog_hyphen_Upload_hyphen_Offset: Swift.Int?
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Protocol`.
+                @frozen public enum X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case resumable = "resumable"
+                }
+                /// X-Goog-Upload-Protocol
+                ///
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Protocol`.
+                public var X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload?
+                /// X-Goog-Upload-Header-Content-Length
+                ///
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Header-Content-Length`.
+                public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: Swift.Int?
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Header-Content-Type`.
+                @frozen public enum X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case audio_sol_mpeg = "audio/mpeg"
+                    case audio_sol_mp3 = "audio/mp3"
+                    case audio_sol_mp4 = "audio/mp4"
+                    case audio_sol_m4a = "audio/m4a"
+                    case audio_sol_wav = "audio/wav"
+                    case audio_sol_webm = "audio/webm"
+                    case audio_sol_ogg = "audio/ogg"
+                    case audio_sol_flac = "audio/flac"
+                }
+                /// X-Goog-Upload-Header-Content-Type
+                ///
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Header-Content-Type`.
+                public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload?
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postUploadV1BetaFiles.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Command: X-Goog-Upload-Command
+                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Offset: X-Goog-Upload-Offset
+                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: X-Goog-Upload-Protocol
+                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: X-Goog-Upload-Header-Content-Length
+                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: X-Goog-Upload-Header-Content-Type
+                ///   - accept:
+                public init(
+                    X_hyphen_Goog_hyphen_Upload_hyphen_Command: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload? = nil,
+                    X_hyphen_Goog_hyphen_Upload_hyphen_Offset: Swift.Int? = nil,
+                    X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload? = nil,
+                    X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: Swift.Int? = nil,
+                    X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Operations.postUploadV1BetaFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload? = nil,
+                    accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.postUploadV1BetaFiles.AcceptableContentType>] = .defaultValues()
+                ) {
+                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Command = X_hyphen_Goog_hyphen_Upload_hyphen_Command
+                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Offset = X_hyphen_Goog_hyphen_Upload_hyphen_Offset
+                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Protocol = X_hyphen_Goog_hyphen_Upload_hyphen_Protocol
+                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length
+                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.postUploadV1BetaFiles.Input.Headers
+            /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.CreateFileRequest)
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/requestBody/content/application\/octet-stream`.
+                case binary(OpenAPIRuntime.HTTPBody)
+            }
+            public var body: Operations.postUploadV1BetaFiles.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - query:
+            ///   - headers:
+            ///   - body:
+            public init(
+                query: Operations.postUploadV1BetaFiles.Input.Query = .init(),
+                headers: Operations.postUploadV1BetaFiles.Input.Headers = .init(),
+                body: Operations.postUploadV1BetaFiles.Input.Body
+            ) {
+                self.query = query
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers`.
+                public struct Headers: Sendable, Hashable {
+                    /// Custom header X-GUploader-UploadID
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-GUploader-UploadID`.
+                    public var X_hyphen_GUploader_hyphen_UploadID: Swift.String?
+                    /// Custom header X-Goog-Upload-Chunk-Granularity
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Chunk-Granularity`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity: Swift.String?
+                    /// Custom header X-Goog-Upload-Control-URL
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Control-URL`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL: Swift.String?
+                    /// Custom header X-Goog-Upload-Header-Content-Type
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-Content-Type`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Swift.String?
+                    /// Custom header X-Goog-Upload-Header-Vary
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-Vary`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary: Swift.String?
+                    /// Custom header X-Goog-Upload-Header-X-Google-Backends
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-X-Google-Backends`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends: Swift.String?
+                    /// Custom header X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost: Swift.String?
+                    /// Custom header X-Goog-Upload-Header-X-Google-Security-Signals
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-X-Google-Security-Signals`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals: Swift.String?
+                    /// Custom header X-Goog-Upload-Header-X-Google-Session-Info
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-X-Google-Session-Info`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info: Swift.String?
+                    /// Custom header X-Goog-Upload-Header-x-google-esf-cloud-client-params
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-x-google-esf-cloud-client-params`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params: Swift.String?
+                    /// Custom header X-Goog-Upload-Status
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Status`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Status: Swift.String?
+                    /// Custom header X-Goog-Upload-URL
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-URL`.
+                    public var X_hyphen_Goog_hyphen_Upload_hyphen_URL: Swift.String?
+                    /// Creates a new `Headers`.
+                    ///
+                    /// - Parameters:
+                    ///   - X_hyphen_GUploader_hyphen_UploadID: Custom header X-GUploader-UploadID
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity: Custom header X-Goog-Upload-Chunk-Granularity
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL: Custom header X-Goog-Upload-Control-URL
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Custom header X-Goog-Upload-Header-Content-Type
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary: Custom header X-Goog-Upload-Header-Vary
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends: Custom header X-Goog-Upload-Header-X-Google-Backends
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost: Custom header X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals: Custom header X-Goog-Upload-Header-X-Google-Security-Signals
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info: Custom header X-Goog-Upload-Header-X-Google-Session-Info
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params: Custom header X-Goog-Upload-Header-x-google-esf-cloud-client-params
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Status: Custom header X-Goog-Upload-Status
+                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_URL: Custom header X-Goog-Upload-URL
+                    public init(
+                        X_hyphen_GUploader_hyphen_UploadID: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_Status: Swift.String? = nil,
+                        X_hyphen_Goog_hyphen_Upload_hyphen_URL: Swift.String? = nil
+                    ) {
+                        self.X_hyphen_GUploader_hyphen_UploadID = X_hyphen_GUploader_hyphen_UploadID
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity = X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL = X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Status = X_hyphen_Goog_hyphen_Upload_hyphen_Status
+                        self.X_hyphen_Goog_hyphen_Upload_hyphen_URL = X_hyphen_Goog_hyphen_Upload_hyphen_URL
+                    }
+                }
+                /// Received HTTP response headers
+                public var headers: Operations.postUploadV1BetaFiles.Output.Ok.Headers
+                /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/content/application\/json`.
+                    case json(Components.Schemas.CreateFileResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.CreateFileResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            default:
+                                try throwUnexpectedResponseBody(
+                                    expectedContent: "application/json",
+                                    body: self
+                                )
+                            }
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/content/text\/plain`.
+                    case plainText(OpenAPIRuntime.HTTPBody)
+                    /// The associated value of the enum case if `self` is `.plainText`.
+                    ///
+                    /// - Throws: An error if `self` is not `.plainText`.
+                    /// - SeeAlso: `.plainText`.
+                    public var plainText: OpenAPIRuntime.HTTPBody {
+                        get throws {
+                            switch self {
+                            case let .plainText(body):
+                                return body
+                            default:
+                                try throwUnexpectedResponseBody(
+                                    expectedContent: "text/plain",
+                                    body: self
+                                )
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.postUploadV1BetaFiles.Output.Ok.Body
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - headers: Received HTTP response headers
+                ///   - body: Received HTTP response body
+                public init(
+                    headers: Operations.postUploadV1BetaFiles.Output.Ok.Headers = .init(),
+                    body: Operations.postUploadV1BetaFiles.Output.Ok.Body
+                ) {
+                    self.headers = headers
+                    self.body = body
+                }
+            }
+            ///
+            ///
+            /// - Remark: Generated from `#/paths//upload/v1beta/files/post(postUploadV1BetaFiles)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.postUploadV1BetaFiles.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.postUploadV1BetaFiles.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case plainText
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                case "text/plain":
+                    self = .plainText
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                case .plainText:
+                    return "text/plain"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json,
+                    .plainText
                 ]
             }
         }

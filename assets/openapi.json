@@ -4,7 +4,7 @@
     "description": "The Gemini API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.",
     "title": "Generative Language API",
     "version": "v1beta",
-    "x-google-revision": "20250612"
+    "x-google-revision": "20250624"
   },
   "servers": [
     {
@@ -4154,6 +4154,206 @@
           "generativelanguage"
         ]
       }
+    },
+    "/upload/v1beta/files": {
+      "parameters": [],
+      "post": {
+        "operationId": "postUploadV1BetaFiles",
+        "description": "",
+        "parameters": [
+          {
+            "name": "upload_id",
+            "in": "query",
+            "description": "upload_id",
+            "schema": {
+              "type": "string",
+              "example": "ABgVH8-nlN8xjYU-2m28TEvS1vW1NOIFKk0Xe3qeNB9jjeCtVF6h5xJJ_EBQzUQk8Jwwvu6uA-UroEQ073YiiRpmhuPCUCN_P2oDFxfCC_4toA"
+            }
+          },
+          {
+            "name": "upload_protocol",
+            "in": "query",
+            "description": "upload_protocol",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "resumable"
+              ]
+            }
+          },
+          {
+            "name": "X-Goog-Upload-Command",
+            "in": "header",
+            "description": "X-Goog-Upload-Command",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "start",
+                "upload, finalize"
+              ]
+            }
+          },
+          {
+            "name": "X-Goog-Upload-Offset",
+            "in": "header",
+            "description": "X-Goog-Upload-Offset",
+            "schema": {
+              "type": "integer",
+              "example": 0
+            }
+          },
+          {
+            "name": "X-Goog-Upload-Protocol",
+            "in": "header",
+            "description": "X-Goog-Upload-Protocol",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "resumable"
+              ]
+            }
+          },
+          {
+            "name": "X-Goog-Upload-Header-Content-Length",
+            "in": "header",
+            "description": "X-Goog-Upload-Header-Content-Length",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "X-Goog-Upload-Header-Content-Type",
+            "in": "header",
+            "description": "X-Goog-Upload-Header-Content-Type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "audio/mpeg",
+                "audio/mp3",
+                "audio/mp4",
+                "audio/m4a",
+                "audio/wav",
+                "audio/webm",
+                "audio/ogg",
+                "audio/flac"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "file": {
+                  "mimeType": "audio/mpeg",
+                  "sizeBytes": 889389
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CreateFileRequest"
+              }
+            },
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {
+              "X-GUploader-UploadID": {
+                "description": "Custom header X-GUploader-UploadID",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Chunk-Granularity": {
+                "description": "Custom header X-Goog-Upload-Chunk-Granularity",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Control-URL": {
+                "description": "Custom header X-Goog-Upload-Control-URL",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Header-Content-Type": {
+                "description": "Custom header X-Goog-Upload-Header-Content-Type",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Header-Vary": {
+                "description": "Custom header X-Goog-Upload-Header-Vary",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Header-X-Google-Backends": {
+                "description": "Custom header X-Goog-Upload-Header-X-Google-Backends",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost": {
+                "description": "Custom header X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Header-X-Google-Security-Signals": {
+                "description": "Custom header X-Goog-Upload-Header-X-Google-Security-Signals",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Header-X-Google-Session-Info": {
+                "description": "Custom header X-Goog-Upload-Header-X-Google-Session-Info",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Header-x-google-esf-cloud-client-params": {
+                "description": "Custom header X-Goog-Upload-Header-x-google-esf-cloud-client-params",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-Status": {
+                "description": "Custom header X-Goog-Upload-Status",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Goog-Upload-URL": {
+                "description": "Custom header X-Goog-Upload-URL",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateFileResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -5756,7 +5956,7 @@
         }
       },
       "GenerateContentRequest": {
-        "description": "Request to generate a completion from the model.\nNEXT ID: 13",
+        "description": "Request to generate a completion from the model.\nNEXT ID: 14",
         "type": "object",
         "properties": {
           "cachedContent": {

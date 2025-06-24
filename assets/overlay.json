@@ -232,6 +232,211 @@
                     "version"
                 ]
             }
+        },
+        {
+            "target": "$.paths",
+            "update": {
+                "/upload/v1beta/files": {
+                    "parameters": [],
+                    "post": {
+                        "description": "",
+                        "operationId": "postUploadV1BetaFiles",
+                        "parameters": [
+                            {
+                                "description": "upload_id",
+                                "in": "query",
+                                "name": "upload_id",
+                                "schema": {
+                                    "example": "ABgVH8-nlN8xjYU-2m28TEvS1vW1NOIFKk0Xe3qeNB9jjeCtVF6h5xJJ_EBQzUQk8Jwwvu6uA-UroEQ073YiiRpmhuPCUCN_P2oDFxfCC_4toA",
+                                    "type": "string"
+                                }
+                            },
+                            {
+                                "description": "upload_protocol",
+                                "in": "query",
+                                "name": "upload_protocol",
+                                "schema": {
+                                    "type": "string",
+                                    "enum": [
+                                        "resumable"
+                                    ]
+                                }
+                            },
+                            {
+                                "description": "X-Goog-Upload-Command",
+                                "in": "header",
+                                "name": "X-Goog-Upload-Command",
+                                "schema": {
+                                    "type": "string",
+                                    "enum": [
+                                        "start",
+                                        "upload, finalize"
+                                    ]
+                                }
+                            },
+                            {
+                                "description": "X-Goog-Upload-Offset",
+                                "in": "header",
+                                "name": "X-Goog-Upload-Offset",
+                                "schema": {
+                                    "example": 0,
+                                    "type": "integer"
+                                }
+                            },
+                            {
+                                "description": "X-Goog-Upload-Protocol",
+                                "in": "header",
+                                "name": "X-Goog-Upload-Protocol",
+                                "schema": {
+                                    "type": "string",
+                                    "enum": [
+                                        "resumable"
+                                    ]
+                                }
+                            },
+                            {
+                                "description": "X-Goog-Upload-Header-Content-Length",
+                                "in": "header",
+                                "name": "X-Goog-Upload-Header-Content-Length",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            {
+                                "description": "X-Goog-Upload-Header-Content-Type",
+                                "in": "header",
+                                "name": "X-Goog-Upload-Header-Content-Type",
+                                "schema": {
+                                    "type": "string",
+                                    "enum": [
+                                        "audio/mpeg",
+                                        "audio/mp3",
+                                        "audio/mp4",
+                                        "audio/m4a",
+                                        "audio/wav",
+                                        "audio/webm",
+                                        "audio/ogg",
+                                        "audio/flac"
+                                    ]
+                                }
+                            }
+                        ],
+                        "requestBody": {
+                            "content": {
+                                "application/json": {
+                                    "example": {
+                                        "file": {
+                                            "mimeType": "audio/mpeg",
+                                            "sizeBytes": 889389
+                                        }
+                                    },
+                                    "schema": {
+                                        "$ref": "#/components/schemas/CreateFileRequest"
+                                    }
+                                },
+                                "application/octet-stream": {
+                                    "schema": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            },
+                            "required": true
+                        },
+                        "responses": {
+                            "200": {
+                                "content": {
+                                    "text/plain": {
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "application/json": {
+                                        "schema": {
+                                            "$ref": "#/components/schemas/CreateFileResponse"
+                                        }
+                                    }
+                                },
+                                "description": "",
+                                "headers": {
+                                    "X-GUploader-UploadID": {
+                                        "description": "Custom header X-GUploader-UploadID",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Chunk-Granularity": {
+                                        "description": "Custom header X-Goog-Upload-Chunk-Granularity",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Control-URL": {
+                                        "description": "Custom header X-Goog-Upload-Control-URL",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Header-Content-Type": {
+                                        "description": "Custom header X-Goog-Upload-Header-Content-Type",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Header-Vary": {
+                                        "description": "Custom header X-Goog-Upload-Header-Vary",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Header-X-Google-Backends": {
+                                        "description": "Custom header X-Goog-Upload-Header-X-Google-Backends",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost": {
+                                        "description": "Custom header X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Header-X-Google-Security-Signals": {
+                                        "description": "Custom header X-Goog-Upload-Header-X-Google-Security-Signals",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Header-X-Google-Session-Info": {
+                                        "description": "Custom header X-Goog-Upload-Header-X-Google-Session-Info",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Header-x-google-esf-cloud-client-params": {
+                                        "description": "Custom header X-Goog-Upload-Header-x-google-esf-cloud-client-params",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-Status": {
+                                        "description": "Custom header X-Goog-Upload-Status",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "X-Goog-Upload-URL": {
+                                        "description": "Custom header X-Goog-Upload-URL",
+                                        "schema": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     ]
 }

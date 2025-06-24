@@ -31,7 +31,7 @@ clean_spm_cache:
 	swift package purge-cache
 
 prepare-openapi:
-	# download and overlay the openapi
+	# download and overlay the openapi and generate the swift code
 	swift run Prepare
 
 overlay-openapi:
