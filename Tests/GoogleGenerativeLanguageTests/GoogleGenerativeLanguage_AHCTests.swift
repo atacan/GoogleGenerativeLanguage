@@ -217,7 +217,7 @@ struct GoogleGenerativeLanguageTestsTests {
                                 .TextPart(
                                     Components.Schemas.TextPart(text: "describe the audio")
                                 ),
-                                .FileDataPart(.init(fileData: .init(fileUri: uri)))
+                                .FileDataPart(.init(fileData: .init(fileUri: uri))),
                             ],
                             role: .user
                         )
@@ -227,6 +227,12 @@ struct GoogleGenerativeLanguageTestsTests {
             )
         )
         try customDump(response.default.body.json)
+    }
+
+    @Test func uploadFileWithFunction() async throws {
+        let file = try Data(contentsOf: URL(fileURLWithPath: "/Users/atacan/Developer/Repositories/GoogleGenerativeLanguage/assets/speech.mp3"))
+        let uri = try await uploadFileToGemini(client: client, fileData: HTTPBody(file), mimeType: "audio/mpeg", sizeBytes: file.count)
+        #expect(uri.contains("https://"))
     }
 }
 
