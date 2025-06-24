@@ -27,7 +27,7 @@ struct GoogleGenerativeLanguageTestsTests {
             transport: AsyncHTTPClientTransport(),
             middlewares: [
                 AuthenticationMiddleware(apiKey: apiKey),
-                UnescapeUploadCommandHeaderMiddleware(),
+                UnescapeGoogUploadHeadersMiddleware(),
             ]
         )
         return client
