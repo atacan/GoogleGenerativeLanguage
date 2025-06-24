@@ -35,7 +35,7 @@ struct GoogleGenerativeLanguageTestsTests {
 
     @Test
     func simpleRequest() async throws {
-        let response = try await client.GenerateContent(
+        let response = try await client.generateContent(
             path: .init(model: "gemini-2.0-flash"),
             // query: .init(_dollar_alt: Components.Parameters.alt?, _dollar_callback: Components.Parameters.callback?, _dollar_prettyPrint: Components.Parameters.prettyPrint?, _dollar__period_xgafv: Components.Parameters.__period_xgafv?),
             // headers: Operations.GenerateContent.Input.Headers,
@@ -67,8 +67,8 @@ struct GoogleGenerativeLanguageTestsTests {
 
     @Test
     func streamingResponse() async throws {
-        let response = try await client.StreamGenerateContent(
-            path: .init(model: "gemini-2.0-flash"),
+        let response = try await client.streamGenerateContent(
+            path: .init(model: Components.Schemas.ModelID.gemini2_0Flash.rawValue),
             query: .init(_dollar_alt: .sse),
             body: .json(
                 .init(
@@ -78,12 +78,12 @@ struct GoogleGenerativeLanguageTestsTests {
                             role: .user
                         )
                     ],
-                    model: "gemini-2.0-flash"
+                    model: Components.Schemas.ModelID.gemini2_0Flash.rawValue
                 )
             )
         )
 
-        let stream = try response.default.body.text_event_hyphen_stream
+        let stream = try response.default.body.textEventStream
             .asDecodedServerSentEventsWithJSONData(of: Components.Schemas.GenerateContentResponse.self)
 
         for try await event in stream {
@@ -103,8 +103,8 @@ struct GoogleGenerativeLanguageTestsTests {
     }
 
     @Test func functionDeclarations() async throws {
-        let response = try await client.GenerateContent(
-            path: .init(model: "gemini-2.0-flash"),
+        let response = try await client.generateContent(
+            path: .init(model: Components.Schemas.ModelID.gemini2_0Flash.rawValue),
             body: .json(
                 .init(
                     contents: [
@@ -115,7 +115,7 @@ struct GoogleGenerativeLanguageTestsTests {
                             role: .user
                         )
                     ],
-                    model: "gemini-2.0-flash",
+                    model: Components.Schemas.ModelID.gemini2_0Flash.rawValue,
                     tools: [
                         .init(
                             functionDeclarations: [
@@ -132,8 +132,8 @@ struct GoogleGenerativeLanguageTestsTests {
 
     @Test func transcribeAudio() async throws {
         let audioData = try Data(contentsOf: URL(fileURLWithPath: "/Users/atacan/Developer/Repositories/GoogleGenerativeLanguage/assets/speech.mp3"))
-        let modelID = Components.Schemas.ModelID.gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_05_hyphen_20.rawValue
-        let response = try await client.GenerateContent(
+        let modelID = Components.Schemas.ModelID.gemini2_5FlashPreview0520.rawValue
+        let response = try await client.generateContent(
             path: .init(model: modelID),
             body: .json(
                 .init(
@@ -164,12 +164,11 @@ struct GoogleGenerativeLanguageTestsTests {
         let file = try Data(contentsOf: URL(fileURLWithPath: "/Users/atacan/Developer/Repositories/GoogleGenerativeLanguage/assets/speech.mp3"))
 
         // Step 1: Create upload session
-        let sessionResponse = try await client.UploadFiles(
+        let sessionResponse = try await client.uploadFiles(
             headers: .init(
-                X_hyphen_Goog_hyphen_Upload_hyphen_Command: .start,
-                X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: .resumable,
-                X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: file.count,
-                X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: .audio_sol_mpeg
+                xGoogUploadCommand: .start,
+                xGoogUploadProtocol: .resumable,
+                xGoogUploadHeaderContentType: .audioMpeg
             ),
             body: .json(
                 .init(
@@ -184,19 +183,19 @@ struct GoogleGenerativeLanguageTestsTests {
         )
 
         // Extract upload ID from response headers
-        guard let uploadID = try sessionResponse.ok.headers.X_hyphen_GUploader_hyphen_UploadID else {
+        guard let uploadID = try sessionResponse.ok.headers.xGUploaderUploadID else {
             throw NSError(domain: "UploadError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Upload ID not found in response"])
         }
 
         // Step 2: Upload the file data
-        let uploadResponse = try await client.UploadFiles(
+        let uploadResponse = try await client.uploadFiles(
             query: .init(
-                upload_id: uploadID,
-                upload_protocol: .resumable
+                uploadId: uploadID,
+                uploadProtocol: .resumable
             ),
             headers: .init(
-                X_hyphen_Goog_hyphen_Upload_hyphen_Command: .upload_comma__space_finalize,
-                X_hyphen_Goog_hyphen_Upload_hyphen_Offset: 0
+                xGoogUploadCommand: .upload_comma_Finalize,
+                xGoogUploadOffset: 0
             ),
             body: .binary(HTTPBody(file))
         )
@@ -207,8 +206,8 @@ struct GoogleGenerativeLanguageTestsTests {
             throw NSError(domain: "UploadError", code: 1, userInfo: [NSLocalizedDescriptionKey: "File URI not found in response"])
         }
 
-        let modelID = Components.Schemas.ModelID.gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_05_hyphen_20.rawValue
-        let response = try await client.GenerateContent(
+        let modelID = Components.Schemas.ModelID.gemini2_5FlashPreview0520.rawValue
+        let response = try await client.generateContent(
             path: .init(model: modelID),
             body: .json(
                 .init(
@@ -247,11 +246,11 @@ let f = Components.Schemas.FunctionDeclaration(
                 additionalProperties: [
                     "city": Components.Schemas.Schema(
                         description: "the city to find the weather for",
-                        _type: .init(value1: .STRING)
+                        _type: .init(value1: .string)
                     )
                 ]
             ),
-            _type: .init(value1: .OBJECT),
+            _type: .init(value1: .object),
         )
     ),
     response: nil
@@ -266,17 +265,17 @@ let f2 = Components.Schemas.FunctionDeclaration(
                 additionalProperties: [
                     "search_term": Components.Schemas.Schema(
                         description: "the keyword to search for",
-                        _type: .init(value1: .STRING)
+                        _type: .init(value1: .string)
                     ),
                     "search_engine": Components.Schemas.Schema(
                         description: "where to search",
                         _enum: ["google", "bing", "yahoo"],
-                        _type: .init(value1: .STRING)
+                        _type: .init(value1: .string)
                     ),
                 ],
             ),
             required: ["search_term", "search_engine"],
-            _type: .init(value1: .OBJECT)
+            _type: .init(value1: .object)
         )
     ),
     response: nil

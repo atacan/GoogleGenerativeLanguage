@@ -43,7 +43,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/batches`.
     /// - Remark: Generated from `#/paths//v1beta/batches/get(ListOperationsBy)`.
-    public func ListOperationsBy(_ input: Operations.ListOperationsBy.Input) async throws -> Operations.ListOperationsBy.Output {
+    public func listOperationsBy(_ input: Operations.ListOperationsBy.Input) async throws -> Operations.ListOperationsBy.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListOperationsBy.id,
@@ -83,7 +83,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -149,7 +149,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/batches/{generateContentBatch}`.
     /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/get(GetOperationByGenerateContentBatch)`.
-    public func GetOperationByGenerateContentBatch(_ input: Operations.GetOperationByGenerateContentBatch.Input) async throws -> Operations.GetOperationByGenerateContentBatch.Output {
+    public func getOperationByGenerateContentBatch(_ input: Operations.GetOperationByGenerateContentBatch.Input) async throws -> Operations.GetOperationByGenerateContentBatch.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetOperationByGenerateContentBatch.id,
@@ -191,7 +191,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -243,7 +243,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/batches/{generateContentBatch}:cancel`.
     /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}:cancel/post(CancelOperation)`.
-    public func CancelOperation(_ input: Operations.CancelOperation.Input) async throws -> Operations.CancelOperation.Output {
+    public func cancelOperation(_ input: Operations.CancelOperation.Input) async throws -> Operations.CancelOperation.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CancelOperation.id,
@@ -285,7 +285,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -328,7 +328,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/cachedContents`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/get(ListCachedContents)`.
-    public func ListCachedContents(_ input: Operations.ListCachedContents.Input) async throws -> Operations.ListCachedContents.Output {
+    public func listCachedContents(_ input: Operations.ListCachedContents.Input) async throws -> Operations.ListCachedContents.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListCachedContents.id,
@@ -368,7 +368,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -425,7 +425,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/cachedContents`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/post(CreateCachedContent)`.
-    public func CreateCachedContent(_ input: Operations.CreateCachedContent.Input) async throws -> Operations.CreateCachedContent.Output {
+    public func createCachedContent(_ input: Operations.CreateCachedContent.Input) async throws -> Operations.CreateCachedContent.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CreateCachedContent.id,
@@ -465,7 +465,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -519,7 +519,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/get(GetCachedContent)`.
-    public func GetCachedContent(_ input: Operations.GetCachedContent.Input) async throws -> Operations.GetCachedContent.Output {
+    public func getCachedContent(_ input: Operations.GetCachedContent.Input) async throws -> Operations.GetCachedContent.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetCachedContent.id,
@@ -561,7 +561,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -604,7 +604,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/patch(UpdateCachedContent)`.
-    public func UpdateCachedContent(_ input: Operations.UpdateCachedContent.Input) async throws -> Operations.UpdateCachedContent.Output {
+    public func updateCachedContent(_ input: Operations.UpdateCachedContent.Input) async throws -> Operations.UpdateCachedContent.Output {
         try await client.send(
             input: input,
             forOperation: Operations.UpdateCachedContent.id,
@@ -646,7 +646,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -707,7 +707,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/delete(DeleteCachedContent)`.
-    public func DeleteCachedContent(_ input: Operations.DeleteCachedContent.Input) async throws -> Operations.DeleteCachedContent.Output {
+    public func deleteCachedContent(_ input: Operations.DeleteCachedContent.Input) async throws -> Operations.DeleteCachedContent.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DeleteCachedContent.id,
@@ -749,7 +749,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -792,7 +792,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/get(ListCorpora)`.
-    public func ListCorpora(_ input: Operations.ListCorpora.Input) async throws -> Operations.ListCorpora.Output {
+    public func listCorpora(_ input: Operations.ListCorpora.Input) async throws -> Operations.ListCorpora.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListCorpora.id,
@@ -832,7 +832,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -889,7 +889,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/post(CreateCorpus)`.
-    public func CreateCorpus(_ input: Operations.CreateCorpus.Input) async throws -> Operations.CreateCorpus.Output {
+    public func createCorpus(_ input: Operations.CreateCorpus.Input) async throws -> Operations.CreateCorpus.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CreateCorpus.id,
@@ -929,7 +929,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -983,7 +983,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/get(GetCorpus)`.
-    public func GetCorpus(_ input: Operations.GetCorpus.Input) async throws -> Operations.GetCorpus.Output {
+    public func getCorpus(_ input: Operations.GetCorpus.Input) async throws -> Operations.GetCorpus.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetCorpus.id,
@@ -1025,7 +1025,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -1068,7 +1068,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/patch(UpdateCorpus)`.
-    public func UpdateCorpus(_ input: Operations.UpdateCorpus.Input) async throws -> Operations.UpdateCorpus.Output {
+    public func updateCorpus(_ input: Operations.UpdateCorpus.Input) async throws -> Operations.UpdateCorpus.Output {
         try await client.send(
             input: input,
             forOperation: Operations.UpdateCorpus.id,
@@ -1110,7 +1110,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -1171,7 +1171,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/delete(DeleteCorpus)`.
-    public func DeleteCorpus(_ input: Operations.DeleteCorpus.Input) async throws -> Operations.DeleteCorpus.Output {
+    public func deleteCorpus(_ input: Operations.DeleteCorpus.Input) async throws -> Operations.DeleteCorpus.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DeleteCorpus.id,
@@ -1213,7 +1213,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -1263,7 +1263,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}:query`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}:query/post(QueryCorpus)`.
-    public func QueryCorpus(_ input: Operations.QueryCorpus.Input) async throws -> Operations.QueryCorpus.Output {
+    public func queryCorpus(_ input: Operations.QueryCorpus.Input) async throws -> Operations.QueryCorpus.Output {
         try await client.send(
             input: input,
             forOperation: Operations.QueryCorpus.id,
@@ -1305,7 +1305,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -1359,7 +1359,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/get(ListDocuments)`.
-    public func ListDocuments(_ input: Operations.ListDocuments.Input) async throws -> Operations.ListDocuments.Output {
+    public func listDocuments(_ input: Operations.ListDocuments.Input) async throws -> Operations.ListDocuments.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListDocuments.id,
@@ -1401,7 +1401,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -1458,7 +1458,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/post(CreateDocument)`.
-    public func CreateDocument(_ input: Operations.CreateDocument.Input) async throws -> Operations.CreateDocument.Output {
+    public func createDocument(_ input: Operations.CreateDocument.Input) async throws -> Operations.CreateDocument.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CreateDocument.id,
@@ -1500,7 +1500,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -1554,7 +1554,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/get(GetDocument)`.
-    public func GetDocument(_ input: Operations.GetDocument.Input) async throws -> Operations.GetDocument.Output {
+    public func getDocument(_ input: Operations.GetDocument.Input) async throws -> Operations.GetDocument.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetDocument.id,
@@ -1597,7 +1597,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -1640,7 +1640,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/patch(UpdateDocument)`.
-    public func UpdateDocument(_ input: Operations.UpdateDocument.Input) async throws -> Operations.UpdateDocument.Output {
+    public func updateDocument(_ input: Operations.UpdateDocument.Input) async throws -> Operations.UpdateDocument.Output {
         try await client.send(
             input: input,
             forOperation: Operations.UpdateDocument.id,
@@ -1683,7 +1683,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -1744,7 +1744,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/delete(DeleteDocument)`.
-    public func DeleteDocument(_ input: Operations.DeleteDocument.Input) async throws -> Operations.DeleteDocument.Output {
+    public func deleteDocument(_ input: Operations.DeleteDocument.Input) async throws -> Operations.DeleteDocument.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DeleteDocument.id,
@@ -1787,7 +1787,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -1837,7 +1837,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}:query`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}:query/post(QueryDocument)`.
-    public func QueryDocument(_ input: Operations.QueryDocument.Input) async throws -> Operations.QueryDocument.Output {
+    public func queryDocument(_ input: Operations.QueryDocument.Input) async throws -> Operations.QueryDocument.Output {
         try await client.send(
             input: input,
             forOperation: Operations.QueryDocument.id,
@@ -1880,7 +1880,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -1934,7 +1934,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}/chunks`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/get(ListChunks)`.
-    public func ListChunks(_ input: Operations.ListChunks.Input) async throws -> Operations.ListChunks.Output {
+    public func listChunks(_ input: Operations.ListChunks.Input) async throws -> Operations.ListChunks.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListChunks.id,
@@ -1977,7 +1977,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -2034,7 +2034,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/post(CreateChunk)`.
-    public func CreateChunk(_ input: Operations.CreateChunk.Input) async throws -> Operations.CreateChunk.Output {
+    public func createChunk(_ input: Operations.CreateChunk.Input) async throws -> Operations.CreateChunk.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CreateChunk.id,
@@ -2077,7 +2077,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -2131,7 +2131,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/post(BatchCreateChunks)`.
-    public func BatchCreateChunks(_ input: Operations.BatchCreateChunks.Input) async throws -> Operations.BatchCreateChunks.Output {
+    public func batchCreateChunks(_ input: Operations.BatchCreateChunks.Input) async throws -> Operations.BatchCreateChunks.Output {
         try await client.send(
             input: input,
             forOperation: Operations.BatchCreateChunks.id,
@@ -2174,7 +2174,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -2228,7 +2228,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/post(BatchDeleteChunks)`.
-    public func BatchDeleteChunks(_ input: Operations.BatchDeleteChunks.Input) async throws -> Operations.BatchDeleteChunks.Output {
+    public func batchDeleteChunks(_ input: Operations.BatchDeleteChunks.Input) async throws -> Operations.BatchDeleteChunks.Output {
         try await client.send(
             input: input,
             forOperation: Operations.BatchDeleteChunks.id,
@@ -2271,7 +2271,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -2325,7 +2325,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate/post(BatchUpdateChunks)`.
-    public func BatchUpdateChunks(_ input: Operations.BatchUpdateChunks.Input) async throws -> Operations.BatchUpdateChunks.Output {
+    public func batchUpdateChunks(_ input: Operations.BatchUpdateChunks.Input) async throws -> Operations.BatchUpdateChunks.Output {
         try await client.send(
             input: input,
             forOperation: Operations.BatchUpdateChunks.id,
@@ -2368,7 +2368,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -2422,7 +2422,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/get(GetChunk)`.
-    public func GetChunk(_ input: Operations.GetChunk.Input) async throws -> Operations.GetChunk.Output {
+    public func getChunk(_ input: Operations.GetChunk.Input) async throws -> Operations.GetChunk.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetChunk.id,
@@ -2466,7 +2466,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -2509,7 +2509,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/patch(UpdateChunk)`.
-    public func UpdateChunk(_ input: Operations.UpdateChunk.Input) async throws -> Operations.UpdateChunk.Output {
+    public func updateChunk(_ input: Operations.UpdateChunk.Input) async throws -> Operations.UpdateChunk.Output {
         try await client.send(
             input: input,
             forOperation: Operations.UpdateChunk.id,
@@ -2553,7 +2553,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -2614,7 +2614,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/delete(DeleteChunk)`.
-    public func DeleteChunk(_ input: Operations.DeleteChunk.Input) async throws -> Operations.DeleteChunk.Output {
+    public func deleteChunk(_ input: Operations.DeleteChunk.Input) async throws -> Operations.DeleteChunk.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DeleteChunk.id,
@@ -2658,7 +2658,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -2701,7 +2701,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/get(ListPermissionsByCorpus)`.
-    public func ListPermissionsByCorpus(_ input: Operations.ListPermissionsByCorpus.Input) async throws -> Operations.ListPermissionsByCorpus.Output {
+    public func listPermissionsByCorpus(_ input: Operations.ListPermissionsByCorpus.Input) async throws -> Operations.ListPermissionsByCorpus.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListPermissionsByCorpus.id,
@@ -2743,7 +2743,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -2800,7 +2800,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/post(CreatePermissionByCorpus)`.
-    public func CreatePermissionByCorpus(_ input: Operations.CreatePermissionByCorpus.Input) async throws -> Operations.CreatePermissionByCorpus.Output {
+    public func createPermissionByCorpus(_ input: Operations.CreatePermissionByCorpus.Input) async throws -> Operations.CreatePermissionByCorpus.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CreatePermissionByCorpus.id,
@@ -2842,7 +2842,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -2896,7 +2896,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/get(GetPermissionByCorpusAndPermission)`.
-    public func GetPermissionByCorpusAndPermission(_ input: Operations.GetPermissionByCorpusAndPermission.Input) async throws -> Operations.GetPermissionByCorpusAndPermission.Output {
+    public func getPermissionByCorpusAndPermission(_ input: Operations.GetPermissionByCorpusAndPermission.Input) async throws -> Operations.GetPermissionByCorpusAndPermission.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetPermissionByCorpusAndPermission.id,
@@ -2939,7 +2939,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -2982,7 +2982,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/patch(UpdatePermissionByCorpusAndPermission)`.
-    public func UpdatePermissionByCorpusAndPermission(_ input: Operations.UpdatePermissionByCorpusAndPermission.Input) async throws -> Operations.UpdatePermissionByCorpusAndPermission.Output {
+    public func updatePermissionByCorpusAndPermission(_ input: Operations.UpdatePermissionByCorpusAndPermission.Input) async throws -> Operations.UpdatePermissionByCorpusAndPermission.Output {
         try await client.send(
             input: input,
             forOperation: Operations.UpdatePermissionByCorpusAndPermission.id,
@@ -3025,7 +3025,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -3086,7 +3086,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/delete(DeletePermissionByCorpusAndPermission)`.
-    public func DeletePermissionByCorpusAndPermission(_ input: Operations.DeletePermissionByCorpusAndPermission.Input) async throws -> Operations.DeletePermissionByCorpusAndPermission.Output {
+    public func deletePermissionByCorpusAndPermission(_ input: Operations.DeletePermissionByCorpusAndPermission.Input) async throws -> Operations.DeletePermissionByCorpusAndPermission.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DeletePermissionByCorpusAndPermission.id,
@@ -3129,7 +3129,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -3178,7 +3178,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:generateContent/post(GenerateContentByDynamicId)`.
-    public func GenerateContentByDynamicId(_ input: Operations.GenerateContentByDynamicId.Input) async throws -> Operations.GenerateContentByDynamicId.Output {
+    public func generateContentByDynamicId(_ input: Operations.GenerateContentByDynamicId.Input) async throws -> Operations.GenerateContentByDynamicId.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GenerateContentByDynamicId.id,
@@ -3220,7 +3220,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -3276,7 +3276,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:streamGenerateContent/post(StreamGenerateContentByDynamicId)`.
-    public func StreamGenerateContentByDynamicId(_ input: Operations.StreamGenerateContentByDynamicId.Input) async throws -> Operations.StreamGenerateContentByDynamicId.Output {
+    public func streamGenerateContentByDynamicId(_ input: Operations.StreamGenerateContentByDynamicId.Input) async throws -> Operations.StreamGenerateContentByDynamicId.Output {
         try await client.send(
             input: input,
             forOperation: Operations.StreamGenerateContentByDynamicId.id,
@@ -3318,7 +3318,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -3372,7 +3372,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/files`.
     /// - Remark: Generated from `#/paths//v1beta/files/get(ListFiles)`.
-    public func ListFiles(_ input: Operations.ListFiles.Input) async throws -> Operations.ListFiles.Output {
+    public func listFiles(_ input: Operations.ListFiles.Input) async throws -> Operations.ListFiles.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListFiles.id,
@@ -3412,7 +3412,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -3469,7 +3469,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/files`.
     /// - Remark: Generated from `#/paths//v1beta/files/post(CreateFile)`.
-    public func CreateFile(_ input: Operations.CreateFile.Input) async throws -> Operations.CreateFile.Output {
+    public func createFile(_ input: Operations.CreateFile.Input) async throws -> Operations.CreateFile.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CreateFile.id,
@@ -3509,7 +3509,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -3563,7 +3563,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/files/{file}`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}/get(GetFile)`.
-    public func GetFile(_ input: Operations.GetFile.Input) async throws -> Operations.GetFile.Output {
+    public func getFile(_ input: Operations.GetFile.Input) async throws -> Operations.GetFile.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetFile.id,
@@ -3605,7 +3605,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -3648,7 +3648,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/files/{file}`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}/delete(DeleteFile)`.
-    public func DeleteFile(_ input: Operations.DeleteFile.Input) async throws -> Operations.DeleteFile.Output {
+    public func deleteFile(_ input: Operations.DeleteFile.Input) async throws -> Operations.DeleteFile.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DeleteFile.id,
@@ -3690,7 +3690,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -3733,7 +3733,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/files/{file}:download`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}:download/get(DownloadFile)`.
-    public func DownloadFile(_ input: Operations.DownloadFile.Input) async throws -> Operations.DownloadFile.Output {
+    public func downloadFile(_ input: Operations.DownloadFile.Input) async throws -> Operations.DownloadFile.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DownloadFile.id,
@@ -3775,7 +3775,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -3818,7 +3818,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/get(ListGeneratedFiles)`.
-    public func ListGeneratedFiles(_ input: Operations.ListGeneratedFiles.Input) async throws -> Operations.ListGeneratedFiles.Output {
+    public func listGeneratedFiles(_ input: Operations.ListGeneratedFiles.Input) async throws -> Operations.ListGeneratedFiles.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListGeneratedFiles.id,
@@ -3858,7 +3858,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -3917,7 +3917,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/get(GetGeneratedFile)`.
-    public func GetGeneratedFile(_ input: Operations.GetGeneratedFile.Input) async throws -> Operations.GetGeneratedFile.Output {
+    public func getGeneratedFile(_ input: Operations.GetGeneratedFile.Input) async throws -> Operations.GetGeneratedFile.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetGeneratedFile.id,
@@ -3959,7 +3959,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4004,7 +4004,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/operations/{operation}/get(GetOperationByGeneratedFileAndOperation)`.
-    public func GetOperationByGeneratedFileAndOperation(_ input: Operations.GetOperationByGeneratedFileAndOperation.Input) async throws -> Operations.GetOperationByGeneratedFileAndOperation.Output {
+    public func getOperationByGeneratedFileAndOperation(_ input: Operations.GetOperationByGeneratedFileAndOperation.Input) async throws -> Operations.GetOperationByGeneratedFileAndOperation.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetOperationByGeneratedFileAndOperation.id,
@@ -4047,7 +4047,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4091,7 +4091,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/models`.
     /// - Remark: Generated from `#/paths//v1beta/models/get(ListModels)`.
-    public func ListModels(_ input: Operations.ListModels.Input) async throws -> Operations.ListModels.Output {
+    public func listModels(_ input: Operations.ListModels.Input) async throws -> Operations.ListModels.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListModels.id,
@@ -4131,7 +4131,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -4193,7 +4193,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/get(GetModel)`.
-    public func GetModel(_ input: Operations.GetModel.Input) async throws -> Operations.GetModel.Output {
+    public func getModel(_ input: Operations.GetModel.Input) async throws -> Operations.GetModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetModel.id,
@@ -4235,7 +4235,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4280,7 +4280,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedContents`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedContents/post(BatchEmbedContents)`.
-    public func BatchEmbedContents(_ input: Operations.BatchEmbedContents.Input) async throws -> Operations.BatchEmbedContents.Output {
+    public func batchEmbedContents(_ input: Operations.BatchEmbedContents.Input) async throws -> Operations.BatchEmbedContents.Output {
         try await client.send(
             input: input,
             forOperation: Operations.BatchEmbedContents.id,
@@ -4322,7 +4322,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4377,7 +4377,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedText/post(BatchEmbedText)`.
-    public func BatchEmbedText(_ input: Operations.BatchEmbedText.Input) async throws -> Operations.BatchEmbedText.Output {
+    public func batchEmbedText(_ input: Operations.BatchEmbedText.Input) async throws -> Operations.BatchEmbedText.Output {
         try await client.send(
             input: input,
             forOperation: Operations.BatchEmbedText.id,
@@ -4419,7 +4419,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4473,7 +4473,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countMessageTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countMessageTokens/post(CountMessageTokens)`.
-    public func CountMessageTokens(_ input: Operations.CountMessageTokens.Input) async throws -> Operations.CountMessageTokens.Output {
+    public func countMessageTokens(_ input: Operations.CountMessageTokens.Input) async throws -> Operations.CountMessageTokens.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CountMessageTokens.id,
@@ -4515,7 +4515,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4569,7 +4569,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countTextTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTextTokens/post(CountTextTokens)`.
-    public func CountTextTokens(_ input: Operations.CountTextTokens.Input) async throws -> Operations.CountTextTokens.Output {
+    public func countTextTokens(_ input: Operations.CountTextTokens.Input) async throws -> Operations.CountTextTokens.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CountTextTokens.id,
@@ -4611,7 +4611,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4667,7 +4667,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTokens/post(CountTokens)`.
-    public func CountTokens(_ input: Operations.CountTokens.Input) async throws -> Operations.CountTokens.Output {
+    public func countTokens(_ input: Operations.CountTokens.Input) async throws -> Operations.CountTokens.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CountTokens.id,
@@ -4709,7 +4709,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4765,7 +4765,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:embedContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedContent/post(EmbedContent)`.
-    public func EmbedContent(_ input: Operations.EmbedContent.Input) async throws -> Operations.EmbedContent.Output {
+    public func embedContent(_ input: Operations.EmbedContent.Input) async throws -> Operations.EmbedContent.Output {
         try await client.send(
             input: input,
             forOperation: Operations.EmbedContent.id,
@@ -4807,7 +4807,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4861,7 +4861,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:embedText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedText/post(EmbedText)`.
-    public func EmbedText(_ input: Operations.EmbedText.Input) async throws -> Operations.EmbedText.Output {
+    public func embedText(_ input: Operations.EmbedText.Input) async throws -> Operations.EmbedText.Output {
         try await client.send(
             input: input,
             forOperation: Operations.EmbedText.id,
@@ -4903,7 +4903,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -4958,7 +4958,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateAnswer`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateAnswer/post(GenerateAnswer)`.
-    public func GenerateAnswer(_ input: Operations.GenerateAnswer.Input) async throws -> Operations.GenerateAnswer.Output {
+    public func generateAnswer(_ input: Operations.GenerateAnswer.Input) async throws -> Operations.GenerateAnswer.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GenerateAnswer.id,
@@ -5000,7 +5000,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -5060,7 +5060,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateContent/post(GenerateContent)`.
-    public func GenerateContent(_ input: Operations.GenerateContent.Input) async throws -> Operations.GenerateContent.Output {
+    public func generateContent(_ input: Operations.GenerateContent.Input) async throws -> Operations.GenerateContent.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GenerateContent.id,
@@ -5102,7 +5102,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -5156,7 +5156,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateMessage`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateMessage/post(GenerateMessage)`.
-    public func GenerateMessage(_ input: Operations.GenerateMessage.Input) async throws -> Operations.GenerateMessage.Output {
+    public func generateMessage(_ input: Operations.GenerateMessage.Input) async throws -> Operations.GenerateMessage.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GenerateMessage.id,
@@ -5198,7 +5198,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -5252,7 +5252,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateText/post(GenerateText)`.
-    public func GenerateText(_ input: Operations.GenerateText.Input) async throws -> Operations.GenerateText.Output {
+    public func generateText(_ input: Operations.GenerateText.Input) async throws -> Operations.GenerateText.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GenerateText.id,
@@ -5294,7 +5294,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -5348,7 +5348,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:predict`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:predict/post(Predict)`.
-    public func Predict(_ input: Operations.Predict.Input) async throws -> Operations.Predict.Output {
+    public func predict(_ input: Operations.Predict.Input) async throws -> Operations.Predict.Output {
         try await client.send(
             input: input,
             forOperation: Operations.Predict.id,
@@ -5390,7 +5390,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -5444,7 +5444,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:predictLongRunning`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:predictLongRunning/post(PredictLongRunning)`.
-    public func PredictLongRunning(_ input: Operations.PredictLongRunning.Input) async throws -> Operations.PredictLongRunning.Output {
+    public func predictLongRunning(_ input: Operations.PredictLongRunning.Input) async throws -> Operations.PredictLongRunning.Output {
         try await client.send(
             input: input,
             forOperation: Operations.PredictLongRunning.id,
@@ -5486,7 +5486,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -5542,7 +5542,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:streamGenerateContent/post(StreamGenerateContent)`.
-    public func StreamGenerateContent(_ input: Operations.StreamGenerateContent.Input) async throws -> Operations.StreamGenerateContent.Output {
+    public func streamGenerateContent(_ input: Operations.StreamGenerateContent.Input) async throws -> Operations.StreamGenerateContent.Output {
         try await client.send(
             input: input,
             forOperation: Operations.StreamGenerateContent.id,
@@ -5584,7 +5584,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -5629,7 +5629,7 @@ public struct Client: APIProtocol {
                             OpenAPIRuntime.HTTPBody.self,
                             from: responseBody,
                             transforming: { value in
-                                .text_event_hyphen_stream(value)
+                                .textEventStream(value)
                             }
                         )
                     default:
@@ -5648,7 +5648,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}/operations`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/get(ListOperationsByModel)`.
-    public func ListOperationsByModel(_ input: Operations.ListOperationsByModel.Input) async throws -> Operations.ListOperationsByModel.Output {
+    public func listOperationsByModel(_ input: Operations.ListOperationsByModel.Input) async throws -> Operations.ListOperationsByModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListOperationsByModel.id,
@@ -5690,7 +5690,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -5756,7 +5756,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/{operation}/get(GetOperationByModelAndOperation)`.
-    public func GetOperationByModelAndOperation(_ input: Operations.GetOperationByModelAndOperation.Input) async throws -> Operations.GetOperationByModelAndOperation.Output {
+    public func getOperationByModelAndOperation(_ input: Operations.GetOperationByModelAndOperation.Input) async throws -> Operations.GetOperationByModelAndOperation.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetOperationByModelAndOperation.id,
@@ -5799,7 +5799,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -5842,7 +5842,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/get(ListTunedModels)`.
-    public func ListTunedModels(_ input: Operations.ListTunedModels.Input) async throws -> Operations.ListTunedModels.Output {
+    public func listTunedModels(_ input: Operations.ListTunedModels.Input) async throws -> Operations.ListTunedModels.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListTunedModels.id,
@@ -5882,7 +5882,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -5952,7 +5952,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/post(CreateTunedModel)`.
-    public func CreateTunedModel(_ input: Operations.CreateTunedModel.Input) async throws -> Operations.CreateTunedModel.Output {
+    public func createTunedModel(_ input: Operations.CreateTunedModel.Input) async throws -> Operations.CreateTunedModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CreateTunedModel.id,
@@ -5992,7 +5992,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -6053,7 +6053,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/get(GetTunedModel)`.
-    public func GetTunedModel(_ input: Operations.GetTunedModel.Input) async throws -> Operations.GetTunedModel.Output {
+    public func getTunedModel(_ input: Operations.GetTunedModel.Input) async throws -> Operations.GetTunedModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetTunedModel.id,
@@ -6095,7 +6095,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -6138,7 +6138,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/patch(UpdateTunedModel)`.
-    public func UpdateTunedModel(_ input: Operations.UpdateTunedModel.Input) async throws -> Operations.UpdateTunedModel.Output {
+    public func updateTunedModel(_ input: Operations.UpdateTunedModel.Input) async throws -> Operations.UpdateTunedModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.UpdateTunedModel.id,
@@ -6180,7 +6180,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -6241,7 +6241,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/delete(DeleteTunedModel)`.
-    public func DeleteTunedModel(_ input: Operations.DeleteTunedModel.Input) async throws -> Operations.DeleteTunedModel.Output {
+    public func deleteTunedModel(_ input: Operations.DeleteTunedModel.Input) async throws -> Operations.DeleteTunedModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DeleteTunedModel.id,
@@ -6283,7 +6283,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -6332,7 +6332,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:generateContent/post(GenerateContentByTunedModel)`.
-    public func GenerateContentByTunedModel(_ input: Operations.GenerateContentByTunedModel.Input) async throws -> Operations.GenerateContentByTunedModel.Output {
+    public func generateContentByTunedModel(_ input: Operations.GenerateContentByTunedModel.Input) async throws -> Operations.GenerateContentByTunedModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GenerateContentByTunedModel.id,
@@ -6374,7 +6374,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -6428,7 +6428,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:generateText`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:generateText/post(GenerateTextByTunedModel)`.
-    public func GenerateTextByTunedModel(_ input: Operations.GenerateTextByTunedModel.Input) async throws -> Operations.GenerateTextByTunedModel.Output {
+    public func generateTextByTunedModel(_ input: Operations.GenerateTextByTunedModel.Input) async throws -> Operations.GenerateTextByTunedModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GenerateTextByTunedModel.id,
@@ -6470,7 +6470,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -6526,7 +6526,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:streamGenerateContent/post(StreamGenerateContentByTunedModel)`.
-    public func StreamGenerateContentByTunedModel(_ input: Operations.StreamGenerateContentByTunedModel.Input) async throws -> Operations.StreamGenerateContentByTunedModel.Output {
+    public func streamGenerateContentByTunedModel(_ input: Operations.StreamGenerateContentByTunedModel.Input) async throws -> Operations.StreamGenerateContentByTunedModel.Output {
         try await client.send(
             input: input,
             forOperation: Operations.StreamGenerateContentByTunedModel.id,
@@ -6568,7 +6568,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -6624,7 +6624,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:transferOwnership`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:transferOwnership/post(TransferOwnership)`.
-    public func TransferOwnership(_ input: Operations.TransferOwnership.Input) async throws -> Operations.TransferOwnership.Output {
+    public func transferOwnership(_ input: Operations.TransferOwnership.Input) async throws -> Operations.TransferOwnership.Output {
         try await client.send(
             input: input,
             forOperation: Operations.TransferOwnership.id,
@@ -6666,7 +6666,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -6721,7 +6721,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/get(ListOperations)`.
-    public func ListOperations(_ input: Operations.ListOperations.Input) async throws -> Operations.ListOperations.Output {
+    public func listOperations(_ input: Operations.ListOperations.Input) async throws -> Operations.ListOperations.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListOperations.id,
@@ -6763,7 +6763,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -6829,7 +6829,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/{operation}/get(GetOperation)`.
-    public func GetOperation(_ input: Operations.GetOperation.Input) async throws -> Operations.GetOperation.Output {
+    public func getOperation(_ input: Operations.GetOperation.Input) async throws -> Operations.GetOperation.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetOperation.id,
@@ -6872,7 +6872,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -6915,7 +6915,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/get(ListPermissions)`.
-    public func ListPermissions(_ input: Operations.ListPermissions.Input) async throws -> Operations.ListPermissions.Output {
+    public func listPermissions(_ input: Operations.ListPermissions.Input) async throws -> Operations.ListPermissions.Output {
         try await client.send(
             input: input,
             forOperation: Operations.ListPermissions.id,
@@ -6957,7 +6957,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -7014,7 +7014,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/post(CreatePermission)`.
-    public func CreatePermission(_ input: Operations.CreatePermission.Input) async throws -> Operations.CreatePermission.Output {
+    public func createPermission(_ input: Operations.CreatePermission.Input) async throws -> Operations.CreatePermission.Output {
         try await client.send(
             input: input,
             forOperation: Operations.CreatePermission.id,
@@ -7056,7 +7056,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -7110,7 +7110,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/get(GetPermission)`.
-    public func GetPermission(_ input: Operations.GetPermission.Input) async throws -> Operations.GetPermission.Output {
+    public func getPermission(_ input: Operations.GetPermission.Input) async throws -> Operations.GetPermission.Output {
         try await client.send(
             input: input,
             forOperation: Operations.GetPermission.id,
@@ -7153,7 +7153,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -7196,7 +7196,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/patch(UpdatePermission)`.
-    public func UpdatePermission(_ input: Operations.UpdatePermission.Input) async throws -> Operations.UpdatePermission.Output {
+    public func updatePermission(_ input: Operations.UpdatePermission.Input) async throws -> Operations.UpdatePermission.Output {
         try await client.send(
             input: input,
             forOperation: Operations.UpdatePermission.id,
@@ -7239,7 +7239,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
@@ -7300,7 +7300,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/delete(DeletePermission)`.
-    public func DeletePermission(_ input: Operations.DeletePermission.Input) async throws -> Operations.DeletePermission.Output {
+    public func deletePermission(_ input: Operations.DeletePermission.Input) async throws -> Operations.DeletePermission.Output {
         try await client.send(
             input: input,
             forOperation: Operations.DeletePermission.id,
@@ -7343,7 +7343,7 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "$.xgafv",
-                    value: input.query._dollar__period_xgafv
+                    value: input.query._dollar__xgafv
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -7386,7 +7386,7 @@ public struct Client: APIProtocol {
     ///
     /// - Remark: HTTP `POST /upload/v1beta/files`.
     /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)`.
-    public func UploadFiles(_ input: Operations.UploadFiles.Input) async throws -> Operations.UploadFiles.Output {
+    public func uploadFiles(_ input: Operations.UploadFiles.Input) async throws -> Operations.UploadFiles.Output {
         try await client.send(
             input: input,
             forOperation: Operations.UploadFiles.id,
@@ -7405,39 +7405,39 @@ public struct Client: APIProtocol {
                     style: .form,
                     explode: true,
                     name: "upload_id",
-                    value: input.query.upload_id
+                    value: input.query.uploadId
                 )
                 try converter.setQueryItemAsURI(
                     in: &request,
                     style: .form,
                     explode: true,
                     name: "upload_protocol",
-                    value: input.query.upload_protocol
+                    value: input.query.uploadProtocol
                 )
                 try converter.setHeaderFieldAsURI(
                     in: &request.headerFields,
                     name: "X-Goog-Upload-Command",
-                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Command
+                    value: input.headers.xGoogUploadCommand
                 )
                 try converter.setHeaderFieldAsURI(
                     in: &request.headerFields,
                     name: "X-Goog-Upload-Offset",
-                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Offset
+                    value: input.headers.xGoogUploadOffset
                 )
                 try converter.setHeaderFieldAsURI(
                     in: &request.headerFields,
                     name: "X-Goog-Upload-Protocol",
-                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Protocol
+                    value: input.headers.xGoogUploadProtocol
                 )
                 try converter.setHeaderFieldAsURI(
                     in: &request.headerFields,
                     name: "X-Goog-Upload-Header-Content-Length",
-                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length
+                    value: input.headers.xGoogUploadHeaderContentLength
                 )
                 try converter.setHeaderFieldAsURI(
                     in: &request.headerFields,
                     name: "X-Goog-Upload-Header-Content-Type",
-                    value: input.headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type
+                    value: input.headers.xGoogUploadHeaderContentType
                 )
                 converter.setAcceptHeader(
                     in: &request.headerFields,
@@ -7464,62 +7464,62 @@ public struct Client: APIProtocol {
                 switch response.status.code {
                 case 200:
                     let headers: Operations.UploadFiles.Output.Ok.Headers = .init(
-                        X_hyphen_GUploader_hyphen_UploadID: try converter.getOptionalHeaderFieldAsURI(
+                        xGUploaderUploadID: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-GUploader-UploadID",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadChunkGranularity: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Chunk-Granularity",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadControlURL: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Control-URL",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadHeaderContentType: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Header-Content-Type",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadHeaderVary: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Header-Vary",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadHeaderXGoogleBackends: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Header-X-Google-Backends",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadHeaderXGoogleGFEBackendRequestCost: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadHeaderXGoogleSecuritySignals: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Header-X-Google-Security-Signals",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadHeaderXGoogleSessionInfo: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Header-X-Google-Session-Info",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadHeaderXGoogleEsfCloudClientParams: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Header-x-google-esf-cloud-client-params",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Status: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadStatus: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-Status",
                             as: Swift.String.self
                         ),
-                        X_hyphen_Goog_hyphen_Upload_hyphen_URL: try converter.getOptionalHeaderFieldAsURI(
+                        xGoogUploadURL: try converter.getOptionalHeaderFieldAsURI(
                             in: response.headerFields,
                             name: "X-Goog-Upload-URL",
                             as: Swift.String.self

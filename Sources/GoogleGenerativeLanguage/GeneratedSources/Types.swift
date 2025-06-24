@@ -16,14 +16,14 @@ public protocol APIProtocol: Sendable {
     ///
     /// - Remark: HTTP `GET /v1beta/batches`.
     /// - Remark: Generated from `#/paths//v1beta/batches/get(ListOperationsBy)`.
-    func ListOperationsBy(_ input: Operations.ListOperationsBy.Input) async throws -> Operations.ListOperationsBy.Output
+    func listOperationsBy(_ input: Operations.ListOperationsBy.Input) async throws -> Operations.ListOperationsBy.Output
     /// Gets the latest state of a long-running operation.  Clients can use this
     /// method to poll the operation result at intervals as recommended by the API
     /// service.
     ///
     /// - Remark: HTTP `GET /v1beta/batches/{generateContentBatch}`.
     /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/get(GetOperationByGenerateContentBatch)`.
-    func GetOperationByGenerateContentBatch(_ input: Operations.GetOperationByGenerateContentBatch.Input) async throws -> Operations.GetOperationByGenerateContentBatch.Output
+    func getOperationByGenerateContentBatch(_ input: Operations.GetOperationByGenerateContentBatch.Input) async throws -> Operations.GetOperationByGenerateContentBatch.Output
     /// Starts asynchronous cancellation on a long-running operation.  The server
     /// makes a best effort to cancel the operation, but success is not
     /// guaranteed.  If the server doesn't support this method, it returns
@@ -37,157 +37,157 @@ public protocol APIProtocol: Sendable {
     ///
     /// - Remark: HTTP `POST /v1beta/batches/{generateContentBatch}:cancel`.
     /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}:cancel/post(CancelOperation)`.
-    func CancelOperation(_ input: Operations.CancelOperation.Input) async throws -> Operations.CancelOperation.Output
+    func cancelOperation(_ input: Operations.CancelOperation.Input) async throws -> Operations.CancelOperation.Output
     /// Lists CachedContents.
     ///
     /// - Remark: HTTP `GET /v1beta/cachedContents`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/get(ListCachedContents)`.
-    func ListCachedContents(_ input: Operations.ListCachedContents.Input) async throws -> Operations.ListCachedContents.Output
+    func listCachedContents(_ input: Operations.ListCachedContents.Input) async throws -> Operations.ListCachedContents.Output
     /// Creates CachedContent resource.
     ///
     /// - Remark: HTTP `POST /v1beta/cachedContents`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/post(CreateCachedContent)`.
-    func CreateCachedContent(_ input: Operations.CreateCachedContent.Input) async throws -> Operations.CreateCachedContent.Output
+    func createCachedContent(_ input: Operations.CreateCachedContent.Input) async throws -> Operations.CreateCachedContent.Output
     /// Reads CachedContent resource.
     ///
     /// - Remark: HTTP `GET /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/get(GetCachedContent)`.
-    func GetCachedContent(_ input: Operations.GetCachedContent.Input) async throws -> Operations.GetCachedContent.Output
+    func getCachedContent(_ input: Operations.GetCachedContent.Input) async throws -> Operations.GetCachedContent.Output
     /// Updates CachedContent resource (only expiration is updatable).
     ///
     /// - Remark: HTTP `PATCH /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/patch(UpdateCachedContent)`.
-    func UpdateCachedContent(_ input: Operations.UpdateCachedContent.Input) async throws -> Operations.UpdateCachedContent.Output
+    func updateCachedContent(_ input: Operations.UpdateCachedContent.Input) async throws -> Operations.UpdateCachedContent.Output
     /// Deletes CachedContent resource.
     ///
     /// - Remark: HTTP `DELETE /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/delete(DeleteCachedContent)`.
-    func DeleteCachedContent(_ input: Operations.DeleteCachedContent.Input) async throws -> Operations.DeleteCachedContent.Output
+    func deleteCachedContent(_ input: Operations.DeleteCachedContent.Input) async throws -> Operations.DeleteCachedContent.Output
     /// Lists all `Corpora` owned by the user.
     ///
     /// - Remark: HTTP `GET /v1beta/corpora`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/get(ListCorpora)`.
-    func ListCorpora(_ input: Operations.ListCorpora.Input) async throws -> Operations.ListCorpora.Output
+    func listCorpora(_ input: Operations.ListCorpora.Input) async throws -> Operations.ListCorpora.Output
     /// Creates an empty `Corpus`.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/post(CreateCorpus)`.
-    func CreateCorpus(_ input: Operations.CreateCorpus.Input) async throws -> Operations.CreateCorpus.Output
+    func createCorpus(_ input: Operations.CreateCorpus.Input) async throws -> Operations.CreateCorpus.Output
     /// Gets information about a specific `Corpus`.
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/get(GetCorpus)`.
-    func GetCorpus(_ input: Operations.GetCorpus.Input) async throws -> Operations.GetCorpus.Output
+    func getCorpus(_ input: Operations.GetCorpus.Input) async throws -> Operations.GetCorpus.Output
     /// Updates a `Corpus`.
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/patch(UpdateCorpus)`.
-    func UpdateCorpus(_ input: Operations.UpdateCorpus.Input) async throws -> Operations.UpdateCorpus.Output
+    func updateCorpus(_ input: Operations.UpdateCorpus.Input) async throws -> Operations.UpdateCorpus.Output
     /// Deletes a `Corpus`.
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/delete(DeleteCorpus)`.
-    func DeleteCorpus(_ input: Operations.DeleteCorpus.Input) async throws -> Operations.DeleteCorpus.Output
+    func deleteCorpus(_ input: Operations.DeleteCorpus.Input) async throws -> Operations.DeleteCorpus.Output
     /// Performs semantic search over a `Corpus`.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}:query`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}:query/post(QueryCorpus)`.
-    func QueryCorpus(_ input: Operations.QueryCorpus.Input) async throws -> Operations.QueryCorpus.Output
+    func queryCorpus(_ input: Operations.QueryCorpus.Input) async throws -> Operations.QueryCorpus.Output
     /// Lists all `Document`s in a `Corpus`.
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/get(ListDocuments)`.
-    func ListDocuments(_ input: Operations.ListDocuments.Input) async throws -> Operations.ListDocuments.Output
+    func listDocuments(_ input: Operations.ListDocuments.Input) async throws -> Operations.ListDocuments.Output
     /// Creates an empty `Document`.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/post(CreateDocument)`.
-    func CreateDocument(_ input: Operations.CreateDocument.Input) async throws -> Operations.CreateDocument.Output
+    func createDocument(_ input: Operations.CreateDocument.Input) async throws -> Operations.CreateDocument.Output
     /// Gets information about a specific `Document`.
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/get(GetDocument)`.
-    func GetDocument(_ input: Operations.GetDocument.Input) async throws -> Operations.GetDocument.Output
+    func getDocument(_ input: Operations.GetDocument.Input) async throws -> Operations.GetDocument.Output
     /// Updates a `Document`.
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/patch(UpdateDocument)`.
-    func UpdateDocument(_ input: Operations.UpdateDocument.Input) async throws -> Operations.UpdateDocument.Output
+    func updateDocument(_ input: Operations.UpdateDocument.Input) async throws -> Operations.UpdateDocument.Output
     /// Deletes a `Document`.
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/delete(DeleteDocument)`.
-    func DeleteDocument(_ input: Operations.DeleteDocument.Input) async throws -> Operations.DeleteDocument.Output
+    func deleteDocument(_ input: Operations.DeleteDocument.Input) async throws -> Operations.DeleteDocument.Output
     /// Performs semantic search over a `Document`.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}:query`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}:query/post(QueryDocument)`.
-    func QueryDocument(_ input: Operations.QueryDocument.Input) async throws -> Operations.QueryDocument.Output
+    func queryDocument(_ input: Operations.QueryDocument.Input) async throws -> Operations.QueryDocument.Output
     /// Lists all `Chunk`s in a `Document`.
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}/chunks`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/get(ListChunks)`.
-    func ListChunks(_ input: Operations.ListChunks.Input) async throws -> Operations.ListChunks.Output
+    func listChunks(_ input: Operations.ListChunks.Input) async throws -> Operations.ListChunks.Output
     /// Creates a `Chunk`.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/post(CreateChunk)`.
-    func CreateChunk(_ input: Operations.CreateChunk.Input) async throws -> Operations.CreateChunk.Output
+    func createChunk(_ input: Operations.CreateChunk.Input) async throws -> Operations.CreateChunk.Output
     /// Batch create `Chunk`s.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/post(BatchCreateChunks)`.
-    func BatchCreateChunks(_ input: Operations.BatchCreateChunks.Input) async throws -> Operations.BatchCreateChunks.Output
+    func batchCreateChunks(_ input: Operations.BatchCreateChunks.Input) async throws -> Operations.BatchCreateChunks.Output
     /// Batch delete `Chunk`s.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/post(BatchDeleteChunks)`.
-    func BatchDeleteChunks(_ input: Operations.BatchDeleteChunks.Input) async throws -> Operations.BatchDeleteChunks.Output
+    func batchDeleteChunks(_ input: Operations.BatchDeleteChunks.Input) async throws -> Operations.BatchDeleteChunks.Output
     /// Batch update `Chunk`s.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate/post(BatchUpdateChunks)`.
-    func BatchUpdateChunks(_ input: Operations.BatchUpdateChunks.Input) async throws -> Operations.BatchUpdateChunks.Output
+    func batchUpdateChunks(_ input: Operations.BatchUpdateChunks.Input) async throws -> Operations.BatchUpdateChunks.Output
     /// Gets information about a specific `Chunk`.
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/get(GetChunk)`.
-    func GetChunk(_ input: Operations.GetChunk.Input) async throws -> Operations.GetChunk.Output
+    func getChunk(_ input: Operations.GetChunk.Input) async throws -> Operations.GetChunk.Output
     /// Updates a `Chunk`.
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/patch(UpdateChunk)`.
-    func UpdateChunk(_ input: Operations.UpdateChunk.Input) async throws -> Operations.UpdateChunk.Output
+    func updateChunk(_ input: Operations.UpdateChunk.Input) async throws -> Operations.UpdateChunk.Output
     /// Deletes a `Chunk`.
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/delete(DeleteChunk)`.
-    func DeleteChunk(_ input: Operations.DeleteChunk.Input) async throws -> Operations.DeleteChunk.Output
+    func deleteChunk(_ input: Operations.DeleteChunk.Input) async throws -> Operations.DeleteChunk.Output
     /// Lists permissions for the specific resource.
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/get(ListPermissionsByCorpus)`.
-    func ListPermissionsByCorpus(_ input: Operations.ListPermissionsByCorpus.Input) async throws -> Operations.ListPermissionsByCorpus.Output
+    func listPermissionsByCorpus(_ input: Operations.ListPermissionsByCorpus.Input) async throws -> Operations.ListPermissionsByCorpus.Output
     /// Create a permission to a specific resource.
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/post(CreatePermissionByCorpus)`.
-    func CreatePermissionByCorpus(_ input: Operations.CreatePermissionByCorpus.Input) async throws -> Operations.CreatePermissionByCorpus.Output
+    func createPermissionByCorpus(_ input: Operations.CreatePermissionByCorpus.Input) async throws -> Operations.CreatePermissionByCorpus.Output
     /// Gets information about a specific Permission.
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/get(GetPermissionByCorpusAndPermission)`.
-    func GetPermissionByCorpusAndPermission(_ input: Operations.GetPermissionByCorpusAndPermission.Input) async throws -> Operations.GetPermissionByCorpusAndPermission.Output
+    func getPermissionByCorpusAndPermission(_ input: Operations.GetPermissionByCorpusAndPermission.Input) async throws -> Operations.GetPermissionByCorpusAndPermission.Output
     /// Updates the permission.
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/patch(UpdatePermissionByCorpusAndPermission)`.
-    func UpdatePermissionByCorpusAndPermission(_ input: Operations.UpdatePermissionByCorpusAndPermission.Input) async throws -> Operations.UpdatePermissionByCorpusAndPermission.Output
+    func updatePermissionByCorpusAndPermission(_ input: Operations.UpdatePermissionByCorpusAndPermission.Input) async throws -> Operations.UpdatePermissionByCorpusAndPermission.Output
     /// Deletes the permission.
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/delete(DeletePermissionByCorpusAndPermission)`.
-    func DeletePermissionByCorpusAndPermission(_ input: Operations.DeletePermissionByCorpusAndPermission.Input) async throws -> Operations.DeletePermissionByCorpusAndPermission.Output
+    func deletePermissionByCorpusAndPermission(_ input: Operations.DeletePermissionByCorpusAndPermission.Input) async throws -> Operations.DeletePermissionByCorpusAndPermission.Output
     /// Generates a model response given an input `GenerateContentRequest`.
     /// Refer to the [text generation
     /// guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed
@@ -198,64 +198,64 @@ public protocol APIProtocol: Sendable {
     ///
     /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:generateContent/post(GenerateContentByDynamicId)`.
-    func GenerateContentByDynamicId(_ input: Operations.GenerateContentByDynamicId.Input) async throws -> Operations.GenerateContentByDynamicId.Output
+    func generateContentByDynamicId(_ input: Operations.GenerateContentByDynamicId.Input) async throws -> Operations.GenerateContentByDynamicId.Output
     /// Generates a [streamed
     /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
     /// from the model given an input `GenerateContentRequest`.
     ///
     /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:streamGenerateContent/post(StreamGenerateContentByDynamicId)`.
-    func StreamGenerateContentByDynamicId(_ input: Operations.StreamGenerateContentByDynamicId.Input) async throws -> Operations.StreamGenerateContentByDynamicId.Output
+    func streamGenerateContentByDynamicId(_ input: Operations.StreamGenerateContentByDynamicId.Input) async throws -> Operations.StreamGenerateContentByDynamicId.Output
     /// Lists the metadata for `File`s owned by the requesting project.
     ///
     /// - Remark: HTTP `GET /v1beta/files`.
     /// - Remark: Generated from `#/paths//v1beta/files/get(ListFiles)`.
-    func ListFiles(_ input: Operations.ListFiles.Input) async throws -> Operations.ListFiles.Output
+    func listFiles(_ input: Operations.ListFiles.Input) async throws -> Operations.ListFiles.Output
     /// Creates a `File`.
     ///
     /// - Remark: HTTP `POST /v1beta/files`.
     /// - Remark: Generated from `#/paths//v1beta/files/post(CreateFile)`.
-    func CreateFile(_ input: Operations.CreateFile.Input) async throws -> Operations.CreateFile.Output
+    func createFile(_ input: Operations.CreateFile.Input) async throws -> Operations.CreateFile.Output
     /// Gets the metadata for the given `File`.
     ///
     /// - Remark: HTTP `GET /v1beta/files/{file}`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}/get(GetFile)`.
-    func GetFile(_ input: Operations.GetFile.Input) async throws -> Operations.GetFile.Output
+    func getFile(_ input: Operations.GetFile.Input) async throws -> Operations.GetFile.Output
     /// Deletes the `File`.
     ///
     /// - Remark: HTTP `DELETE /v1beta/files/{file}`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}/delete(DeleteFile)`.
-    func DeleteFile(_ input: Operations.DeleteFile.Input) async throws -> Operations.DeleteFile.Output
+    func deleteFile(_ input: Operations.DeleteFile.Input) async throws -> Operations.DeleteFile.Output
     /// Download the `File`.
     ///
     /// - Remark: HTTP `GET /v1beta/files/{file}:download`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}:download/get(DownloadFile)`.
-    func DownloadFile(_ input: Operations.DownloadFile.Input) async throws -> Operations.DownloadFile.Output
+    func downloadFile(_ input: Operations.DownloadFile.Input) async throws -> Operations.DownloadFile.Output
     /// Lists the generated files owned by the requesting project.
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/get(ListGeneratedFiles)`.
-    func ListGeneratedFiles(_ input: Operations.ListGeneratedFiles.Input) async throws -> Operations.ListGeneratedFiles.Output
+    func listGeneratedFiles(_ input: Operations.ListGeneratedFiles.Input) async throws -> Operations.ListGeneratedFiles.Output
     /// Gets a generated file. When calling this method via REST, only the metadata
     /// of the generated file is returned. To retrieve the file content via REST,
     /// add alt=media as a query parameter.
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/get(GetGeneratedFile)`.
-    func GetGeneratedFile(_ input: Operations.GetGeneratedFile.Input) async throws -> Operations.GetGeneratedFile.Output
+    func getGeneratedFile(_ input: Operations.GetGeneratedFile.Input) async throws -> Operations.GetGeneratedFile.Output
     /// Gets the latest state of a long-running operation.  Clients can use this
     /// method to poll the operation result at intervals as recommended by the API
     /// service.
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/operations/{operation}/get(GetOperationByGeneratedFileAndOperation)`.
-    func GetOperationByGeneratedFileAndOperation(_ input: Operations.GetOperationByGeneratedFileAndOperation.Input) async throws -> Operations.GetOperationByGeneratedFileAndOperation.Output
+    func getOperationByGeneratedFileAndOperation(_ input: Operations.GetOperationByGeneratedFileAndOperation.Input) async throws -> Operations.GetOperationByGeneratedFileAndOperation.Output
     /// Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini)
     /// available through the Gemini API.
     ///
     /// - Remark: HTTP `GET /v1beta/models`.
     /// - Remark: Generated from `#/paths//v1beta/models/get(ListModels)`.
-    func ListModels(_ input: Operations.ListModels.Input) async throws -> Operations.ListModels.Output
+    func listModels(_ input: Operations.ListModels.Input) async throws -> Operations.ListModels.Output
     /// Gets information about a specific `Model` such as its version number, token
     /// limits,
     /// [parameters](https://ai.google.dev/gemini-api/docs/models/generative-models#model-parameters)
@@ -265,55 +265,55 @@ public protocol APIProtocol: Sendable {
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/get(GetModel)`.
-    func GetModel(_ input: Operations.GetModel.Input) async throws -> Operations.GetModel.Output
+    func getModel(_ input: Operations.GetModel.Input) async throws -> Operations.GetModel.Output
     /// Generates multiple embedding vectors from the input `Content` which
     /// consists of a batch of strings represented as `EmbedContentRequest`
     /// objects.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedContents`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedContents/post(BatchEmbedContents)`.
-    func BatchEmbedContents(_ input: Operations.BatchEmbedContents.Input) async throws -> Operations.BatchEmbedContents.Output
+    func batchEmbedContents(_ input: Operations.BatchEmbedContents.Input) async throws -> Operations.BatchEmbedContents.Output
     /// Generates multiple embeddings from the model given input text in a
     /// synchronous call.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedText/post(BatchEmbedText)`.
-    func BatchEmbedText(_ input: Operations.BatchEmbedText.Input) async throws -> Operations.BatchEmbedText.Output
+    func batchEmbedText(_ input: Operations.BatchEmbedText.Input) async throws -> Operations.BatchEmbedText.Output
     /// Runs a model's tokenizer on a string and returns the token count.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countMessageTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countMessageTokens/post(CountMessageTokens)`.
-    func CountMessageTokens(_ input: Operations.CountMessageTokens.Input) async throws -> Operations.CountMessageTokens.Output
+    func countMessageTokens(_ input: Operations.CountMessageTokens.Input) async throws -> Operations.CountMessageTokens.Output
     /// Runs a model's tokenizer on a text and returns the token count.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countTextTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTextTokens/post(CountTextTokens)`.
-    func CountTextTokens(_ input: Operations.CountTextTokens.Input) async throws -> Operations.CountTextTokens.Output
+    func countTextTokens(_ input: Operations.CountTextTokens.Input) async throws -> Operations.CountTextTokens.Output
     /// Runs a model's tokenizer on input `Content` and returns the token count.
     /// Refer to the [tokens guide](https://ai.google.dev/gemini-api/docs/tokens)
     /// to learn more about tokens.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTokens/post(CountTokens)`.
-    func CountTokens(_ input: Operations.CountTokens.Input) async throws -> Operations.CountTokens.Output
+    func countTokens(_ input: Operations.CountTokens.Input) async throws -> Operations.CountTokens.Output
     /// Generates a text embedding vector from the input `Content` using the
     /// specified [Gemini Embedding
     /// model](https://ai.google.dev/gemini-api/docs/models/gemini#text-embedding).
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:embedContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedContent/post(EmbedContent)`.
-    func EmbedContent(_ input: Operations.EmbedContent.Input) async throws -> Operations.EmbedContent.Output
+    func embedContent(_ input: Operations.EmbedContent.Input) async throws -> Operations.EmbedContent.Output
     /// Generates an embedding from the model given an input message.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:embedText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedText/post(EmbedText)`.
-    func EmbedText(_ input: Operations.EmbedText.Input) async throws -> Operations.EmbedText.Output
+    func embedText(_ input: Operations.EmbedText.Input) async throws -> Operations.EmbedText.Output
     /// Generates a grounded answer from the model given an input
     /// `GenerateAnswerRequest`.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateAnswer`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateAnswer/post(GenerateAnswer)`.
-    func GenerateAnswer(_ input: Operations.GenerateAnswer.Input) async throws -> Operations.GenerateAnswer.Output
+    func generateAnswer(_ input: Operations.GenerateAnswer.Input) async throws -> Operations.GenerateAnswer.Output
     /// Generates a model response given an input `GenerateContentRequest`.
     /// Refer to the [text generation
     /// guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed
@@ -324,52 +324,52 @@ public protocol APIProtocol: Sendable {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateContent/post(GenerateContent)`.
-    func GenerateContent(_ input: Operations.GenerateContent.Input) async throws -> Operations.GenerateContent.Output
+    func generateContent(_ input: Operations.GenerateContent.Input) async throws -> Operations.GenerateContent.Output
     /// Generates a response from the model given an input `MessagePrompt`.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateMessage`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateMessage/post(GenerateMessage)`.
-    func GenerateMessage(_ input: Operations.GenerateMessage.Input) async throws -> Operations.GenerateMessage.Output
+    func generateMessage(_ input: Operations.GenerateMessage.Input) async throws -> Operations.GenerateMessage.Output
     /// Generates a response from the model given an input message.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateText/post(GenerateText)`.
-    func GenerateText(_ input: Operations.GenerateText.Input) async throws -> Operations.GenerateText.Output
+    func generateText(_ input: Operations.GenerateText.Input) async throws -> Operations.GenerateText.Output
     /// Performs a prediction request.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:predict`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:predict/post(Predict)`.
-    func Predict(_ input: Operations.Predict.Input) async throws -> Operations.Predict.Output
+    func predict(_ input: Operations.Predict.Input) async throws -> Operations.Predict.Output
     /// Same as Predict but returns an LRO.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:predictLongRunning`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:predictLongRunning/post(PredictLongRunning)`.
-    func PredictLongRunning(_ input: Operations.PredictLongRunning.Input) async throws -> Operations.PredictLongRunning.Output
+    func predictLongRunning(_ input: Operations.PredictLongRunning.Input) async throws -> Operations.PredictLongRunning.Output
     /// Generates a [streamed
     /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
     /// from the model given an input `GenerateContentRequest`.
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:streamGenerateContent/post(StreamGenerateContent)`.
-    func StreamGenerateContent(_ input: Operations.StreamGenerateContent.Input) async throws -> Operations.StreamGenerateContent.Output
+    func streamGenerateContent(_ input: Operations.StreamGenerateContent.Input) async throws -> Operations.StreamGenerateContent.Output
     /// Lists operations that match the specified filter in the request. If the
     /// server doesn't support this method, it returns `UNIMPLEMENTED`.
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}/operations`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/get(ListOperationsByModel)`.
-    func ListOperationsByModel(_ input: Operations.ListOperationsByModel.Input) async throws -> Operations.ListOperationsByModel.Output
+    func listOperationsByModel(_ input: Operations.ListOperationsByModel.Input) async throws -> Operations.ListOperationsByModel.Output
     /// Gets the latest state of a long-running operation.  Clients can use this
     /// method to poll the operation result at intervals as recommended by the API
     /// service.
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/{operation}/get(GetOperationByModelAndOperation)`.
-    func GetOperationByModelAndOperation(_ input: Operations.GetOperationByModelAndOperation.Input) async throws -> Operations.GetOperationByModelAndOperation.Output
+    func getOperationByModelAndOperation(_ input: Operations.GetOperationByModelAndOperation.Input) async throws -> Operations.GetOperationByModelAndOperation.Output
     /// Lists created tuned models.
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/get(ListTunedModels)`.
-    func ListTunedModels(_ input: Operations.ListTunedModels.Input) async throws -> Operations.ListTunedModels.Output
+    func listTunedModels(_ input: Operations.ListTunedModels.Input) async throws -> Operations.ListTunedModels.Output
     /// Creates a tuned model.
     /// Check intermediate tuning progress (if any) through the
     /// [google.longrunning.Operations] service.
@@ -380,22 +380,22 @@ public protocol APIProtocol: Sendable {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/post(CreateTunedModel)`.
-    func CreateTunedModel(_ input: Operations.CreateTunedModel.Input) async throws -> Operations.CreateTunedModel.Output
+    func createTunedModel(_ input: Operations.CreateTunedModel.Input) async throws -> Operations.CreateTunedModel.Output
     /// Gets information about a specific TunedModel.
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/get(GetTunedModel)`.
-    func GetTunedModel(_ input: Operations.GetTunedModel.Input) async throws -> Operations.GetTunedModel.Output
+    func getTunedModel(_ input: Operations.GetTunedModel.Input) async throws -> Operations.GetTunedModel.Output
     /// Updates a tuned model.
     ///
     /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/patch(UpdateTunedModel)`.
-    func UpdateTunedModel(_ input: Operations.UpdateTunedModel.Input) async throws -> Operations.UpdateTunedModel.Output
+    func updateTunedModel(_ input: Operations.UpdateTunedModel.Input) async throws -> Operations.UpdateTunedModel.Output
     /// Deletes a tuned model.
     ///
     /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/delete(DeleteTunedModel)`.
-    func DeleteTunedModel(_ input: Operations.DeleteTunedModel.Input) async throws -> Operations.DeleteTunedModel.Output
+    func deleteTunedModel(_ input: Operations.DeleteTunedModel.Input) async throws -> Operations.DeleteTunedModel.Output
     /// Generates a model response given an input `GenerateContentRequest`.
     /// Refer to the [text generation
     /// guide](https://ai.google.dev/gemini-api/docs/text-generation) for detailed
@@ -406,69 +406,69 @@ public protocol APIProtocol: Sendable {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:generateContent/post(GenerateContentByTunedModel)`.
-    func GenerateContentByTunedModel(_ input: Operations.GenerateContentByTunedModel.Input) async throws -> Operations.GenerateContentByTunedModel.Output
+    func generateContentByTunedModel(_ input: Operations.GenerateContentByTunedModel.Input) async throws -> Operations.GenerateContentByTunedModel.Output
     /// Generates a response from the model given an input message.
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:generateText`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:generateText/post(GenerateTextByTunedModel)`.
-    func GenerateTextByTunedModel(_ input: Operations.GenerateTextByTunedModel.Input) async throws -> Operations.GenerateTextByTunedModel.Output
+    func generateTextByTunedModel(_ input: Operations.GenerateTextByTunedModel.Input) async throws -> Operations.GenerateTextByTunedModel.Output
     /// Generates a [streamed
     /// response](https://ai.google.dev/gemini-api/docs/text-generation?lang=python#generate-a-text-stream)
     /// from the model given an input `GenerateContentRequest`.
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:streamGenerateContent/post(StreamGenerateContentByTunedModel)`.
-    func StreamGenerateContentByTunedModel(_ input: Operations.StreamGenerateContentByTunedModel.Input) async throws -> Operations.StreamGenerateContentByTunedModel.Output
+    func streamGenerateContentByTunedModel(_ input: Operations.StreamGenerateContentByTunedModel.Input) async throws -> Operations.StreamGenerateContentByTunedModel.Output
     /// Transfers ownership of the tuned model.
     /// This is the only way to change ownership of the tuned model.
     /// The current owner will be downgraded to writer role.
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:transferOwnership`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:transferOwnership/post(TransferOwnership)`.
-    func TransferOwnership(_ input: Operations.TransferOwnership.Input) async throws -> Operations.TransferOwnership.Output
+    func transferOwnership(_ input: Operations.TransferOwnership.Input) async throws -> Operations.TransferOwnership.Output
     /// Lists operations that match the specified filter in the request. If the
     /// server doesn't support this method, it returns `UNIMPLEMENTED`.
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/get(ListOperations)`.
-    func ListOperations(_ input: Operations.ListOperations.Input) async throws -> Operations.ListOperations.Output
+    func listOperations(_ input: Operations.ListOperations.Input) async throws -> Operations.ListOperations.Output
     /// Gets the latest state of a long-running operation.  Clients can use this
     /// method to poll the operation result at intervals as recommended by the API
     /// service.
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/{operation}/get(GetOperation)`.
-    func GetOperation(_ input: Operations.GetOperation.Input) async throws -> Operations.GetOperation.Output
+    func getOperation(_ input: Operations.GetOperation.Input) async throws -> Operations.GetOperation.Output
     /// Lists permissions for the specific resource.
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/get(ListPermissions)`.
-    func ListPermissions(_ input: Operations.ListPermissions.Input) async throws -> Operations.ListPermissions.Output
+    func listPermissions(_ input: Operations.ListPermissions.Input) async throws -> Operations.ListPermissions.Output
     /// Create a permission to a specific resource.
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/post(CreatePermission)`.
-    func CreatePermission(_ input: Operations.CreatePermission.Input) async throws -> Operations.CreatePermission.Output
+    func createPermission(_ input: Operations.CreatePermission.Input) async throws -> Operations.CreatePermission.Output
     /// Gets information about a specific Permission.
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/get(GetPermission)`.
-    func GetPermission(_ input: Operations.GetPermission.Input) async throws -> Operations.GetPermission.Output
+    func getPermission(_ input: Operations.GetPermission.Input) async throws -> Operations.GetPermission.Output
     /// Updates the permission.
     ///
     /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/patch(UpdatePermission)`.
-    func UpdatePermission(_ input: Operations.UpdatePermission.Input) async throws -> Operations.UpdatePermission.Output
+    func updatePermission(_ input: Operations.UpdatePermission.Input) async throws -> Operations.UpdatePermission.Output
     /// Deletes the permission.
     ///
     /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/delete(DeletePermission)`.
-    func DeletePermission(_ input: Operations.DeletePermission.Input) async throws -> Operations.DeletePermission.Output
+    func deletePermission(_ input: Operations.DeletePermission.Input) async throws -> Operations.DeletePermission.Output
     ///
     ///
     /// - Remark: HTTP `POST /upload/v1beta/files`.
     /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)`.
-    func UploadFiles(_ input: Operations.UploadFiles.Input) async throws -> Operations.UploadFiles.Output
+    func uploadFiles(_ input: Operations.UploadFiles.Input) async throws -> Operations.UploadFiles.Output
 }
 
 /// Convenience overloads for operation inputs.
@@ -478,11 +478,11 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/batches`.
     /// - Remark: Generated from `#/paths//v1beta/batches/get(ListOperationsBy)`.
-    public func ListOperationsBy(
+    public func listOperationsBy(
         query: Operations.ListOperationsBy.Input.Query = .init(),
         headers: Operations.ListOperationsBy.Input.Headers = .init()
     ) async throws -> Operations.ListOperationsBy.Output {
-        try await ListOperationsBy(Operations.ListOperationsBy.Input(
+        try await listOperationsBy(Operations.ListOperationsBy.Input(
             query: query,
             headers: headers
         ))
@@ -493,12 +493,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/batches/{generateContentBatch}`.
     /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/get(GetOperationByGenerateContentBatch)`.
-    public func GetOperationByGenerateContentBatch(
+    public func getOperationByGenerateContentBatch(
         path: Operations.GetOperationByGenerateContentBatch.Input.Path,
         query: Operations.GetOperationByGenerateContentBatch.Input.Query = .init(),
         headers: Operations.GetOperationByGenerateContentBatch.Input.Headers = .init()
     ) async throws -> Operations.GetOperationByGenerateContentBatch.Output {
-        try await GetOperationByGenerateContentBatch(Operations.GetOperationByGenerateContentBatch.Input(
+        try await getOperationByGenerateContentBatch(Operations.GetOperationByGenerateContentBatch.Input(
             path: path,
             query: query,
             headers: headers
@@ -517,12 +517,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/batches/{generateContentBatch}:cancel`.
     /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}:cancel/post(CancelOperation)`.
-    public func CancelOperation(
+    public func cancelOperation(
         path: Operations.CancelOperation.Input.Path,
         query: Operations.CancelOperation.Input.Query = .init(),
         headers: Operations.CancelOperation.Input.Headers = .init()
     ) async throws -> Operations.CancelOperation.Output {
-        try await CancelOperation(Operations.CancelOperation.Input(
+        try await cancelOperation(Operations.CancelOperation.Input(
             path: path,
             query: query,
             headers: headers
@@ -532,11 +532,11 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/cachedContents`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/get(ListCachedContents)`.
-    public func ListCachedContents(
+    public func listCachedContents(
         query: Operations.ListCachedContents.Input.Query = .init(),
         headers: Operations.ListCachedContents.Input.Headers = .init()
     ) async throws -> Operations.ListCachedContents.Output {
-        try await ListCachedContents(Operations.ListCachedContents.Input(
+        try await listCachedContents(Operations.ListCachedContents.Input(
             query: query,
             headers: headers
         ))
@@ -545,12 +545,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/cachedContents`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/post(CreateCachedContent)`.
-    public func CreateCachedContent(
+    public func createCachedContent(
         query: Operations.CreateCachedContent.Input.Query = .init(),
         headers: Operations.CreateCachedContent.Input.Headers = .init(),
         body: Operations.CreateCachedContent.Input.Body? = nil
     ) async throws -> Operations.CreateCachedContent.Output {
-        try await CreateCachedContent(Operations.CreateCachedContent.Input(
+        try await createCachedContent(Operations.CreateCachedContent.Input(
             query: query,
             headers: headers,
             body: body
@@ -560,12 +560,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/get(GetCachedContent)`.
-    public func GetCachedContent(
+    public func getCachedContent(
         path: Operations.GetCachedContent.Input.Path,
         query: Operations.GetCachedContent.Input.Query = .init(),
         headers: Operations.GetCachedContent.Input.Headers = .init()
     ) async throws -> Operations.GetCachedContent.Output {
-        try await GetCachedContent(Operations.GetCachedContent.Input(
+        try await getCachedContent(Operations.GetCachedContent.Input(
             path: path,
             query: query,
             headers: headers
@@ -575,13 +575,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/patch(UpdateCachedContent)`.
-    public func UpdateCachedContent(
+    public func updateCachedContent(
         path: Operations.UpdateCachedContent.Input.Path,
         query: Operations.UpdateCachedContent.Input.Query = .init(),
         headers: Operations.UpdateCachedContent.Input.Headers = .init(),
         body: Operations.UpdateCachedContent.Input.Body? = nil
     ) async throws -> Operations.UpdateCachedContent.Output {
-        try await UpdateCachedContent(Operations.UpdateCachedContent.Input(
+        try await updateCachedContent(Operations.UpdateCachedContent.Input(
             path: path,
             query: query,
             headers: headers,
@@ -592,12 +592,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/cachedContents/{id}`.
     /// - Remark: Generated from `#/paths//v1beta/cachedContents/{id}/delete(DeleteCachedContent)`.
-    public func DeleteCachedContent(
+    public func deleteCachedContent(
         path: Operations.DeleteCachedContent.Input.Path,
         query: Operations.DeleteCachedContent.Input.Query = .init(),
         headers: Operations.DeleteCachedContent.Input.Headers = .init()
     ) async throws -> Operations.DeleteCachedContent.Output {
-        try await DeleteCachedContent(Operations.DeleteCachedContent.Input(
+        try await deleteCachedContent(Operations.DeleteCachedContent.Input(
             path: path,
             query: query,
             headers: headers
@@ -607,11 +607,11 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/get(ListCorpora)`.
-    public func ListCorpora(
+    public func listCorpora(
         query: Operations.ListCorpora.Input.Query = .init(),
         headers: Operations.ListCorpora.Input.Headers = .init()
     ) async throws -> Operations.ListCorpora.Output {
-        try await ListCorpora(Operations.ListCorpora.Input(
+        try await listCorpora(Operations.ListCorpora.Input(
             query: query,
             headers: headers
         ))
@@ -620,12 +620,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/post(CreateCorpus)`.
-    public func CreateCorpus(
+    public func createCorpus(
         query: Operations.CreateCorpus.Input.Query = .init(),
         headers: Operations.CreateCorpus.Input.Headers = .init(),
         body: Operations.CreateCorpus.Input.Body? = nil
     ) async throws -> Operations.CreateCorpus.Output {
-        try await CreateCorpus(Operations.CreateCorpus.Input(
+        try await createCorpus(Operations.CreateCorpus.Input(
             query: query,
             headers: headers,
             body: body
@@ -635,12 +635,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/get(GetCorpus)`.
-    public func GetCorpus(
+    public func getCorpus(
         path: Operations.GetCorpus.Input.Path,
         query: Operations.GetCorpus.Input.Query = .init(),
         headers: Operations.GetCorpus.Input.Headers = .init()
     ) async throws -> Operations.GetCorpus.Output {
-        try await GetCorpus(Operations.GetCorpus.Input(
+        try await getCorpus(Operations.GetCorpus.Input(
             path: path,
             query: query,
             headers: headers
@@ -650,13 +650,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/patch(UpdateCorpus)`.
-    public func UpdateCorpus(
+    public func updateCorpus(
         path: Operations.UpdateCorpus.Input.Path,
         query: Operations.UpdateCorpus.Input.Query,
         headers: Operations.UpdateCorpus.Input.Headers = .init(),
         body: Operations.UpdateCorpus.Input.Body? = nil
     ) async throws -> Operations.UpdateCorpus.Output {
-        try await UpdateCorpus(Operations.UpdateCorpus.Input(
+        try await updateCorpus(Operations.UpdateCorpus.Input(
             path: path,
             query: query,
             headers: headers,
@@ -667,12 +667,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/delete(DeleteCorpus)`.
-    public func DeleteCorpus(
+    public func deleteCorpus(
         path: Operations.DeleteCorpus.Input.Path,
         query: Operations.DeleteCorpus.Input.Query = .init(),
         headers: Operations.DeleteCorpus.Input.Headers = .init()
     ) async throws -> Operations.DeleteCorpus.Output {
-        try await DeleteCorpus(Operations.DeleteCorpus.Input(
+        try await deleteCorpus(Operations.DeleteCorpus.Input(
             path: path,
             query: query,
             headers: headers
@@ -682,13 +682,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}:query`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}:query/post(QueryCorpus)`.
-    public func QueryCorpus(
+    public func queryCorpus(
         path: Operations.QueryCorpus.Input.Path,
         query: Operations.QueryCorpus.Input.Query = .init(),
         headers: Operations.QueryCorpus.Input.Headers = .init(),
         body: Operations.QueryCorpus.Input.Body? = nil
     ) async throws -> Operations.QueryCorpus.Output {
-        try await QueryCorpus(Operations.QueryCorpus.Input(
+        try await queryCorpus(Operations.QueryCorpus.Input(
             path: path,
             query: query,
             headers: headers,
@@ -699,12 +699,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/get(ListDocuments)`.
-    public func ListDocuments(
+    public func listDocuments(
         path: Operations.ListDocuments.Input.Path,
         query: Operations.ListDocuments.Input.Query = .init(),
         headers: Operations.ListDocuments.Input.Headers = .init()
     ) async throws -> Operations.ListDocuments.Output {
-        try await ListDocuments(Operations.ListDocuments.Input(
+        try await listDocuments(Operations.ListDocuments.Input(
             path: path,
             query: query,
             headers: headers
@@ -714,13 +714,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/post(CreateDocument)`.
-    public func CreateDocument(
+    public func createDocument(
         path: Operations.CreateDocument.Input.Path,
         query: Operations.CreateDocument.Input.Query = .init(),
         headers: Operations.CreateDocument.Input.Headers = .init(),
         body: Operations.CreateDocument.Input.Body? = nil
     ) async throws -> Operations.CreateDocument.Output {
-        try await CreateDocument(Operations.CreateDocument.Input(
+        try await createDocument(Operations.CreateDocument.Input(
             path: path,
             query: query,
             headers: headers,
@@ -731,12 +731,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/get(GetDocument)`.
-    public func GetDocument(
+    public func getDocument(
         path: Operations.GetDocument.Input.Path,
         query: Operations.GetDocument.Input.Query = .init(),
         headers: Operations.GetDocument.Input.Headers = .init()
     ) async throws -> Operations.GetDocument.Output {
-        try await GetDocument(Operations.GetDocument.Input(
+        try await getDocument(Operations.GetDocument.Input(
             path: path,
             query: query,
             headers: headers
@@ -746,13 +746,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/patch(UpdateDocument)`.
-    public func UpdateDocument(
+    public func updateDocument(
         path: Operations.UpdateDocument.Input.Path,
         query: Operations.UpdateDocument.Input.Query,
         headers: Operations.UpdateDocument.Input.Headers = .init(),
         body: Operations.UpdateDocument.Input.Body? = nil
     ) async throws -> Operations.UpdateDocument.Output {
-        try await UpdateDocument(Operations.UpdateDocument.Input(
+        try await updateDocument(Operations.UpdateDocument.Input(
             path: path,
             query: query,
             headers: headers,
@@ -763,12 +763,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/documents/{document}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/delete(DeleteDocument)`.
-    public func DeleteDocument(
+    public func deleteDocument(
         path: Operations.DeleteDocument.Input.Path,
         query: Operations.DeleteDocument.Input.Query = .init(),
         headers: Operations.DeleteDocument.Input.Headers = .init()
     ) async throws -> Operations.DeleteDocument.Output {
-        try await DeleteDocument(Operations.DeleteDocument.Input(
+        try await deleteDocument(Operations.DeleteDocument.Input(
             path: path,
             query: query,
             headers: headers
@@ -778,13 +778,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}:query`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}:query/post(QueryDocument)`.
-    public func QueryDocument(
+    public func queryDocument(
         path: Operations.QueryDocument.Input.Path,
         query: Operations.QueryDocument.Input.Query = .init(),
         headers: Operations.QueryDocument.Input.Headers = .init(),
         body: Operations.QueryDocument.Input.Body? = nil
     ) async throws -> Operations.QueryDocument.Output {
-        try await QueryDocument(Operations.QueryDocument.Input(
+        try await queryDocument(Operations.QueryDocument.Input(
             path: path,
             query: query,
             headers: headers,
@@ -795,12 +795,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}/chunks`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/get(ListChunks)`.
-    public func ListChunks(
+    public func listChunks(
         path: Operations.ListChunks.Input.Path,
         query: Operations.ListChunks.Input.Query = .init(),
         headers: Operations.ListChunks.Input.Headers = .init()
     ) async throws -> Operations.ListChunks.Output {
-        try await ListChunks(Operations.ListChunks.Input(
+        try await listChunks(Operations.ListChunks.Input(
             path: path,
             query: query,
             headers: headers
@@ -810,13 +810,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/post(CreateChunk)`.
-    public func CreateChunk(
+    public func createChunk(
         path: Operations.CreateChunk.Input.Path,
         query: Operations.CreateChunk.Input.Query = .init(),
         headers: Operations.CreateChunk.Input.Headers = .init(),
         body: Operations.CreateChunk.Input.Body? = nil
     ) async throws -> Operations.CreateChunk.Output {
-        try await CreateChunk(Operations.CreateChunk.Input(
+        try await createChunk(Operations.CreateChunk.Input(
             path: path,
             query: query,
             headers: headers,
@@ -827,13 +827,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/post(BatchCreateChunks)`.
-    public func BatchCreateChunks(
+    public func batchCreateChunks(
         path: Operations.BatchCreateChunks.Input.Path,
         query: Operations.BatchCreateChunks.Input.Query = .init(),
         headers: Operations.BatchCreateChunks.Input.Headers = .init(),
         body: Operations.BatchCreateChunks.Input.Body? = nil
     ) async throws -> Operations.BatchCreateChunks.Output {
-        try await BatchCreateChunks(Operations.BatchCreateChunks.Input(
+        try await batchCreateChunks(Operations.BatchCreateChunks.Input(
             path: path,
             query: query,
             headers: headers,
@@ -844,13 +844,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/post(BatchDeleteChunks)`.
-    public func BatchDeleteChunks(
+    public func batchDeleteChunks(
         path: Operations.BatchDeleteChunks.Input.Path,
         query: Operations.BatchDeleteChunks.Input.Query = .init(),
         headers: Operations.BatchDeleteChunks.Input.Headers = .init(),
         body: Operations.BatchDeleteChunks.Input.Body? = nil
     ) async throws -> Operations.BatchDeleteChunks.Output {
-        try await BatchDeleteChunks(Operations.BatchDeleteChunks.Input(
+        try await batchDeleteChunks(Operations.BatchDeleteChunks.Input(
             path: path,
             query: query,
             headers: headers,
@@ -861,13 +861,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate/post(BatchUpdateChunks)`.
-    public func BatchUpdateChunks(
+    public func batchUpdateChunks(
         path: Operations.BatchUpdateChunks.Input.Path,
         query: Operations.BatchUpdateChunks.Input.Query = .init(),
         headers: Operations.BatchUpdateChunks.Input.Headers = .init(),
         body: Operations.BatchUpdateChunks.Input.Body? = nil
     ) async throws -> Operations.BatchUpdateChunks.Output {
-        try await BatchUpdateChunks(Operations.BatchUpdateChunks.Input(
+        try await batchUpdateChunks(Operations.BatchUpdateChunks.Input(
             path: path,
             query: query,
             headers: headers,
@@ -878,12 +878,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/get(GetChunk)`.
-    public func GetChunk(
+    public func getChunk(
         path: Operations.GetChunk.Input.Path,
         query: Operations.GetChunk.Input.Query = .init(),
         headers: Operations.GetChunk.Input.Headers = .init()
     ) async throws -> Operations.GetChunk.Output {
-        try await GetChunk(Operations.GetChunk.Input(
+        try await getChunk(Operations.GetChunk.Input(
             path: path,
             query: query,
             headers: headers
@@ -893,13 +893,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/patch(UpdateChunk)`.
-    public func UpdateChunk(
+    public func updateChunk(
         path: Operations.UpdateChunk.Input.Path,
         query: Operations.UpdateChunk.Input.Query,
         headers: Operations.UpdateChunk.Input.Headers = .init(),
         body: Operations.UpdateChunk.Input.Body? = nil
     ) async throws -> Operations.UpdateChunk.Output {
-        try await UpdateChunk(Operations.UpdateChunk.Input(
+        try await updateChunk(Operations.UpdateChunk.Input(
             path: path,
             query: query,
             headers: headers,
@@ -910,12 +910,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/delete(DeleteChunk)`.
-    public func DeleteChunk(
+    public func deleteChunk(
         path: Operations.DeleteChunk.Input.Path,
         query: Operations.DeleteChunk.Input.Query = .init(),
         headers: Operations.DeleteChunk.Input.Headers = .init()
     ) async throws -> Operations.DeleteChunk.Output {
-        try await DeleteChunk(Operations.DeleteChunk.Input(
+        try await deleteChunk(Operations.DeleteChunk.Input(
             path: path,
             query: query,
             headers: headers
@@ -925,12 +925,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/get(ListPermissionsByCorpus)`.
-    public func ListPermissionsByCorpus(
+    public func listPermissionsByCorpus(
         path: Operations.ListPermissionsByCorpus.Input.Path,
         query: Operations.ListPermissionsByCorpus.Input.Query = .init(),
         headers: Operations.ListPermissionsByCorpus.Input.Headers = .init()
     ) async throws -> Operations.ListPermissionsByCorpus.Output {
-        try await ListPermissionsByCorpus(Operations.ListPermissionsByCorpus.Input(
+        try await listPermissionsByCorpus(Operations.ListPermissionsByCorpus.Input(
             path: path,
             query: query,
             headers: headers
@@ -940,13 +940,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/corpora/{corpus}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/post(CreatePermissionByCorpus)`.
-    public func CreatePermissionByCorpus(
+    public func createPermissionByCorpus(
         path: Operations.CreatePermissionByCorpus.Input.Path,
         query: Operations.CreatePermissionByCorpus.Input.Query = .init(),
         headers: Operations.CreatePermissionByCorpus.Input.Headers = .init(),
         body: Operations.CreatePermissionByCorpus.Input.Body? = nil
     ) async throws -> Operations.CreatePermissionByCorpus.Output {
-        try await CreatePermissionByCorpus(Operations.CreatePermissionByCorpus.Input(
+        try await createPermissionByCorpus(Operations.CreatePermissionByCorpus.Input(
             path: path,
             query: query,
             headers: headers,
@@ -957,12 +957,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/get(GetPermissionByCorpusAndPermission)`.
-    public func GetPermissionByCorpusAndPermission(
+    public func getPermissionByCorpusAndPermission(
         path: Operations.GetPermissionByCorpusAndPermission.Input.Path,
         query: Operations.GetPermissionByCorpusAndPermission.Input.Query = .init(),
         headers: Operations.GetPermissionByCorpusAndPermission.Input.Headers = .init()
     ) async throws -> Operations.GetPermissionByCorpusAndPermission.Output {
-        try await GetPermissionByCorpusAndPermission(Operations.GetPermissionByCorpusAndPermission.Input(
+        try await getPermissionByCorpusAndPermission(Operations.GetPermissionByCorpusAndPermission.Input(
             path: path,
             query: query,
             headers: headers
@@ -972,13 +972,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/patch(UpdatePermissionByCorpusAndPermission)`.
-    public func UpdatePermissionByCorpusAndPermission(
+    public func updatePermissionByCorpusAndPermission(
         path: Operations.UpdatePermissionByCorpusAndPermission.Input.Path,
         query: Operations.UpdatePermissionByCorpusAndPermission.Input.Query,
         headers: Operations.UpdatePermissionByCorpusAndPermission.Input.Headers = .init(),
         body: Operations.UpdatePermissionByCorpusAndPermission.Input.Body? = nil
     ) async throws -> Operations.UpdatePermissionByCorpusAndPermission.Output {
-        try await UpdatePermissionByCorpusAndPermission(Operations.UpdatePermissionByCorpusAndPermission.Input(
+        try await updatePermissionByCorpusAndPermission(Operations.UpdatePermissionByCorpusAndPermission.Input(
             path: path,
             query: query,
             headers: headers,
@@ -989,12 +989,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/corpora/{corpus}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/corpora/{corpus}/permissions/{permission}/delete(DeletePermissionByCorpusAndPermission)`.
-    public func DeletePermissionByCorpusAndPermission(
+    public func deletePermissionByCorpusAndPermission(
         path: Operations.DeletePermissionByCorpusAndPermission.Input.Path,
         query: Operations.DeletePermissionByCorpusAndPermission.Input.Query = .init(),
         headers: Operations.DeletePermissionByCorpusAndPermission.Input.Headers = .init()
     ) async throws -> Operations.DeletePermissionByCorpusAndPermission.Output {
-        try await DeletePermissionByCorpusAndPermission(Operations.DeletePermissionByCorpusAndPermission.Input(
+        try await deletePermissionByCorpusAndPermission(Operations.DeletePermissionByCorpusAndPermission.Input(
             path: path,
             query: query,
             headers: headers
@@ -1010,13 +1010,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:generateContent/post(GenerateContentByDynamicId)`.
-    public func GenerateContentByDynamicId(
+    public func generateContentByDynamicId(
         path: Operations.GenerateContentByDynamicId.Input.Path,
         query: Operations.GenerateContentByDynamicId.Input.Query = .init(),
         headers: Operations.GenerateContentByDynamicId.Input.Headers = .init(),
         body: Operations.GenerateContentByDynamicId.Input.Body? = nil
     ) async throws -> Operations.GenerateContentByDynamicId.Output {
-        try await GenerateContentByDynamicId(Operations.GenerateContentByDynamicId.Input(
+        try await generateContentByDynamicId(Operations.GenerateContentByDynamicId.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1029,13 +1029,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/dynamic/{dynamicId}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/dynamic/{dynamicId}:streamGenerateContent/post(StreamGenerateContentByDynamicId)`.
-    public func StreamGenerateContentByDynamicId(
+    public func streamGenerateContentByDynamicId(
         path: Operations.StreamGenerateContentByDynamicId.Input.Path,
         query: Operations.StreamGenerateContentByDynamicId.Input.Query = .init(),
         headers: Operations.StreamGenerateContentByDynamicId.Input.Headers = .init(),
         body: Operations.StreamGenerateContentByDynamicId.Input.Body? = nil
     ) async throws -> Operations.StreamGenerateContentByDynamicId.Output {
-        try await StreamGenerateContentByDynamicId(Operations.StreamGenerateContentByDynamicId.Input(
+        try await streamGenerateContentByDynamicId(Operations.StreamGenerateContentByDynamicId.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1046,11 +1046,11 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/files`.
     /// - Remark: Generated from `#/paths//v1beta/files/get(ListFiles)`.
-    public func ListFiles(
+    public func listFiles(
         query: Operations.ListFiles.Input.Query = .init(),
         headers: Operations.ListFiles.Input.Headers = .init()
     ) async throws -> Operations.ListFiles.Output {
-        try await ListFiles(Operations.ListFiles.Input(
+        try await listFiles(Operations.ListFiles.Input(
             query: query,
             headers: headers
         ))
@@ -1059,12 +1059,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/files`.
     /// - Remark: Generated from `#/paths//v1beta/files/post(CreateFile)`.
-    public func CreateFile(
+    public func createFile(
         query: Operations.CreateFile.Input.Query = .init(),
         headers: Operations.CreateFile.Input.Headers = .init(),
         body: Operations.CreateFile.Input.Body? = nil
     ) async throws -> Operations.CreateFile.Output {
-        try await CreateFile(Operations.CreateFile.Input(
+        try await createFile(Operations.CreateFile.Input(
             query: query,
             headers: headers,
             body: body
@@ -1074,12 +1074,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/files/{file}`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}/get(GetFile)`.
-    public func GetFile(
+    public func getFile(
         path: Operations.GetFile.Input.Path,
         query: Operations.GetFile.Input.Query = .init(),
         headers: Operations.GetFile.Input.Headers = .init()
     ) async throws -> Operations.GetFile.Output {
-        try await GetFile(Operations.GetFile.Input(
+        try await getFile(Operations.GetFile.Input(
             path: path,
             query: query,
             headers: headers
@@ -1089,12 +1089,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/files/{file}`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}/delete(DeleteFile)`.
-    public func DeleteFile(
+    public func deleteFile(
         path: Operations.DeleteFile.Input.Path,
         query: Operations.DeleteFile.Input.Query = .init(),
         headers: Operations.DeleteFile.Input.Headers = .init()
     ) async throws -> Operations.DeleteFile.Output {
-        try await DeleteFile(Operations.DeleteFile.Input(
+        try await deleteFile(Operations.DeleteFile.Input(
             path: path,
             query: query,
             headers: headers
@@ -1104,12 +1104,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/files/{file}:download`.
     /// - Remark: Generated from `#/paths//v1beta/files/{file}:download/get(DownloadFile)`.
-    public func DownloadFile(
+    public func downloadFile(
         path: Operations.DownloadFile.Input.Path,
         query: Operations.DownloadFile.Input.Query = .init(),
         headers: Operations.DownloadFile.Input.Headers = .init()
     ) async throws -> Operations.DownloadFile.Output {
-        try await DownloadFile(Operations.DownloadFile.Input(
+        try await downloadFile(Operations.DownloadFile.Input(
             path: path,
             query: query,
             headers: headers
@@ -1119,11 +1119,11 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/get(ListGeneratedFiles)`.
-    public func ListGeneratedFiles(
+    public func listGeneratedFiles(
         query: Operations.ListGeneratedFiles.Input.Query = .init(),
         headers: Operations.ListGeneratedFiles.Input.Headers = .init()
     ) async throws -> Operations.ListGeneratedFiles.Output {
-        try await ListGeneratedFiles(Operations.ListGeneratedFiles.Input(
+        try await listGeneratedFiles(Operations.ListGeneratedFiles.Input(
             query: query,
             headers: headers
         ))
@@ -1134,12 +1134,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/get(GetGeneratedFile)`.
-    public func GetGeneratedFile(
+    public func getGeneratedFile(
         path: Operations.GetGeneratedFile.Input.Path,
         query: Operations.GetGeneratedFile.Input.Query = .init(),
         headers: Operations.GetGeneratedFile.Input.Headers = .init()
     ) async throws -> Operations.GetGeneratedFile.Output {
-        try await GetGeneratedFile(Operations.GetGeneratedFile.Input(
+        try await getGeneratedFile(Operations.GetGeneratedFile.Input(
             path: path,
             query: query,
             headers: headers
@@ -1151,12 +1151,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/generatedFiles/{generatedFile}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/generatedFiles/{generatedFile}/operations/{operation}/get(GetOperationByGeneratedFileAndOperation)`.
-    public func GetOperationByGeneratedFileAndOperation(
+    public func getOperationByGeneratedFileAndOperation(
         path: Operations.GetOperationByGeneratedFileAndOperation.Input.Path,
         query: Operations.GetOperationByGeneratedFileAndOperation.Input.Query = .init(),
         headers: Operations.GetOperationByGeneratedFileAndOperation.Input.Headers = .init()
     ) async throws -> Operations.GetOperationByGeneratedFileAndOperation.Output {
-        try await GetOperationByGeneratedFileAndOperation(Operations.GetOperationByGeneratedFileAndOperation.Input(
+        try await getOperationByGeneratedFileAndOperation(Operations.GetOperationByGeneratedFileAndOperation.Input(
             path: path,
             query: query,
             headers: headers
@@ -1167,11 +1167,11 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/models`.
     /// - Remark: Generated from `#/paths//v1beta/models/get(ListModels)`.
-    public func ListModels(
+    public func listModels(
         query: Operations.ListModels.Input.Query = .init(),
         headers: Operations.ListModels.Input.Headers = .init()
     ) async throws -> Operations.ListModels.Output {
-        try await ListModels(Operations.ListModels.Input(
+        try await listModels(Operations.ListModels.Input(
             query: query,
             headers: headers
         ))
@@ -1185,12 +1185,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/get(GetModel)`.
-    public func GetModel(
+    public func getModel(
         path: Operations.GetModel.Input.Path,
         query: Operations.GetModel.Input.Query = .init(),
         headers: Operations.GetModel.Input.Headers = .init()
     ) async throws -> Operations.GetModel.Output {
-        try await GetModel(Operations.GetModel.Input(
+        try await getModel(Operations.GetModel.Input(
             path: path,
             query: query,
             headers: headers
@@ -1202,13 +1202,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedContents`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedContents/post(BatchEmbedContents)`.
-    public func BatchEmbedContents(
+    public func batchEmbedContents(
         path: Operations.BatchEmbedContents.Input.Path,
         query: Operations.BatchEmbedContents.Input.Query = .init(),
         headers: Operations.BatchEmbedContents.Input.Headers = .init(),
         body: Operations.BatchEmbedContents.Input.Body? = nil
     ) async throws -> Operations.BatchEmbedContents.Output {
-        try await BatchEmbedContents(Operations.BatchEmbedContents.Input(
+        try await batchEmbedContents(Operations.BatchEmbedContents.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1220,13 +1220,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:batchEmbedText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:batchEmbedText/post(BatchEmbedText)`.
-    public func BatchEmbedText(
+    public func batchEmbedText(
         path: Operations.BatchEmbedText.Input.Path,
         query: Operations.BatchEmbedText.Input.Query = .init(),
         headers: Operations.BatchEmbedText.Input.Headers = .init(),
         body: Operations.BatchEmbedText.Input.Body? = nil
     ) async throws -> Operations.BatchEmbedText.Output {
-        try await BatchEmbedText(Operations.BatchEmbedText.Input(
+        try await batchEmbedText(Operations.BatchEmbedText.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1237,13 +1237,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countMessageTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countMessageTokens/post(CountMessageTokens)`.
-    public func CountMessageTokens(
+    public func countMessageTokens(
         path: Operations.CountMessageTokens.Input.Path,
         query: Operations.CountMessageTokens.Input.Query = .init(),
         headers: Operations.CountMessageTokens.Input.Headers = .init(),
         body: Operations.CountMessageTokens.Input.Body? = nil
     ) async throws -> Operations.CountMessageTokens.Output {
-        try await CountMessageTokens(Operations.CountMessageTokens.Input(
+        try await countMessageTokens(Operations.CountMessageTokens.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1254,13 +1254,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countTextTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTextTokens/post(CountTextTokens)`.
-    public func CountTextTokens(
+    public func countTextTokens(
         path: Operations.CountTextTokens.Input.Path,
         query: Operations.CountTextTokens.Input.Query = .init(),
         headers: Operations.CountTextTokens.Input.Headers = .init(),
         body: Operations.CountTextTokens.Input.Body? = nil
     ) async throws -> Operations.CountTextTokens.Output {
-        try await CountTextTokens(Operations.CountTextTokens.Input(
+        try await countTextTokens(Operations.CountTextTokens.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1273,13 +1273,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:countTokens`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:countTokens/post(CountTokens)`.
-    public func CountTokens(
+    public func countTokens(
         path: Operations.CountTokens.Input.Path,
         query: Operations.CountTokens.Input.Query = .init(),
         headers: Operations.CountTokens.Input.Headers = .init(),
         body: Operations.CountTokens.Input.Body? = nil
     ) async throws -> Operations.CountTokens.Output {
-        try await CountTokens(Operations.CountTokens.Input(
+        try await countTokens(Operations.CountTokens.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1292,13 +1292,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:embedContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedContent/post(EmbedContent)`.
-    public func EmbedContent(
+    public func embedContent(
         path: Operations.EmbedContent.Input.Path,
         query: Operations.EmbedContent.Input.Query = .init(),
         headers: Operations.EmbedContent.Input.Headers = .init(),
         body: Operations.EmbedContent.Input.Body? = nil
     ) async throws -> Operations.EmbedContent.Output {
-        try await EmbedContent(Operations.EmbedContent.Input(
+        try await embedContent(Operations.EmbedContent.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1309,13 +1309,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:embedText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:embedText/post(EmbedText)`.
-    public func EmbedText(
+    public func embedText(
         path: Operations.EmbedText.Input.Path,
         query: Operations.EmbedText.Input.Query = .init(),
         headers: Operations.EmbedText.Input.Headers = .init(),
         body: Operations.EmbedText.Input.Body? = nil
     ) async throws -> Operations.EmbedText.Output {
-        try await EmbedText(Operations.EmbedText.Input(
+        try await embedText(Operations.EmbedText.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1327,13 +1327,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateAnswer`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateAnswer/post(GenerateAnswer)`.
-    public func GenerateAnswer(
+    public func generateAnswer(
         path: Operations.GenerateAnswer.Input.Path,
         query: Operations.GenerateAnswer.Input.Query = .init(),
         headers: Operations.GenerateAnswer.Input.Headers = .init(),
         body: Operations.GenerateAnswer.Input.Body? = nil
     ) async throws -> Operations.GenerateAnswer.Output {
-        try await GenerateAnswer(Operations.GenerateAnswer.Input(
+        try await generateAnswer(Operations.GenerateAnswer.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1350,13 +1350,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateContent/post(GenerateContent)`.
-    public func GenerateContent(
+    public func generateContent(
         path: Operations.GenerateContent.Input.Path,
         query: Operations.GenerateContent.Input.Query = .init(),
         headers: Operations.GenerateContent.Input.Headers = .init(),
         body: Operations.GenerateContent.Input.Body? = nil
     ) async throws -> Operations.GenerateContent.Output {
-        try await GenerateContent(Operations.GenerateContent.Input(
+        try await generateContent(Operations.GenerateContent.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1367,13 +1367,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateMessage`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateMessage/post(GenerateMessage)`.
-    public func GenerateMessage(
+    public func generateMessage(
         path: Operations.GenerateMessage.Input.Path,
         query: Operations.GenerateMessage.Input.Query = .init(),
         headers: Operations.GenerateMessage.Input.Headers = .init(),
         body: Operations.GenerateMessage.Input.Body? = nil
     ) async throws -> Operations.GenerateMessage.Output {
-        try await GenerateMessage(Operations.GenerateMessage.Input(
+        try await generateMessage(Operations.GenerateMessage.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1384,13 +1384,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:generateText`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:generateText/post(GenerateText)`.
-    public func GenerateText(
+    public func generateText(
         path: Operations.GenerateText.Input.Path,
         query: Operations.GenerateText.Input.Query = .init(),
         headers: Operations.GenerateText.Input.Headers = .init(),
         body: Operations.GenerateText.Input.Body? = nil
     ) async throws -> Operations.GenerateText.Output {
-        try await GenerateText(Operations.GenerateText.Input(
+        try await generateText(Operations.GenerateText.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1401,13 +1401,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:predict`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:predict/post(Predict)`.
-    public func Predict(
+    public func predict(
         path: Operations.Predict.Input.Path,
         query: Operations.Predict.Input.Query = .init(),
         headers: Operations.Predict.Input.Headers = .init(),
         body: Operations.Predict.Input.Body? = nil
     ) async throws -> Operations.Predict.Output {
-        try await Predict(Operations.Predict.Input(
+        try await predict(Operations.Predict.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1418,13 +1418,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:predictLongRunning`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:predictLongRunning/post(PredictLongRunning)`.
-    public func PredictLongRunning(
+    public func predictLongRunning(
         path: Operations.PredictLongRunning.Input.Path,
         query: Operations.PredictLongRunning.Input.Query = .init(),
         headers: Operations.PredictLongRunning.Input.Headers = .init(),
         body: Operations.PredictLongRunning.Input.Body? = nil
     ) async throws -> Operations.PredictLongRunning.Output {
-        try await PredictLongRunning(Operations.PredictLongRunning.Input(
+        try await predictLongRunning(Operations.PredictLongRunning.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1437,13 +1437,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/models/{model}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}:streamGenerateContent/post(StreamGenerateContent)`.
-    public func StreamGenerateContent(
+    public func streamGenerateContent(
         path: Operations.StreamGenerateContent.Input.Path,
         query: Operations.StreamGenerateContent.Input.Query = .init(),
         headers: Operations.StreamGenerateContent.Input.Headers = .init(),
         body: Operations.StreamGenerateContent.Input.Body? = nil
     ) async throws -> Operations.StreamGenerateContent.Output {
-        try await StreamGenerateContent(Operations.StreamGenerateContent.Input(
+        try await streamGenerateContent(Operations.StreamGenerateContent.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1455,12 +1455,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}/operations`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/get(ListOperationsByModel)`.
-    public func ListOperationsByModel(
+    public func listOperationsByModel(
         path: Operations.ListOperationsByModel.Input.Path,
         query: Operations.ListOperationsByModel.Input.Query = .init(),
         headers: Operations.ListOperationsByModel.Input.Headers = .init()
     ) async throws -> Operations.ListOperationsByModel.Output {
-        try await ListOperationsByModel(Operations.ListOperationsByModel.Input(
+        try await listOperationsByModel(Operations.ListOperationsByModel.Input(
             path: path,
             query: query,
             headers: headers
@@ -1472,12 +1472,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/models/{model}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/models/{model}/operations/{operation}/get(GetOperationByModelAndOperation)`.
-    public func GetOperationByModelAndOperation(
+    public func getOperationByModelAndOperation(
         path: Operations.GetOperationByModelAndOperation.Input.Path,
         query: Operations.GetOperationByModelAndOperation.Input.Query = .init(),
         headers: Operations.GetOperationByModelAndOperation.Input.Headers = .init()
     ) async throws -> Operations.GetOperationByModelAndOperation.Output {
-        try await GetOperationByModelAndOperation(Operations.GetOperationByModelAndOperation.Input(
+        try await getOperationByModelAndOperation(Operations.GetOperationByModelAndOperation.Input(
             path: path,
             query: query,
             headers: headers
@@ -1487,11 +1487,11 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/get(ListTunedModels)`.
-    public func ListTunedModels(
+    public func listTunedModels(
         query: Operations.ListTunedModels.Input.Query = .init(),
         headers: Operations.ListTunedModels.Input.Headers = .init()
     ) async throws -> Operations.ListTunedModels.Output {
-        try await ListTunedModels(Operations.ListTunedModels.Input(
+        try await listTunedModels(Operations.ListTunedModels.Input(
             query: query,
             headers: headers
         ))
@@ -1506,12 +1506,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/post(CreateTunedModel)`.
-    public func CreateTunedModel(
+    public func createTunedModel(
         query: Operations.CreateTunedModel.Input.Query = .init(),
         headers: Operations.CreateTunedModel.Input.Headers = .init(),
         body: Operations.CreateTunedModel.Input.Body? = nil
     ) async throws -> Operations.CreateTunedModel.Output {
-        try await CreateTunedModel(Operations.CreateTunedModel.Input(
+        try await createTunedModel(Operations.CreateTunedModel.Input(
             query: query,
             headers: headers,
             body: body
@@ -1521,12 +1521,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/get(GetTunedModel)`.
-    public func GetTunedModel(
+    public func getTunedModel(
         path: Operations.GetTunedModel.Input.Path,
         query: Operations.GetTunedModel.Input.Query = .init(),
         headers: Operations.GetTunedModel.Input.Headers = .init()
     ) async throws -> Operations.GetTunedModel.Output {
-        try await GetTunedModel(Operations.GetTunedModel.Input(
+        try await getTunedModel(Operations.GetTunedModel.Input(
             path: path,
             query: query,
             headers: headers
@@ -1536,13 +1536,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/patch(UpdateTunedModel)`.
-    public func UpdateTunedModel(
+    public func updateTunedModel(
         path: Operations.UpdateTunedModel.Input.Path,
         query: Operations.UpdateTunedModel.Input.Query = .init(),
         headers: Operations.UpdateTunedModel.Input.Headers = .init(),
         body: Operations.UpdateTunedModel.Input.Body? = nil
     ) async throws -> Operations.UpdateTunedModel.Output {
-        try await UpdateTunedModel(Operations.UpdateTunedModel.Input(
+        try await updateTunedModel(Operations.UpdateTunedModel.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1553,12 +1553,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/delete(DeleteTunedModel)`.
-    public func DeleteTunedModel(
+    public func deleteTunedModel(
         path: Operations.DeleteTunedModel.Input.Path,
         query: Operations.DeleteTunedModel.Input.Query = .init(),
         headers: Operations.DeleteTunedModel.Input.Headers = .init()
     ) async throws -> Operations.DeleteTunedModel.Output {
-        try await DeleteTunedModel(Operations.DeleteTunedModel.Input(
+        try await deleteTunedModel(Operations.DeleteTunedModel.Input(
             path: path,
             query: query,
             headers: headers
@@ -1574,13 +1574,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:generateContent`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:generateContent/post(GenerateContentByTunedModel)`.
-    public func GenerateContentByTunedModel(
+    public func generateContentByTunedModel(
         path: Operations.GenerateContentByTunedModel.Input.Path,
         query: Operations.GenerateContentByTunedModel.Input.Query = .init(),
         headers: Operations.GenerateContentByTunedModel.Input.Headers = .init(),
         body: Operations.GenerateContentByTunedModel.Input.Body? = nil
     ) async throws -> Operations.GenerateContentByTunedModel.Output {
-        try await GenerateContentByTunedModel(Operations.GenerateContentByTunedModel.Input(
+        try await generateContentByTunedModel(Operations.GenerateContentByTunedModel.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1591,13 +1591,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:generateText`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:generateText/post(GenerateTextByTunedModel)`.
-    public func GenerateTextByTunedModel(
+    public func generateTextByTunedModel(
         path: Operations.GenerateTextByTunedModel.Input.Path,
         query: Operations.GenerateTextByTunedModel.Input.Query = .init(),
         headers: Operations.GenerateTextByTunedModel.Input.Headers = .init(),
         body: Operations.GenerateTextByTunedModel.Input.Body? = nil
     ) async throws -> Operations.GenerateTextByTunedModel.Output {
-        try await GenerateTextByTunedModel(Operations.GenerateTextByTunedModel.Input(
+        try await generateTextByTunedModel(Operations.GenerateTextByTunedModel.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1610,13 +1610,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:streamGenerateContent`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:streamGenerateContent/post(StreamGenerateContentByTunedModel)`.
-    public func StreamGenerateContentByTunedModel(
+    public func streamGenerateContentByTunedModel(
         path: Operations.StreamGenerateContentByTunedModel.Input.Path,
         query: Operations.StreamGenerateContentByTunedModel.Input.Query = .init(),
         headers: Operations.StreamGenerateContentByTunedModel.Input.Headers = .init(),
         body: Operations.StreamGenerateContentByTunedModel.Input.Body? = nil
     ) async throws -> Operations.StreamGenerateContentByTunedModel.Output {
-        try await StreamGenerateContentByTunedModel(Operations.StreamGenerateContentByTunedModel.Input(
+        try await streamGenerateContentByTunedModel(Operations.StreamGenerateContentByTunedModel.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1629,13 +1629,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}:transferOwnership`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}:transferOwnership/post(TransferOwnership)`.
-    public func TransferOwnership(
+    public func transferOwnership(
         path: Operations.TransferOwnership.Input.Path,
         query: Operations.TransferOwnership.Input.Query = .init(),
         headers: Operations.TransferOwnership.Input.Headers = .init(),
         body: Operations.TransferOwnership.Input.Body? = nil
     ) async throws -> Operations.TransferOwnership.Output {
-        try await TransferOwnership(Operations.TransferOwnership.Input(
+        try await transferOwnership(Operations.TransferOwnership.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1647,12 +1647,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/get(ListOperations)`.
-    public func ListOperations(
+    public func listOperations(
         path: Operations.ListOperations.Input.Path,
         query: Operations.ListOperations.Input.Query = .init(),
         headers: Operations.ListOperations.Input.Headers = .init()
     ) async throws -> Operations.ListOperations.Output {
-        try await ListOperations(Operations.ListOperations.Input(
+        try await listOperations(Operations.ListOperations.Input(
             path: path,
             query: query,
             headers: headers
@@ -1664,12 +1664,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/operations/{operation}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/operations/{operation}/get(GetOperation)`.
-    public func GetOperation(
+    public func getOperation(
         path: Operations.GetOperation.Input.Path,
         query: Operations.GetOperation.Input.Query = .init(),
         headers: Operations.GetOperation.Input.Headers = .init()
     ) async throws -> Operations.GetOperation.Output {
-        try await GetOperation(Operations.GetOperation.Input(
+        try await getOperation(Operations.GetOperation.Input(
             path: path,
             query: query,
             headers: headers
@@ -1679,12 +1679,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/get(ListPermissions)`.
-    public func ListPermissions(
+    public func listPermissions(
         path: Operations.ListPermissions.Input.Path,
         query: Operations.ListPermissions.Input.Query = .init(),
         headers: Operations.ListPermissions.Input.Headers = .init()
     ) async throws -> Operations.ListPermissions.Output {
-        try await ListPermissions(Operations.ListPermissions.Input(
+        try await listPermissions(Operations.ListPermissions.Input(
             path: path,
             query: query,
             headers: headers
@@ -1694,13 +1694,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /v1beta/tunedModels/{tunedModel}/permissions`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/post(CreatePermission)`.
-    public func CreatePermission(
+    public func createPermission(
         path: Operations.CreatePermission.Input.Path,
         query: Operations.CreatePermission.Input.Query = .init(),
         headers: Operations.CreatePermission.Input.Headers = .init(),
         body: Operations.CreatePermission.Input.Body? = nil
     ) async throws -> Operations.CreatePermission.Output {
-        try await CreatePermission(Operations.CreatePermission.Input(
+        try await createPermission(Operations.CreatePermission.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1711,12 +1711,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `GET /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/get(GetPermission)`.
-    public func GetPermission(
+    public func getPermission(
         path: Operations.GetPermission.Input.Path,
         query: Operations.GetPermission.Input.Query = .init(),
         headers: Operations.GetPermission.Input.Headers = .init()
     ) async throws -> Operations.GetPermission.Output {
-        try await GetPermission(Operations.GetPermission.Input(
+        try await getPermission(Operations.GetPermission.Input(
             path: path,
             query: query,
             headers: headers
@@ -1726,13 +1726,13 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `PATCH /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/patch(UpdatePermission)`.
-    public func UpdatePermission(
+    public func updatePermission(
         path: Operations.UpdatePermission.Input.Path,
         query: Operations.UpdatePermission.Input.Query,
         headers: Operations.UpdatePermission.Input.Headers = .init(),
         body: Operations.UpdatePermission.Input.Body? = nil
     ) async throws -> Operations.UpdatePermission.Output {
-        try await UpdatePermission(Operations.UpdatePermission.Input(
+        try await updatePermission(Operations.UpdatePermission.Input(
             path: path,
             query: query,
             headers: headers,
@@ -1743,12 +1743,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `DELETE /v1beta/tunedModels/{tunedModel}/permissions/{permission}`.
     /// - Remark: Generated from `#/paths//v1beta/tunedModels/{tunedModel}/permissions/{permission}/delete(DeletePermission)`.
-    public func DeletePermission(
+    public func deletePermission(
         path: Operations.DeletePermission.Input.Path,
         query: Operations.DeletePermission.Input.Query = .init(),
         headers: Operations.DeletePermission.Input.Headers = .init()
     ) async throws -> Operations.DeletePermission.Output {
-        try await DeletePermission(Operations.DeletePermission.Input(
+        try await deletePermission(Operations.DeletePermission.Input(
             path: path,
             query: query,
             headers: headers
@@ -1758,12 +1758,12 @@ extension APIProtocol {
     ///
     /// - Remark: HTTP `POST /upload/v1beta/files`.
     /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)`.
-    public func UploadFiles(
+    public func uploadFiles(
         query: Operations.UploadFiles.Input.Query = .init(),
         headers: Operations.UploadFiles.Input.Headers = .init(),
         body: Operations.UploadFiles.Input.Body
     ) async throws -> Operations.UploadFiles.Output {
-        try await UploadFiles(Operations.UploadFiles.Input(
+        try await uploadFiles(Operations.UploadFiles.Input(
             query: query,
             headers: headers,
             body: body
@@ -1804,10 +1804,10 @@ public enum Components {
             /// Identifier for an inline passage.
             ///
             /// - Remark: Generated from `#/components/schemas/AttributionSourceId/groundingPassage`.
-            public struct groundingPassagePayload: Codable, Hashable, Sendable {
+            public struct GroundingPassagePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/AttributionSourceId/groundingPassage/value1`.
                 public var value1: Components.Schemas.GroundingPassageId
-                /// Creates a new `groundingPassagePayload`.
+                /// Creates a new `GroundingPassagePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -1824,14 +1824,14 @@ public enum Components {
             /// Identifier for an inline passage.
             ///
             /// - Remark: Generated from `#/components/schemas/AttributionSourceId/groundingPassage`.
-            public var groundingPassage: Components.Schemas.AttributionSourceId.groundingPassagePayload?
+            public var groundingPassage: Components.Schemas.AttributionSourceId.GroundingPassagePayload?
             /// Identifier for a `Chunk` fetched via Semantic Retriever.
             ///
             /// - Remark: Generated from `#/components/schemas/AttributionSourceId/semanticRetrieverChunk`.
-            public struct semanticRetrieverChunkPayload: Codable, Hashable, Sendable {
+            public struct SemanticRetrieverChunkPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/AttributionSourceId/semanticRetrieverChunk/value1`.
                 public var value1: Components.Schemas.SemanticRetrieverChunk
-                /// Creates a new `semanticRetrieverChunkPayload`.
+                /// Creates a new `SemanticRetrieverChunkPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -1848,15 +1848,15 @@ public enum Components {
             /// Identifier for a `Chunk` fetched via Semantic Retriever.
             ///
             /// - Remark: Generated from `#/components/schemas/AttributionSourceId/semanticRetrieverChunk`.
-            public var semanticRetrieverChunk: Components.Schemas.AttributionSourceId.semanticRetrieverChunkPayload?
+            public var semanticRetrieverChunk: Components.Schemas.AttributionSourceId.SemanticRetrieverChunkPayload?
             /// Creates a new `AttributionSourceId`.
             ///
             /// - Parameters:
             ///   - groundingPassage: Identifier for an inline passage.
             ///   - semanticRetrieverChunk: Identifier for a `Chunk` fetched via Semantic Retriever.
             public init(
-                groundingPassage: Components.Schemas.AttributionSourceId.groundingPassagePayload? = nil,
-                semanticRetrieverChunk: Components.Schemas.AttributionSourceId.semanticRetrieverChunkPayload? = nil
+                groundingPassage: Components.Schemas.AttributionSourceId.GroundingPassagePayload? = nil,
+                semanticRetrieverChunk: Components.Schemas.AttributionSourceId.SemanticRetrieverChunkPayload? = nil
             ) {
                 self.groundingPassage = groundingPassage
                 self.semanticRetrieverChunk = semanticRetrieverChunk
@@ -1880,10 +1880,10 @@ public enum Components {
             /// The error result of the operation in case of failure or cancellation.
             ///
             /// - Remark: Generated from `#/components/schemas/BaseOperation/error`.
-            public struct errorPayload: Codable, Hashable, Sendable {
+            public struct _ErrorPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/BaseOperation/error/value1`.
                 public var value1: Components.Schemas.Status
-                /// Creates a new `errorPayload`.
+                /// Creates a new `_ErrorPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -1900,7 +1900,7 @@ public enum Components {
             /// The error result of the operation in case of failure or cancellation.
             ///
             /// - Remark: Generated from `#/components/schemas/BaseOperation/error`.
-            public var error: Components.Schemas.BaseOperation.errorPayload?
+            public var error: Components.Schemas.BaseOperation._ErrorPayload?
             /// The server-assigned name, which is only unique within the same service that
             /// originally returns it. If you use the default HTTP mapping, the
             /// `name` should be a resource name ending with `operations/{unique_id}`.
@@ -1915,7 +1915,7 @@ public enum Components {
             ///   - name: The server-assigned name, which is only unique within the same service that
             public init(
                 done: Swift.Bool? = nil,
-                error: Components.Schemas.BaseOperation.errorPayload? = nil,
+                error: Components.Schemas.BaseOperation._ErrorPayload? = nil,
                 name: Swift.String? = nil
             ) {
                 self.done = done
@@ -2190,10 +2190,10 @@ public enum Components {
             /// Optional. Input only. Immutable. Developer set system instruction. Currently text only.
             ///
             /// - Remark: Generated from `#/components/schemas/CachedContent/systemInstruction`.
-            public struct systemInstructionPayload: Codable, Hashable, Sendable {
+            public struct SystemInstructionPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CachedContent/systemInstruction/value1`.
                 public var value1: Components.Schemas.Content
-                /// Creates a new `systemInstructionPayload`.
+                /// Creates a new `SystemInstructionPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2210,14 +2210,14 @@ public enum Components {
             /// Optional. Input only. Immutable. Developer set system instruction. Currently text only.
             ///
             /// - Remark: Generated from `#/components/schemas/CachedContent/systemInstruction`.
-            public var systemInstruction: Components.Schemas.CachedContent.systemInstructionPayload?
+            public var systemInstruction: Components.Schemas.CachedContent.SystemInstructionPayload?
             /// Optional. Input only. Immutable. Tool config. This config is shared for all tools.
             ///
             /// - Remark: Generated from `#/components/schemas/CachedContent/toolConfig`.
-            public struct toolConfigPayload: Codable, Hashable, Sendable {
+            public struct ToolConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CachedContent/toolConfig/value1`.
                 public var value1: Components.Schemas.ToolConfig
-                /// Creates a new `toolConfigPayload`.
+                /// Creates a new `ToolConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2234,7 +2234,7 @@ public enum Components {
             /// Optional. Input only. Immutable. Tool config. This config is shared for all tools.
             ///
             /// - Remark: Generated from `#/components/schemas/CachedContent/toolConfig`.
-            public var toolConfig: Components.Schemas.CachedContent.toolConfigPayload?
+            public var toolConfig: Components.Schemas.CachedContent.ToolConfigPayload?
             /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
             ///
             /// - Remark: Generated from `#/components/schemas/CachedContent/tools`.
@@ -2250,10 +2250,10 @@ public enum Components {
             /// Output only. Metadata on the usage of the cached content.
             ///
             /// - Remark: Generated from `#/components/schemas/CachedContent/usageMetadata`.
-            public struct usageMetadataPayload: Codable, Hashable, Sendable {
+            public struct UsageMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CachedContent/usageMetadata/value1`.
                 public var value1: Components.Schemas.CachedContentUsageMetadata
-                /// Creates a new `usageMetadataPayload`.
+                /// Creates a new `UsageMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2270,7 +2270,7 @@ public enum Components {
             /// Output only. Metadata on the usage of the cached content.
             ///
             /// - Remark: Generated from `#/components/schemas/CachedContent/usageMetadata`.
-            public var usageMetadata: Components.Schemas.CachedContent.usageMetadataPayload?
+            public var usageMetadata: Components.Schemas.CachedContent.UsageMetadataPayload?
             /// Creates a new `CachedContent`.
             ///
             /// - Parameters:
@@ -2293,12 +2293,12 @@ public enum Components {
                 expireTime: Foundation.Date? = nil,
                 model: Swift.String,
                 name: Swift.String? = nil,
-                systemInstruction: Components.Schemas.CachedContent.systemInstructionPayload? = nil,
-                toolConfig: Components.Schemas.CachedContent.toolConfigPayload? = nil,
+                systemInstruction: Components.Schemas.CachedContent.SystemInstructionPayload? = nil,
+                toolConfig: Components.Schemas.CachedContent.ToolConfigPayload? = nil,
                 tools: [Components.Schemas.Tool]? = nil,
                 ttl: Swift.String? = nil,
                 updateTime: Foundation.Date? = nil,
-                usageMetadata: Components.Schemas.CachedContent.usageMetadataPayload? = nil
+                usageMetadata: Components.Schemas.CachedContent.UsageMetadataPayload? = nil
             ) {
                 self.contents = contents
                 self.createTime = createTime
@@ -2362,10 +2362,10 @@ public enum Components {
             /// copyrighted material in the foundational LLM's training data.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/citationMetadata`.
-            public struct citationMetadataPayload: Codable, Hashable, Sendable {
+            public struct CitationMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Candidate/citationMetadata/value1`.
                 public var value1: Components.Schemas.CitationMetadata
-                /// Creates a new `citationMetadataPayload`.
+                /// Creates a new `CitationMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2386,14 +2386,14 @@ public enum Components {
             /// copyrighted material in the foundational LLM's training data.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/citationMetadata`.
-            public var citationMetadata: Components.Schemas.Candidate.citationMetadataPayload?
+            public var citationMetadata: Components.Schemas.Candidate.CitationMetadataPayload?
             /// Output only. Generated content returned from the model.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/content`.
-            public struct contentPayload: Codable, Hashable, Sendable {
+            public struct ContentPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Candidate/content/value1`.
                 public var value1: Components.Schemas.Content
-                /// Creates a new `contentPayload`.
+                /// Creates a new `ContentPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2410,32 +2410,32 @@ public enum Components {
             /// Output only. Generated content returned from the model.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/content`.
-            public var content: Components.Schemas.Candidate.contentPayload?
+            public var content: Components.Schemas.Candidate.ContentPayload?
             /// Optional. Output only. The reason why the model stopped generating tokens.
             ///
             /// If empty, the model has not stopped generating tokens.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/finishReason`.
-            @frozen public enum finishReasonPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case FINISH_REASON_UNSPECIFIED = "FINISH_REASON_UNSPECIFIED"
-                case STOP = "STOP"
-                case MAX_TOKENS = "MAX_TOKENS"
-                case SAFETY = "SAFETY"
-                case RECITATION = "RECITATION"
-                case LANGUAGE = "LANGUAGE"
-                case OTHER = "OTHER"
-                case BLOCKLIST = "BLOCKLIST"
-                case PROHIBITED_CONTENT = "PROHIBITED_CONTENT"
-                case SPII = "SPII"
-                case MALFORMED_FUNCTION_CALL = "MALFORMED_FUNCTION_CALL"
-                case IMAGE_SAFETY = "IMAGE_SAFETY"
+            @frozen public enum FinishReasonPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case finishReasonUnspecified = "FINISH_REASON_UNSPECIFIED"
+                case stop = "STOP"
+                case maxTokens = "MAX_TOKENS"
+                case safety = "SAFETY"
+                case recitation = "RECITATION"
+                case language = "LANGUAGE"
+                case other = "OTHER"
+                case blocklist = "BLOCKLIST"
+                case prohibitedContent = "PROHIBITED_CONTENT"
+                case spii = "SPII"
+                case malformedFunctionCall = "MALFORMED_FUNCTION_CALL"
+                case imageSafety = "IMAGE_SAFETY"
             }
             /// Optional. Output only. The reason why the model stopped generating tokens.
             ///
             /// If empty, the model has not stopped generating tokens.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/finishReason`.
-            public var finishReason: Components.Schemas.Candidate.finishReasonPayload?
+            public var finishReason: Components.Schemas.Candidate.FinishReasonPayload?
             /// Output only. Attribution information for sources that contributed to a grounded answer.
             ///
             /// This field is populated for `GenerateAnswer` calls.
@@ -2447,10 +2447,10 @@ public enum Components {
             /// This field is populated for `GenerateContent` calls.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/groundingMetadata`.
-            public struct groundingMetadataPayload: Codable, Hashable, Sendable {
+            public struct GroundingMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Candidate/groundingMetadata/value1`.
                 public var value1: Components.Schemas.GroundingMetadata
-                /// Creates a new `groundingMetadataPayload`.
+                /// Creates a new `GroundingMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2469,7 +2469,7 @@ public enum Components {
             /// This field is populated for `GenerateContent` calls.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/groundingMetadata`.
-            public var groundingMetadata: Components.Schemas.Candidate.groundingMetadataPayload?
+            public var groundingMetadata: Components.Schemas.Candidate.GroundingMetadataPayload?
             /// Output only. Index of the candidate in the list of response candidates.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/index`.
@@ -2477,10 +2477,10 @@ public enum Components {
             /// Output only. Log-likelihood scores for the response tokens and top tokens
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/logprobsResult`.
-            public struct logprobsResultPayload: Codable, Hashable, Sendable {
+            public struct LogprobsResultPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Candidate/logprobsResult/value1`.
                 public var value1: Components.Schemas.LogprobsResult
-                /// Creates a new `logprobsResultPayload`.
+                /// Creates a new `LogprobsResultPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2497,7 +2497,7 @@ public enum Components {
             /// Output only. Log-likelihood scores for the response tokens and top tokens
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/logprobsResult`.
-            public var logprobsResult: Components.Schemas.Candidate.logprobsResultPayload?
+            public var logprobsResult: Components.Schemas.Candidate.LogprobsResultPayload?
             /// List of ratings for the safety of a response candidate.
             ///
             /// There is at most one rating per category.
@@ -2511,10 +2511,10 @@ public enum Components {
             /// Output only. Metadata related to url context retrieval tool.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/urlContextMetadata`.
-            public struct urlContextMetadataPayload: Codable, Hashable, Sendable {
+            public struct UrlContextMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Candidate/urlContextMetadata/value1`.
                 public var value1: Components.Schemas.UrlContextMetadata
-                /// Creates a new `urlContextMetadataPayload`.
+                /// Creates a new `UrlContextMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2531,7 +2531,7 @@ public enum Components {
             /// Output only. Metadata related to url context retrieval tool.
             ///
             /// - Remark: Generated from `#/components/schemas/Candidate/urlContextMetadata`.
-            public var urlContextMetadata: Components.Schemas.Candidate.urlContextMetadataPayload?
+            public var urlContextMetadata: Components.Schemas.Candidate.UrlContextMetadataPayload?
             /// Creates a new `Candidate`.
             ///
             /// - Parameters:
@@ -2548,16 +2548,16 @@ public enum Components {
             ///   - urlContextMetadata: Output only. Metadata related to url context retrieval tool.
             public init(
                 avgLogprobs: Swift.Double? = nil,
-                citationMetadata: Components.Schemas.Candidate.citationMetadataPayload? = nil,
-                content: Components.Schemas.Candidate.contentPayload? = nil,
-                finishReason: Components.Schemas.Candidate.finishReasonPayload? = nil,
+                citationMetadata: Components.Schemas.Candidate.CitationMetadataPayload? = nil,
+                content: Components.Schemas.Candidate.ContentPayload? = nil,
+                finishReason: Components.Schemas.Candidate.FinishReasonPayload? = nil,
                 groundingAttributions: [Components.Schemas.GroundingAttribution]? = nil,
-                groundingMetadata: Components.Schemas.Candidate.groundingMetadataPayload? = nil,
+                groundingMetadata: Components.Schemas.Candidate.GroundingMetadataPayload? = nil,
                 index: Swift.Int32? = nil,
-                logprobsResult: Components.Schemas.Candidate.logprobsResultPayload? = nil,
+                logprobsResult: Components.Schemas.Candidate.LogprobsResultPayload? = nil,
                 safetyRatings: [Components.Schemas.SafetyRating]? = nil,
                 tokenCount: Swift.Int32? = nil,
-                urlContextMetadata: Components.Schemas.Candidate.urlContextMetadataPayload? = nil
+                urlContextMetadata: Components.Schemas.Candidate.UrlContextMetadataPayload? = nil
             ) {
                 self.avgLogprobs = avgLogprobs
                 self.citationMetadata = citationMetadata
@@ -2604,10 +2604,10 @@ public enum Components {
             /// The maximum number of tokens per chunk is 2043.
             ///
             /// - Remark: Generated from `#/components/schemas/Chunk/data`.
-            public struct dataPayload: Codable, Hashable, Sendable {
+            public struct DataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Chunk/data/value1`.
                 public var value1: Components.Schemas.ChunkData
-                /// Creates a new `dataPayload`.
+                /// Creates a new `DataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -2625,7 +2625,7 @@ public enum Components {
             /// The maximum number of tokens per chunk is 2043.
             ///
             /// - Remark: Generated from `#/components/schemas/Chunk/data`.
-            public var data: Components.Schemas.Chunk.dataPayload
+            public var data: Components.Schemas.Chunk.DataPayload
             /// Immutable. Identifier. The `Chunk` resource name. The ID (name excluding the
             /// "corpora/*/documents/*/chunks/" prefix) can contain up to 40 characters
             /// that are lowercase alphanumeric or dashes (-). The ID cannot start or end
@@ -2638,16 +2638,16 @@ public enum Components {
             /// Output only. Current state of the `Chunk`.
             ///
             /// - Remark: Generated from `#/components/schemas/Chunk/state`.
-            @frozen public enum statePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-                case STATE_PENDING_PROCESSING = "STATE_PENDING_PROCESSING"
-                case STATE_ACTIVE = "STATE_ACTIVE"
-                case STATE_FAILED = "STATE_FAILED"
+            @frozen public enum StatePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case stateUnspecified = "STATE_UNSPECIFIED"
+                case statePendingProcessing = "STATE_PENDING_PROCESSING"
+                case stateActive = "STATE_ACTIVE"
+                case stateFailed = "STATE_FAILED"
             }
             /// Output only. Current state of the `Chunk`.
             ///
             /// - Remark: Generated from `#/components/schemas/Chunk/state`.
-            public var state: Components.Schemas.Chunk.statePayload?
+            public var state: Components.Schemas.Chunk.StatePayload?
             /// Output only. The Timestamp of when the `Chunk` was last updated.
             ///
             /// - Remark: Generated from `#/components/schemas/Chunk/updateTime`.
@@ -2664,9 +2664,9 @@ public enum Components {
             public init(
                 createTime: Foundation.Date? = nil,
                 customMetadata: [Components.Schemas.CustomMetadata]? = nil,
-                data: Components.Schemas.Chunk.dataPayload,
+                data: Components.Schemas.Chunk.DataPayload,
                 name: Swift.String? = nil,
-                state: Components.Schemas.Chunk.statePayload? = nil,
+                state: Components.Schemas.Chunk.StatePayload? = nil,
                 updateTime: Foundation.Date? = nil
             ) {
                 self.createTime = createTime
@@ -2791,16 +2791,16 @@ public enum Components {
             /// Required. Outcome of the code execution.
             ///
             /// - Remark: Generated from `#/components/schemas/CodeExecutionResult/outcome`.
-            @frozen public enum outcomePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case OUTCOME_UNSPECIFIED = "OUTCOME_UNSPECIFIED"
-                case OUTCOME_OK = "OUTCOME_OK"
-                case OUTCOME_FAILED = "OUTCOME_FAILED"
-                case OUTCOME_DEADLINE_EXCEEDED = "OUTCOME_DEADLINE_EXCEEDED"
+            @frozen public enum OutcomePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case outcomeUnspecified = "OUTCOME_UNSPECIFIED"
+                case outcomeOk = "OUTCOME_OK"
+                case outcomeFailed = "OUTCOME_FAILED"
+                case outcomeDeadlineExceeded = "OUTCOME_DEADLINE_EXCEEDED"
             }
             /// Required. Outcome of the code execution.
             ///
             /// - Remark: Generated from `#/components/schemas/CodeExecutionResult/outcome`.
-            public var outcome: Components.Schemas.CodeExecutionResult.outcomePayload
+            public var outcome: Components.Schemas.CodeExecutionResult.OutcomePayload
             /// Optional. Contains stdout when code execution is successful, stderr or other
             /// description otherwise.
             ///
@@ -2812,7 +2812,7 @@ public enum Components {
             ///   - outcome: Required. Outcome of the code execution.
             ///   - output: Optional. Contains stdout when code execution is successful, stderr or other
             public init(
-                outcome: Components.Schemas.CodeExecutionResult.outcomePayload,
+                outcome: Components.Schemas.CodeExecutionResult.OutcomePayload,
                 output: Swift.String? = nil
             ) {
                 self.outcome = outcome
@@ -2834,21 +2834,21 @@ public enum Components {
             /// Required. Operator applied to the given key-value pair to trigger the condition.
             ///
             /// - Remark: Generated from `#/components/schemas/Condition/operation`.
-            @frozen public enum operationPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED"
-                case LESS = "LESS"
-                case LESS_EQUAL = "LESS_EQUAL"
-                case EQUAL = "EQUAL"
-                case GREATER_EQUAL = "GREATER_EQUAL"
-                case GREATER = "GREATER"
-                case NOT_EQUAL = "NOT_EQUAL"
-                case INCLUDES = "INCLUDES"
-                case EXCLUDES = "EXCLUDES"
+            @frozen public enum OperationPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case operatorUnspecified = "OPERATOR_UNSPECIFIED"
+                case less = "LESS"
+                case lessEqual = "LESS_EQUAL"
+                case equal = "EQUAL"
+                case greaterEqual = "GREATER_EQUAL"
+                case greater = "GREATER"
+                case notEqual = "NOT_EQUAL"
+                case includes = "INCLUDES"
+                case excludes = "EXCLUDES"
             }
             /// Required. Operator applied to the given key-value pair to trigger the condition.
             ///
             /// - Remark: Generated from `#/components/schemas/Condition/operation`.
-            public var operation: Components.Schemas.Condition.operationPayload
+            public var operation: Components.Schemas.Condition.OperationPayload
             /// The string value to filter the metadata on.
             ///
             /// - Remark: Generated from `#/components/schemas/Condition/stringValue`.
@@ -2861,7 +2861,7 @@ public enum Components {
             ///   - stringValue: The string value to filter the metadata on.
             public init(
                 numericValue: Swift.Float? = nil,
-                operation: Components.Schemas.Condition.operationPayload,
+                operation: Components.Schemas.Condition.OperationPayload,
                 stringValue: Swift.String? = nil
             ) {
                 self.numericValue = numericValue
@@ -2939,15 +2939,15 @@ public enum Components {
             /// The reason content was blocked during request processing.
             ///
             /// - Remark: Generated from `#/components/schemas/ContentFilter/reason`.
-            @frozen public enum reasonPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case BLOCKED_REASON_UNSPECIFIED = "BLOCKED_REASON_UNSPECIFIED"
-                case SAFETY = "SAFETY"
-                case OTHER = "OTHER"
+            @frozen public enum ReasonPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case blockedReasonUnspecified = "BLOCKED_REASON_UNSPECIFIED"
+                case safety = "SAFETY"
+                case other = "OTHER"
             }
             /// The reason content was blocked during request processing.
             ///
             /// - Remark: Generated from `#/components/schemas/ContentFilter/reason`.
-            public var reason: Components.Schemas.ContentFilter.reasonPayload?
+            public var reason: Components.Schemas.ContentFilter.ReasonPayload?
             /// Creates a new `ContentFilter`.
             ///
             /// - Parameters:
@@ -2955,7 +2955,7 @@ public enum Components {
             ///   - reason: The reason content was blocked during request processing.
             public init(
                 message: Swift.String? = nil,
-                reason: Components.Schemas.ContentFilter.reasonPayload? = nil
+                reason: Components.Schemas.ContentFilter.ReasonPayload? = nil
             ) {
                 self.message = message
                 self.reason = reason
@@ -3028,10 +3028,10 @@ public enum Components {
             /// Required. The prompt, whose token count is to be returned.
             ///
             /// - Remark: Generated from `#/components/schemas/CountMessageTokensRequest/prompt`.
-            public struct promptPayload: Codable, Hashable, Sendable {
+            public struct PromptPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CountMessageTokensRequest/prompt/value1`.
                 public var value1: Components.Schemas.MessagePrompt
-                /// Creates a new `promptPayload`.
+                /// Creates a new `PromptPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3048,12 +3048,12 @@ public enum Components {
             /// Required. The prompt, whose token count is to be returned.
             ///
             /// - Remark: Generated from `#/components/schemas/CountMessageTokensRequest/prompt`.
-            public var prompt: Components.Schemas.CountMessageTokensRequest.promptPayload
+            public var prompt: Components.Schemas.CountMessageTokensRequest.PromptPayload
             /// Creates a new `CountMessageTokensRequest`.
             ///
             /// - Parameters:
             ///   - prompt: Required. The prompt, whose token count is to be returned.
-            public init(prompt: Components.Schemas.CountMessageTokensRequest.promptPayload) {
+            public init(prompt: Components.Schemas.CountMessageTokensRequest.PromptPayload) {
                 self.prompt = prompt
             }
             public enum CodingKeys: String, CodingKey {
@@ -3093,10 +3093,10 @@ public enum Components {
             /// Required. The free-form input text given to the model as a prompt.
             ///
             /// - Remark: Generated from `#/components/schemas/CountTextTokensRequest/prompt`.
-            public struct promptPayload: Codable, Hashable, Sendable {
+            public struct PromptPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CountTextTokensRequest/prompt/value1`.
                 public var value1: Components.Schemas.TextPrompt
-                /// Creates a new `promptPayload`.
+                /// Creates a new `PromptPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3113,12 +3113,12 @@ public enum Components {
             /// Required. The free-form input text given to the model as a prompt.
             ///
             /// - Remark: Generated from `#/components/schemas/CountTextTokensRequest/prompt`.
-            public var prompt: Components.Schemas.CountTextTokensRequest.promptPayload
+            public var prompt: Components.Schemas.CountTextTokensRequest.PromptPayload
             /// Creates a new `CountTextTokensRequest`.
             ///
             /// - Parameters:
             ///   - prompt: Required. The free-form input text given to the model as a prompt.
-            public init(prompt: Components.Schemas.CountTextTokensRequest.promptPayload) {
+            public init(prompt: Components.Schemas.CountTextTokensRequest.PromptPayload) {
                 self.prompt = prompt
             }
             public enum CodingKeys: String, CodingKey {
@@ -3170,10 +3170,10 @@ public enum Components {
             /// `generate_content_request`, but never both.
             ///
             /// - Remark: Generated from `#/components/schemas/CountTokensRequest/generateContentRequest`.
-            public struct generateContentRequestPayload: Codable, Hashable, Sendable {
+            public struct GenerateContentRequestPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CountTokensRequest/generateContentRequest/value1`.
                 public var value1: Components.Schemas.GenerateContentRequest
-                /// Creates a new `generateContentRequestPayload`.
+                /// Creates a new `GenerateContentRequestPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3197,7 +3197,7 @@ public enum Components {
             /// `generate_content_request`, but never both.
             ///
             /// - Remark: Generated from `#/components/schemas/CountTokensRequest/generateContentRequest`.
-            public var generateContentRequest: Components.Schemas.CountTokensRequest.generateContentRequestPayload?
+            public var generateContentRequest: Components.Schemas.CountTokensRequest.GenerateContentRequestPayload?
             /// Creates a new `CountTokensRequest`.
             ///
             /// - Parameters:
@@ -3205,7 +3205,7 @@ public enum Components {
             ///   - generateContentRequest: Optional. The overall input given to the `Model`. This includes the prompt as well as
             public init(
                 contents: [Components.Schemas.Content]? = nil,
-                generateContentRequest: Components.Schemas.CountTokensRequest.generateContentRequestPayload? = nil
+                generateContentRequest: Components.Schemas.CountTokensRequest.GenerateContentRequestPayload? = nil
             ) {
                 self.contents = contents
                 self.generateContentRequest = generateContentRequest
@@ -3270,10 +3270,10 @@ public enum Components {
             /// Required. The `Chunk` to create.
             ///
             /// - Remark: Generated from `#/components/schemas/CreateChunkRequest/chunk`.
-            public struct chunkPayload: Codable, Hashable, Sendable {
+            public struct ChunkPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CreateChunkRequest/chunk/value1`.
                 public var value1: Components.Schemas.Chunk
-                /// Creates a new `chunkPayload`.
+                /// Creates a new `ChunkPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3290,7 +3290,7 @@ public enum Components {
             /// Required. The `Chunk` to create.
             ///
             /// - Remark: Generated from `#/components/schemas/CreateChunkRequest/chunk`.
-            public var chunk: Components.Schemas.CreateChunkRequest.chunkPayload
+            public var chunk: Components.Schemas.CreateChunkRequest.ChunkPayload
             /// Required. The name of the `Document` where this `Chunk` will be created.
             /// Example: `corpora/my-corpus-123/documents/the-doc-abc`
             ///
@@ -3302,7 +3302,7 @@ public enum Components {
             ///   - chunk: Required. The `Chunk` to create.
             ///   - parent: Required. The name of the `Document` where this `Chunk` will be created.
             public init(
-                chunk: Components.Schemas.CreateChunkRequest.chunkPayload,
+                chunk: Components.Schemas.CreateChunkRequest.ChunkPayload,
                 parent: Swift.String
             ) {
                 self.chunk = chunk
@@ -3320,10 +3320,10 @@ public enum Components {
             /// Optional. Metadata for the file to create.
             ///
             /// - Remark: Generated from `#/components/schemas/CreateFileRequest/file`.
-            public struct filePayload: Codable, Hashable, Sendable {
+            public struct FilePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CreateFileRequest/file/value1`.
                 public var value1: Components.Schemas.File
-                /// Creates a new `filePayload`.
+                /// Creates a new `FilePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3340,12 +3340,12 @@ public enum Components {
             /// Optional. Metadata for the file to create.
             ///
             /// - Remark: Generated from `#/components/schemas/CreateFileRequest/file`.
-            public var file: Components.Schemas.CreateFileRequest.filePayload?
+            public var file: Components.Schemas.CreateFileRequest.FilePayload?
             /// Creates a new `CreateFileRequest`.
             ///
             /// - Parameters:
             ///   - file: Optional. Metadata for the file to create.
-            public init(file: Components.Schemas.CreateFileRequest.filePayload? = nil) {
+            public init(file: Components.Schemas.CreateFileRequest.FilePayload? = nil) {
                 self.file = file
             }
             public enum CodingKeys: String, CodingKey {
@@ -3359,10 +3359,10 @@ public enum Components {
             /// Metadata for the created file.
             ///
             /// - Remark: Generated from `#/components/schemas/CreateFileResponse/file`.
-            public struct filePayload: Codable, Hashable, Sendable {
+            public struct FilePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CreateFileResponse/file/value1`.
                 public var value1: Components.Schemas.File
-                /// Creates a new `filePayload`.
+                /// Creates a new `FilePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3379,12 +3379,12 @@ public enum Components {
             /// Metadata for the created file.
             ///
             /// - Remark: Generated from `#/components/schemas/CreateFileResponse/file`.
-            public var file: Components.Schemas.CreateFileResponse.filePayload?
+            public var file: Components.Schemas.CreateFileResponse.FilePayload?
             /// Creates a new `CreateFileResponse`.
             ///
             /// - Parameters:
             ///   - file: Metadata for the created file.
-            public init(file: Components.Schemas.CreateFileResponse.filePayload? = nil) {
+            public init(file: Components.Schemas.CreateFileResponse.FilePayload? = nil) {
                 self.file = file
             }
             public enum CodingKeys: String, CodingKey {
@@ -3512,10 +3512,10 @@ public enum Components {
             /// The StringList value of the metadata to store.
             ///
             /// - Remark: Generated from `#/components/schemas/CustomMetadata/stringListValue`.
-            public struct stringListValuePayload: Codable, Hashable, Sendable {
+            public struct StringListValuePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/CustomMetadata/stringListValue/value1`.
                 public var value1: Components.Schemas.StringList
-                /// Creates a new `stringListValuePayload`.
+                /// Creates a new `StringListValuePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3532,7 +3532,7 @@ public enum Components {
             /// The StringList value of the metadata to store.
             ///
             /// - Remark: Generated from `#/components/schemas/CustomMetadata/stringListValue`.
-            public var stringListValue: Components.Schemas.CustomMetadata.stringListValuePayload?
+            public var stringListValue: Components.Schemas.CustomMetadata.StringListValuePayload?
             /// The string value of the metadata to store.
             ///
             /// - Remark: Generated from `#/components/schemas/CustomMetadata/stringValue`.
@@ -3547,7 +3547,7 @@ public enum Components {
             public init(
                 key: Swift.String,
                 numericValue: Swift.Float? = nil,
-                stringListValue: Components.Schemas.CustomMetadata.stringListValuePayload? = nil,
+                stringListValue: Components.Schemas.CustomMetadata.StringListValuePayload? = nil,
                 stringValue: Swift.String? = nil
             ) {
                 self.key = key
@@ -3569,10 +3569,10 @@ public enum Components {
             /// Optional. Inline examples with simple input/output text.
             ///
             /// - Remark: Generated from `#/components/schemas/Dataset/examples`.
-            public struct examplesPayload: Codable, Hashable, Sendable {
+            public struct ExamplesPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Dataset/examples/value1`.
                 public var value1: Components.Schemas.TuningExamples
-                /// Creates a new `examplesPayload`.
+                /// Creates a new `ExamplesPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3589,12 +3589,12 @@ public enum Components {
             /// Optional. Inline examples with simple input/output text.
             ///
             /// - Remark: Generated from `#/components/schemas/Dataset/examples`.
-            public var examples: Components.Schemas.Dataset.examplesPayload?
+            public var examples: Components.Schemas.Dataset.ExamplesPayload?
             /// Creates a new `Dataset`.
             ///
             /// - Parameters:
             ///   - examples: Optional. Inline examples with simple input/output text.
-            public init(examples: Components.Schemas.Dataset.examplesPayload? = nil) {
+            public init(examples: Components.Schemas.Dataset.ExamplesPayload? = nil) {
                 self.examples = examples
             }
             public enum CodingKeys: String, CodingKey {
@@ -3699,14 +3699,14 @@ public enum Components {
             /// The mode of the predictor to be used in dynamic retrieval.
             ///
             /// - Remark: Generated from `#/components/schemas/DynamicRetrievalConfig/mode`.
-            @frozen public enum modePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
-                case MODE_DYNAMIC = "MODE_DYNAMIC"
+            @frozen public enum ModePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case modeUnspecified = "MODE_UNSPECIFIED"
+                case modeDynamic = "MODE_DYNAMIC"
             }
             /// The mode of the predictor to be used in dynamic retrieval.
             ///
             /// - Remark: Generated from `#/components/schemas/DynamicRetrievalConfig/mode`.
-            public var mode: Components.Schemas.DynamicRetrievalConfig.modePayload?
+            public var mode: Components.Schemas.DynamicRetrievalConfig.ModePayload?
             /// Creates a new `DynamicRetrievalConfig`.
             ///
             /// - Parameters:
@@ -3714,7 +3714,7 @@ public enum Components {
             ///   - mode: The mode of the predictor to be used in dynamic retrieval.
             public init(
                 dynamicThreshold: Swift.Float? = nil,
-                mode: Components.Schemas.DynamicRetrievalConfig.modePayload? = nil
+                mode: Components.Schemas.DynamicRetrievalConfig.ModePayload? = nil
             ) {
                 self.dynamicThreshold = dynamicThreshold
                 self.mode = mode
@@ -3731,10 +3731,10 @@ public enum Components {
             /// Required. The content to embed. Only the `parts.text` fields will be counted.
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/content`.
-            public struct contentPayload: Codable, Hashable, Sendable {
+            public struct ContentPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/content/value1`.
                 public var value1: Components.Schemas.Content
-                /// Creates a new `contentPayload`.
+                /// Creates a new `ContentPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3751,7 +3751,7 @@ public enum Components {
             /// Required. The content to embed. Only the `parts.text` fields will be counted.
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/content`.
-            public var content: Components.Schemas.EmbedContentRequest.contentPayload
+            public var content: Components.Schemas.EmbedContentRequest.ContentPayload
             /// Required. The model's resource name. This serves as an ID for the Model to use.
             ///
             /// This name should match a model name returned by the `ListModels` method.
@@ -3771,10 +3771,10 @@ public enum Components {
             /// earlier models (`models/embedding-001`).
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/taskType`.
-            public struct taskTypePayload: Codable, Hashable, Sendable {
+            public struct TaskTypePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/taskType/value1`.
                 public var value1: Components.Schemas.TaskType
-                /// Creates a new `taskTypePayload`.
+                /// Creates a new `TaskTypePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3792,7 +3792,7 @@ public enum Components {
             /// earlier models (`models/embedding-001`).
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/taskType`.
-            public var taskType: Components.Schemas.EmbedContentRequest.taskTypePayload?
+            public var taskType: Components.Schemas.EmbedContentRequest.TaskTypePayload?
             /// Optional. An optional title for the text. Only applicable when TaskType is
             /// `RETRIEVAL_DOCUMENT`.
             ///
@@ -3810,10 +3810,10 @@ public enum Components {
             ///   - taskType: Optional. Optional task type for which the embeddings will be used. Not supported on
             ///   - title: Optional. An optional title for the text. Only applicable when TaskType is
             public init(
-                content: Components.Schemas.EmbedContentRequest.contentPayload,
+                content: Components.Schemas.EmbedContentRequest.ContentPayload,
                 model: Swift.String,
                 outputDimensionality: Swift.Int32? = nil,
-                taskType: Components.Schemas.EmbedContentRequest.taskTypePayload? = nil,
+                taskType: Components.Schemas.EmbedContentRequest.TaskTypePayload? = nil,
                 title: Swift.String? = nil
             ) {
                 self.content = content
@@ -3837,10 +3837,10 @@ public enum Components {
             /// Output only. The embedding generated from the input content.
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedContentResponse/embedding`.
-            public struct embeddingPayload: Codable, Hashable, Sendable {
+            public struct EmbeddingPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/EmbedContentResponse/embedding/value1`.
                 public var value1: Components.Schemas.ContentEmbedding
-                /// Creates a new `embeddingPayload`.
+                /// Creates a new `EmbeddingPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3857,12 +3857,12 @@ public enum Components {
             /// Output only. The embedding generated from the input content.
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedContentResponse/embedding`.
-            public var embedding: Components.Schemas.EmbedContentResponse.embeddingPayload?
+            public var embedding: Components.Schemas.EmbedContentResponse.EmbeddingPayload?
             /// Creates a new `EmbedContentResponse`.
             ///
             /// - Parameters:
             ///   - embedding: Output only. The embedding generated from the input content.
-            public init(embedding: Components.Schemas.EmbedContentResponse.embeddingPayload? = nil) {
+            public init(embedding: Components.Schemas.EmbedContentResponse.EmbeddingPayload? = nil) {
                 self.embedding = embedding
             }
             public enum CodingKeys: String, CodingKey {
@@ -3924,10 +3924,10 @@ public enum Components {
             /// Output only. The embedding generated from the input text.
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedTextResponse/embedding`.
-            public struct embeddingPayload: Codable, Hashable, Sendable {
+            public struct EmbeddingPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/EmbedTextResponse/embedding/value1`.
                 public var value1: Components.Schemas.Embedding
-                /// Creates a new `embeddingPayload`.
+                /// Creates a new `EmbeddingPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3944,12 +3944,12 @@ public enum Components {
             /// Output only. The embedding generated from the input text.
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedTextResponse/embedding`.
-            public var embedding: Components.Schemas.EmbedTextResponse.embeddingPayload?
+            public var embedding: Components.Schemas.EmbedTextResponse.EmbeddingPayload?
             /// Creates a new `EmbedTextResponse`.
             ///
             /// - Parameters:
             ///   - embedding: Output only. The embedding generated from the input text.
-            public init(embedding: Components.Schemas.EmbedTextResponse.embeddingPayload? = nil) {
+            public init(embedding: Components.Schemas.EmbedTextResponse.EmbeddingPayload? = nil) {
                 self.embedding = embedding
             }
             public enum CodingKeys: String, CodingKey {
@@ -3975,10 +3975,10 @@ public enum Components {
             /// Required. An example of an input `Message` from the user.
             ///
             /// - Remark: Generated from `#/components/schemas/Example/input`.
-            public struct inputPayload: Codable, Hashable, Sendable {
+            public struct InputPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Example/input/value1`.
                 public var value1: Components.Schemas.Message
-                /// Creates a new `inputPayload`.
+                /// Creates a new `InputPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -3995,14 +3995,14 @@ public enum Components {
             /// Required. An example of an input `Message` from the user.
             ///
             /// - Remark: Generated from `#/components/schemas/Example/input`.
-            public var input: Components.Schemas.Example.inputPayload
+            public var input: Components.Schemas.Example.InputPayload
             /// Required. An example of what the model should output given the input.
             ///
             /// - Remark: Generated from `#/components/schemas/Example/output`.
-            public struct outputPayload: Codable, Hashable, Sendable {
+            public struct OutputPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Example/output/value1`.
                 public var value1: Components.Schemas.Message
-                /// Creates a new `outputPayload`.
+                /// Creates a new `OutputPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4019,15 +4019,15 @@ public enum Components {
             /// Required. An example of what the model should output given the input.
             ///
             /// - Remark: Generated from `#/components/schemas/Example/output`.
-            public var output: Components.Schemas.Example.outputPayload
+            public var output: Components.Schemas.Example.OutputPayload
             /// Creates a new `Example`.
             ///
             /// - Parameters:
             ///   - input: Required. An example of an input `Message` from the user.
             ///   - output: Required. An example of what the model should output given the input.
             public init(
-                input: Components.Schemas.Example.inputPayload,
-                output: Components.Schemas.Example.outputPayload
+                input: Components.Schemas.Example.InputPayload,
+                output: Components.Schemas.Example.OutputPayload
             ) {
                 self.input = input
                 self.output = output
@@ -4053,14 +4053,14 @@ public enum Components {
             /// Required. Programming language of the `code`.
             ///
             /// - Remark: Generated from `#/components/schemas/ExecutableCode/language`.
-            @frozen public enum languagePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case LANGUAGE_UNSPECIFIED = "LANGUAGE_UNSPECIFIED"
-                case PYTHON = "PYTHON"
+            @frozen public enum LanguagePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case languageUnspecified = "LANGUAGE_UNSPECIFIED"
+                case python = "PYTHON"
             }
             /// Required. Programming language of the `code`.
             ///
             /// - Remark: Generated from `#/components/schemas/ExecutableCode/language`.
-            public var language: Components.Schemas.ExecutableCode.languagePayload
+            public var language: Components.Schemas.ExecutableCode.LanguagePayload
             /// Creates a new `ExecutableCode`.
             ///
             /// - Parameters:
@@ -4068,7 +4068,7 @@ public enum Components {
             ///   - language: Required. Programming language of the `code`.
             public init(
                 code: Swift.String,
-                language: Components.Schemas.ExecutableCode.languagePayload
+                language: Components.Schemas.ExecutableCode.LanguagePayload
             ) {
                 self.code = code
                 self.language = language
@@ -4100,10 +4100,10 @@ public enum Components {
             /// Output only. Error status if File processing failed.
             ///
             /// - Remark: Generated from `#/components/schemas/File/error`.
-            public struct errorPayload: Codable, Hashable, Sendable {
+            public struct _ErrorPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/File/error/value1`.
                 public var value1: Components.Schemas.Status
-                /// Creates a new `errorPayload`.
+                /// Creates a new `_ErrorPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4120,7 +4120,7 @@ public enum Components {
             /// Output only. Error status if File processing failed.
             ///
             /// - Remark: Generated from `#/components/schemas/File/error`.
-            public var error: Components.Schemas.File.errorPayload?
+            public var error: Components.Schemas.File._ErrorPayload?
             /// Output only. The timestamp of when the `File` will be deleted. Only set if the `File` is
             /// scheduled to expire.
             ///
@@ -4149,28 +4149,28 @@ public enum Components {
             /// Source of the File.
             ///
             /// - Remark: Generated from `#/components/schemas/File/source`.
-            @frozen public enum sourcePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case SOURCE_UNSPECIFIED = "SOURCE_UNSPECIFIED"
-                case UPLOADED = "UPLOADED"
-                case GENERATED = "GENERATED"
+            @frozen public enum SourcePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case sourceUnspecified = "SOURCE_UNSPECIFIED"
+                case uploaded = "UPLOADED"
+                case generated = "GENERATED"
             }
             /// Source of the File.
             ///
             /// - Remark: Generated from `#/components/schemas/File/source`.
-            public var source: Components.Schemas.File.sourcePayload?
+            public var source: Components.Schemas.File.SourcePayload?
             /// Output only. Processing state of the File.
             ///
             /// - Remark: Generated from `#/components/schemas/File/state`.
-            @frozen public enum statePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-                case PROCESSING = "PROCESSING"
-                case ACTIVE = "ACTIVE"
-                case FAILED = "FAILED"
+            @frozen public enum StatePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case stateUnspecified = "STATE_UNSPECIFIED"
+                case processing = "PROCESSING"
+                case active = "ACTIVE"
+                case failed = "FAILED"
             }
             /// Output only. Processing state of the File.
             ///
             /// - Remark: Generated from `#/components/schemas/File/state`.
-            public var state: Components.Schemas.File.statePayload?
+            public var state: Components.Schemas.File.StatePayload?
             /// Output only. The timestamp of when the `File` was last updated.
             ///
             /// - Remark: Generated from `#/components/schemas/File/updateTime`.
@@ -4182,10 +4182,10 @@ public enum Components {
             /// Output only. Metadata for a video.
             ///
             /// - Remark: Generated from `#/components/schemas/File/videoMetadata`.
-            public struct videoMetadataPayload: Codable, Hashable, Sendable {
+            public struct VideoMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/File/videoMetadata/value1`.
                 public var value1: Components.Schemas.VideoFileMetadata
-                /// Creates a new `videoMetadataPayload`.
+                /// Creates a new `VideoMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4202,7 +4202,7 @@ public enum Components {
             /// Output only. Metadata for a video.
             ///
             /// - Remark: Generated from `#/components/schemas/File/videoMetadata`.
-            public var videoMetadata: Components.Schemas.File.videoMetadataPayload?
+            public var videoMetadata: Components.Schemas.File.VideoMetadataPayload?
             /// Creates a new `File`.
             ///
             /// - Parameters:
@@ -4224,17 +4224,17 @@ public enum Components {
                 createTime: Foundation.Date? = nil,
                 displayName: Swift.String? = nil,
                 downloadUri: Swift.String? = nil,
-                error: Components.Schemas.File.errorPayload? = nil,
+                error: Components.Schemas.File._ErrorPayload? = nil,
                 expirationTime: Foundation.Date? = nil,
                 mimeType: Swift.String? = nil,
                 name: Swift.String? = nil,
                 sha256Hash: OpenAPIRuntime.Base64EncodedData? = nil,
                 sizeBytes: Swift.String? = nil,
-                source: Components.Schemas.File.sourcePayload? = nil,
-                state: Components.Schemas.File.statePayload? = nil,
+                source: Components.Schemas.File.SourcePayload? = nil,
+                state: Components.Schemas.File.StatePayload? = nil,
                 updateTime: Foundation.Date? = nil,
                 uri: Swift.String? = nil,
-                videoMetadata: Components.Schemas.File.videoMetadataPayload? = nil
+                videoMetadata: Components.Schemas.File.VideoMetadataPayload? = nil
             ) {
                 self.createTime = createTime
                 self.displayName = displayName
@@ -4306,10 +4306,10 @@ public enum Components {
             /// Optional. The function parameters and values in JSON object format.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionCall/args`.
-            public struct argsPayload: Codable, Hashable, Sendable {
+            public struct ArgsPayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
                 public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
-                /// Creates a new `argsPayload`.
+                /// Creates a new `ArgsPayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
@@ -4326,7 +4326,7 @@ public enum Components {
             /// Optional. The function parameters and values in JSON object format.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionCall/args`.
-            public var args: Components.Schemas.FunctionCall.argsPayload?
+            public var args: Components.Schemas.FunctionCall.ArgsPayload?
             /// Optional. The unique id of the function call. If populated, the client to execute the
             /// `function_call` and return the response with the matching `id`.
             ///
@@ -4345,7 +4345,7 @@ public enum Components {
             ///   - id: Optional. The unique id of the function call. If populated, the client to execute the
             ///   - name: Required. The name of the function to call.
             public init(
-                args: Components.Schemas.FunctionCall.argsPayload? = nil,
+                args: Components.Schemas.FunctionCall.ArgsPayload? = nil,
                 id: Swift.String? = nil,
                 name: Swift.String
             ) {
@@ -4376,18 +4376,18 @@ public enum Components {
             /// unspecified, the default value will be set to AUTO.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionCallingConfig/mode`.
-            @frozen public enum modePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
-                case AUTO = "AUTO"
-                case ANY = "ANY"
-                case NONE = "NONE"
-                case VALIDATED = "VALIDATED"
+            @frozen public enum ModePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case modeUnspecified = "MODE_UNSPECIFIED"
+                case auto = "AUTO"
+                case any = "ANY"
+                case none = "NONE"
+                case validated = "VALIDATED"
             }
             /// Optional. Specifies the mode in which function calling should execute. If
             /// unspecified, the default value will be set to AUTO.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionCallingConfig/mode`.
-            public var mode: Components.Schemas.FunctionCallingConfig.modePayload?
+            public var mode: Components.Schemas.FunctionCallingConfig.ModePayload?
             /// Creates a new `FunctionCallingConfig`.
             ///
             /// - Parameters:
@@ -4395,7 +4395,7 @@ public enum Components {
             ///   - mode: Optional. Specifies the mode in which function calling should execute. If
             public init(
                 allowedFunctionNames: [Swift.String]? = nil,
-                mode: Components.Schemas.FunctionCallingConfig.modePayload? = nil
+                mode: Components.Schemas.FunctionCallingConfig.ModePayload? = nil
             ) {
                 self.allowedFunctionNames = allowedFunctionNames
                 self.mode = mode
@@ -4417,16 +4417,16 @@ public enum Components {
             /// Currently only supported by the BidiGenerateContent method.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/behavior`.
-            @frozen public enum behaviorPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case UNSPECIFIED = "UNSPECIFIED"
-                case BLOCKING = "BLOCKING"
-                case NON_BLOCKING = "NON_BLOCKING"
+            @frozen public enum BehaviorPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case unspecified = "UNSPECIFIED"
+                case blocking = "BLOCKING"
+                case nonBlocking = "NON_BLOCKING"
             }
             /// Optional. Specifies the function Behavior.
             /// Currently only supported by the BidiGenerateContent method.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/behavior`.
-            public var behavior: Components.Schemas.FunctionDeclaration.behaviorPayload?
+            public var behavior: Components.Schemas.FunctionDeclaration.BehaviorPayload?
             /// Required. A brief description of the function.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/description`.
@@ -4443,10 +4443,10 @@ public enum Components {
             /// parameter.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/parameters`.
-            public struct parametersPayload: Codable, Hashable, Sendable {
+            public struct ParametersPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/parameters/value1`.
                 public var value1: Components.Schemas.Schema
-                /// Creates a new `parametersPayload`.
+                /// Creates a new `ParametersPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4466,7 +4466,7 @@ public enum Components {
             /// parameter.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/parameters`.
-            public var parameters: Components.Schemas.FunctionDeclaration.parametersPayload?
+            public var parameters: Components.Schemas.FunctionDeclaration.ParametersPayload?
             /// Optional. Describes the parameters to the function in JSON Schema format. The schema
             /// must describe an object where the properties are the parameters to the
             /// function. For example:
@@ -4493,10 +4493,10 @@ public enum Components {
             /// response value of the function.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/response`.
-            public struct responsePayload: Codable, Hashable, Sendable {
+            public struct ResponsePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/response/value1`.
                 public var value1: Components.Schemas.Schema
-                /// Creates a new `responsePayload`.
+                /// Creates a new `ResponsePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4515,7 +4515,7 @@ public enum Components {
             /// response value of the function.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionDeclaration/response`.
-            public var response: Components.Schemas.FunctionDeclaration.responsePayload?
+            public var response: Components.Schemas.FunctionDeclaration.ResponsePayload?
             /// Optional. Describes the output from this function in JSON Schema format. The value
             /// specified by the schema is the response value of the function.
             ///
@@ -4534,12 +4534,12 @@ public enum Components {
             ///   - response: Optional. Describes the output from this function in JSON Schema format. Reflects the
             ///   - responseJsonSchema: Optional. Describes the output from this function in JSON Schema format. The value
             public init(
-                behavior: Components.Schemas.FunctionDeclaration.behaviorPayload? = nil,
+                behavior: Components.Schemas.FunctionDeclaration.BehaviorPayload? = nil,
                 description: Swift.String,
                 name: Swift.String,
-                parameters: Components.Schemas.FunctionDeclaration.parametersPayload? = nil,
+                parameters: Components.Schemas.FunctionDeclaration.ParametersPayload? = nil,
                 parametersJsonSchema: OpenAPIRuntime.OpenAPIValueContainer? = nil,
-                response: Components.Schemas.FunctionDeclaration.responsePayload? = nil,
+                response: Components.Schemas.FunctionDeclaration.ResponsePayload? = nil,
                 responseJsonSchema: OpenAPIRuntime.OpenAPIValueContainer? = nil
             ) {
                 self.behavior = behavior
@@ -4582,10 +4582,10 @@ public enum Components {
             /// Required. The function response in JSON object format.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionResponse/response`.
-            public struct responsePayload: Codable, Hashable, Sendable {
+            public struct ResponsePayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
                 public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
-                /// Creates a new `responsePayload`.
+                /// Creates a new `ResponsePayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
@@ -4602,24 +4602,24 @@ public enum Components {
             /// Required. The function response in JSON object format.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionResponse/response`.
-            public var response: Components.Schemas.FunctionResponse.responsePayload
+            public var response: Components.Schemas.FunctionResponse.ResponsePayload
             /// Optional. Specifies how the response should be scheduled in the conversation.
             /// Only applicable to NON_BLOCKING function calls, is ignored otherwise.
             /// Defaults to WHEN_IDLE.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionResponse/scheduling`.
-            @frozen public enum schedulingPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case SCHEDULING_UNSPECIFIED = "SCHEDULING_UNSPECIFIED"
-                case SILENT = "SILENT"
-                case WHEN_IDLE = "WHEN_IDLE"
-                case INTERRUPT = "INTERRUPT"
+            @frozen public enum SchedulingPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case schedulingUnspecified = "SCHEDULING_UNSPECIFIED"
+                case silent = "SILENT"
+                case whenIdle = "WHEN_IDLE"
+                case interrupt = "INTERRUPT"
             }
             /// Optional. Specifies how the response should be scheduled in the conversation.
             /// Only applicable to NON_BLOCKING function calls, is ignored otherwise.
             /// Defaults to WHEN_IDLE.
             ///
             /// - Remark: Generated from `#/components/schemas/FunctionResponse/scheduling`.
-            public var scheduling: Components.Schemas.FunctionResponse.schedulingPayload?
+            public var scheduling: Components.Schemas.FunctionResponse.SchedulingPayload?
             /// Optional. Signals that function call continues, and more responses will be
             /// returned, turning the function call into a generator.
             /// Is only applicable to NON_BLOCKING function calls, is ignored otherwise.
@@ -4642,8 +4642,8 @@ public enum Components {
             public init(
                 id: Swift.String? = nil,
                 name: Swift.String,
-                response: Components.Schemas.FunctionResponse.responsePayload,
-                scheduling: Components.Schemas.FunctionResponse.schedulingPayload? = nil,
+                response: Components.Schemas.FunctionResponse.ResponsePayload,
+                scheduling: Components.Schemas.FunctionResponse.SchedulingPayload? = nil,
                 willContinue: Swift.Bool? = nil
             ) {
                 self.id = id
@@ -4667,16 +4667,16 @@ public enum Components {
             /// Required. Style in which answers should be returned.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerRequest/answerStyle`.
-            @frozen public enum answerStylePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case ANSWER_STYLE_UNSPECIFIED = "ANSWER_STYLE_UNSPECIFIED"
-                case ABSTRACTIVE = "ABSTRACTIVE"
-                case EXTRACTIVE = "EXTRACTIVE"
-                case VERBOSE = "VERBOSE"
+            @frozen public enum AnswerStylePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case answerStyleUnspecified = "ANSWER_STYLE_UNSPECIFIED"
+                case abstractive = "ABSTRACTIVE"
+                case extractive = "EXTRACTIVE"
+                case verbose = "VERBOSE"
             }
             /// Required. Style in which answers should be returned.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerRequest/answerStyle`.
-            public var answerStyle: Components.Schemas.GenerateAnswerRequest.answerStylePayload
+            public var answerStyle: Components.Schemas.GenerateAnswerRequest.AnswerStylePayload
             /// Required. The content of the current conversation with the `Model`. For single-turn
             /// queries, this is a single question to answer. For multi-turn queries, this
             /// is a repeated field that contains conversation history and the last
@@ -4689,10 +4689,10 @@ public enum Components {
             /// Passages provided inline with the request.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerRequest/inlinePassages`.
-            public struct inlinePassagesPayload: Codable, Hashable, Sendable {
+            public struct InlinePassagesPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateAnswerRequest/inlinePassages/value1`.
                 public var value1: Components.Schemas.GroundingPassages
-                /// Creates a new `inlinePassagesPayload`.
+                /// Creates a new `InlinePassagesPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4709,7 +4709,7 @@ public enum Components {
             /// Passages provided inline with the request.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerRequest/inlinePassages`.
-            public var inlinePassages: Components.Schemas.GenerateAnswerRequest.inlinePassagesPayload?
+            public var inlinePassages: Components.Schemas.GenerateAnswerRequest.InlinePassagesPayload?
             /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
             ///
             /// This will be enforced on the `GenerateAnswerRequest.contents` and
@@ -4734,10 +4734,10 @@ public enum Components {
             /// API.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerRequest/semanticRetriever`.
-            public struct semanticRetrieverPayload: Codable, Hashable, Sendable {
+            public struct SemanticRetrieverPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateAnswerRequest/semanticRetriever/value1`.
                 public var value1: Components.Schemas.SemanticRetrieverConfig
-                /// Creates a new `semanticRetrieverPayload`.
+                /// Creates a new `SemanticRetrieverPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4755,7 +4755,7 @@ public enum Components {
             /// API.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerRequest/semanticRetriever`.
-            public var semanticRetriever: Components.Schemas.GenerateAnswerRequest.semanticRetrieverPayload?
+            public var semanticRetriever: Components.Schemas.GenerateAnswerRequest.SemanticRetrieverPayload?
             /// Optional. Controls the randomness of the output.
             ///
             /// Values can range from [0.0,1.0], inclusive. A value closer to 1.0 will
@@ -4776,11 +4776,11 @@ public enum Components {
             ///   - semanticRetriever: Content retrieved from resources created via the Semantic Retriever
             ///   - temperature: Optional. Controls the randomness of the output.
             public init(
-                answerStyle: Components.Schemas.GenerateAnswerRequest.answerStylePayload,
+                answerStyle: Components.Schemas.GenerateAnswerRequest.AnswerStylePayload,
                 contents: [Components.Schemas.Content],
-                inlinePassages: Components.Schemas.GenerateAnswerRequest.inlinePassagesPayload? = nil,
+                inlinePassages: Components.Schemas.GenerateAnswerRequest.InlinePassagesPayload? = nil,
                 safetySettings: [Components.Schemas.SafetySetting]? = nil,
-                semanticRetriever: Components.Schemas.GenerateAnswerRequest.semanticRetrieverPayload? = nil,
+                semanticRetriever: Components.Schemas.GenerateAnswerRequest.SemanticRetrieverPayload? = nil,
                 temperature: Swift.Float? = nil
             ) {
                 self.answerStyle = answerStyle
@@ -4811,10 +4811,10 @@ public enum Components {
             /// with a low `answerable_probability`.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerResponse/answer`.
-            public struct answerPayload: Codable, Hashable, Sendable {
+            public struct AnswerPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateAnswerResponse/answer/value1`.
                 public var value1: Components.Schemas.Candidate
-                /// Creates a new `answerPayload`.
+                /// Creates a new `AnswerPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4836,7 +4836,7 @@ public enum Components {
             /// with a low `answerable_probability`.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerResponse/answer`.
-            public var answer: Components.Schemas.GenerateAnswerResponse.answerPayload?
+            public var answer: Components.Schemas.GenerateAnswerResponse.AnswerPayload?
             /// Output only. The model's estimate of the probability that its answer is correct and
             /// grounded in the input passages.
             ///
@@ -4865,10 +4865,10 @@ public enum Components {
             /// `GenerateAnswerRequest.inline_passages`)
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerResponse/inputFeedback`.
-            public struct inputFeedbackPayload: Codable, Hashable, Sendable {
+            public struct InputFeedbackPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateAnswerResponse/inputFeedback/value1`.
                 public var value1: Components.Schemas.InputFeedback
-                /// Creates a new `inputFeedbackPayload`.
+                /// Creates a new `InputFeedbackPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4894,7 +4894,7 @@ public enum Components {
             /// `GenerateAnswerRequest.inline_passages`)
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateAnswerResponse/inputFeedback`.
-            public var inputFeedback: Components.Schemas.GenerateAnswerResponse.inputFeedbackPayload?
+            public var inputFeedback: Components.Schemas.GenerateAnswerResponse.InputFeedbackPayload?
             /// Creates a new `GenerateAnswerResponse`.
             ///
             /// - Parameters:
@@ -4902,9 +4902,9 @@ public enum Components {
             ///   - answerableProbability: Output only. The model's estimate of the probability that its answer is correct and
             ///   - inputFeedback: Output only. Feedback related to the input data used to answer the question, as opposed
             public init(
-                answer: Components.Schemas.GenerateAnswerResponse.answerPayload? = nil,
+                answer: Components.Schemas.GenerateAnswerResponse.AnswerPayload? = nil,
                 answerableProbability: Swift.Float? = nil,
-                inputFeedback: Components.Schemas.GenerateAnswerResponse.inputFeedbackPayload? = nil
+                inputFeedback: Components.Schemas.GenerateAnswerResponse.InputFeedbackPayload? = nil
             ) {
                 self.answer = answer
                 self.answerableProbability = answerableProbability
@@ -4939,10 +4939,10 @@ public enum Components {
             /// Optional. Configuration options for model generation and outputs.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/generationConfig`.
-            public struct generationConfigPayload: Codable, Hashable, Sendable {
+            public struct GenerationConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/generationConfig/value1`.
                 public var value1: Components.Schemas.GenerationConfig
-                /// Creates a new `generationConfigPayload`.
+                /// Creates a new `GenerationConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -4959,7 +4959,7 @@ public enum Components {
             /// Optional. Configuration options for model generation and outputs.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/generationConfig`.
-            public var generationConfig: Components.Schemas.GenerateContentRequest.generationConfigPayload?
+            public var generationConfig: Components.Schemas.GenerateContentRequest.GenerationConfigPayload?
             /// Required. The name of the `Model` to use for generating the completion.
             ///
             /// Format: `models/{model}`.
@@ -4990,10 +4990,10 @@ public enum Components {
             /// Currently, text only.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/systemInstruction`.
-            public struct systemInstructionPayload: Codable, Hashable, Sendable {
+            public struct SystemInstructionPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/systemInstruction/value1`.
                 public var value1: Components.Schemas.Content
-                /// Creates a new `systemInstructionPayload`.
+                /// Creates a new `SystemInstructionPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5012,17 +5012,17 @@ public enum Components {
             /// Currently, text only.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/systemInstruction`.
-            public var systemInstruction: Components.Schemas.GenerateContentRequest.systemInstructionPayload?
+            public var systemInstruction: Components.Schemas.GenerateContentRequest.SystemInstructionPayload?
             /// Optional. Tool configuration for any `Tool` specified in the request. Refer to the
             /// [Function calling
             /// guide](https://ai.google.dev/gemini-api/docs/function-calling#function_calling_mode)
             /// for a usage example.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/toolConfig`.
-            public struct toolConfigPayload: Codable, Hashable, Sendable {
+            public struct ToolConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/toolConfig/value1`.
                 public var value1: Components.Schemas.ToolConfig
-                /// Creates a new `toolConfigPayload`.
+                /// Creates a new `ToolConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5042,7 +5042,7 @@ public enum Components {
             /// for a usage example.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentRequest/toolConfig`.
-            public var toolConfig: Components.Schemas.GenerateContentRequest.toolConfigPayload?
+            public var toolConfig: Components.Schemas.GenerateContentRequest.ToolConfigPayload?
             /// Optional. A list of `Tools` the `Model` may use to generate the next response.
             ///
             /// A `Tool` is a piece of code that enables the system to interact with
@@ -5069,11 +5069,11 @@ public enum Components {
             public init(
                 cachedContent: Swift.String? = nil,
                 contents: [Components.Schemas.Content],
-                generationConfig: Components.Schemas.GenerateContentRequest.generationConfigPayload? = nil,
+                generationConfig: Components.Schemas.GenerateContentRequest.GenerationConfigPayload? = nil,
                 model: Swift.String,
                 safetySettings: [Components.Schemas.SafetySetting]? = nil,
-                systemInstruction: Components.Schemas.GenerateContentRequest.systemInstructionPayload? = nil,
-                toolConfig: Components.Schemas.GenerateContentRequest.toolConfigPayload? = nil,
+                systemInstruction: Components.Schemas.GenerateContentRequest.SystemInstructionPayload? = nil,
+                toolConfig: Components.Schemas.GenerateContentRequest.ToolConfigPayload? = nil,
                 tools: [Components.Schemas.Tool]? = nil
             ) {
                 self.cachedContent = cachedContent
@@ -5120,10 +5120,10 @@ public enum Components {
             /// Returns the prompt's feedback related to the content filters.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentResponse/promptFeedback`.
-            public struct promptFeedbackPayload: Codable, Hashable, Sendable {
+            public struct PromptFeedbackPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateContentResponse/promptFeedback/value1`.
                 public var value1: Components.Schemas.PromptFeedback
-                /// Creates a new `promptFeedbackPayload`.
+                /// Creates a new `PromptFeedbackPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5140,7 +5140,7 @@ public enum Components {
             /// Returns the prompt's feedback related to the content filters.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentResponse/promptFeedback`.
-            public var promptFeedback: Components.Schemas.GenerateContentResponse.promptFeedbackPayload?
+            public var promptFeedback: Components.Schemas.GenerateContentResponse.PromptFeedbackPayload?
             /// Output only. response_id is used to identify each response.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentResponse/responseId`.
@@ -5148,10 +5148,10 @@ public enum Components {
             /// Output only. Metadata on the generation requests' token usage.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentResponse/usageMetadata`.
-            public struct usageMetadataPayload: Codable, Hashable, Sendable {
+            public struct UsageMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateContentResponse/usageMetadata/value1`.
                 public var value1: Components.Schemas.UsageMetadata
-                /// Creates a new `usageMetadataPayload`.
+                /// Creates a new `UsageMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5168,7 +5168,7 @@ public enum Components {
             /// Output only. Metadata on the generation requests' token usage.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateContentResponse/usageMetadata`.
-            public var usageMetadata: Components.Schemas.GenerateContentResponse.usageMetadataPayload?
+            public var usageMetadata: Components.Schemas.GenerateContentResponse.UsageMetadataPayload?
             /// Creates a new `GenerateContentResponse`.
             ///
             /// - Parameters:
@@ -5180,9 +5180,9 @@ public enum Components {
             public init(
                 candidates: [Components.Schemas.Candidate]? = nil,
                 modelVersion: Swift.String? = nil,
-                promptFeedback: Components.Schemas.GenerateContentResponse.promptFeedbackPayload? = nil,
+                promptFeedback: Components.Schemas.GenerateContentResponse.PromptFeedbackPayload? = nil,
                 responseId: Swift.String? = nil,
-                usageMetadata: Components.Schemas.GenerateContentResponse.usageMetadataPayload? = nil
+                usageMetadata: Components.Schemas.GenerateContentResponse.UsageMetadataPayload? = nil
             ) {
                 self.candidates = candidates
                 self.modelVersion = modelVersion
@@ -5205,10 +5205,10 @@ public enum Components {
             /// Error details if the GeneratedFile ends up in the STATE_FAILED state.
             ///
             /// - Remark: Generated from `#/components/schemas/GeneratedFile/error`.
-            public struct errorPayload: Codable, Hashable, Sendable {
+            public struct _ErrorPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GeneratedFile/error/value1`.
                 public var value1: Components.Schemas.Status
-                /// Creates a new `errorPayload`.
+                /// Creates a new `_ErrorPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5225,7 +5225,7 @@ public enum Components {
             /// Error details if the GeneratedFile ends up in the STATE_FAILED state.
             ///
             /// - Remark: Generated from `#/components/schemas/GeneratedFile/error`.
-            public var error: Components.Schemas.GeneratedFile.errorPayload?
+            public var error: Components.Schemas.GeneratedFile._ErrorPayload?
             /// MIME type of the generatedFile.
             ///
             /// - Remark: Generated from `#/components/schemas/GeneratedFile/mimeType`.
@@ -5238,16 +5238,16 @@ public enum Components {
             /// Output only. The state of the GeneratedFile.
             ///
             /// - Remark: Generated from `#/components/schemas/GeneratedFile/state`.
-            @frozen public enum statePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-                case GENERATING = "GENERATING"
-                case GENERATED = "GENERATED"
-                case FAILED = "FAILED"
+            @frozen public enum StatePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case stateUnspecified = "STATE_UNSPECIFIED"
+                case generating = "GENERATING"
+                case generated = "GENERATED"
+                case failed = "FAILED"
             }
             /// Output only. The state of the GeneratedFile.
             ///
             /// - Remark: Generated from `#/components/schemas/GeneratedFile/state`.
-            public var state: Components.Schemas.GeneratedFile.statePayload?
+            public var state: Components.Schemas.GeneratedFile.StatePayload?
             /// Creates a new `GeneratedFile`.
             ///
             /// - Parameters:
@@ -5256,10 +5256,10 @@ public enum Components {
             ///   - name: Identifier. The name of the generated file.
             ///   - state: Output only. The state of the GeneratedFile.
             public init(
-                error: Components.Schemas.GeneratedFile.errorPayload? = nil,
+                error: Components.Schemas.GeneratedFile._ErrorPayload? = nil,
                 mimeType: Swift.String? = nil,
                 name: Swift.String? = nil,
-                state: Components.Schemas.GeneratedFile.statePayload? = nil
+                state: Components.Schemas.GeneratedFile.StatePayload? = nil
             ) {
                 self.error = error
                 self.mimeType = mimeType
@@ -5291,10 +5291,10 @@ public enum Components {
             /// discussion.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateMessageRequest/prompt`.
-            public struct promptPayload: Codable, Hashable, Sendable {
+            public struct PromptPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateMessageRequest/prompt/value1`.
                 public var value1: Components.Schemas.MessagePrompt
-                /// Creates a new `promptPayload`.
+                /// Creates a new `PromptPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5315,7 +5315,7 @@ public enum Components {
             /// discussion.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateMessageRequest/prompt`.
-            public var prompt: Components.Schemas.GenerateMessageRequest.promptPayload
+            public var prompt: Components.Schemas.GenerateMessageRequest.PromptPayload
             /// Optional. Controls the randomness of the output.
             ///
             /// Values can range over `[0.0,1.0]`,
@@ -5352,7 +5352,7 @@ public enum Components {
             ///   - topP: Optional. The maximum cumulative probability of tokens to consider when sampling.
             public init(
                 candidateCount: Swift.Int32? = nil,
-                prompt: Components.Schemas.GenerateMessageRequest.promptPayload,
+                prompt: Components.Schemas.GenerateMessageRequest.PromptPayload,
                 temperature: Swift.Float? = nil,
                 topK: Swift.Int32? = nil,
                 topP: Swift.Float? = nil
@@ -5440,10 +5440,10 @@ public enum Components {
             /// predicts as the completion of the input text.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateTextRequest/prompt`.
-            public struct promptPayload: Codable, Hashable, Sendable {
+            public struct PromptPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerateTextRequest/prompt/value1`.
                 public var value1: Components.Schemas.TextPrompt
-                /// Creates a new `promptPayload`.
+                /// Creates a new `PromptPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5463,7 +5463,7 @@ public enum Components {
             /// predicts as the completion of the input text.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerateTextRequest/prompt`.
-            public var prompt: Components.Schemas.GenerateTextRequest.promptPayload
+            public var prompt: Components.Schemas.GenerateTextRequest.PromptPayload
             /// Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
             ///
             /// that will be enforced on the `GenerateTextRequest.prompt` and
@@ -5537,7 +5537,7 @@ public enum Components {
             public init(
                 candidateCount: Swift.Int32? = nil,
                 maxOutputTokens: Swift.Int32? = nil,
-                prompt: Components.Schemas.GenerateTextRequest.promptPayload,
+                prompt: Components.Schemas.GenerateTextRequest.PromptPayload,
                 safetySettings: [Components.Schemas.SafetySetting]? = nil,
                 stopSequences: [Swift.String]? = nil,
                 temperature: Swift.Float? = nil,
@@ -5696,16 +5696,16 @@ public enum Components {
             /// Optional. If specified, the media resolution specified will be used.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/mediaResolution`.
-            @frozen public enum mediaResolutionPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case MEDIA_RESOLUTION_UNSPECIFIED = "MEDIA_RESOLUTION_UNSPECIFIED"
-                case MEDIA_RESOLUTION_LOW = "MEDIA_RESOLUTION_LOW"
-                case MEDIA_RESOLUTION_MEDIUM = "MEDIA_RESOLUTION_MEDIUM"
-                case MEDIA_RESOLUTION_HIGH = "MEDIA_RESOLUTION_HIGH"
+            @frozen public enum MediaResolutionPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case mediaResolutionUnspecified = "MEDIA_RESOLUTION_UNSPECIFIED"
+                case mediaResolutionLow = "MEDIA_RESOLUTION_LOW"
+                case mediaResolutionMedium = "MEDIA_RESOLUTION_MEDIUM"
+                case mediaResolutionHigh = "MEDIA_RESOLUTION_HIGH"
             }
             /// Optional. If specified, the media resolution specified will be used.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/mediaResolution`.
-            public var mediaResolution: Components.Schemas.GenerationConfig.mediaResolutionPayload?
+            public var mediaResolution: Components.Schemas.GenerationConfig.MediaResolutionPayload?
             /// Optional. Presence penalty applied to the next token's logprobs if the token has
             /// already been seen in the response.
             ///
@@ -5776,12 +5776,12 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseMimeType`.
             public var responseMimeType: Swift.String?
-            /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseModalitiesPayload`.
-            @frozen public enum responseModalitiesPayloadPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case MODALITY_UNSPECIFIED = "MODALITY_UNSPECIFIED"
-                case TEXT = "TEXT"
-                case IMAGE = "IMAGE"
-                case AUDIO = "AUDIO"
+            /// - Remark: Generated from `#/components/schemas/GenerationConfig/ResponseModalitiesPayload`.
+            @frozen public enum ResponseModalitiesPayloadPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case modalityUnspecified = "MODALITY_UNSPECIFIED"
+                case text = "TEXT"
+                case image = "IMAGE"
+                case audio = "AUDIO"
             }
             /// Optional. The requested modalities of the response. Represents the set of modalities
             /// that the model can return, and should be expected in the response. This is
@@ -5794,7 +5794,7 @@ public enum Components {
             /// An empty list is equivalent to requesting only text.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseModalities`.
-            public typealias responseModalitiesPayload = [Components.Schemas.GenerationConfig.responseModalitiesPayloadPayload]
+            public typealias ResponseModalitiesPayload = [Components.Schemas.GenerationConfig.ResponseModalitiesPayloadPayload]
             /// Optional. The requested modalities of the response. Represents the set of modalities
             /// that the model can return, and should be expected in the response. This is
             /// an exact match to the modalities of the response.
@@ -5806,7 +5806,7 @@ public enum Components {
             /// An empty list is equivalent to requesting only text.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseModalities`.
-            public var responseModalities: Components.Schemas.GenerationConfig.responseModalitiesPayload?
+            public var responseModalities: Components.Schemas.GenerationConfig.ResponseModalitiesPayload?
             /// Optional. Output schema of the generated candidate text. Schemas must be a
             /// subset of the [OpenAPI schema](https://spec.openapis.org/oas/v3.0.3#schema)
             /// and can be objects, primitives or arrays.
@@ -5818,10 +5818,10 @@ public enum Components {
             /// guide](https://ai.google.dev/gemini-api/docs/json-mode) for more details.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseSchema`.
-            public struct responseSchemaPayload: Codable, Hashable, Sendable {
+            public struct ResponseSchemaPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseSchema/value1`.
                 public var value1: Components.Schemas.Schema
-                /// Creates a new `responseSchemaPayload`.
+                /// Creates a new `ResponseSchemaPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5846,7 +5846,7 @@ public enum Components {
             /// guide](https://ai.google.dev/gemini-api/docs/json-mode) for more details.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseSchema`.
-            public var responseSchema: Components.Schemas.GenerationConfig.responseSchemaPayload?
+            public var responseSchema: Components.Schemas.GenerationConfig.ResponseSchemaPayload?
             /// Optional. Seed used in decoding. If not set, the request uses a randomly generated
             /// seed.
             ///
@@ -5855,10 +5855,10 @@ public enum Components {
             /// Optional. The speech generation config.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/speechConfig`.
-            public struct speechConfigPayload: Codable, Hashable, Sendable {
+            public struct SpeechConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerationConfig/speechConfig/value1`.
                 public var value1: Components.Schemas.SpeechConfig
-                /// Creates a new `speechConfigPayload`.
+                /// Creates a new `SpeechConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5875,7 +5875,7 @@ public enum Components {
             /// Optional. The speech generation config.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/speechConfig`.
-            public var speechConfig: Components.Schemas.GenerationConfig.speechConfigPayload?
+            public var speechConfig: Components.Schemas.GenerationConfig.SpeechConfigPayload?
             /// Optional. The set of character sequences (up to 5) that will stop output generation.
             /// If specified, the API will stop at the first appearance of a
             /// `stop_sequence`. The stop sequence will not be included as part of the
@@ -5897,10 +5897,10 @@ public enum Components {
             /// support thinking.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/thinkingConfig`.
-            public struct thinkingConfigPayload: Codable, Hashable, Sendable {
+            public struct ThinkingConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GenerationConfig/thinkingConfig/value1`.
                 public var value1: Components.Schemas.ThinkingConfig
-                /// Creates a new `thinkingConfigPayload`.
+                /// Creates a new `ThinkingConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -5919,7 +5919,7 @@ public enum Components {
             /// support thinking.
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/thinkingConfig`.
-            public var thinkingConfig: Components.Schemas.GenerationConfig.thinkingConfigPayload?
+            public var thinkingConfig: Components.Schemas.GenerationConfig.ThinkingConfigPayload?
             /// Optional. The maximum number of tokens to consider when sampling.
             ///
             /// Gemini models use Top-p (nucleus) sampling or a combination of Top-k and
@@ -5977,18 +5977,18 @@ public enum Components {
                 frequencyPenalty: Swift.Float? = nil,
                 logprobs: Swift.Int32? = nil,
                 maxOutputTokens: Swift.Int32? = nil,
-                mediaResolution: Components.Schemas.GenerationConfig.mediaResolutionPayload? = nil,
+                mediaResolution: Components.Schemas.GenerationConfig.MediaResolutionPayload? = nil,
                 presencePenalty: Swift.Float? = nil,
                 responseJsonSchema: OpenAPIRuntime.OpenAPIValueContainer? = nil,
                 responseLogprobs: Swift.Bool? = nil,
                 responseMimeType: Swift.String? = nil,
-                responseModalities: Components.Schemas.GenerationConfig.responseModalitiesPayload? = nil,
-                responseSchema: Components.Schemas.GenerationConfig.responseSchemaPayload? = nil,
+                responseModalities: Components.Schemas.GenerationConfig.ResponseModalitiesPayload? = nil,
+                responseSchema: Components.Schemas.GenerationConfig.ResponseSchemaPayload? = nil,
                 seed: Swift.Int32? = nil,
-                speechConfig: Components.Schemas.GenerationConfig.speechConfigPayload? = nil,
+                speechConfig: Components.Schemas.GenerationConfig.SpeechConfigPayload? = nil,
                 stopSequences: [Swift.String]? = nil,
                 temperature: Swift.Float? = nil,
-                thinkingConfig: Components.Schemas.GenerationConfig.thinkingConfigPayload? = nil,
+                thinkingConfig: Components.Schemas.GenerationConfig.ThinkingConfigPayload? = nil,
                 topK: Swift.Int32? = nil,
                 topP: Swift.Float? = nil
             ) {
@@ -6044,10 +6044,10 @@ public enum Components {
             /// versa).
             ///
             /// - Remark: Generated from `#/components/schemas/GoogleSearch/timeRangeFilter`.
-            public struct timeRangeFilterPayload: Codable, Hashable, Sendable {
+            public struct TimeRangeFilterPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GoogleSearch/timeRangeFilter/value1`.
                 public var value1: Components.Schemas.Interval
-                /// Creates a new `timeRangeFilterPayload`.
+                /// Creates a new `TimeRangeFilterPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6066,12 +6066,12 @@ public enum Components {
             /// versa).
             ///
             /// - Remark: Generated from `#/components/schemas/GoogleSearch/timeRangeFilter`.
-            public var timeRangeFilter: Components.Schemas.GoogleSearch.timeRangeFilterPayload?
+            public var timeRangeFilter: Components.Schemas.GoogleSearch.TimeRangeFilterPayload?
             /// Creates a new `GoogleSearch`.
             ///
             /// - Parameters:
             ///   - timeRangeFilter: Optional. Filter search results to a specific time range.
-            public init(timeRangeFilter: Components.Schemas.GoogleSearch.timeRangeFilterPayload? = nil) {
+            public init(timeRangeFilter: Components.Schemas.GoogleSearch.TimeRangeFilterPayload? = nil) {
                 self.timeRangeFilter = timeRangeFilter
             }
             public enum CodingKeys: String, CodingKey {
@@ -6085,10 +6085,10 @@ public enum Components {
             /// Specifies the dynamic retrieval configuration for the given source.
             ///
             /// - Remark: Generated from `#/components/schemas/GoogleSearchRetrieval/dynamicRetrievalConfig`.
-            public struct dynamicRetrievalConfigPayload: Codable, Hashable, Sendable {
+            public struct DynamicRetrievalConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GoogleSearchRetrieval/dynamicRetrievalConfig/value1`.
                 public var value1: Components.Schemas.DynamicRetrievalConfig
-                /// Creates a new `dynamicRetrievalConfigPayload`.
+                /// Creates a new `DynamicRetrievalConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6105,12 +6105,12 @@ public enum Components {
             /// Specifies the dynamic retrieval configuration for the given source.
             ///
             /// - Remark: Generated from `#/components/schemas/GoogleSearchRetrieval/dynamicRetrievalConfig`.
-            public var dynamicRetrievalConfig: Components.Schemas.GoogleSearchRetrieval.dynamicRetrievalConfigPayload?
+            public var dynamicRetrievalConfig: Components.Schemas.GoogleSearchRetrieval.DynamicRetrievalConfigPayload?
             /// Creates a new `GoogleSearchRetrieval`.
             ///
             /// - Parameters:
             ///   - dynamicRetrievalConfig: Specifies the dynamic retrieval configuration for the given source.
-            public init(dynamicRetrievalConfig: Components.Schemas.GoogleSearchRetrieval.dynamicRetrievalConfigPayload? = nil) {
+            public init(dynamicRetrievalConfig: Components.Schemas.GoogleSearchRetrieval.DynamicRetrievalConfigPayload? = nil) {
                 self.dynamicRetrievalConfig = dynamicRetrievalConfig
             }
             public enum CodingKeys: String, CodingKey {
@@ -6124,10 +6124,10 @@ public enum Components {
             /// Grounding source content that makes up this attribution.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingAttribution/content`.
-            public struct contentPayload: Codable, Hashable, Sendable {
+            public struct ContentPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GroundingAttribution/content/value1`.
                 public var value1: Components.Schemas.Content
-                /// Creates a new `contentPayload`.
+                /// Creates a new `ContentPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6144,14 +6144,14 @@ public enum Components {
             /// Grounding source content that makes up this attribution.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingAttribution/content`.
-            public var content: Components.Schemas.GroundingAttribution.contentPayload?
+            public var content: Components.Schemas.GroundingAttribution.ContentPayload?
             /// Output only. Identifier for the source contributing to this attribution.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingAttribution/sourceId`.
-            public struct sourceIdPayload: Codable, Hashable, Sendable {
+            public struct SourceIdPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GroundingAttribution/sourceId/value1`.
                 public var value1: Components.Schemas.AttributionSourceId
-                /// Creates a new `sourceIdPayload`.
+                /// Creates a new `SourceIdPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6168,15 +6168,15 @@ public enum Components {
             /// Output only. Identifier for the source contributing to this attribution.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingAttribution/sourceId`.
-            public var sourceId: Components.Schemas.GroundingAttribution.sourceIdPayload?
+            public var sourceId: Components.Schemas.GroundingAttribution.SourceIdPayload?
             /// Creates a new `GroundingAttribution`.
             ///
             /// - Parameters:
             ///   - content: Grounding source content that makes up this attribution.
             ///   - sourceId: Output only. Identifier for the source contributing to this attribution.
             public init(
-                content: Components.Schemas.GroundingAttribution.contentPayload? = nil,
-                sourceId: Components.Schemas.GroundingAttribution.sourceIdPayload? = nil
+                content: Components.Schemas.GroundingAttribution.ContentPayload? = nil,
+                sourceId: Components.Schemas.GroundingAttribution.SourceIdPayload? = nil
             ) {
                 self.content = content
                 self.sourceId = sourceId
@@ -6193,10 +6193,10 @@ public enum Components {
             /// Grounding chunk from the web.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingChunk/web`.
-            public struct webPayload: Codable, Hashable, Sendable {
+            public struct WebPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GroundingChunk/web/value1`.
                 public var value1: Components.Schemas.Web
-                /// Creates a new `webPayload`.
+                /// Creates a new `WebPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6213,12 +6213,12 @@ public enum Components {
             /// Grounding chunk from the web.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingChunk/web`.
-            public var web: Components.Schemas.GroundingChunk.webPayload?
+            public var web: Components.Schemas.GroundingChunk.WebPayload?
             /// Creates a new `GroundingChunk`.
             ///
             /// - Parameters:
             ///   - web: Grounding chunk from the web.
-            public init(web: Components.Schemas.GroundingChunk.webPayload? = nil) {
+            public init(web: Components.Schemas.GroundingChunk.WebPayload? = nil) {
                 self.web = web
             }
             public enum CodingKeys: String, CodingKey {
@@ -6240,10 +6240,10 @@ public enum Components {
             /// Metadata related to retrieval in the grounding flow.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingMetadata/retrievalMetadata`.
-            public struct retrievalMetadataPayload: Codable, Hashable, Sendable {
+            public struct RetrievalMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GroundingMetadata/retrievalMetadata/value1`.
                 public var value1: Components.Schemas.RetrievalMetadata
-                /// Creates a new `retrievalMetadataPayload`.
+                /// Creates a new `RetrievalMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6260,14 +6260,14 @@ public enum Components {
             /// Metadata related to retrieval in the grounding flow.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingMetadata/retrievalMetadata`.
-            public var retrievalMetadata: Components.Schemas.GroundingMetadata.retrievalMetadataPayload?
+            public var retrievalMetadata: Components.Schemas.GroundingMetadata.RetrievalMetadataPayload?
             /// Optional. Google search entry for the following-up web searches.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingMetadata/searchEntryPoint`.
-            public struct searchEntryPointPayload: Codable, Hashable, Sendable {
+            public struct SearchEntryPointPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GroundingMetadata/searchEntryPoint/value1`.
                 public var value1: Components.Schemas.SearchEntryPoint
-                /// Creates a new `searchEntryPointPayload`.
+                /// Creates a new `SearchEntryPointPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6284,7 +6284,7 @@ public enum Components {
             /// Optional. Google search entry for the following-up web searches.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingMetadata/searchEntryPoint`.
-            public var searchEntryPoint: Components.Schemas.GroundingMetadata.searchEntryPointPayload?
+            public var searchEntryPoint: Components.Schemas.GroundingMetadata.SearchEntryPointPayload?
             /// Web search queries for the following-up web search.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingMetadata/webSearchQueries`.
@@ -6300,8 +6300,8 @@ public enum Components {
             public init(
                 groundingChunks: [Components.Schemas.GroundingChunk]? = nil,
                 groundingSupports: [Components.Schemas.GroundingSupport]? = nil,
-                retrievalMetadata: Components.Schemas.GroundingMetadata.retrievalMetadataPayload? = nil,
-                searchEntryPoint: Components.Schemas.GroundingMetadata.searchEntryPointPayload? = nil,
+                retrievalMetadata: Components.Schemas.GroundingMetadata.RetrievalMetadataPayload? = nil,
+                searchEntryPoint: Components.Schemas.GroundingMetadata.SearchEntryPointPayload? = nil,
                 webSearchQueries: [Swift.String]? = nil
             ) {
                 self.groundingChunks = groundingChunks
@@ -6325,10 +6325,10 @@ public enum Components {
             /// Content of the passage.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingPassage/content`.
-            public struct contentPayload: Codable, Hashable, Sendable {
+            public struct ContentPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GroundingPassage/content/value1`.
                 public var value1: Components.Schemas.Content
-                /// Creates a new `contentPayload`.
+                /// Creates a new `ContentPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6345,7 +6345,7 @@ public enum Components {
             /// Content of the passage.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingPassage/content`.
-            public var content: Components.Schemas.GroundingPassage.contentPayload?
+            public var content: Components.Schemas.GroundingPassage.ContentPayload?
             /// Identifier for the passage for attributing this passage in grounded
             /// answers.
             ///
@@ -6357,7 +6357,7 @@ public enum Components {
             ///   - content: Content of the passage.
             ///   - id: Identifier for the passage for attributing this passage in grounded
             public init(
-                content: Components.Schemas.GroundingPassage.contentPayload? = nil,
+                content: Components.Schemas.GroundingPassage.ContentPayload? = nil,
                 id: Swift.String? = nil
             ) {
                 self.content = content
@@ -6438,10 +6438,10 @@ public enum Components {
             /// Segment of the content this support belongs to.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingSupport/segment`.
-            public struct segmentPayload: Codable, Hashable, Sendable {
+            public struct SegmentPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/GroundingSupport/segment/value1`.
                 public var value1: Components.Schemas.Segment
-                /// Creates a new `segmentPayload`.
+                /// Creates a new `SegmentPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -6458,7 +6458,7 @@ public enum Components {
             /// Segment of the content this support belongs to.
             ///
             /// - Remark: Generated from `#/components/schemas/GroundingSupport/segment`.
-            public var segment: Components.Schemas.GroundingSupport.segmentPayload?
+            public var segment: Components.Schemas.GroundingSupport.SegmentPayload?
             /// Creates a new `GroundingSupport`.
             ///
             /// - Parameters:
@@ -6468,7 +6468,7 @@ public enum Components {
             public init(
                 confidenceScores: [Swift.Float]? = nil,
                 groundingChunkIndices: [Swift.Int32]? = nil,
-                segment: Components.Schemas.GroundingSupport.segmentPayload? = nil
+                segment: Components.Schemas.GroundingSupport.SegmentPayload? = nil
             ) {
                 self.confidenceScores = confidenceScores
                 self.groundingChunkIndices = groundingChunkIndices
@@ -6482,18 +6482,18 @@ public enum Components {
         }
         /// - Remark: Generated from `#/components/schemas/HarmCategory`.
         @frozen public enum HarmCategory: String, Codable, Hashable, Sendable, CaseIterable {
-            case HARM_CATEGORY_UNSPECIFIED = "HARM_CATEGORY_UNSPECIFIED"
-            case HARM_CATEGORY_DEROGATORY = "HARM_CATEGORY_DEROGATORY"
-            case HARM_CATEGORY_TOXICITY = "HARM_CATEGORY_TOXICITY"
-            case HARM_CATEGORY_VIOLENCE = "HARM_CATEGORY_VIOLENCE"
-            case HARM_CATEGORY_SEXUAL = "HARM_CATEGORY_SEXUAL"
-            case HARM_CATEGORY_MEDICAL = "HARM_CATEGORY_MEDICAL"
-            case HARM_CATEGORY_DANGEROUS = "HARM_CATEGORY_DANGEROUS"
-            case HARM_CATEGORY_HARASSMENT = "HARM_CATEGORY_HARASSMENT"
-            case HARM_CATEGORY_HATE_SPEECH = "HARM_CATEGORY_HATE_SPEECH"
-            case HARM_CATEGORY_SEXUALLY_EXPLICIT = "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-            case HARM_CATEGORY_DANGEROUS_CONTENT = "HARM_CATEGORY_DANGEROUS_CONTENT"
-            case HARM_CATEGORY_CIVIC_INTEGRITY = "HARM_CATEGORY_CIVIC_INTEGRITY"
+            case harmCategoryUnspecified = "HARM_CATEGORY_UNSPECIFIED"
+            case harmCategoryDerogatory = "HARM_CATEGORY_DEROGATORY"
+            case harmCategoryToxicity = "HARM_CATEGORY_TOXICITY"
+            case harmCategoryViolence = "HARM_CATEGORY_VIOLENCE"
+            case harmCategorySexual = "HARM_CATEGORY_SEXUAL"
+            case harmCategoryMedical = "HARM_CATEGORY_MEDICAL"
+            case harmCategoryDangerous = "HARM_CATEGORY_DANGEROUS"
+            case harmCategoryHarassment = "HARM_CATEGORY_HARASSMENT"
+            case harmCategoryHateSpeech = "HARM_CATEGORY_HATE_SPEECH"
+            case harmCategorySexuallyExplicit = "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+            case harmCategoryDangerousContent = "HARM_CATEGORY_DANGEROUS_CONTENT"
+            case harmCategoryCivicIntegrity = "HARM_CATEGORY_CIVIC_INTEGRITY"
         }
         /// Hyperparameters controlling the tuning process. Read more at
         /// https://ai.google.dev/docs/model_tuning_guidance
@@ -6560,16 +6560,16 @@ public enum Components {
             /// Rephrase the input.
             ///
             /// - Remark: Generated from `#/components/schemas/InputFeedback/blockReason`.
-            @frozen public enum blockReasonPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case BLOCK_REASON_UNSPECIFIED = "BLOCK_REASON_UNSPECIFIED"
-                case SAFETY = "SAFETY"
-                case OTHER = "OTHER"
+            @frozen public enum BlockReasonPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case blockReasonUnspecified = "BLOCK_REASON_UNSPECIFIED"
+                case safety = "SAFETY"
+                case other = "OTHER"
             }
             /// Optional. If set, the input was blocked and no candidates are returned.
             /// Rephrase the input.
             ///
             /// - Remark: Generated from `#/components/schemas/InputFeedback/blockReason`.
-            public var blockReason: Components.Schemas.InputFeedback.blockReasonPayload?
+            public var blockReason: Components.Schemas.InputFeedback.BlockReasonPayload?
             /// Ratings for safety of the input.
             /// There is at most one rating per category.
             ///
@@ -6581,7 +6581,7 @@ public enum Components {
             ///   - blockReason: Optional. If set, the input was blocked and no candidates are returned.
             ///   - safetyRatings: Ratings for safety of the input.
             public init(
-                blockReason: Components.Schemas.InputFeedback.blockReasonPayload? = nil,
+                blockReason: Components.Schemas.InputFeedback.BlockReasonPayload? = nil,
                 safetyRatings: [Components.Schemas.SafetyRating]? = nil
             ) {
                 self.blockReason = blockReason
@@ -7012,10 +7012,10 @@ public enum Components {
             /// Video as the only one for now.  This is mimicking Vertex proto.
             ///
             /// - Remark: Generated from `#/components/schemas/Media/video`.
-            public struct videoPayload: Codable, Hashable, Sendable {
+            public struct VideoPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Media/video/value1`.
                 public var value1: Components.Schemas.Video
-                /// Creates a new `videoPayload`.
+                /// Creates a new `VideoPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -7032,12 +7032,12 @@ public enum Components {
             /// Video as the only one for now.  This is mimicking Vertex proto.
             ///
             /// - Remark: Generated from `#/components/schemas/Media/video`.
-            public var video: Components.Schemas.Media.videoPayload?
+            public var video: Components.Schemas.Media.VideoPayload?
             /// Creates a new `Media`.
             ///
             /// - Parameters:
             ///   - video: Video as the only one for now.  This is mimicking Vertex proto.
-            public init(video: Components.Schemas.Media.videoPayload? = nil) {
+            public init(video: Components.Schemas.Media.VideoPayload? = nil) {
                 self.video = video
             }
             public enum CodingKeys: String, CodingKey {
@@ -7070,10 +7070,10 @@ public enum Components {
             /// `content`. This field is used only on output.
             ///
             /// - Remark: Generated from `#/components/schemas/Message/citationMetadata`.
-            public struct citationMetadataPayload: Codable, Hashable, Sendable {
+            public struct CitationMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Message/citationMetadata/value1`.
                 public var value1: Components.Schemas.CitationMetadata
-                /// Creates a new `citationMetadataPayload`.
+                /// Creates a new `CitationMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -7094,7 +7094,7 @@ public enum Components {
             /// `content`. This field is used only on output.
             ///
             /// - Remark: Generated from `#/components/schemas/Message/citationMetadata`.
-            public var citationMetadata: Components.Schemas.Message.citationMetadataPayload?
+            public var citationMetadata: Components.Schemas.Message.CitationMetadataPayload?
             /// Required. The text content of the structured `Message`.
             ///
             /// - Remark: Generated from `#/components/schemas/Message/content`.
@@ -7107,7 +7107,7 @@ public enum Components {
             ///   - content: Required. The text content of the structured `Message`.
             public init(
                 author: Swift.String? = nil,
-                citationMetadata: Components.Schemas.Message.citationMetadataPayload? = nil,
+                citationMetadata: Components.Schemas.Message.CitationMetadataPayload? = nil,
                 content: Swift.String
             ) {
                 self.author = author
@@ -7226,12 +7226,12 @@ public enum Components {
         }
         /// - Remark: Generated from `#/components/schemas/Modality`.
         @frozen public enum Modality: String, Codable, Hashable, Sendable, CaseIterable {
-            case MODALITY_UNSPECIFIED = "MODALITY_UNSPECIFIED"
-            case TEXT = "TEXT"
-            case IMAGE = "IMAGE"
-            case VIDEO = "VIDEO"
-            case AUDIO = "AUDIO"
-            case DOCUMENT = "DOCUMENT"
+            case modalityUnspecified = "MODALITY_UNSPECIFIED"
+            case text = "TEXT"
+            case image = "IMAGE"
+            case video = "VIDEO"
+            case audio = "AUDIO"
+            case document = "DOCUMENT"
         }
         /// Represents token counting info for a single modality.
         ///
@@ -7240,10 +7240,10 @@ public enum Components {
             /// The modality associated with this token count.
             ///
             /// - Remark: Generated from `#/components/schemas/ModalityTokenCount/modality`.
-            public struct modalityPayload: Codable, Hashable, Sendable {
+            public struct ModalityPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/ModalityTokenCount/modality/value1`.
                 public var value1: Components.Schemas.Modality
-                /// Creates a new `modalityPayload`.
+                /// Creates a new `ModalityPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -7260,7 +7260,7 @@ public enum Components {
             /// The modality associated with this token count.
             ///
             /// - Remark: Generated from `#/components/schemas/ModalityTokenCount/modality`.
-            public var modality: Components.Schemas.ModalityTokenCount.modalityPayload?
+            public var modality: Components.Schemas.ModalityTokenCount.ModalityPayload?
             /// Number of tokens.
             ///
             /// - Remark: Generated from `#/components/schemas/ModalityTokenCount/tokenCount`.
@@ -7271,7 +7271,7 @@ public enum Components {
             ///   - modality: The modality associated with this token count.
             ///   - tokenCount: Number of tokens.
             public init(
-                modality: Components.Schemas.ModalityTokenCount.modalityPayload? = nil,
+                modality: Components.Schemas.ModalityTokenCount.ModalityPayload? = nil,
                 tokenCount: Swift.Int32? = nil
             ) {
                 self.modality = modality
@@ -7465,10 +7465,10 @@ public enum Components {
                 /// long-running operation should document the metadata type, if any.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Operation/value2/metadata`.
-                public struct metadataPayload: Codable, Hashable, Sendable {
+                public struct MetadataPayload: Codable, Hashable, Sendable {
                     /// A container of undocumented properties.
                     public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
-                    /// Creates a new `metadataPayload`.
+                    /// Creates a new `MetadataPayload`.
                     ///
                     /// - Parameters:
                     ///   - additionalProperties: A container of undocumented properties.
@@ -7488,7 +7488,7 @@ public enum Components {
                 /// long-running operation should document the metadata type, if any.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Operation/value2/metadata`.
-                public var metadata: Components.Schemas.Operation.Value2Payload.metadataPayload?
+                public var metadata: Components.Schemas.Operation.Value2Payload.MetadataPayload?
                 /// The normal, successful response of the operation.  If the original
                 /// method returns no data on success, such as `Delete`, the response is
                 /// `google.protobuf.Empty`.  If the original method is standard
@@ -7499,10 +7499,10 @@ public enum Components {
                 /// `TakeSnapshotResponse`.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Operation/value2/response`.
-                public struct responsePayload: Codable, Hashable, Sendable {
+                public struct ResponsePayload: Codable, Hashable, Sendable {
                     /// A container of undocumented properties.
                     public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
-                    /// Creates a new `responsePayload`.
+                    /// Creates a new `ResponsePayload`.
                     ///
                     /// - Parameters:
                     ///   - additionalProperties: A container of undocumented properties.
@@ -7526,15 +7526,15 @@ public enum Components {
                 /// `TakeSnapshotResponse`.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Operation/value2/response`.
-                public var response: Components.Schemas.Operation.Value2Payload.responsePayload?
+                public var response: Components.Schemas.Operation.Value2Payload.ResponsePayload?
                 /// Creates a new `Value2Payload`.
                 ///
                 /// - Parameters:
                 ///   - metadata: Service-specific metadata associated with the operation.  It typically
                 ///   - response: The normal, successful response of the operation.  If the original
                 public init(
-                    metadata: Components.Schemas.Operation.Value2Payload.metadataPayload? = nil,
-                    response: Components.Schemas.Operation.Value2Payload.responsePayload? = nil
+                    metadata: Components.Schemas.Operation.Value2Payload.MetadataPayload? = nil,
+                    response: Components.Schemas.Operation.Value2Payload.ResponsePayload? = nil
                 ) {
                     self.metadata = metadata
                     self.response = response
@@ -7705,16 +7705,16 @@ public enum Components {
             /// Optional. Immutable. The type of the grantee.
             ///
             /// - Remark: Generated from `#/components/schemas/Permission/granteeType`.
-            @frozen public enum granteeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case GRANTEE_TYPE_UNSPECIFIED = "GRANTEE_TYPE_UNSPECIFIED"
-                case USER = "USER"
-                case GROUP = "GROUP"
-                case EVERYONE = "EVERYONE"
+            @frozen public enum GranteeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case granteeTypeUnspecified = "GRANTEE_TYPE_UNSPECIFIED"
+                case user = "USER"
+                case group = "GROUP"
+                case everyone = "EVERYONE"
             }
             /// Optional. Immutable. The type of the grantee.
             ///
             /// - Remark: Generated from `#/components/schemas/Permission/granteeType`.
-            public var granteeType: Components.Schemas.Permission.granteeTypePayload?
+            public var granteeType: Components.Schemas.Permission.GranteeTypePayload?
             /// Output only. Identifier. The permission name. A unique name will be generated on create.
             /// Examples:
             ///     tunedModels/{tuned_model}/permissions/{permission}
@@ -7726,16 +7726,16 @@ public enum Components {
             /// Required. The role granted by this permission.
             ///
             /// - Remark: Generated from `#/components/schemas/Permission/role`.
-            @frozen public enum rolePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case ROLE_UNSPECIFIED = "ROLE_UNSPECIFIED"
-                case OWNER = "OWNER"
-                case WRITER = "WRITER"
-                case READER = "READER"
+            @frozen public enum RolePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case roleUnspecified = "ROLE_UNSPECIFIED"
+                case owner = "OWNER"
+                case writer = "WRITER"
+                case reader = "READER"
             }
             /// Required. The role granted by this permission.
             ///
             /// - Remark: Generated from `#/components/schemas/Permission/role`.
-            public var role: Components.Schemas.Permission.rolePayload
+            public var role: Components.Schemas.Permission.RolePayload
             /// Creates a new `Permission`.
             ///
             /// - Parameters:
@@ -7745,9 +7745,9 @@ public enum Components {
             ///   - role: Required. The role granted by this permission.
             public init(
                 emailAddress: Swift.String? = nil,
-                granteeType: Components.Schemas.Permission.granteeTypePayload? = nil,
+                granteeType: Components.Schemas.Permission.GranteeTypePayload? = nil,
                 name: Swift.String? = nil,
-                role: Components.Schemas.Permission.rolePayload
+                role: Components.Schemas.Permission.RolePayload
             ) {
                 self.emailAddress = emailAddress
                 self.granteeType = granteeType
@@ -7872,10 +7872,10 @@ public enum Components {
             /// The response of the video generation prediction.
             ///
             /// - Remark: Generated from `#/components/schemas/PredictLongRunningResponse/generateVideoResponse`.
-            public struct generateVideoResponsePayload: Codable, Hashable, Sendable {
+            public struct GenerateVideoResponsePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/PredictLongRunningResponse/generateVideoResponse/value1`.
                 public var value1: Components.Schemas.GenerateVideoResponse
-                /// Creates a new `generateVideoResponsePayload`.
+                /// Creates a new `GenerateVideoResponsePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -7892,12 +7892,12 @@ public enum Components {
             /// The response of the video generation prediction.
             ///
             /// - Remark: Generated from `#/components/schemas/PredictLongRunningResponse/generateVideoResponse`.
-            public var generateVideoResponse: Components.Schemas.PredictLongRunningResponse.generateVideoResponsePayload?
+            public var generateVideoResponse: Components.Schemas.PredictLongRunningResponse.GenerateVideoResponsePayload?
             /// Creates a new `PredictLongRunningResponse`.
             ///
             /// - Parameters:
             ///   - generateVideoResponse: The response of the video generation prediction.
-            public init(generateVideoResponse: Components.Schemas.PredictLongRunningResponse.generateVideoResponsePayload? = nil) {
+            public init(generateVideoResponse: Components.Schemas.PredictLongRunningResponse.GenerateVideoResponsePayload? = nil) {
                 self.generateVideoResponse = generateVideoResponse
             }
             public enum CodingKeys: String, CodingKey {
@@ -7961,19 +7961,19 @@ public enum Components {
             /// Rephrase the prompt.
             ///
             /// - Remark: Generated from `#/components/schemas/PromptFeedback/blockReason`.
-            @frozen public enum blockReasonPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case BLOCK_REASON_UNSPECIFIED = "BLOCK_REASON_UNSPECIFIED"
-                case SAFETY = "SAFETY"
-                case OTHER = "OTHER"
-                case BLOCKLIST = "BLOCKLIST"
-                case PROHIBITED_CONTENT = "PROHIBITED_CONTENT"
-                case IMAGE_SAFETY = "IMAGE_SAFETY"
+            @frozen public enum BlockReasonPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case blockReasonUnspecified = "BLOCK_REASON_UNSPECIFIED"
+                case safety = "SAFETY"
+                case other = "OTHER"
+                case blocklist = "BLOCKLIST"
+                case prohibitedContent = "PROHIBITED_CONTENT"
+                case imageSafety = "IMAGE_SAFETY"
             }
             /// Optional. If set, the prompt was blocked and no candidates are returned.
             /// Rephrase the prompt.
             ///
             /// - Remark: Generated from `#/components/schemas/PromptFeedback/blockReason`.
-            public var blockReason: Components.Schemas.PromptFeedback.blockReasonPayload?
+            public var blockReason: Components.Schemas.PromptFeedback.BlockReasonPayload?
             /// Ratings for safety of the prompt.
             /// There is at most one rating per category.
             ///
@@ -7985,7 +7985,7 @@ public enum Components {
             ///   - blockReason: Optional. If set, the prompt was blocked and no candidates are returned.
             ///   - safetyRatings: Ratings for safety of the prompt.
             public init(
-                blockReason: Components.Schemas.PromptFeedback.blockReasonPayload? = nil,
+                blockReason: Components.Schemas.PromptFeedback.BlockReasonPayload? = nil,
                 safetyRatings: [Components.Schemas.SafetyRating]? = nil
             ) {
                 self.blockReason = blockReason
@@ -8183,10 +8183,10 @@ public enum Components {
             /// `Chunk` associated with the query.
             ///
             /// - Remark: Generated from `#/components/schemas/RelevantChunk/chunk`.
-            public struct chunkPayload: Codable, Hashable, Sendable {
+            public struct ChunkPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/RelevantChunk/chunk/value1`.
                 public var value1: Components.Schemas.Chunk
-                /// Creates a new `chunkPayload`.
+                /// Creates a new `ChunkPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -8203,7 +8203,7 @@ public enum Components {
             /// `Chunk` associated with the query.
             ///
             /// - Remark: Generated from `#/components/schemas/RelevantChunk/chunk`.
-            public var chunk: Components.Schemas.RelevantChunk.chunkPayload?
+            public var chunk: Components.Schemas.RelevantChunk.ChunkPayload?
             /// `Chunk` relevance to the query.
             ///
             /// - Remark: Generated from `#/components/schemas/RelevantChunk/chunkRelevanceScore`.
@@ -8214,7 +8214,7 @@ public enum Components {
             ///   - chunk: `Chunk` associated with the query.
             ///   - chunkRelevanceScore: `Chunk` relevance to the query.
             public init(
-                chunk: Components.Schemas.RelevantChunk.chunkPayload? = nil,
+                chunk: Components.Schemas.RelevantChunk.ChunkPayload? = nil,
                 chunkRelevanceScore: Swift.Float? = nil
             ) {
                 self.chunk = chunk
@@ -8261,10 +8261,10 @@ public enum Components {
             /// Safety rating evaluated from content.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetyFeedback/rating`.
-            public struct ratingPayload: Codable, Hashable, Sendable {
+            public struct RatingPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/SafetyFeedback/rating/value1`.
                 public var value1: Components.Schemas.SafetyRating
-                /// Creates a new `ratingPayload`.
+                /// Creates a new `RatingPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -8281,14 +8281,14 @@ public enum Components {
             /// Safety rating evaluated from content.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetyFeedback/rating`.
-            public var rating: Components.Schemas.SafetyFeedback.ratingPayload?
+            public var rating: Components.Schemas.SafetyFeedback.RatingPayload?
             /// Safety settings applied to the request.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetyFeedback/setting`.
-            public struct settingPayload: Codable, Hashable, Sendable {
+            public struct SettingPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/SafetyFeedback/setting/value1`.
                 public var value1: Components.Schemas.SafetySetting
-                /// Creates a new `settingPayload`.
+                /// Creates a new `SettingPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -8305,15 +8305,15 @@ public enum Components {
             /// Safety settings applied to the request.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetyFeedback/setting`.
-            public var setting: Components.Schemas.SafetyFeedback.settingPayload?
+            public var setting: Components.Schemas.SafetyFeedback.SettingPayload?
             /// Creates a new `SafetyFeedback`.
             ///
             /// - Parameters:
             ///   - rating: Safety rating evaluated from content.
             ///   - setting: Safety settings applied to the request.
             public init(
-                rating: Components.Schemas.SafetyFeedback.ratingPayload? = nil,
-                setting: Components.Schemas.SafetyFeedback.settingPayload? = nil
+                rating: Components.Schemas.SafetyFeedback.RatingPayload? = nil,
+                setting: Components.Schemas.SafetyFeedback.SettingPayload? = nil
             ) {
                 self.rating = rating
                 self.setting = setting
@@ -8340,10 +8340,10 @@ public enum Components {
             /// Required. The category for this rating.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetyRating/category`.
-            public struct categoryPayload: Codable, Hashable, Sendable {
+            public struct CategoryPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/SafetyRating/category/value1`.
                 public var value1: Components.Schemas.HarmCategory
-                /// Creates a new `categoryPayload`.
+                /// Creates a new `CategoryPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -8360,21 +8360,21 @@ public enum Components {
             /// Required. The category for this rating.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetyRating/category`.
-            public var category: Components.Schemas.SafetyRating.categoryPayload
+            public var category: Components.Schemas.SafetyRating.CategoryPayload
             /// Required. The probability of harm for this content.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetyRating/probability`.
-            @frozen public enum probabilityPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case HARM_PROBABILITY_UNSPECIFIED = "HARM_PROBABILITY_UNSPECIFIED"
-                case NEGLIGIBLE = "NEGLIGIBLE"
-                case LOW = "LOW"
-                case MEDIUM = "MEDIUM"
-                case HIGH = "HIGH"
+            @frozen public enum ProbabilityPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case harmProbabilityUnspecified = "HARM_PROBABILITY_UNSPECIFIED"
+                case negligible = "NEGLIGIBLE"
+                case low = "LOW"
+                case medium = "MEDIUM"
+                case high = "HIGH"
             }
             /// Required. The probability of harm for this content.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetyRating/probability`.
-            public var probability: Components.Schemas.SafetyRating.probabilityPayload
+            public var probability: Components.Schemas.SafetyRating.ProbabilityPayload
             /// Creates a new `SafetyRating`.
             ///
             /// - Parameters:
@@ -8383,8 +8383,8 @@ public enum Components {
             ///   - probability: Required. The probability of harm for this content.
             public init(
                 blocked: Swift.Bool? = nil,
-                category: Components.Schemas.SafetyRating.categoryPayload,
-                probability: Components.Schemas.SafetyRating.probabilityPayload
+                category: Components.Schemas.SafetyRating.CategoryPayload,
+                probability: Components.Schemas.SafetyRating.ProbabilityPayload
             ) {
                 self.blocked = blocked
                 self.category = category
@@ -8406,10 +8406,10 @@ public enum Components {
             /// Required. The category for this setting.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetySetting/category`.
-            public struct categoryPayload: Codable, Hashable, Sendable {
+            public struct CategoryPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/SafetySetting/category/value1`.
                 public var value1: Components.Schemas.HarmCategory
-                /// Creates a new `categoryPayload`.
+                /// Creates a new `CategoryPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -8426,30 +8426,30 @@ public enum Components {
             /// Required. The category for this setting.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetySetting/category`.
-            public var category: Components.Schemas.SafetySetting.categoryPayload
+            public var category: Components.Schemas.SafetySetting.CategoryPayload
             /// Required. Controls the probability threshold at which harm is blocked.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetySetting/threshold`.
-            @frozen public enum thresholdPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case HARM_BLOCK_THRESHOLD_UNSPECIFIED = "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
-                case BLOCK_LOW_AND_ABOVE = "BLOCK_LOW_AND_ABOVE"
-                case BLOCK_MEDIUM_AND_ABOVE = "BLOCK_MEDIUM_AND_ABOVE"
-                case BLOCK_ONLY_HIGH = "BLOCK_ONLY_HIGH"
-                case BLOCK_NONE = "BLOCK_NONE"
-                case OFF = "OFF"
+            @frozen public enum ThresholdPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case harmBlockThresholdUnspecified = "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
+                case blockLowAndAbove = "BLOCK_LOW_AND_ABOVE"
+                case blockMediumAndAbove = "BLOCK_MEDIUM_AND_ABOVE"
+                case blockOnlyHigh = "BLOCK_ONLY_HIGH"
+                case blockNone = "BLOCK_NONE"
+                case off = "OFF"
             }
             /// Required. Controls the probability threshold at which harm is blocked.
             ///
             /// - Remark: Generated from `#/components/schemas/SafetySetting/threshold`.
-            public var threshold: Components.Schemas.SafetySetting.thresholdPayload
+            public var threshold: Components.Schemas.SafetySetting.ThresholdPayload
             /// Creates a new `SafetySetting`.
             ///
             /// - Parameters:
             ///   - category: Required. The category for this setting.
             ///   - threshold: Required. Controls the probability threshold at which harm is blocked.
             public init(
-                category: Components.Schemas.SafetySetting.categoryPayload,
-                threshold: Components.Schemas.SafetySetting.thresholdPayload
+                category: Components.Schemas.SafetySetting.CategoryPayload,
+                threshold: Components.Schemas.SafetySetting.ThresholdPayload
             ) {
                 self.category = category
                 self.threshold = threshold
@@ -8546,10 +8546,10 @@ public enum Components {
             /// Optional. Schema of the elements of Type.ARRAY.
             ///
             /// - Remark: Generated from `#/components/schemas/Schema/items`.
-            public struct itemsPayload: Codable, Hashable, Sendable {
+            public struct ItemsPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Schema/items/value1`.
                 public var value1: Components.Schemas.Schema
-                /// Creates a new `itemsPayload`.
+                /// Creates a new `ItemsPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -8566,7 +8566,7 @@ public enum Components {
             /// Optional. Schema of the elements of Type.ARRAY.
             ///
             /// - Remark: Generated from `#/components/schemas/Schema/items`.
-            public var items: Components.Schemas.Schema.itemsPayload? {
+            public var items: Components.Schemas.Schema.ItemsPayload? {
                 get  {
                     self.storage.value.items
                 }
@@ -8689,10 +8689,10 @@ public enum Components {
             /// Optional. Properties of Type.OBJECT.
             ///
             /// - Remark: Generated from `#/components/schemas/Schema/properties`.
-            public struct propertiesPayload: Codable, Hashable, Sendable {
+            public struct PropertiesPayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
                 public var additionalProperties: [String: Components.Schemas.Schema]
-                /// Creates a new `propertiesPayload`.
+                /// Creates a new `PropertiesPayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
@@ -8709,7 +8709,7 @@ public enum Components {
             /// Optional. Properties of Type.OBJECT.
             ///
             /// - Remark: Generated from `#/components/schemas/Schema/properties`.
-            public var properties: Components.Schemas.Schema.propertiesPayload? {
+            public var properties: Components.Schemas.Schema.PropertiesPayload? {
                 get  {
                     self.storage.value.properties
                 }
@@ -8755,10 +8755,10 @@ public enum Components {
             /// Required. Data type.
             ///
             /// - Remark: Generated from `#/components/schemas/Schema/type`.
-            public struct _typePayload: Codable, Hashable, Sendable {
+            public struct _TypePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Schema/type/value1`.
                 public var value1: Components.Schemas._Type
-                /// Creates a new `_typePayload`.
+                /// Creates a new `_TypePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -8775,7 +8775,7 @@ public enum Components {
             /// Required. Data type.
             ///
             /// - Remark: Generated from `#/components/schemas/Schema/type`.
-            public var _type: Components.Schemas.Schema._typePayload {
+            public var _type: Components.Schemas.Schema._TypePayload {
                 get  {
                     self.storage.value._type
                 }
@@ -8815,7 +8815,7 @@ public enum Components {
                 _enum: [Swift.String]? = nil,
                 example: OpenAPIRuntime.OpenAPIValueContainer? = nil,
                 format: Swift.String? = nil,
-                items: Components.Schemas.Schema.itemsPayload? = nil,
+                items: Components.Schemas.Schema.ItemsPayload? = nil,
                 maximum: Swift.Double? = nil,
                 maxItems: Swift.String? = nil,
                 maxLength: Swift.String? = nil,
@@ -8826,11 +8826,11 @@ public enum Components {
                 minProperties: Swift.String? = nil,
                 nullable: Swift.Bool? = nil,
                 pattern: Swift.String? = nil,
-                properties: Components.Schemas.Schema.propertiesPayload? = nil,
+                properties: Components.Schemas.Schema.PropertiesPayload? = nil,
                 propertyOrdering: [Swift.String]? = nil,
                 required: [Swift.String]? = nil,
                 title: Swift.String? = nil,
-                _type: Components.Schemas.Schema._typePayload
+                _type: Components.Schemas.Schema._TypePayload
             ) {
                 self.storage = .init(value: .init(
                     anyOf: anyOf,
@@ -8928,10 +8928,10 @@ public enum Components {
                 /// Optional. Schema of the elements of Type.ARRAY.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Schema/items`.
-                struct itemsPayload: Codable, Hashable, Sendable {
+                struct ItemsPayload: Codable, Hashable, Sendable {
                     /// - Remark: Generated from `#/components/schemas/Schema/items/value1`.
                     public var value1: Components.Schemas.Schema
-                    /// Creates a new `itemsPayload`.
+                    /// Creates a new `ItemsPayload`.
                     ///
                     /// - Parameters:
                     ///   - value1:
@@ -8948,7 +8948,7 @@ public enum Components {
                 /// Optional. Schema of the elements of Type.ARRAY.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Schema/items`.
-                var items: Components.Schemas.Schema.itemsPayload?
+                var items: Components.Schemas.Schema.ItemsPayload?
                 /// Optional. Maximum value of the Type.INTEGER and Type.NUMBER
                 ///
                 /// - Remark: Generated from `#/components/schemas/Schema/maximum`.
@@ -8994,10 +8994,10 @@ public enum Components {
                 /// Optional. Properties of Type.OBJECT.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Schema/properties`.
-                struct propertiesPayload: Codable, Hashable, Sendable {
+                struct PropertiesPayload: Codable, Hashable, Sendable {
                     /// A container of undocumented properties.
                     public var additionalProperties: [String: Components.Schemas.Schema]
-                    /// Creates a new `propertiesPayload`.
+                    /// Creates a new `PropertiesPayload`.
                     ///
                     /// - Parameters:
                     ///   - additionalProperties: A container of undocumented properties.
@@ -9014,7 +9014,7 @@ public enum Components {
                 /// Optional. Properties of Type.OBJECT.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Schema/properties`.
-                var properties: Components.Schemas.Schema.propertiesPayload?
+                var properties: Components.Schemas.Schema.PropertiesPayload?
                 /// Optional. The order of the properties.
                 /// Not a standard field in open api spec. Used to determine the order of the
                 /// properties in the response.
@@ -9032,10 +9032,10 @@ public enum Components {
                 /// Required. Data type.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Schema/type`.
-                struct _typePayload: Codable, Hashable, Sendable {
+                struct _TypePayload: Codable, Hashable, Sendable {
                     /// - Remark: Generated from `#/components/schemas/Schema/type/value1`.
                     public var value1: Components.Schemas._Type
-                    /// Creates a new `_typePayload`.
+                    /// Creates a new `_TypePayload`.
                     ///
                     /// - Parameters:
                     ///   - value1:
@@ -9052,7 +9052,7 @@ public enum Components {
                 /// Required. Data type.
                 ///
                 /// - Remark: Generated from `#/components/schemas/Schema/type`.
-                var _type: Components.Schemas.Schema._typePayload
+                var _type: Components.Schemas.Schema._TypePayload
                 init(
                     anyOf: [Components.Schemas.Schema]? = nil,
                     _default: OpenAPIRuntime.OpenAPIValueContainer? = nil,
@@ -9060,7 +9060,7 @@ public enum Components {
                     _enum: [Swift.String]? = nil,
                     example: OpenAPIRuntime.OpenAPIValueContainer? = nil,
                     format: Swift.String? = nil,
-                    items: Components.Schemas.Schema.itemsPayload? = nil,
+                    items: Components.Schemas.Schema.ItemsPayload? = nil,
                     maximum: Swift.Double? = nil,
                     maxItems: Swift.String? = nil,
                     maxLength: Swift.String? = nil,
@@ -9071,11 +9071,11 @@ public enum Components {
                     minProperties: Swift.String? = nil,
                     nullable: Swift.Bool? = nil,
                     pattern: Swift.String? = nil,
-                    properties: Components.Schemas.Schema.propertiesPayload? = nil,
+                    properties: Components.Schemas.Schema.PropertiesPayload? = nil,
                     propertyOrdering: [Swift.String]? = nil,
                     required: [Swift.String]? = nil,
                     title: Swift.String? = nil,
-                    _type: Components.Schemas.Schema._typePayload
+                    _type: Components.Schemas.Schema._TypePayload
                 ) {
                     self.anyOf = anyOf
                     self._default = _default
@@ -9232,10 +9232,10 @@ public enum Components {
             /// Required. Query to use for matching `Chunk`s in the given resource by similarity.
             ///
             /// - Remark: Generated from `#/components/schemas/SemanticRetrieverConfig/query`.
-            public struct queryPayload: Codable, Hashable, Sendable {
+            public struct QueryPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/SemanticRetrieverConfig/query/value1`.
                 public var value1: Components.Schemas.Content
-                /// Creates a new `queryPayload`.
+                /// Creates a new `QueryPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9252,7 +9252,7 @@ public enum Components {
             /// Required. Query to use for matching `Chunk`s in the given resource by similarity.
             ///
             /// - Remark: Generated from `#/components/schemas/SemanticRetrieverConfig/query`.
-            public var query: Components.Schemas.SemanticRetrieverConfig.queryPayload
+            public var query: Components.Schemas.SemanticRetrieverConfig.QueryPayload
             /// Required. Name of the resource for retrieval. Example: `corpora/123` or
             /// `corpora/123/documents/abc`.
             ///
@@ -9270,7 +9270,7 @@ public enum Components {
                 maxChunksCount: Swift.Int32? = nil,
                 metadataFilters: [Components.Schemas.MetadataFilter]? = nil,
                 minimumRelevanceScore: Swift.Float? = nil,
-                query: Components.Schemas.SemanticRetrieverConfig.queryPayload,
+                query: Components.Schemas.SemanticRetrieverConfig.QueryPayload,
                 source: Swift.String
             ) {
                 self.maxChunksCount = maxChunksCount
@@ -9298,10 +9298,10 @@ public enum Components {
             /// Required. The configuration for the voice to use.
             ///
             /// - Remark: Generated from `#/components/schemas/SpeakerVoiceConfig/voiceConfig`.
-            public struct voiceConfigPayload: Codable, Hashable, Sendable {
+            public struct VoiceConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/SpeakerVoiceConfig/voiceConfig/value1`.
                 public var value1: Components.Schemas.VoiceConfig
-                /// Creates a new `voiceConfigPayload`.
+                /// Creates a new `VoiceConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9318,7 +9318,7 @@ public enum Components {
             /// Required. The configuration for the voice to use.
             ///
             /// - Remark: Generated from `#/components/schemas/SpeakerVoiceConfig/voiceConfig`.
-            public var voiceConfig: Components.Schemas.SpeakerVoiceConfig.voiceConfigPayload
+            public var voiceConfig: Components.Schemas.SpeakerVoiceConfig.VoiceConfigPayload
             /// Creates a new `SpeakerVoiceConfig`.
             ///
             /// - Parameters:
@@ -9326,7 +9326,7 @@ public enum Components {
             ///   - voiceConfig: Required. The configuration for the voice to use.
             public init(
                 speaker: Swift.String,
-                voiceConfig: Components.Schemas.SpeakerVoiceConfig.voiceConfigPayload
+                voiceConfig: Components.Schemas.SpeakerVoiceConfig.VoiceConfigPayload
             ) {
                 self.speaker = speaker
                 self.voiceConfig = voiceConfig
@@ -9353,10 +9353,10 @@ public enum Components {
             /// It is mutually exclusive with the voice_config field.
             ///
             /// - Remark: Generated from `#/components/schemas/SpeechConfig/multiSpeakerVoiceConfig`.
-            public struct multiSpeakerVoiceConfigPayload: Codable, Hashable, Sendable {
+            public struct MultiSpeakerVoiceConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/SpeechConfig/multiSpeakerVoiceConfig/value1`.
                 public var value1: Components.Schemas.MultiSpeakerVoiceConfig
-                /// Creates a new `multiSpeakerVoiceConfigPayload`.
+                /// Creates a new `MultiSpeakerVoiceConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9374,14 +9374,14 @@ public enum Components {
             /// It is mutually exclusive with the voice_config field.
             ///
             /// - Remark: Generated from `#/components/schemas/SpeechConfig/multiSpeakerVoiceConfig`.
-            public var multiSpeakerVoiceConfig: Components.Schemas.SpeechConfig.multiSpeakerVoiceConfigPayload?
+            public var multiSpeakerVoiceConfig: Components.Schemas.SpeechConfig.MultiSpeakerVoiceConfigPayload?
             /// The configuration in case of single-voice output.
             ///
             /// - Remark: Generated from `#/components/schemas/SpeechConfig/voiceConfig`.
-            public struct voiceConfigPayload: Codable, Hashable, Sendable {
+            public struct VoiceConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/SpeechConfig/voiceConfig/value1`.
                 public var value1: Components.Schemas.VoiceConfig
-                /// Creates a new `voiceConfigPayload`.
+                /// Creates a new `VoiceConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9398,7 +9398,7 @@ public enum Components {
             /// The configuration in case of single-voice output.
             ///
             /// - Remark: Generated from `#/components/schemas/SpeechConfig/voiceConfig`.
-            public var voiceConfig: Components.Schemas.SpeechConfig.voiceConfigPayload?
+            public var voiceConfig: Components.Schemas.SpeechConfig.VoiceConfigPayload?
             /// Creates a new `SpeechConfig`.
             ///
             /// - Parameters:
@@ -9407,8 +9407,8 @@ public enum Components {
             ///   - voiceConfig: The configuration in case of single-voice output.
             public init(
                 languageCode: Swift.String? = nil,
-                multiSpeakerVoiceConfig: Components.Schemas.SpeechConfig.multiSpeakerVoiceConfigPayload? = nil,
-                voiceConfig: Components.Schemas.SpeechConfig.voiceConfigPayload? = nil
+                multiSpeakerVoiceConfig: Components.Schemas.SpeechConfig.MultiSpeakerVoiceConfigPayload? = nil,
+                voiceConfig: Components.Schemas.SpeechConfig.VoiceConfigPayload? = nil
             ) {
                 self.languageCode = languageCode
                 self.multiSpeakerVoiceConfig = multiSpeakerVoiceConfig
@@ -9434,11 +9434,11 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/Status/code`.
             public var code: Swift.Int32?
-            /// - Remark: Generated from `#/components/schemas/Status/detailsPayload`.
-            public struct detailsPayloadPayload: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/Status/DetailsPayload`.
+            public struct DetailsPayloadPayload: Codable, Hashable, Sendable {
                 /// A container of undocumented properties.
                 public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
-                /// Creates a new `detailsPayloadPayload`.
+                /// Creates a new `DetailsPayloadPayload`.
                 ///
                 /// - Parameters:
                 ///   - additionalProperties: A container of undocumented properties.
@@ -9456,12 +9456,12 @@ public enum Components {
             /// message types for APIs to use.
             ///
             /// - Remark: Generated from `#/components/schemas/Status/details`.
-            public typealias detailsPayload = [Components.Schemas.Status.detailsPayloadPayload]
+            public typealias DetailsPayload = [Components.Schemas.Status.DetailsPayloadPayload]
             /// A list of messages that carry the error details.  There is a common set of
             /// message types for APIs to use.
             ///
             /// - Remark: Generated from `#/components/schemas/Status/details`.
-            public var details: Components.Schemas.Status.detailsPayload?
+            public var details: Components.Schemas.Status.DetailsPayload?
             /// A developer-facing error message, which should be in English. Any
             /// user-facing error message should be localized and sent in the
             /// google.rpc.Status.details field, or localized by the client.
@@ -9476,7 +9476,7 @@ public enum Components {
             ///   - message: A developer-facing error message, which should be in English. Any
             public init(
                 code: Swift.Int32? = nil,
-                details: Components.Schemas.Status.detailsPayload? = nil,
+                details: Components.Schemas.Status.DetailsPayload? = nil,
                 message: Swift.String? = nil
             ) {
                 self.code = code
@@ -9510,15 +9510,15 @@ public enum Components {
         }
         /// - Remark: Generated from `#/components/schemas/TaskType`.
         @frozen public enum TaskType: String, Codable, Hashable, Sendable, CaseIterable {
-            case TASK_TYPE_UNSPECIFIED = "TASK_TYPE_UNSPECIFIED"
-            case RETRIEVAL_QUERY = "RETRIEVAL_QUERY"
-            case RETRIEVAL_DOCUMENT = "RETRIEVAL_DOCUMENT"
-            case SEMANTIC_SIMILARITY = "SEMANTIC_SIMILARITY"
-            case CLASSIFICATION = "CLASSIFICATION"
-            case CLUSTERING = "CLUSTERING"
-            case QUESTION_ANSWERING = "QUESTION_ANSWERING"
-            case FACT_VERIFICATION = "FACT_VERIFICATION"
-            case CODE_RETRIEVAL_QUERY = "CODE_RETRIEVAL_QUERY"
+            case taskTypeUnspecified = "TASK_TYPE_UNSPECIFIED"
+            case retrievalQuery = "RETRIEVAL_QUERY"
+            case retrievalDocument = "RETRIEVAL_DOCUMENT"
+            case semanticSimilarity = "SEMANTIC_SIMILARITY"
+            case classification = "CLASSIFICATION"
+            case clustering = "CLUSTERING"
+            case questionAnswering = "QUESTION_ANSWERING"
+            case factVerification = "FACT_VERIFICATION"
+            case codeRetrievalQuery = "CODE_RETRIEVAL_QUERY"
         }
         /// Output text returned from a model.
         ///
@@ -9531,10 +9531,10 @@ public enum Components {
             /// included in the `output`.
             ///
             /// - Remark: Generated from `#/components/schemas/TextCompletion/citationMetadata`.
-            public struct citationMetadataPayload: Codable, Hashable, Sendable {
+            public struct CitationMetadataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/TextCompletion/citationMetadata/value1`.
                 public var value1: Components.Schemas.CitationMetadata
-                /// Creates a new `citationMetadataPayload`.
+                /// Creates a new `CitationMetadataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9555,7 +9555,7 @@ public enum Components {
             /// included in the `output`.
             ///
             /// - Remark: Generated from `#/components/schemas/TextCompletion/citationMetadata`.
-            public var citationMetadata: Components.Schemas.TextCompletion.citationMetadataPayload?
+            public var citationMetadata: Components.Schemas.TextCompletion.CitationMetadataPayload?
             /// Output only. The generated text returned from the model.
             ///
             /// - Remark: Generated from `#/components/schemas/TextCompletion/output`.
@@ -9573,7 +9573,7 @@ public enum Components {
             ///   - output: Output only. The generated text returned from the model.
             ///   - safetyRatings: Ratings for the safety of a response.
             public init(
-                citationMetadata: Components.Schemas.TextCompletion.citationMetadataPayload? = nil,
+                citationMetadata: Components.Schemas.TextCompletion.CitationMetadataPayload? = nil,
                 output: Swift.String? = nil,
                 safetyRatings: [Components.Schemas.SafetyRating]? = nil
             ) {
@@ -9649,10 +9649,10 @@ public enum Components {
             /// Optional. Enables the model to execute code as part of generation.
             ///
             /// - Remark: Generated from `#/components/schemas/Tool/codeExecution`.
-            public struct codeExecutionPayload: Codable, Hashable, Sendable {
+            public struct CodeExecutionPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Tool/codeExecution/value1`.
                 public var value1: Components.Schemas.CodeExecution
-                /// Creates a new `codeExecutionPayload`.
+                /// Creates a new `CodeExecutionPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9669,7 +9669,7 @@ public enum Components {
             /// Optional. Enables the model to execute code as part of generation.
             ///
             /// - Remark: Generated from `#/components/schemas/Tool/codeExecution`.
-            public var codeExecution: Components.Schemas.Tool.codeExecutionPayload?
+            public var codeExecution: Components.Schemas.Tool.CodeExecutionPayload?
             /// Optional. A list of `FunctionDeclarations` available to the model that can be used
             /// for function calling.
             ///
@@ -9689,10 +9689,10 @@ public enum Components {
             /// Tool to support Google Search in Model. Powered by Google.
             ///
             /// - Remark: Generated from `#/components/schemas/Tool/googleSearch`.
-            public struct googleSearchPayload: Codable, Hashable, Sendable {
+            public struct GoogleSearchPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Tool/googleSearch/value1`.
                 public var value1: Components.Schemas.GoogleSearch
-                /// Creates a new `googleSearchPayload`.
+                /// Creates a new `GoogleSearchPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9710,14 +9710,14 @@ public enum Components {
             /// Tool to support Google Search in Model. Powered by Google.
             ///
             /// - Remark: Generated from `#/components/schemas/Tool/googleSearch`.
-            public var googleSearch: Components.Schemas.Tool.googleSearchPayload?
+            public var googleSearch: Components.Schemas.Tool.GoogleSearchPayload?
             /// Optional. Retrieval tool that is powered by Google search.
             ///
             /// - Remark: Generated from `#/components/schemas/Tool/googleSearchRetrieval`.
-            public struct googleSearchRetrievalPayload: Codable, Hashable, Sendable {
+            public struct GoogleSearchRetrievalPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Tool/googleSearchRetrieval/value1`.
                 public var value1: Components.Schemas.GoogleSearchRetrieval
-                /// Creates a new `googleSearchRetrievalPayload`.
+                /// Creates a new `GoogleSearchRetrievalPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9734,14 +9734,14 @@ public enum Components {
             /// Optional. Retrieval tool that is powered by Google search.
             ///
             /// - Remark: Generated from `#/components/schemas/Tool/googleSearchRetrieval`.
-            public var googleSearchRetrieval: Components.Schemas.Tool.googleSearchRetrievalPayload?
+            public var googleSearchRetrieval: Components.Schemas.Tool.GoogleSearchRetrievalPayload?
             /// Optional. Tool to support URL context retrieval.
             ///
             /// - Remark: Generated from `#/components/schemas/Tool/urlContext`.
-            public struct urlContextPayload: Codable, Hashable, Sendable {
+            public struct UrlContextPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/Tool/urlContext/value1`.
                 public var value1: Components.Schemas.UrlContext
-                /// Creates a new `urlContextPayload`.
+                /// Creates a new `UrlContextPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9758,7 +9758,7 @@ public enum Components {
             /// Optional. Tool to support URL context retrieval.
             ///
             /// - Remark: Generated from `#/components/schemas/Tool/urlContext`.
-            public var urlContext: Components.Schemas.Tool.urlContextPayload?
+            public var urlContext: Components.Schemas.Tool.UrlContextPayload?
             /// Creates a new `Tool`.
             ///
             /// - Parameters:
@@ -9768,11 +9768,11 @@ public enum Components {
             ///   - googleSearchRetrieval: Optional. Retrieval tool that is powered by Google search.
             ///   - urlContext: Optional. Tool to support URL context retrieval.
             public init(
-                codeExecution: Components.Schemas.Tool.codeExecutionPayload? = nil,
+                codeExecution: Components.Schemas.Tool.CodeExecutionPayload? = nil,
                 functionDeclarations: [Components.Schemas.FunctionDeclaration]? = nil,
-                googleSearch: Components.Schemas.Tool.googleSearchPayload? = nil,
-                googleSearchRetrieval: Components.Schemas.Tool.googleSearchRetrievalPayload? = nil,
-                urlContext: Components.Schemas.Tool.urlContextPayload? = nil
+                googleSearch: Components.Schemas.Tool.GoogleSearchPayload? = nil,
+                googleSearchRetrieval: Components.Schemas.Tool.GoogleSearchRetrievalPayload? = nil,
+                urlContext: Components.Schemas.Tool.UrlContextPayload? = nil
             ) {
                 self.codeExecution = codeExecution
                 self.functionDeclarations = functionDeclarations
@@ -9796,10 +9796,10 @@ public enum Components {
             /// Optional. Function calling config.
             ///
             /// - Remark: Generated from `#/components/schemas/ToolConfig/functionCallingConfig`.
-            public struct functionCallingConfigPayload: Codable, Hashable, Sendable {
+            public struct FunctionCallingConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/ToolConfig/functionCallingConfig/value1`.
                 public var value1: Components.Schemas.FunctionCallingConfig
-                /// Creates a new `functionCallingConfigPayload`.
+                /// Creates a new `FunctionCallingConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9816,12 +9816,12 @@ public enum Components {
             /// Optional. Function calling config.
             ///
             /// - Remark: Generated from `#/components/schemas/ToolConfig/functionCallingConfig`.
-            public var functionCallingConfig: Components.Schemas.ToolConfig.functionCallingConfigPayload?
+            public var functionCallingConfig: Components.Schemas.ToolConfig.FunctionCallingConfigPayload?
             /// Creates a new `ToolConfig`.
             ///
             /// - Parameters:
             ///   - functionCallingConfig: Optional. Function calling config.
-            public init(functionCallingConfig: Components.Schemas.ToolConfig.functionCallingConfigPayload? = nil) {
+            public init(functionCallingConfig: Components.Schemas.ToolConfig.FunctionCallingConfigPayload? = nil) {
                 self.functionCallingConfig = functionCallingConfig
             }
             public enum CodingKeys: String, CodingKey {
@@ -9913,16 +9913,16 @@ public enum Components {
             /// Output only. The state of the tuned model.
             ///
             /// - Remark: Generated from `#/components/schemas/TunedModel/state`.
-            @frozen public enum statePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-                case CREATING = "CREATING"
-                case ACTIVE = "ACTIVE"
-                case FAILED = "FAILED"
+            @frozen public enum StatePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case stateUnspecified = "STATE_UNSPECIFIED"
+                case creating = "CREATING"
+                case active = "ACTIVE"
+                case failed = "FAILED"
             }
             /// Output only. The state of the tuned model.
             ///
             /// - Remark: Generated from `#/components/schemas/TunedModel/state`.
-            public var state: Components.Schemas.TunedModel.statePayload?
+            public var state: Components.Schemas.TunedModel.StatePayload?
             /// Optional. Controls the randomness of the output.
             ///
             /// Values can range over `[0.0,1.0]`, inclusive. A value closer to `1.0` will
@@ -9958,10 +9958,10 @@ public enum Components {
             /// Optional. TunedModel to use as the starting point for training the new model.
             ///
             /// - Remark: Generated from `#/components/schemas/TunedModel/tunedModelSource`.
-            public struct tunedModelSourcePayload: Codable, Hashable, Sendable {
+            public struct TunedModelSourcePayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/TunedModel/tunedModelSource/value1`.
                 public var value1: Components.Schemas.TunedModelSource
-                /// Creates a new `tunedModelSourcePayload`.
+                /// Creates a new `TunedModelSourcePayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -9978,14 +9978,14 @@ public enum Components {
             /// Optional. TunedModel to use as the starting point for training the new model.
             ///
             /// - Remark: Generated from `#/components/schemas/TunedModel/tunedModelSource`.
-            public var tunedModelSource: Components.Schemas.TunedModel.tunedModelSourcePayload?
+            public var tunedModelSource: Components.Schemas.TunedModel.TunedModelSourcePayload?
             /// Required. The tuning task that creates the tuned model.
             ///
             /// - Remark: Generated from `#/components/schemas/TunedModel/tuningTask`.
-            public struct tuningTaskPayload: Codable, Hashable, Sendable {
+            public struct TuningTaskPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/TunedModel/tuningTask/value1`.
                 public var value1: Components.Schemas.TuningTask
-                /// Creates a new `tuningTaskPayload`.
+                /// Creates a new `TuningTaskPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -10002,7 +10002,7 @@ public enum Components {
             /// Required. The tuning task that creates the tuned model.
             ///
             /// - Remark: Generated from `#/components/schemas/TunedModel/tuningTask`.
-            public var tuningTask: Components.Schemas.TunedModel.tuningTaskPayload
+            public var tuningTask: Components.Schemas.TunedModel.TuningTaskPayload
             /// Output only. The timestamp when this model was updated.
             ///
             /// - Remark: Generated from `#/components/schemas/TunedModel/updateTime`.
@@ -10030,12 +10030,12 @@ public enum Components {
                 displayName: Swift.String? = nil,
                 name: Swift.String? = nil,
                 readerProjectNumbers: [Swift.String]? = nil,
-                state: Components.Schemas.TunedModel.statePayload? = nil,
+                state: Components.Schemas.TunedModel.StatePayload? = nil,
                 temperature: Swift.Float? = nil,
                 topK: Swift.Int32? = nil,
                 topP: Swift.Float? = nil,
-                tunedModelSource: Components.Schemas.TunedModel.tunedModelSourcePayload? = nil,
-                tuningTask: Components.Schemas.TunedModel.tuningTaskPayload,
+                tunedModelSource: Components.Schemas.TunedModel.TunedModelSourcePayload? = nil,
+                tuningTask: Components.Schemas.TunedModel.TuningTaskPayload,
                 updateTime: Foundation.Date? = nil
             ) {
                 self.baseModel = baseModel
@@ -10206,10 +10206,10 @@ public enum Components {
             /// values will be used.
             ///
             /// - Remark: Generated from `#/components/schemas/TuningTask/hyperparameters`.
-            public struct hyperparametersPayload: Codable, Hashable, Sendable {
+            public struct HyperparametersPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/TuningTask/hyperparameters/value1`.
                 public var value1: Components.Schemas.Hyperparameters
-                /// Creates a new `hyperparametersPayload`.
+                /// Creates a new `HyperparametersPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -10227,7 +10227,7 @@ public enum Components {
             /// values will be used.
             ///
             /// - Remark: Generated from `#/components/schemas/TuningTask/hyperparameters`.
-            public var hyperparameters: Components.Schemas.TuningTask.hyperparametersPayload?
+            public var hyperparameters: Components.Schemas.TuningTask.HyperparametersPayload?
             /// Output only. Metrics collected during tuning.
             ///
             /// - Remark: Generated from `#/components/schemas/TuningTask/snapshots`.
@@ -10239,10 +10239,10 @@ public enum Components {
             /// Required. Input only. Immutable. The model training data.
             ///
             /// - Remark: Generated from `#/components/schemas/TuningTask/trainingData`.
-            public struct trainingDataPayload: Codable, Hashable, Sendable {
+            public struct TrainingDataPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/TuningTask/trainingData/value1`.
                 public var value1: Components.Schemas.Dataset
-                /// Creates a new `trainingDataPayload`.
+                /// Creates a new `TrainingDataPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -10259,7 +10259,7 @@ public enum Components {
             /// Required. Input only. Immutable. The model training data.
             ///
             /// - Remark: Generated from `#/components/schemas/TuningTask/trainingData`.
-            public var trainingData: Components.Schemas.TuningTask.trainingDataPayload
+            public var trainingData: Components.Schemas.TuningTask.TrainingDataPayload
             /// Creates a new `TuningTask`.
             ///
             /// - Parameters:
@@ -10270,10 +10270,10 @@ public enum Components {
             ///   - trainingData: Required. Input only. Immutable. The model training data.
             public init(
                 completeTime: Foundation.Date? = nil,
-                hyperparameters: Components.Schemas.TuningTask.hyperparametersPayload? = nil,
+                hyperparameters: Components.Schemas.TuningTask.HyperparametersPayload? = nil,
                 snapshots: [Components.Schemas.TuningSnapshot]? = nil,
                 startTime: Foundation.Date? = nil,
-                trainingData: Components.Schemas.TuningTask.trainingDataPayload
+                trainingData: Components.Schemas.TuningTask.TrainingDataPayload
             ) {
                 self.completeTime = completeTime
                 self.hyperparameters = hyperparameters
@@ -10291,14 +10291,14 @@ public enum Components {
         }
         /// - Remark: Generated from `#/components/schemas/Type`.
         @frozen public enum _Type: String, Codable, Hashable, Sendable, CaseIterable {
-            case TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
-            case STRING = "STRING"
-            case NUMBER = "NUMBER"
-            case INTEGER = "INTEGER"
-            case BOOLEAN = "BOOLEAN"
-            case ARRAY = "ARRAY"
-            case OBJECT = "OBJECT"
-            case NULL = "NULL"
+            case typeUnspecified = "TYPE_UNSPECIFIED"
+            case string = "STRING"
+            case number = "NUMBER"
+            case integer = "INTEGER"
+            case boolean = "BOOLEAN"
+            case array = "ARRAY"
+            case object = "OBJECT"
+            case null = "NULL"
         }
         /// Request to update a `Chunk`.
         ///
@@ -10307,10 +10307,10 @@ public enum Components {
             /// Required. The `Chunk` to update.
             ///
             /// - Remark: Generated from `#/components/schemas/UpdateChunkRequest/chunk`.
-            public struct chunkPayload: Codable, Hashable, Sendable {
+            public struct ChunkPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/UpdateChunkRequest/chunk/value1`.
                 public var value1: Components.Schemas.Chunk
-                /// Creates a new `chunkPayload`.
+                /// Creates a new `ChunkPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -10327,7 +10327,7 @@ public enum Components {
             /// Required. The `Chunk` to update.
             ///
             /// - Remark: Generated from `#/components/schemas/UpdateChunkRequest/chunk`.
-            public var chunk: Components.Schemas.UpdateChunkRequest.chunkPayload
+            public var chunk: Components.Schemas.UpdateChunkRequest.ChunkPayload
             /// Required. The list of fields to update.
             /// Currently, this only supports updating `custom_metadata` and `data`.
             ///
@@ -10339,7 +10339,7 @@ public enum Components {
             ///   - chunk: Required. The `Chunk` to update.
             ///   - updateMask: Required. The list of fields to update.
             public init(
-                chunk: Components.Schemas.UpdateChunkRequest.chunkPayload,
+                chunk: Components.Schemas.UpdateChunkRequest.ChunkPayload,
                 updateMask: Swift.String
             ) {
                 self.chunk = chunk
@@ -10384,15 +10384,15 @@ public enum Components {
             /// Status of the url retrieval.
             ///
             /// - Remark: Generated from `#/components/schemas/UrlMetadata/urlRetrievalStatus`.
-            @frozen public enum urlRetrievalStatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
-                case URL_RETRIEVAL_STATUS_UNSPECIFIED = "URL_RETRIEVAL_STATUS_UNSPECIFIED"
-                case URL_RETRIEVAL_STATUS_SUCCESS = "URL_RETRIEVAL_STATUS_SUCCESS"
-                case URL_RETRIEVAL_STATUS_ERROR = "URL_RETRIEVAL_STATUS_ERROR"
+            @frozen public enum UrlRetrievalStatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case urlRetrievalStatusUnspecified = "URL_RETRIEVAL_STATUS_UNSPECIFIED"
+                case urlRetrievalStatusSuccess = "URL_RETRIEVAL_STATUS_SUCCESS"
+                case urlRetrievalStatusError = "URL_RETRIEVAL_STATUS_ERROR"
             }
             /// Status of the url retrieval.
             ///
             /// - Remark: Generated from `#/components/schemas/UrlMetadata/urlRetrievalStatus`.
-            public var urlRetrievalStatus: Components.Schemas.UrlMetadata.urlRetrievalStatusPayload?
+            public var urlRetrievalStatus: Components.Schemas.UrlMetadata.UrlRetrievalStatusPayload?
             /// Creates a new `UrlMetadata`.
             ///
             /// - Parameters:
@@ -10400,7 +10400,7 @@ public enum Components {
             ///   - urlRetrievalStatus: Status of the url retrieval.
             public init(
                 retrievedUrl: Swift.String? = nil,
-                urlRetrievalStatus: Components.Schemas.UrlMetadata.urlRetrievalStatusPayload? = nil
+                urlRetrievalStatus: Components.Schemas.UrlMetadata.UrlRetrievalStatusPayload? = nil
             ) {
                 self.retrievedUrl = retrievedUrl
                 self.urlRetrievalStatus = urlRetrievalStatus
@@ -10600,10 +10600,10 @@ public enum Components {
             /// The configuration for the prebuilt voice to use.
             ///
             /// - Remark: Generated from `#/components/schemas/VoiceConfig/prebuiltVoiceConfig`.
-            public struct prebuiltVoiceConfigPayload: Codable, Hashable, Sendable {
+            public struct PrebuiltVoiceConfigPayload: Codable, Hashable, Sendable {
                 /// - Remark: Generated from `#/components/schemas/VoiceConfig/prebuiltVoiceConfig/value1`.
                 public var value1: Components.Schemas.PrebuiltVoiceConfig
-                /// Creates a new `prebuiltVoiceConfigPayload`.
+                /// Creates a new `PrebuiltVoiceConfigPayload`.
                 ///
                 /// - Parameters:
                 ///   - value1:
@@ -10620,12 +10620,12 @@ public enum Components {
             /// The configuration for the prebuilt voice to use.
             ///
             /// - Remark: Generated from `#/components/schemas/VoiceConfig/prebuiltVoiceConfig`.
-            public var prebuiltVoiceConfig: Components.Schemas.VoiceConfig.prebuiltVoiceConfigPayload?
+            public var prebuiltVoiceConfig: Components.Schemas.VoiceConfig.PrebuiltVoiceConfigPayload?
             /// Creates a new `VoiceConfig`.
             ///
             /// - Parameters:
             ///   - prebuiltVoiceConfig: The configuration for the prebuilt voice to use.
-            public init(prebuiltVoiceConfig: Components.Schemas.VoiceConfig.prebuiltVoiceConfigPayload? = nil) {
+            public init(prebuiltVoiceConfig: Components.Schemas.VoiceConfig.PrebuiltVoiceConfigPayload? = nil) {
                 self.prebuiltVoiceConfig = prebuiltVoiceConfig
             }
             public enum CodingKeys: String, CodingKey {
@@ -10670,22 +10670,22 @@ public enum Components {
         ///
         /// - Remark: Generated from `#/components/schemas/ModelID`.
         @frozen public enum ModelID: String, Codable, Hashable, Sendable, CaseIterable {
-            case gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_05_hyphen_20 = "gemini-2.5-flash-preview-05-20"
-            case gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_native_hyphen_audio_hyphen_dialog = "gemini-2.5-flash-preview-native-audio-dialog"
-            case gemini_hyphen_2_period_5_hyphen_flash_hyphen_exp_hyphen_native_hyphen_audio_hyphen_thinking_hyphen_dialog = "gemini-2.5-flash-exp-native-audio-thinking-dialog"
-            case gemini_hyphen_2_period_5_hyphen_flash_hyphen_preview_hyphen_tts = "gemini-2.5-flash-preview-tts"
-            case gemini_hyphen_2_period_5_hyphen_pro_hyphen_preview_hyphen_06_hyphen_05 = "gemini-2.5-pro-preview-06-05"
-            case gemini_hyphen_2_period_5_hyphen_pro_hyphen_preview_hyphen_tts = "gemini-2.5-pro-preview-tts"
-            case gemini_hyphen_2_period_0_hyphen_flash = "gemini-2.0-flash"
-            case gemini_hyphen_2_period_0_hyphen_flash_hyphen_preview_hyphen_image_hyphen_generation = "gemini-2.0-flash-preview-image-generation"
-            case gemini_hyphen_2_period_0_hyphen_flash_hyphen_lite = "gemini-2.0-flash-lite"
-            case gemini_hyphen_1_period_5_hyphen_flash = "gemini-1.5-flash"
-            case gemini_hyphen_1_period_5_hyphen_flash_hyphen_8b = "gemini-1.5-flash-8b"
-            case gemini_hyphen_1_period_5_hyphen_pro = "gemini-1.5-pro"
-            case gemini_hyphen_embedding_hyphen_exp = "gemini-embedding-exp"
-            case imagen_hyphen_3_period_0_hyphen_generate_hyphen_002 = "imagen-3.0-generate-002"
-            case veo_hyphen_2_period_0_hyphen_generate_hyphen_001 = "veo-2.0-generate-001"
-            case gemini_hyphen_2_period_0_hyphen_flash_hyphen_live_hyphen_001 = "gemini-2.0-flash-live-001"
+            case gemini2_5FlashPreview0520 = "gemini-2.5-flash-preview-05-20"
+            case gemini2_5FlashPreviewNativeAudioDialog = "gemini-2.5-flash-preview-native-audio-dialog"
+            case gemini2_5FlashExpNativeAudioThinkingDialog = "gemini-2.5-flash-exp-native-audio-thinking-dialog"
+            case gemini2_5FlashPreviewTts = "gemini-2.5-flash-preview-tts"
+            case gemini2_5ProPreview0605 = "gemini-2.5-pro-preview-06-05"
+            case gemini2_5ProPreviewTts = "gemini-2.5-pro-preview-tts"
+            case gemini2_0Flash = "gemini-2.0-flash"
+            case gemini2_0FlashPreviewImageGeneration = "gemini-2.0-flash-preview-image-generation"
+            case gemini2_0FlashLite = "gemini-2.0-flash-lite"
+            case gemini1_5Flash = "gemini-1.5-flash"
+            case gemini1_5Flash8b = "gemini-1.5-flash-8b"
+            case gemini1_5Pro = "gemini-1.5-pro"
+            case geminiEmbeddingExp = "gemini-embedding-exp"
+            case imagen3_0Generate002 = "imagen-3.0-generate-002"
+            case veo2_0Generate001 = "veo-2.0-generate-001"
+            case gemini2_0FlashLive001 = "gemini-2.0-flash-live-001"
         }
         /// - Remark: Generated from `#/components/schemas/TextPart`.
         public struct TextPart: Codable, Hashable, Sendable {
@@ -10840,7 +10840,7 @@ public enum Components {
         /// Data format for response.
         ///
         /// - Remark: Generated from `#/components/parameters/alt`.
-        @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+        @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
             case json = "json"
             case media = "media"
             case proto = "proto"
@@ -10849,11 +10849,11 @@ public enum Components {
         /// JSONP
         ///
         /// - Remark: Generated from `#/components/parameters/callback`.
-        public typealias callback = Swift.String
+        public typealias Callback = Swift.String
         /// Returns response with indentations and line breaks.
         ///
         /// - Remark: Generated from `#/components/parameters/prettyPrint`.
-        public typealias prettyPrint = Swift.Bool
+        public typealias PrettyPrint = Swift.Bool
     }
     /// Types generated from the `#/components/requestBodies` section of the OpenAPI document.
     public enum RequestBodies {}
@@ -10876,7 +10876,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/batches/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -10885,15 +10885,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -10902,7 +10902,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// The standard list filter.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/GET/query/filter`.
@@ -10921,15 +10921,15 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - filter: The standard list filter.
                 ///   - pageSize: The standard list page size.
                 ///   - pageToken: The standard list page token.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     filter: Swift.String? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
@@ -10937,7 +10937,7 @@ public enum Operations {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.filter = filter
                     self.pageSize = pageSize
                     self.pageToken = pageToken
@@ -11075,7 +11075,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -11084,15 +11084,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -11101,24 +11101,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetOperationByGenerateContentBatch.Input.Query
@@ -11263,7 +11263,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}:cancel/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -11272,15 +11272,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}:cancel/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}:cancel/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}:cancel/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -11289,24 +11289,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}:cancel/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CancelOperation.Input.Query
@@ -11427,7 +11427,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/cachedContents/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -11436,15 +11436,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -11453,7 +11453,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The maximum number of cached contents to return. The service may return
                 /// fewer than this value.
                 /// If unspecified, some default (under maximum) number of items will be
@@ -11476,21 +11476,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. The maximum number of cached contents to return. The service may return
                 ///   - pageToken: Optional. A page token, received from a previous `ListCachedContents` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -11610,7 +11610,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/cachedContents/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -11619,15 +11619,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -11636,24 +11636,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CreateCachedContent.Input.Query
@@ -11795,7 +11795,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -11804,15 +11804,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -11821,24 +11821,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetCachedContent.Input.Query
@@ -11974,7 +11974,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/PATCH/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -11983,15 +11983,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/PATCH/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/PATCH/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/PATCH/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -12000,7 +12000,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/PATCH/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// The list of fields to update.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/PATCH/query/updateMask`.
@@ -12011,19 +12011,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - updateMask: The list of fields to update.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     updateMask: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.updateMask = updateMask
                 }
             }
@@ -12169,7 +12169,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/DELETE/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -12178,15 +12178,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/DELETE/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/DELETE/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/DELETE/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -12195,24 +12195,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/cachedContents/{id}/DELETE/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.DeleteCachedContent.Input.Query
@@ -12333,7 +12333,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -12342,15 +12342,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -12359,7 +12359,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The maximum number of `Corpora` to return (per page).
                 /// The service may return fewer `Corpora`.
                 ///
@@ -12384,21 +12384,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. The maximum number of `Corpora` to return (per page).
                 ///   - pageToken: Optional. A page token, received from a previous `ListCorpora` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -12518,7 +12518,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -12527,15 +12527,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -12544,24 +12544,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CreateCorpus.Input.Query
@@ -12703,7 +12703,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -12712,15 +12712,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -12729,24 +12729,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetCorpus.Input.Query
@@ -12882,7 +12882,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/PATCH/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -12891,15 +12891,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/PATCH/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/PATCH/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/PATCH/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -12908,7 +12908,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/PATCH/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Required. The list of fields to update.
                 /// Currently, this only supports updating `display_name`.
                 ///
@@ -12920,19 +12920,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - updateMask: Required. The list of fields to update.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     updateMask: Swift.String
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.updateMask = updateMask
                 }
             }
@@ -13078,7 +13078,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/DELETE/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -13087,15 +13087,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/DELETE/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/DELETE/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/DELETE/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -13104,7 +13104,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/DELETE/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. If set to true, any `Document`s and objects related to this `Corpus` will
                 /// also be deleted.
                 ///
@@ -13119,19 +13119,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - force: Optional. If set to true, any `Document`s and objects related to this `Corpus` will
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     force: Swift.Bool? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.force = force
                 }
             }
@@ -13268,7 +13268,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}:query/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -13277,15 +13277,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}:query/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}:query/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}:query/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -13294,24 +13294,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}:query/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.QueryCorpus.Input.Query
@@ -13456,7 +13456,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -13465,15 +13465,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -13482,7 +13482,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The maximum number of `Document`s to return (per page).
                 /// The service may return fewer `Document`s.
                 ///
@@ -13507,21 +13507,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. The maximum number of `Document`s to return (per page).
                 ///   - pageToken: Optional. A page token, received from a previous `ListDocuments` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -13659,7 +13659,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -13668,15 +13668,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -13685,24 +13685,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CreateDocument.Input.Query
@@ -13856,7 +13856,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -13865,15 +13865,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -13882,24 +13882,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetDocument.Input.Query
@@ -14044,7 +14044,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/PATCH/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -14053,15 +14053,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/PATCH/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/PATCH/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/PATCH/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -14070,7 +14070,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/PATCH/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Required. The list of fields to update.
                 /// Currently, this only supports updating `display_name` and
                 /// `custom_metadata`.
@@ -14083,19 +14083,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - updateMask: Required. The list of fields to update.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     updateMask: Swift.String
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.updateMask = updateMask
                 }
             }
@@ -14250,7 +14250,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/DELETE/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -14259,15 +14259,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/DELETE/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/DELETE/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/DELETE/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -14276,7 +14276,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/DELETE/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. If set to true, any `Chunk`s and objects related to this `Document` will
                 /// also be deleted.
                 ///
@@ -14291,19 +14291,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - force: Optional. If set to true, any `Chunk`s and objects related to this `Document` will
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     force: Swift.Bool? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.force = force
                 }
             }
@@ -14449,7 +14449,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}:query/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -14458,15 +14458,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}:query/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}:query/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}:query/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -14475,24 +14475,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}:query/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.QueryDocument.Input.Query
@@ -14646,7 +14646,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -14655,15 +14655,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -14672,7 +14672,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The maximum number of `Chunk`s to return (per page).
                 /// The service may return fewer `Chunk`s.
                 ///
@@ -14697,21 +14697,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. The maximum number of `Chunk`s to return (per page).
                 ///   - pageToken: Optional. A page token, received from a previous `ListChunks` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -14858,7 +14858,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -14867,15 +14867,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -14884,24 +14884,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CreateChunk.Input.Query
@@ -15055,7 +15055,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -15064,15 +15064,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -15081,24 +15081,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchCreate/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.BatchCreateChunks.Input.Query
@@ -15252,7 +15252,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -15261,15 +15261,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -15278,24 +15278,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchDelete/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.BatchDeleteChunks.Input.Query
@@ -15449,7 +15449,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -15458,15 +15458,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -15475,24 +15475,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks:batchUpdate/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.BatchUpdateChunks.Input.Query
@@ -15653,7 +15653,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -15662,15 +15662,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -15679,24 +15679,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetChunk.Input.Query
@@ -15848,7 +15848,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/PATCH/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -15857,15 +15857,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/PATCH/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/PATCH/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/PATCH/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -15874,7 +15874,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/PATCH/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Required. The list of fields to update.
                 /// Currently, this only supports updating `custom_metadata` and `data`.
                 ///
@@ -15886,19 +15886,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - updateMask: Required. The list of fields to update.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     updateMask: Swift.String
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.updateMask = updateMask
                 }
             }
@@ -16060,7 +16060,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/DELETE/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -16069,15 +16069,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/DELETE/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/DELETE/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/DELETE/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -16086,24 +16086,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/documents/{document}/chunks/{chunk}/DELETE/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.DeleteChunk.Input.Query
@@ -16239,7 +16239,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -16248,15 +16248,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -16265,7 +16265,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The maximum number of `Permission`s to return (per page).
                 /// The service may return fewer permissions.
                 ///
@@ -16291,21 +16291,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. The maximum number of `Permission`s to return (per page).
                 ///   - pageToken: Optional. A page token, received from a previous `ListPermissions` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -16443,7 +16443,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -16452,15 +16452,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -16469,24 +16469,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CreatePermissionByCorpus.Input.Query
@@ -16640,7 +16640,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -16649,15 +16649,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -16666,24 +16666,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetPermissionByCorpusAndPermission.Input.Query
@@ -16828,7 +16828,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/PATCH/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -16837,15 +16837,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/PATCH/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/PATCH/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/PATCH/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -16854,7 +16854,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/PATCH/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Required. The list of fields to update. Accepted ones:
                 ///  - role (`Permission.role` field)
                 ///
@@ -16866,19 +16866,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - updateMask: Required. The list of fields to update. Accepted ones:
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     updateMask: Swift.String
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.updateMask = updateMask
                 }
             }
@@ -17033,7 +17033,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/DELETE/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -17042,15 +17042,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/DELETE/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/DELETE/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/DELETE/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -17059,24 +17059,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/corpora/{corpus}/permissions/{permission}/DELETE/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.DeletePermissionByCorpusAndPermission.Input.Query
@@ -17220,7 +17220,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:generateContent/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -17229,15 +17229,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:generateContent/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:generateContent/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:generateContent/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -17246,24 +17246,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:generateContent/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GenerateContentByDynamicId.Input.Query
@@ -17412,7 +17412,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:streamGenerateContent/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -17421,15 +17421,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:streamGenerateContent/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:streamGenerateContent/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:streamGenerateContent/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -17438,24 +17438,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/dynamic/{dynamicId}:streamGenerateContent/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.StreamGenerateContentByDynamicId.Input.Query
@@ -17585,7 +17585,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/files/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -17594,15 +17594,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -17611,7 +17611,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. Maximum number of `File`s to return per page.
                 /// If unspecified, defaults to 10. Maximum `page_size` is 100.
                 ///
@@ -17627,21 +17627,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. Maximum number of `File`s to return per page.
                 ///   - pageToken: Optional. A page token from a previous `ListFiles` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -17761,7 +17761,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/files/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -17770,15 +17770,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -17787,24 +17787,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CreateFile.Input.Query
@@ -17946,7 +17946,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/files/{file}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -17955,15 +17955,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -17972,24 +17972,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetFile.Input.Query
@@ -18125,7 +18125,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/files/{file}/DELETE/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -18134,15 +18134,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}/DELETE/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}/DELETE/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}/DELETE/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -18151,24 +18151,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}/DELETE/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.DeleteFile.Input.Query
@@ -18304,7 +18304,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/files/{file}:download/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -18313,15 +18313,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}:download/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}:download/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}:download/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -18330,24 +18330,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/files/{file}:download/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.DownloadFile.Input.Query
@@ -18468,7 +18468,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/generatedFiles/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -18477,15 +18477,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -18494,7 +18494,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. Maximum number of `GeneratedFile`s to return per page.
                 /// If unspecified, defaults to 10. Maximum `page_size` is 50.
                 ///
@@ -18510,21 +18510,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. Maximum number of `GeneratedFile`s to return per page.
                 ///   - pageToken: Optional. A page token from a previous `ListGeneratedFiles` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -18661,7 +18661,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -18670,15 +18670,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -18687,24 +18687,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetGeneratedFile.Input.Query
@@ -18851,7 +18851,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/operations/{operation}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -18860,15 +18860,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/operations/{operation}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/operations/{operation}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/operations/{operation}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -18877,24 +18877,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/generatedFiles/{generatedFile}/operations/{operation}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetOperationByGeneratedFileAndOperation.Input.Query
@@ -19016,7 +19016,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -19025,15 +19025,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -19042,7 +19042,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// The maximum number of `Models` to return (per page).
                 ///
                 /// If unspecified, 50 models will be returned per page.
@@ -19067,21 +19067,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: The maximum number of `Models` to return (per page).
                 ///   - pageToken: A page token, received from a previous `ListModels` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -19221,7 +19221,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -19230,15 +19230,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -19247,24 +19247,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetModel.Input.Query
@@ -19402,7 +19402,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedContents/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -19411,15 +19411,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedContents/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedContents/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedContents/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -19428,24 +19428,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedContents/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.BatchEmbedContents.Input.Query
@@ -19591,7 +19591,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedText/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -19600,15 +19600,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedText/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedText/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedText/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -19617,24 +19617,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:batchEmbedText/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.BatchEmbedText.Input.Query
@@ -19779,7 +19779,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:countMessageTokens/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -19788,15 +19788,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countMessageTokens/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countMessageTokens/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countMessageTokens/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -19805,24 +19805,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countMessageTokens/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CountMessageTokens.Input.Query
@@ -19967,7 +19967,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTextTokens/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -19976,15 +19976,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTextTokens/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTextTokens/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTextTokens/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -19993,24 +19993,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTextTokens/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CountTextTokens.Input.Query
@@ -20157,7 +20157,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTokens/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -20166,15 +20166,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTokens/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTokens/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTokens/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -20183,24 +20183,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:countTokens/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CountTokens.Input.Query
@@ -20347,7 +20347,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedContent/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -20356,15 +20356,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedContent/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedContent/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedContent/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -20373,24 +20373,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedContent/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.EmbedContent.Input.Query
@@ -20535,7 +20535,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedText/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -20544,15 +20544,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedText/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedText/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedText/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -20561,24 +20561,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:embedText/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.EmbedText.Input.Query
@@ -20724,7 +20724,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateAnswer/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -20733,15 +20733,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateAnswer/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateAnswer/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateAnswer/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -20750,24 +20750,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateAnswer/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GenerateAnswer.Input.Query
@@ -20918,7 +20918,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateContent/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -20927,15 +20927,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateContent/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateContent/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateContent/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -20944,24 +20944,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateContent/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GenerateContent.Input.Query
@@ -21106,7 +21106,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateMessage/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -21115,15 +21115,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateMessage/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateMessage/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateMessage/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -21132,24 +21132,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateMessage/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GenerateMessage.Input.Query
@@ -21294,7 +21294,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateText/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -21303,15 +21303,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateText/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateText/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateText/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -21320,24 +21320,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:generateText/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GenerateText.Input.Query
@@ -21482,7 +21482,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:predict/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -21491,15 +21491,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:predict/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:predict/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:predict/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -21508,24 +21508,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:predict/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.Predict.Input.Query
@@ -21670,7 +21670,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:predictLongRunning/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -21679,15 +21679,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:predictLongRunning/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:predictLongRunning/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:predictLongRunning/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -21696,24 +21696,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:predictLongRunning/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.PredictLongRunning.Input.Query
@@ -21860,7 +21860,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -21869,15 +21869,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -21886,24 +21886,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.StreamGenerateContent.Input.Query
@@ -21968,15 +21968,15 @@ public enum Operations {
                         }
                     }
                     /// - Remark: Generated from `#/paths/v1beta/models/{model}:streamGenerateContent/POST/responses/default/content/text\/event-stream`.
-                    case text_event_hyphen_stream(OpenAPIRuntime.HTTPBody)
-                    /// The associated value of the enum case if `self` is `.text_event_hyphen_stream`.
+                    case textEventStream(OpenAPIRuntime.HTTPBody)
+                    /// The associated value of the enum case if `self` is `.textEventStream`.
                     ///
-                    /// - Throws: An error if `self` is not `.text_event_hyphen_stream`.
-                    /// - SeeAlso: `.text_event_hyphen_stream`.
-                    public var text_event_hyphen_stream: OpenAPIRuntime.HTTPBody {
+                    /// - Throws: An error if `self` is not `.textEventStream`.
+                    /// - SeeAlso: `.textEventStream`.
+                    public var textEventStream: OpenAPIRuntime.HTTPBody {
                         get throws {
                             switch self {
-                            case let .text_event_hyphen_stream(body):
+                            case let .textEventStream(body):
                                 return body
                             default:
                                 try throwUnexpectedResponseBody(
@@ -22023,14 +22023,14 @@ public enum Operations {
         }
         @frozen public enum AcceptableContentType: AcceptableProtocol {
             case json
-            case text_event_hyphen_stream
+            case textEventStream
             case other(Swift.String)
             public init?(rawValue: Swift.String) {
                 switch rawValue.lowercased() {
                 case "application/json":
                     self = .json
                 case "text/event-stream":
-                    self = .text_event_hyphen_stream
+                    self = .textEventStream
                 default:
                     self = .other(rawValue)
                 }
@@ -22041,14 +22041,14 @@ public enum Operations {
                     return string
                 case .json:
                     return "application/json"
-                case .text_event_hyphen_stream:
+                case .textEventStream:
                     return "text/event-stream"
                 }
             }
             public static var allCases: [Self] {
                 [
                     .json,
-                    .text_event_hyphen_stream
+                    .textEventStream
                 ]
             }
         }
@@ -22079,7 +22079,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -22088,15 +22088,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -22105,7 +22105,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// The standard list filter.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/GET/query/filter`.
@@ -22124,15 +22124,15 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - filter: The standard list filter.
                 ///   - pageSize: The standard list page size.
                 ///   - pageToken: The standard list page token.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     filter: Swift.String? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
@@ -22140,7 +22140,7 @@ public enum Operations {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.filter = filter
                     self.pageSize = pageSize
                     self.pageToken = pageToken
@@ -22290,7 +22290,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/{operation}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -22299,15 +22299,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/{operation}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/{operation}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/{operation}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -22316,24 +22316,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/models/{model}/operations/{operation}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetOperationByModelAndOperation.Input.Query
@@ -22454,7 +22454,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -22463,15 +22463,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -22480,7 +22480,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The maximum number of `TunedModels` to return (per page).
                 /// The service may return fewer tuned models.
                 ///
@@ -22523,15 +22523,15 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. The maximum number of `TunedModels` to return (per page).
                 ///   - pageToken: Optional. A page token, received from a previous `ListTunedModels` call.
                 ///   - filter: Optional. A filter is a full text search over the tuned model's description and
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil,
                     filter: Swift.String? = nil
@@ -22539,7 +22539,7 @@ public enum Operations {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                     self.filter = filter
@@ -22666,7 +22666,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -22675,15 +22675,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -22692,7 +22692,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The unique id for the tuned model if specified.
                 /// This value should be up to 40 characters, the first character must be a
                 /// letter, the last could be a letter or a number. The id must match the
@@ -22706,19 +22706,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - tunedModelId: Optional. The unique id for the tuned model if specified.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     tunedModelId: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.tunedModelId = tunedModelId
                 }
             }
@@ -22861,7 +22861,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -22870,15 +22870,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -22887,24 +22887,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetTunedModel.Input.Query
@@ -23040,7 +23040,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/PATCH/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -23049,15 +23049,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/PATCH/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/PATCH/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/PATCH/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -23066,7 +23066,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/PATCH/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The list of fields to update.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/PATCH/query/updateMask`.
@@ -23077,19 +23077,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - updateMask: Optional. The list of fields to update.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     updateMask: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.updateMask = updateMask
                 }
             }
@@ -23235,7 +23235,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/DELETE/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -23244,15 +23244,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/DELETE/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/DELETE/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/DELETE/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -23261,24 +23261,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/DELETE/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.DeleteTunedModel.Input.Query
@@ -23420,7 +23420,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateContent/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -23429,15 +23429,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateContent/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateContent/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateContent/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -23446,24 +23446,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateContent/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GenerateContentByTunedModel.Input.Query
@@ -23608,7 +23608,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateText/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -23617,15 +23617,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateText/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateText/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateText/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -23634,24 +23634,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:generateText/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GenerateTextByTunedModel.Input.Query
@@ -23798,7 +23798,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:streamGenerateContent/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -23807,15 +23807,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:streamGenerateContent/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:streamGenerateContent/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:streamGenerateContent/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -23824,24 +23824,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:streamGenerateContent/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.StreamGenerateContentByTunedModel.Input.Query
@@ -23988,7 +23988,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:transferOwnership/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -23997,15 +23997,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:transferOwnership/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:transferOwnership/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:transferOwnership/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -24014,24 +24014,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}:transferOwnership/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.TransferOwnership.Input.Query
@@ -24177,7 +24177,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -24186,15 +24186,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -24203,7 +24203,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// The standard list filter.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/GET/query/filter`.
@@ -24222,15 +24222,15 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - filter: The standard list filter.
                 ///   - pageSize: The standard list page size.
                 ///   - pageToken: The standard list page token.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     filter: Swift.String? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
@@ -24238,7 +24238,7 @@ public enum Operations {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.filter = filter
                     self.pageSize = pageSize
                     self.pageToken = pageToken
@@ -24388,7 +24388,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/{operation}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -24397,15 +24397,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/{operation}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/{operation}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/{operation}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -24414,24 +24414,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/operations/{operation}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetOperation.Input.Query
@@ -24567,7 +24567,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -24576,15 +24576,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -24593,7 +24593,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Optional. The maximum number of `Permission`s to return (per page).
                 /// The service may return fewer permissions.
                 ///
@@ -24619,21 +24619,21 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - pageSize: Optional. The maximum number of `Permission`s to return (per page).
                 ///   - pageToken: Optional. A page token, received from a previous `ListPermissions` call.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     pageSize: Swift.Int32? = nil,
                     pageToken: Swift.String? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.pageSize = pageSize
                     self.pageToken = pageToken
                 }
@@ -24771,7 +24771,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/POST/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -24780,15 +24780,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/POST/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/POST/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/POST/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -24797,24 +24797,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/POST/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.CreatePermission.Input.Query
@@ -24968,7 +24968,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/GET/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -24977,15 +24977,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/GET/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/GET/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/GET/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -24994,24 +24994,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/GET/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.GetPermission.Input.Query
@@ -25156,7 +25156,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/PATCH/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -25165,15 +25165,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/PATCH/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/PATCH/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/PATCH/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -25182,7 +25182,7 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/PATCH/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Required. The list of fields to update. Accepted ones:
                 ///  - role (`Permission.role` field)
                 ///
@@ -25194,19 +25194,19 @@ public enum Operations {
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 ///   - updateMask: Required. The list of fields to update. Accepted ones:
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil,
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil,
                     updateMask: Swift.String
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                     self.updateMask = updateMask
                 }
             }
@@ -25361,7 +25361,7 @@ public enum Operations {
             /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/DELETE/query`.
             public struct Query: Sendable, Hashable {
                 /// - Remark: Generated from `#/components/parameters/alt`.
-                @frozen public enum alt: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
                     case json = "json"
                     case media = "media"
                     case proto = "proto"
@@ -25370,15 +25370,15 @@ public enum Operations {
                 /// Data format for response.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/DELETE/query/$alt`.
-                public var _dollar_alt: Components.Parameters.alt?
+                public var _dollar_alt: Components.Parameters.Alt?
                 /// JSONP
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/DELETE/query/$callback`.
-                public var _dollar_callback: Components.Parameters.callback?
+                public var _dollar_callback: Components.Parameters.Callback?
                 /// Returns response with indentations and line breaks.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/DELETE/query/$prettyPrint`.
-                public var _dollar_prettyPrint: Components.Parameters.prettyPrint?
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
                 /// - Remark: Generated from `#/components/parameters/_.xgafv`.
                 @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
                     case _1 = "1"
@@ -25387,24 +25387,24 @@ public enum Operations {
                 /// V1 error format.
                 ///
                 /// - Remark: Generated from `#/paths/v1beta/tunedModels/{tunedModel}/permissions/{permission}/DELETE/query/$.xgafv`.
-                public var _dollar__period_xgafv: Components.Parameters.__period_xgafv?
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
                 ///   - _dollar_alt: Data format for response.
                 ///   - _dollar_callback: JSONP
                 ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
-                ///   - _dollar__period_xgafv: V1 error format.
+                ///   - _dollar__xgafv: V1 error format.
                 public init(
-                    _dollar_alt: Components.Parameters.alt? = nil,
-                    _dollar_callback: Components.Parameters.callback? = nil,
-                    _dollar_prettyPrint: Components.Parameters.prettyPrint? = nil,
-                    _dollar__period_xgafv: Components.Parameters.__period_xgafv? = nil
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
                 ) {
                     self._dollar_alt = _dollar_alt
                     self._dollar_callback = _dollar_callback
                     self._dollar_prettyPrint = _dollar_prettyPrint
-                    self._dollar__period_xgafv = _dollar__period_xgafv
+                    self._dollar__xgafv = _dollar__xgafv
                 }
             }
             public var query: Operations.DeletePermission.Input.Query
@@ -25527,94 +25527,94 @@ public enum Operations {
                 /// upload_id
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query/upload_id`.
-                public var upload_id: Swift.String?
+                public var uploadId: Swift.String?
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query/upload_protocol`.
-                @frozen public enum upload_protocolPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum UploadProtocolPayload: String, Codable, Hashable, Sendable, CaseIterable {
                     case resumable = "resumable"
                 }
                 /// upload_protocol
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/query/upload_protocol`.
-                public var upload_protocol: Operations.UploadFiles.Input.Query.upload_protocolPayload?
+                public var uploadProtocol: Operations.UploadFiles.Input.Query.UploadProtocolPayload?
                 /// Creates a new `Query`.
                 ///
                 /// - Parameters:
-                ///   - upload_id: upload_id
-                ///   - upload_protocol: upload_protocol
+                ///   - uploadId: upload_id
+                ///   - uploadProtocol: upload_protocol
                 public init(
-                    upload_id: Swift.String? = nil,
-                    upload_protocol: Operations.UploadFiles.Input.Query.upload_protocolPayload? = nil
+                    uploadId: Swift.String? = nil,
+                    uploadProtocol: Operations.UploadFiles.Input.Query.UploadProtocolPayload? = nil
                 ) {
-                    self.upload_id = upload_id
-                    self.upload_protocol = upload_protocol
+                    self.uploadId = uploadId
+                    self.uploadProtocol = uploadProtocol
                 }
             }
             public var query: Operations.UploadFiles.Input.Query
             /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header`.
             public struct Headers: Sendable, Hashable {
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Command`.
-                @frozen public enum X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum XGoogUploadCommandPayload: String, Codable, Hashable, Sendable, CaseIterable {
                     case start = "start"
-                    case upload_comma__space_finalize = "upload, finalize"
+                    case upload_comma_Finalize = "upload, finalize"
                 }
                 /// X-Goog-Upload-Command
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Command`.
-                public var X_hyphen_Goog_hyphen_Upload_hyphen_Command: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload?
+                public var xGoogUploadCommand: Operations.UploadFiles.Input.Headers.XGoogUploadCommandPayload?
                 /// X-Goog-Upload-Offset
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Offset`.
-                public var X_hyphen_Goog_hyphen_Upload_hyphen_Offset: Swift.Int?
+                public var xGoogUploadOffset: Swift.Int?
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Protocol`.
-                @frozen public enum X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                @frozen public enum XGoogUploadProtocolPayload: String, Codable, Hashable, Sendable, CaseIterable {
                     case resumable = "resumable"
                 }
                 /// X-Goog-Upload-Protocol
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Protocol`.
-                public var X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload?
+                public var xGoogUploadProtocol: Operations.UploadFiles.Input.Headers.XGoogUploadProtocolPayload?
                 /// X-Goog-Upload-Header-Content-Length
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Header-Content-Length`.
-                public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: Swift.Int?
+                public var xGoogUploadHeaderContentLength: Swift.Int?
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Header-Content-Type`.
-                @frozen public enum X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
-                    case audio_sol_mpeg = "audio/mpeg"
-                    case audio_sol_mp3 = "audio/mp3"
-                    case audio_sol_mp4 = "audio/mp4"
-                    case audio_sol_m4a = "audio/m4a"
-                    case audio_sol_wav = "audio/wav"
-                    case audio_sol_webm = "audio/webm"
-                    case audio_sol_ogg = "audio/ogg"
-                    case audio_sol_flac = "audio/flac"
+                @frozen public enum XGoogUploadHeaderContentTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case audioMpeg = "audio/mpeg"
+                    case audioMp3 = "audio/mp3"
+                    case audioMp4 = "audio/mp4"
+                    case audioM4a = "audio/m4a"
+                    case audioWav = "audio/wav"
+                    case audioWebm = "audio/webm"
+                    case audioOgg = "audio/ogg"
+                    case audioFlac = "audio/flac"
                 }
                 /// X-Goog-Upload-Header-Content-Type
                 ///
                 /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/header/X-Goog-Upload-Header-Content-Type`.
-                public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload?
+                public var xGoogUploadHeaderContentType: Operations.UploadFiles.Input.Headers.XGoogUploadHeaderContentTypePayload?
                 public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UploadFiles.AcceptableContentType>]
                 /// Creates a new `Headers`.
                 ///
                 /// - Parameters:
-                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Command: X-Goog-Upload-Command
-                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Offset: X-Goog-Upload-Offset
-                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: X-Goog-Upload-Protocol
-                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: X-Goog-Upload-Header-Content-Length
-                ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: X-Goog-Upload-Header-Content-Type
+                ///   - xGoogUploadCommand: X-Goog-Upload-Command
+                ///   - xGoogUploadOffset: X-Goog-Upload-Offset
+                ///   - xGoogUploadProtocol: X-Goog-Upload-Protocol
+                ///   - xGoogUploadHeaderContentLength: X-Goog-Upload-Header-Content-Length
+                ///   - xGoogUploadHeaderContentType: X-Goog-Upload-Header-Content-Type
                 ///   - accept:
                 public init(
-                    X_hyphen_Goog_hyphen_Upload_hyphen_Command: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_CommandPayload? = nil,
-                    X_hyphen_Goog_hyphen_Upload_hyphen_Offset: Swift.Int? = nil,
-                    X_hyphen_Goog_hyphen_Upload_hyphen_Protocol: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_ProtocolPayload? = nil,
-                    X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length: Swift.Int? = nil,
-                    X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Operations.UploadFiles.Input.Headers.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_TypePayload? = nil,
+                    xGoogUploadCommand: Operations.UploadFiles.Input.Headers.XGoogUploadCommandPayload? = nil,
+                    xGoogUploadOffset: Swift.Int? = nil,
+                    xGoogUploadProtocol: Operations.UploadFiles.Input.Headers.XGoogUploadProtocolPayload? = nil,
+                    xGoogUploadHeaderContentLength: Swift.Int? = nil,
+                    xGoogUploadHeaderContentType: Operations.UploadFiles.Input.Headers.XGoogUploadHeaderContentTypePayload? = nil,
                     accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UploadFiles.AcceptableContentType>] = .defaultValues()
                 ) {
-                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Command = X_hyphen_Goog_hyphen_Upload_hyphen_Command
-                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Offset = X_hyphen_Goog_hyphen_Upload_hyphen_Offset
-                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Protocol = X_hyphen_Goog_hyphen_Upload_hyphen_Protocol
-                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Length
-                    self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type
+                    self.xGoogUploadCommand = xGoogUploadCommand
+                    self.xGoogUploadOffset = xGoogUploadOffset
+                    self.xGoogUploadProtocol = xGoogUploadProtocol
+                    self.xGoogUploadHeaderContentLength = xGoogUploadHeaderContentLength
+                    self.xGoogUploadHeaderContentType = xGoogUploadHeaderContentType
                     self.accept = accept
                 }
             }
@@ -25650,92 +25650,92 @@ public enum Operations {
                     /// Custom header X-GUploader-UploadID
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-GUploader-UploadID`.
-                    public var X_hyphen_GUploader_hyphen_UploadID: Swift.String?
+                    public var xGUploaderUploadID: Swift.String?
                     /// Custom header X-Goog-Upload-Chunk-Granularity
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Chunk-Granularity`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity: Swift.String?
+                    public var xGoogUploadChunkGranularity: Swift.String?
                     /// Custom header X-Goog-Upload-Control-URL
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Control-URL`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL: Swift.String?
+                    public var xGoogUploadControlURL: Swift.String?
                     /// Custom header X-Goog-Upload-Header-Content-Type
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-Content-Type`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Swift.String?
+                    public var xGoogUploadHeaderContentType: Swift.String?
                     /// Custom header X-Goog-Upload-Header-Vary
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-Vary`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary: Swift.String?
+                    public var xGoogUploadHeaderVary: Swift.String?
                     /// Custom header X-Goog-Upload-Header-X-Google-Backends
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-X-Google-Backends`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends: Swift.String?
+                    public var xGoogUploadHeaderXGoogleBackends: Swift.String?
                     /// Custom header X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost: Swift.String?
+                    public var xGoogUploadHeaderXGoogleGFEBackendRequestCost: Swift.String?
                     /// Custom header X-Goog-Upload-Header-X-Google-Security-Signals
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-X-Google-Security-Signals`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals: Swift.String?
+                    public var xGoogUploadHeaderXGoogleSecuritySignals: Swift.String?
                     /// Custom header X-Goog-Upload-Header-X-Google-Session-Info
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-X-Google-Session-Info`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info: Swift.String?
+                    public var xGoogUploadHeaderXGoogleSessionInfo: Swift.String?
                     /// Custom header X-Goog-Upload-Header-x-google-esf-cloud-client-params
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Header-x-google-esf-cloud-client-params`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params: Swift.String?
+                    public var xGoogUploadHeaderXGoogleEsfCloudClientParams: Swift.String?
                     /// Custom header X-Goog-Upload-Status
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-Status`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_Status: Swift.String?
+                    public var xGoogUploadStatus: Swift.String?
                     /// Custom header X-Goog-Upload-URL
                     ///
                     /// - Remark: Generated from `#/paths/upload/v1beta/files/POST/responses/200/headers/X-Goog-Upload-URL`.
-                    public var X_hyphen_Goog_hyphen_Upload_hyphen_URL: Swift.String?
+                    public var xGoogUploadURL: Swift.String?
                     /// Creates a new `Headers`.
                     ///
                     /// - Parameters:
-                    ///   - X_hyphen_GUploader_hyphen_UploadID: Custom header X-GUploader-UploadID
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity: Custom header X-Goog-Upload-Chunk-Granularity
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL: Custom header X-Goog-Upload-Control-URL
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Custom header X-Goog-Upload-Header-Content-Type
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary: Custom header X-Goog-Upload-Header-Vary
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends: Custom header X-Goog-Upload-Header-X-Google-Backends
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost: Custom header X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals: Custom header X-Goog-Upload-Header-X-Google-Security-Signals
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info: Custom header X-Goog-Upload-Header-X-Google-Session-Info
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params: Custom header X-Goog-Upload-Header-x-google-esf-cloud-client-params
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_Status: Custom header X-Goog-Upload-Status
-                    ///   - X_hyphen_Goog_hyphen_Upload_hyphen_URL: Custom header X-Goog-Upload-URL
+                    ///   - xGUploaderUploadID: Custom header X-GUploader-UploadID
+                    ///   - xGoogUploadChunkGranularity: Custom header X-Goog-Upload-Chunk-Granularity
+                    ///   - xGoogUploadControlURL: Custom header X-Goog-Upload-Control-URL
+                    ///   - xGoogUploadHeaderContentType: Custom header X-Goog-Upload-Header-Content-Type
+                    ///   - xGoogUploadHeaderVary: Custom header X-Goog-Upload-Header-Vary
+                    ///   - xGoogUploadHeaderXGoogleBackends: Custom header X-Goog-Upload-Header-X-Google-Backends
+                    ///   - xGoogUploadHeaderXGoogleGFEBackendRequestCost: Custom header X-Goog-Upload-Header-X-Google-GFE-Backend-Request-Cost
+                    ///   - xGoogUploadHeaderXGoogleSecuritySignals: Custom header X-Goog-Upload-Header-X-Google-Security-Signals
+                    ///   - xGoogUploadHeaderXGoogleSessionInfo: Custom header X-Goog-Upload-Header-X-Google-Session-Info
+                    ///   - xGoogUploadHeaderXGoogleEsfCloudClientParams: Custom header X-Goog-Upload-Header-x-google-esf-cloud-client-params
+                    ///   - xGoogUploadStatus: Custom header X-Goog-Upload-Status
+                    ///   - xGoogUploadURL: Custom header X-Goog-Upload-URL
                     public init(
-                        X_hyphen_GUploader_hyphen_UploadID: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_Status: Swift.String? = nil,
-                        X_hyphen_Goog_hyphen_Upload_hyphen_URL: Swift.String? = nil
+                        xGUploaderUploadID: Swift.String? = nil,
+                        xGoogUploadChunkGranularity: Swift.String? = nil,
+                        xGoogUploadControlURL: Swift.String? = nil,
+                        xGoogUploadHeaderContentType: Swift.String? = nil,
+                        xGoogUploadHeaderVary: Swift.String? = nil,
+                        xGoogUploadHeaderXGoogleBackends: Swift.String? = nil,
+                        xGoogUploadHeaderXGoogleGFEBackendRequestCost: Swift.String? = nil,
+                        xGoogUploadHeaderXGoogleSecuritySignals: Swift.String? = nil,
+                        xGoogUploadHeaderXGoogleSessionInfo: Swift.String? = nil,
+                        xGoogUploadHeaderXGoogleEsfCloudClientParams: Swift.String? = nil,
+                        xGoogUploadStatus: Swift.String? = nil,
+                        xGoogUploadURL: Swift.String? = nil
                     ) {
-                        self.X_hyphen_GUploader_hyphen_UploadID = X_hyphen_GUploader_hyphen_UploadID
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity = X_hyphen_Goog_hyphen_Upload_hyphen_Chunk_hyphen_Granularity
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL = X_hyphen_Goog_hyphen_Upload_hyphen_Control_hyphen_URL
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Content_hyphen_Type
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_Vary
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Backends
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_GFE_hyphen_Backend_hyphen_Request_hyphen_Cost
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Security_hyphen_Signals
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_X_hyphen_Google_hyphen_Session_hyphen_Info
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params = X_hyphen_Goog_hyphen_Upload_hyphen_Header_hyphen_x_hyphen_google_hyphen_esf_hyphen_cloud_hyphen_client_hyphen_params
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_Status = X_hyphen_Goog_hyphen_Upload_hyphen_Status
-                        self.X_hyphen_Goog_hyphen_Upload_hyphen_URL = X_hyphen_Goog_hyphen_Upload_hyphen_URL
+                        self.xGUploaderUploadID = xGUploaderUploadID
+                        self.xGoogUploadChunkGranularity = xGoogUploadChunkGranularity
+                        self.xGoogUploadControlURL = xGoogUploadControlURL
+                        self.xGoogUploadHeaderContentType = xGoogUploadHeaderContentType
+                        self.xGoogUploadHeaderVary = xGoogUploadHeaderVary
+                        self.xGoogUploadHeaderXGoogleBackends = xGoogUploadHeaderXGoogleBackends
+                        self.xGoogUploadHeaderXGoogleGFEBackendRequestCost = xGoogUploadHeaderXGoogleGFEBackendRequestCost
+                        self.xGoogUploadHeaderXGoogleSecuritySignals = xGoogUploadHeaderXGoogleSecuritySignals
+                        self.xGoogUploadHeaderXGoogleSessionInfo = xGoogUploadHeaderXGoogleSessionInfo
+                        self.xGoogUploadHeaderXGoogleEsfCloudClientParams = xGoogUploadHeaderXGoogleEsfCloudClientParams
+                        self.xGoogUploadStatus = xGoogUploadStatus
+                        self.xGoogUploadURL = xGoogUploadURL
                     }
                 }
                 /// Received HTTP response headers
