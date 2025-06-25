@@ -7,7 +7,7 @@ import OpenAPIRuntime
 ///   - mimeType: The MIME type of the file.
 ///   - sizeBytes: The size of the file in bytes.
 /// - Returns: The file URI.
-public func uploadFileToGemini(client: Client, fileData: HTTPBody, mimeType: String, sizeBytes: Int) async throws -> String {
+public func uploadFileToGemini(client: Client, fileData: HTTPBody, mimeType: String?, sizeBytes: Int?) async throws -> String {
 
     // Step 1: Create upload session
     let sessionResponse = try await client.uploadFiles(
@@ -21,7 +21,7 @@ public func uploadFileToGemini(client: Client, fileData: HTTPBody, mimeType: Str
                 file: .init(
                     value1: .init(
                         mimeType: mimeType,
-                        sizeBytes: String(sizeBytes)
+                        sizeBytes: sizeBytes.map { String($0) }
                     )
                 )
             )

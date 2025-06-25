@@ -17,21 +17,7 @@ import struct Foundation.Date
 
 struct GoogleGenerativeLanguageTestsTests {
 
-    let client = {
-        let apiKey = getEnvironmentVariable("GEMINI_API_KEY")!
-        let serverURL = try! Servers.Server1.url()
-
-        let client = Client(
-            serverURL: serverURL,
-            configuration: .init(dateTranscoder: .iso8601WithFractionalSeconds),
-            transport: AsyncHTTPClientTransport(),
-            middlewares: [
-                AuthenticationMiddleware(apiKey: apiKey),
-                UnescapeGoogUploadHeadersMiddleware(),
-            ]
-        )
-        return client
-    }()
+    let client = try! createClient(apiKey: getEnvironmentVariable("GEMINI_API_KEY")!)
 
     @Test
     func simpleRequest() async throws {
@@ -175,7 +161,7 @@ struct GoogleGenerativeLanguageTestsTests {
                     file: .init(
                         value1: .init(
                             mimeType: "audio/mpeg",
-                            sizeBytes: String(file.count)
+                            // sizeBytes: String(file.count)
                         )
                     )
                 )
