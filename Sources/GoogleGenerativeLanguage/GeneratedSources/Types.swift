@@ -7567,119 +7567,6 @@ public enum Components {
                 try self.value2.encode(to: encoder)
             }
         }
-        /// A datatype containing media that is part of a multi-part `Content` message.
-        ///
-        /// A `Part` consists of data which has an associated datatype. A `Part` can only
-        /// contain one of the accepted types in `Part.data`.
-        ///
-        /// A `Part` must have a fixed IANA MIME type identifying the type and subtype
-        /// of the media if the `inline_data` field is filled with raw bytes.
-        ///
-        /// - Remark: Generated from `#/components/schemas/Part`.
-        @frozen public enum Part: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/Part/case1`.
-            case TextPart(Components.Schemas.TextPart)
-            /// - Remark: Generated from `#/components/schemas/Part/case2`.
-            case InlineDataPart(Components.Schemas.InlineDataPart)
-            /// - Remark: Generated from `#/components/schemas/Part/case3`.
-            case FunctionCallPart(Components.Schemas.FunctionCallPart)
-            /// - Remark: Generated from `#/components/schemas/Part/case4`.
-            case FunctionResponsePart(Components.Schemas.FunctionResponsePart)
-            /// - Remark: Generated from `#/components/schemas/Part/case5`.
-            case FileDataPart(Components.Schemas.FileDataPart)
-            /// - Remark: Generated from `#/components/schemas/Part/case6`.
-            case ExecutableCodePart(Components.Schemas.ExecutableCodePart)
-            /// - Remark: Generated from `#/components/schemas/Part/case7`.
-            case CodeExecutionResultPart(Components.Schemas.CodeExecutionResultPart)
-            /// - Remark: Generated from `#/components/schemas/Part/case8`.
-            case ThoughtSignaturePart(Components.Schemas.ThoughtSignaturePart)
-            /// - Remark: Generated from `#/components/schemas/Part/case9`.
-            case VideoMetadataPart(Components.Schemas.VideoMetadataPart)
-            public init(from decoder: any Decoder) throws {
-                var errors: [any Error] = []
-                do {
-                    self = .TextPart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                do {
-                    self = .InlineDataPart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                do {
-                    self = .FunctionCallPart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                do {
-                    self = .FunctionResponsePart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                do {
-                    self = .FileDataPart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                do {
-                    self = .ExecutableCodePart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                do {
-                    self = .CodeExecutionResultPart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                do {
-                    self = .ThoughtSignaturePart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                do {
-                    self = .VideoMetadataPart(try .init(from: decoder))
-                    return
-                } catch {
-                    errors.append(error)
-                }
-                throw Swift.DecodingError.failedToDecodeOneOfSchema(
-                    type: Self.self,
-                    codingPath: decoder.codingPath,
-                    errors: errors
-                )
-            }
-            public func encode(to encoder: any Encoder) throws {
-                switch self {
-                case let .TextPart(value):
-                    try value.encode(to: encoder)
-                case let .InlineDataPart(value):
-                    try value.encode(to: encoder)
-                case let .FunctionCallPart(value):
-                    try value.encode(to: encoder)
-                case let .FunctionResponsePart(value):
-                    try value.encode(to: encoder)
-                case let .FileDataPart(value):
-                    try value.encode(to: encoder)
-                case let .ExecutableCodePart(value):
-                    try value.encode(to: encoder)
-                case let .CodeExecutionResultPart(value):
-                    try value.encode(to: encoder)
-                case let .ThoughtSignaturePart(value):
-                    try value.encode(to: encoder)
-                case let .VideoMetadataPart(value):
-                    try value.encode(to: encoder)
-                }
-            }
-        }
         /// Permission resource grants user, group or the rest of the world access to the
         /// PaLM API resource (e.g. a tuned model, corpus).
         ///
@@ -10825,6 +10712,119 @@ public enum Components {
             }
             public enum CodingKeys: String, CodingKey {
                 case thoughtSignature
+            }
+        }
+        /// A datatype containing media that is part of a multi-part `Content` message.
+        ///
+        /// A `Part` consists of data which has an associated datatype. A `Part` can only
+        /// contain one of the accepted types in `Part.data`.
+        ///
+        /// A `Part` must have a fixed IANA MIME type identifying the type and subtype
+        /// of the media if the `inline_data` field is filled with raw bytes.
+        ///
+        /// - Remark: Generated from `#/components/schemas/Part`.
+        @frozen public enum Part: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/Part/case1`.
+            case TextPart(Components.Schemas.TextPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case2`.
+            case InlineDataPart(Components.Schemas.InlineDataPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case3`.
+            case FunctionCallPart(Components.Schemas.FunctionCallPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case4`.
+            case FunctionResponsePart(Components.Schemas.FunctionResponsePart)
+            /// - Remark: Generated from `#/components/schemas/Part/case5`.
+            case FileDataPart(Components.Schemas.FileDataPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case6`.
+            case ExecutableCodePart(Components.Schemas.ExecutableCodePart)
+            /// - Remark: Generated from `#/components/schemas/Part/case7`.
+            case CodeExecutionResultPart(Components.Schemas.CodeExecutionResultPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case8`.
+            case ThoughtSignaturePart(Components.Schemas.ThoughtSignaturePart)
+            /// - Remark: Generated from `#/components/schemas/Part/case9`.
+            case VideoMetadataPart(Components.Schemas.VideoMetadataPart)
+            public init(from decoder: any Decoder) throws {
+                var errors: [any Error] = []
+                do {
+                    self = .TextPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InlineDataPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .FunctionCallPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .FunctionResponsePart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .FileDataPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .ExecutableCodePart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .CodeExecutionResultPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .ThoughtSignaturePart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .VideoMetadataPart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Encoder) throws {
+                switch self {
+                case let .TextPart(value):
+                    try value.encode(to: encoder)
+                case let .InlineDataPart(value):
+                    try value.encode(to: encoder)
+                case let .FunctionCallPart(value):
+                    try value.encode(to: encoder)
+                case let .FunctionResponsePart(value):
+                    try value.encode(to: encoder)
+                case let .FileDataPart(value):
+                    try value.encode(to: encoder)
+                case let .ExecutableCodePart(value):
+                    try value.encode(to: encoder)
+                case let .CodeExecutionResultPart(value):
+                    try value.encode(to: encoder)
+                case let .ThoughtSignaturePart(value):
+                    try value.encode(to: encoder)
+                case let .VideoMetadataPart(value):
+                    try value.encode(to: encoder)
+                }
             }
         }
     }

@@ -10,6 +10,10 @@
             "remove": true
         },
         {
+            "target": "$.components.schemas.Part",
+            "remove": true
+        },
+        {
             "target": "$.components.schemas",
             "update": {
                 "Role": {
