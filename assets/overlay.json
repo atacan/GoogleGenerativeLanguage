@@ -51,6 +51,10 @@
                         "text": {
                             "type": "string",
                             "description": "Inline text."
+                        },
+                        "thought": {
+                            "description": "Optional. Indicates if the part is thought from the model.",
+                            "type": "boolean"
                         }
                     },
                     "required": [

@@ -30,10 +30,6 @@ format: check_uncommitted
 clean_spm_cache:
 	swift package purge-cache
 
-prepare-openapi:
-	# download and overlay the openapi and generate the swift code
-	swift run Prepare
-
 overlay-openapi:
 	openapi-format assets/openapi.json --overlayFile assets/overlay.json -o assets/openapi.json
 
@@ -42,3 +38,10 @@ generate-openapi:
 		--output-directory Sources/GoogleGenerativeLanguage/GeneratedSources \
 		--config assets/openapi-generator-config.yaml \
 		assets/openapi.json
+
+
+prepare-openapi:
+	# download openapi
+	# overlay the openapi 
+	# generate the swift code
+	swift run Prepare
