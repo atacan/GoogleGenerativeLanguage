@@ -24,6 +24,14 @@ public protocol APIProtocol: Sendable {
     /// - Remark: HTTP `GET /v1beta/batches/{generateContentBatch}`.
     /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/get(GetOperationByGenerateContentBatch)`.
     func getOperationByGenerateContentBatch(_ input: Operations.GetOperationByGenerateContentBatch.Input) async throws -> Operations.GetOperationByGenerateContentBatch.Output
+    /// Deletes a long-running operation. This method indicates that the client is
+    /// no longer interested in the operation result. It does not cancel the
+    /// operation. If the server doesn't support this method, it returns
+    /// `google.rpc.Code.UNIMPLEMENTED`.
+    ///
+    /// - Remark: HTTP `DELETE /v1beta/batches/{generateContentBatch}`.
+    /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/delete(DeleteOperation)`.
+    func deleteOperation(_ input: Operations.DeleteOperation.Input) async throws -> Operations.DeleteOperation.Output
     /// Starts asynchronous cancellation on a long-running operation.  The server
     /// makes a best effort to cancel the operation, but success is not
     /// guaranteed.  If the server doesn't support this method, it returns
@@ -499,6 +507,24 @@ extension APIProtocol {
         headers: Operations.GetOperationByGenerateContentBatch.Input.Headers = .init()
     ) async throws -> Operations.GetOperationByGenerateContentBatch.Output {
         try await getOperationByGenerateContentBatch(Operations.GetOperationByGenerateContentBatch.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Deletes a long-running operation. This method indicates that the client is
+    /// no longer interested in the operation result. It does not cancel the
+    /// operation. If the server doesn't support this method, it returns
+    /// `google.rpc.Code.UNIMPLEMENTED`.
+    ///
+    /// - Remark: HTTP `DELETE /v1beta/batches/{generateContentBatch}`.
+    /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/delete(DeleteOperation)`.
+    public func deleteOperation(
+        path: Operations.DeleteOperation.Input.Path,
+        query: Operations.DeleteOperation.Input.Query = .init(),
+        headers: Operations.DeleteOperation.Input.Headers = .init()
+    ) async throws -> Operations.DeleteOperation.Output {
+        try await deleteOperation(Operations.DeleteOperation.Input(
             path: path,
             query: query,
             headers: headers
@@ -7348,6 +7374,10 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/Model/temperature`.
             public var temperature: Swift.Float?
+            /// Whether the model supports thinking.
+            ///
+            /// - Remark: Generated from `#/components/schemas/Model/thinking`.
+            public var thinking: Swift.Bool?
             /// For Top-k sampling.
             ///
             /// Top-k sampling considers the set of `top_k` most probable tokens.
@@ -7386,6 +7416,7 @@ public enum Components {
             ///   - outputTokenLimit: Maximum number of output tokens available for this model.
             ///   - supportedGenerationMethods: The model's supported generation methods.
             ///   - temperature: Controls the randomness of the output.
+            ///   - thinking: Whether the model supports thinking.
             ///   - topK: For Top-k sampling.
             ///   - topP: For [Nucleus
             ///   - version: Required. The version number of the model.
@@ -7399,6 +7430,7 @@ public enum Components {
                 outputTokenLimit: Swift.Int32? = nil,
                 supportedGenerationMethods: [Swift.String]? = nil,
                 temperature: Swift.Float? = nil,
+                thinking: Swift.Bool? = nil,
                 topK: Swift.Int32? = nil,
                 topP: Swift.Float? = nil,
                 version: Swift.String
@@ -7412,6 +7444,7 @@ public enum Components {
                 self.outputTokenLimit = outputTokenLimit
                 self.supportedGenerationMethods = supportedGenerationMethods
                 self.temperature = temperature
+                self.thinking = thinking
                 self.topK = topK
                 self.topP = topP
                 self.version = version
@@ -7426,6 +7459,7 @@ public enum Components {
                 case outputTokenLimit
                 case supportedGenerationMethods
                 case temperature
+                case thinking
                 case topK
                 case topP
                 case version
@@ -10580,15 +10614,25 @@ public enum Components {
             ///
             /// - Remark: Generated from `#/components/schemas/TextPart/text`.
             public var text: Swift.String
+            /// Optional. Indicates if the part is thought from the model.
+            ///
+            /// - Remark: Generated from `#/components/schemas/TextPart/thought`.
+            public var thought: Swift.Bool?
             /// Creates a new `TextPart`.
             ///
             /// - Parameters:
             ///   - text: Inline text.
-            public init(text: Swift.String) {
+            ///   - thought: Optional. Indicates if the part is thought from the model.
+            public init(
+                text: Swift.String,
+                thought: Swift.Bool? = nil
+            ) {
                 self.text = text
+                self.thought = thought
             }
             public enum CodingKeys: String, CodingKey {
                 case text
+                case thought
             }
         }
         /// - Remark: Generated from `#/components/schemas/InlineDataPart`.
@@ -10702,12 +10746,12 @@ public enum Components {
             /// requests.
             ///
             /// - Remark: Generated from `#/components/schemas/ThoughtSignaturePart/thoughtSignature`.
-            public var thoughtSignature: OpenAPIRuntime.Base64EncodedData?
+            public var thoughtSignature: OpenAPIRuntime.Base64EncodedData
             /// Creates a new `ThoughtSignaturePart`.
             ///
             /// - Parameters:
             ///   - thoughtSignature: Optional. An opaque signature for the thought so it can be reused in subsequent
-            public init(thoughtSignature: OpenAPIRuntime.Base64EncodedData? = nil) {
+            public init(thoughtSignature: OpenAPIRuntime.Base64EncodedData) {
                 self.thoughtSignature = thoughtSignature
             }
             public enum CodingKeys: String, CodingKey {
@@ -10727,9 +10771,9 @@ public enum Components {
             /// - Remark: Generated from `#/components/schemas/Part/case1`.
             case TextPart(Components.Schemas.TextPart)
             /// - Remark: Generated from `#/components/schemas/Part/case2`.
-            case InlineDataPart(Components.Schemas.InlineDataPart)
-            /// - Remark: Generated from `#/components/schemas/Part/case3`.
             case FunctionCallPart(Components.Schemas.FunctionCallPart)
+            /// - Remark: Generated from `#/components/schemas/Part/case3`.
+            case InlineDataPart(Components.Schemas.InlineDataPart)
             /// - Remark: Generated from `#/components/schemas/Part/case4`.
             case FunctionResponsePart(Components.Schemas.FunctionResponsePart)
             /// - Remark: Generated from `#/components/schemas/Part/case5`.
@@ -10751,13 +10795,13 @@ public enum Components {
                     errors.append(error)
                 }
                 do {
-                    self = .InlineDataPart(try .init(from: decoder))
+                    self = .FunctionCallPart(try .init(from: decoder))
                     return
                 } catch {
                     errors.append(error)
                 }
                 do {
-                    self = .FunctionCallPart(try .init(from: decoder))
+                    self = .InlineDataPart(try .init(from: decoder))
                     return
                 } catch {
                     errors.append(error)
@@ -10808,9 +10852,9 @@ public enum Components {
                 switch self {
                 case let .TextPart(value):
                     try value.encode(to: encoder)
-                case let .InlineDataPart(value):
-                    try value.encode(to: encoder)
                 case let .FunctionCallPart(value):
+                    try value.encode(to: encoder)
+                case let .InlineDataPart(value):
                     try value.encode(to: encoder)
                 case let .FunctionResponsePart(value):
                     try value.encode(to: encoder)
@@ -11190,6 +11234,188 @@ public enum Operations {
             /// - Throws: An error if `self` is not `.`default``.
             /// - SeeAlso: `.`default``.
             public var `default`: Operations.GetOperationByGenerateContentBatch.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "default",
+                            response: self
+                        )
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Deletes a long-running operation. This method indicates that the client is
+    /// no longer interested in the operation result. It does not cancel the
+    /// operation. If the server doesn't support this method, it returns
+    /// `google.rpc.Code.UNIMPLEMENTED`.
+    ///
+    /// - Remark: HTTP `DELETE /v1beta/batches/{generateContentBatch}`.
+    /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/delete(DeleteOperation)`.
+    public enum DeleteOperation {
+        public static let id: Swift.String = "DeleteOperation"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/path`.
+            public struct Path: Sendable, Hashable {
+                /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+                ///
+                /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/path/generateContentBatch`.
+                public var generateContentBatch: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - generateContentBatch: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+                public init(generateContentBatch: Swift.String) {
+                    self.generateContentBatch = generateContentBatch
+                }
+            }
+            public var path: Operations.DeleteOperation.Input.Path
+            /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/query`.
+            public struct Query: Sendable, Hashable {
+                /// - Remark: Generated from `#/components/parameters/alt`.
+                @frozen public enum Alt: String, Codable, Hashable, Sendable, CaseIterable {
+                    case json = "json"
+                    case media = "media"
+                    case proto = "proto"
+                    case sse = "sse"
+                }
+                /// Data format for response.
+                ///
+                /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/query/$alt`.
+                public var _dollar_alt: Components.Parameters.Alt?
+                /// JSONP
+                ///
+                /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/query/$callback`.
+                public var _dollar_callback: Components.Parameters.Callback?
+                /// Returns response with indentations and line breaks.
+                ///
+                /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/query/$prettyPrint`.
+                public var _dollar_prettyPrint: Components.Parameters.PrettyPrint?
+                /// - Remark: Generated from `#/components/parameters/_.xgafv`.
+                @frozen public enum __period_xgafv: String, Codable, Hashable, Sendable, CaseIterable {
+                    case _1 = "1"
+                    case _2 = "2"
+                }
+                /// V1 error format.
+                ///
+                /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/query/$.xgafv`.
+                public var _dollar__xgafv: Components.Parameters.__period_xgafv?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - _dollar_alt: Data format for response.
+                ///   - _dollar_callback: JSONP
+                ///   - _dollar_prettyPrint: Returns response with indentations and line breaks.
+                ///   - _dollar__xgafv: V1 error format.
+                public init(
+                    _dollar_alt: Components.Parameters.Alt? = nil,
+                    _dollar_callback: Components.Parameters.Callback? = nil,
+                    _dollar_prettyPrint: Components.Parameters.PrettyPrint? = nil,
+                    _dollar__xgafv: Components.Parameters.__period_xgafv? = nil
+                ) {
+                    self._dollar_alt = _dollar_alt
+                    self._dollar_callback = _dollar_callback
+                    self._dollar_prettyPrint = _dollar_prettyPrint
+                    self._dollar__xgafv = _dollar__xgafv
+                }
+            }
+            public var query: Operations.DeleteOperation.Input.Query
+            /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteOperation.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteOperation.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.DeleteOperation.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.DeleteOperation.Input.Path,
+                query: Operations.DeleteOperation.Input.Query = .init(),
+                headers: Operations.DeleteOperation.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/v1beta/batches/{generateContentBatch}/DELETE/responses/default/content/application\/json`.
+                    case json(Components.Schemas.Empty)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.Empty {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.DeleteOperation.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.DeleteOperation.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/delete(DeleteOperation)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.DeleteOperation.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.DeleteOperation.Output.Default {
                 get throws {
                     switch self {
                     case let .`default`(_, response):

@@ -2717,6 +2717,10 @@
             "format" : "float",
             "type" : "number"
           },
+          "thinking" : {
+            "description" : "Whether the model supports thinking.",
+            "type" : "boolean"
+          },
           "topK" : {
             "description" : "For Top-k sampling.\n\nTop-k sampling considers the set of `top_k` most probable tokens.\nThis value specifies default to be used by the backend while making the\ncall to the model.\nIf empty, indicates the model doesn't use top-k sampling, and `top_k` isn't\nallowed as a generation parameter.",
             "format" : "int32",
@@ -4194,7 +4198,7 @@
     "description" : "The Gemini API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.",
     "title" : "Generative Language API",
     "version" : "v1beta",
-    "x-google-revision" : "20250624"
+    "x-google-revision" : "20250701"
   },
   "openapi" : "3.0.3",
   "paths" : {
@@ -4265,6 +4269,39 @@
       ]
     },
     "\/v1beta\/batches\/{generateContentBatch}" : {
+      "delete" : {
+        "description" : "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+        "operationId" : "DeleteOperation",
+        "parameters" : [
+          {
+            "description" : "Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https:\/\/google.aip.dev\/122.",
+            "in" : "path",
+            "name" : "generateContentBatch",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        ],
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application\/json" : {
+                "schema" : {
+                  "$ref" : "#\/components\/schemas\/Empty"
+                }
+              }
+            },
+            "description" : "Successful operation"
+          }
+        },
+        "security" : [
+
+        ],
+        "tags" : [
+          "generativelanguage"
+        ]
+      },
       "get" : {
         "description" : "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
         "operationId" : "GetOperationByGenerateContentBatch",

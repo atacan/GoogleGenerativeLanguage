@@ -4,7 +4,7 @@
     "description": "The Gemini API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.",
     "title": "Generative Language API",
     "version": "v1beta",
-    "x-google-revision": "20250624"
+    "x-google-revision": "20250701"
   },
   "servers": [
     {
@@ -78,6 +78,37 @@
       ]
     },
     "/v1beta/batches/{generateContentBatch}": {
+      "delete": {
+        "operationId": "DeleteOperation",
+        "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+        "parameters": [
+          {
+            "name": "generateContentBatch",
+            "in": "path",
+            "description": "Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "tags": [
+          "generativelanguage"
+        ]
+      },
       "get": {
         "operationId": "GetOperationByGenerateContentBatch",
         "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
@@ -7075,6 +7106,10 @@
             "type": "number",
             "format": "float"
           },
+          "thinking": {
+            "description": "Whether the model supports thinking.",
+            "type": "boolean"
+          },
           "topK": {
             "description": "For Top-k sampling.\n\nTop-k sampling considers the set of `top_k` most probable tokens.\nThis value specifies default to be used by the backend while making the\ncall to the model.\nIf empty, indicates the model doesn't use top-k sampling, and `top_k` isn't\nallowed as a generation parameter.",
             "type": "integer",
@@ -8491,6 +8526,10 @@
           "text": {
             "description": "Inline text.",
             "type": "string"
+          },
+          "thought": {
+            "description": "Optional. Indicates if the part is thought from the model.",
+            "type": "boolean"
           }
         },
         "required": [
@@ -8589,7 +8628,10 @@
             "type": "string",
             "format": "byte"
           }
-        }
+        },
+        "required": [
+          "thoughtSignature"
+        ]
       },
       "Part": {
         "description": "A datatype containing media that is part of a multi-part `Content` message.\n\nA `Part` consists of data which has an associated datatype. A `Part` can only\ncontain one of the accepted types in `Part.data`.\n\nA `Part` must have a fixed IANA MIME type identifying the type and subtype\nof the media if the `inline_data` field is filled with raw bytes.",
@@ -8599,10 +8641,10 @@
             "$ref": "#/components/schemas/TextPart"
           },
           {
-            "$ref": "#/components/schemas/InlineDataPart"
+            "$ref": "#/components/schemas/FunctionCallPart"
           },
           {
-            "$ref": "#/components/schemas/FunctionCallPart"
+            "$ref": "#/components/schemas/InlineDataPart"
           },
           {
             "$ref": "#/components/schemas/FunctionResponsePart"

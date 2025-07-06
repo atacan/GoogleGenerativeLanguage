@@ -230,6 +230,94 @@ public struct Client: APIProtocol {
             }
         )
     }
+    /// Deletes a long-running operation. This method indicates that the client is
+    /// no longer interested in the operation result. It does not cancel the
+    /// operation. If the server doesn't support this method, it returns
+    /// `google.rpc.Code.UNIMPLEMENTED`.
+    ///
+    /// - Remark: HTTP `DELETE /v1beta/batches/{generateContentBatch}`.
+    /// - Remark: Generated from `#/paths//v1beta/batches/{generateContentBatch}/delete(DeleteOperation)`.
+    public func deleteOperation(_ input: Operations.DeleteOperation.Input) async throws -> Operations.DeleteOperation.Output {
+        try await client.send(
+            input: input,
+            forOperation: Operations.DeleteOperation.id,
+            serializer: { input in
+                let path = try converter.renderedPath(
+                    template: "/v1beta/batches/{}",
+                    parameters: [
+                        input.path.generateContentBatch
+                    ]
+                )
+                var request: HTTPTypes.HTTPRequest = .init(
+                    soar_path: path,
+                    method: .delete
+                )
+                suppressMutabilityWarning(&request)
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$alt",
+                    value: input.query._dollar_alt
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$callback",
+                    value: input.query._dollar_callback
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$prettyPrint",
+                    value: input.query._dollar_prettyPrint
+                )
+                try converter.setQueryItemAsURI(
+                    in: &request,
+                    style: .form,
+                    explode: true,
+                    name: "$.xgafv",
+                    value: input.query._dollar__xgafv
+                )
+                converter.setAcceptHeader(
+                    in: &request.headerFields,
+                    contentTypes: input.headers.accept
+                )
+                return (request, nil)
+            },
+            deserializer: { response, responseBody in
+                switch response.status.code {
+                default:
+                    let contentType = converter.extractContentTypeIfPresent(in: response.headerFields)
+                    let body: Operations.DeleteOperation.Output.Default.Body
+                    let chosenContentType = try converter.bestContentType(
+                        received: contentType,
+                        options: [
+                            "application/json"
+                        ]
+                    )
+                    switch chosenContentType {
+                    case "application/json":
+                        body = try await converter.getResponseBodyAsJSON(
+                            Components.Schemas.Empty.self,
+                            from: responseBody,
+                            transforming: { value in
+                                .json(value)
+                            }
+                        )
+                    default:
+                        preconditionFailure("bestContentType chose an invalid content type.")
+                    }
+                    return .`default`(
+                        statusCode: response.status.code,
+                        .init(body: body)
+                    )
+                }
+            }
+        )
+    }
     /// Starts asynchronous cancellation on a long-running operation.  The server
     /// makes a best effort to cancel the operation, but success is not
     /// guaranteed.  If the server doesn't support this method, it returns

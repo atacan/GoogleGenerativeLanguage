@@ -153,7 +153,10 @@
                             "format": "byte",
                             "description": "Optional. An opaque signature for the thought so it can be reused in subsequent\nrequests."
                         }
-                    }
+                    },
+                    "required": [
+                        "thoughtSignature"
+                    ]
                 },
                 "Part": {
                     "type": "object",
@@ -163,10 +166,10 @@
                             "$ref": "#/components/schemas/TextPart"
                         },
                         {
-                            "$ref": "#/components/schemas/InlineDataPart"
+                            "$ref": "#/components/schemas/FunctionCallPart"
                         },
                         {
-                            "$ref": "#/components/schemas/FunctionCallPart"
+                            "$ref": "#/components/schemas/InlineDataPart"
                         },
                         {
                             "$ref": "#/components/schemas/FunctionResponsePart"
