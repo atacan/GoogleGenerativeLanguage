@@ -85,7 +85,7 @@ struct GoogleGenerativeLanguageTestsTests {
     @Test
     func encodeFunctionDeclarations() async throws {
 
-        try print(prettyEncode(f2))
+        try print(prettyEncode(f4))
     }
 
     @Test func functionDeclarations() async throws {
@@ -271,4 +271,64 @@ let f2 = Components.Schemas.FunctionDeclaration(
         )
     ),
     response: nil
+)
+
+let f3 = Components.Schemas.FunctionDeclaration(
+    description: "to search the web",
+    name: "search_web",
+    parameters: Components.Schemas.FunctionDeclaration.ParametersPayload(
+        value1: Components.Schemas.Schema(
+            properties: Components.Schemas.Schema.PropertiesPayload(
+                additionalProperties: [  // [String: Components.Schemas.Schema]
+                    "search_config": Components.Schemas.Schema(
+                        description: "the keyword to search for",
+                        properties: Components.Schemas.Schema.PropertiesPayload(
+                            additionalProperties: [
+                                "file_type": Components.Schemas.Schema(
+                                    description: "the type of file to search for",
+                                    maximum: 10,
+                                    minimum: 1,
+                                    _type: .init(value1: .string)
+                                ),
+                                "search_term": Components.Schemas.Schema(
+                                    description: "the keyword to search for",
+                                    maximum: 10,
+                                    minimum: 1,
+                                    pattern: "^[a-zA-Z0-9]+$",
+                                    _type: .init(value1: .string)
+                                ),
+                            ]
+                        ),
+                        _type: .init(value1: .object),
+                    ),
+                    "search_engine": Components.Schemas.Schema(
+                        description: "where to search",
+                        _enum: ["google", "bing", "yahoo"],
+                        _type: .init(value1: .string)
+                    ),
+                ],
+            ),
+            required: ["search_term", "search_engine"],
+            _type: .init(value1: .object)
+        )
+    ),
+    response: nil
+)
+
+let f4 = Components.Schemas.FunctionDeclaration(
+    description: "with anyOf only",
+    name: "any_of_all_of",
+    parameters: .init(
+        value1: .init(
+            anyOf: [
+                Components.Schemas.Schema(
+                    description: "the type of file to search for",
+                    maximum: 10,
+                    minimum: 1,
+                    _type: .init(value1: .string)
+                )
+            ],
+            _type: .init(value1: .object)
+        )
+    )
 )
