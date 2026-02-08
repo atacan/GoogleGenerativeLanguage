@@ -1,0 +1,5 @@
+# Trufflehog ignore file (use with --exclude-paths)
+# One path or glob per line.
+# Examples:
+#   path/to/example/config.yaml
+#   **/test/fixtures/**

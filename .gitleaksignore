@@ -1,0 +1,7 @@
+# Gitleaks ignore file
+# Format: fingerprint (from gitleaks output)
+# Example:
+#   abc123def456:path/to/file.yaml:generic-api-key:42
+#
+# You can also add inline comments in your code:
+#   api_key: "example"  # gitleaks:allow
