@@ -1,5 +1,8 @@
 # GoogleGenerativeLanguage
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fatacan%2FGoogleGenerativeLanguage%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/atacan/GoogleGenerativeLanguage)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fatacan%2FGoogleGenerativeLanguage%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/atacan/GoogleGenerativeLanguage)
+
 A community-driven Swift SDK for the [Google Generative Language API](https://ai.google.dev/) (Gemini). Google does not provide an official Swift SDK -- this package fills that gap.
 
 Auto-generated from Google's OpenAPI spec using [Swift OpenAPI Generator](https://github.com/apple/swift-openapi-generator), so every endpoint and type stays in sync with the upstream API.
