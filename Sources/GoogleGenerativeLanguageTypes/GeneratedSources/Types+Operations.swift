@@ -17633,4 +17633,6002 @@ public enum Operations {
             }
         }
     }
+    /// Start an environment file upload
+    ///
+    /// Starts a resumable upload session for a file in an environment workspace.
+    /// Upload the file bytes to the URL returned in the `X-Goog-Upload-URL`
+    /// response header, using the resumable upload protocol.
+    ///
+    ///
+    /// - Remark: HTTP `PUT /upload/{api_version}/environments/{environment}/files/{path}`.
+    /// - Remark: Generated from `#/paths//upload/{api_version}/environments/{environment}/files/{path}/put(StartEnvironmentFileUpload)`.
+    public enum StartEnvironmentFileUpload {
+        public static let id: Swift.String = "StartEnvironmentFileUpload"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// The ID of the environment that owns the destination file.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/path/environment`.
+                public var environment: Swift.String
+                /// The relative destination path inside the environment workspace.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/path/path`.
+                public var path: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - environment: The ID of the environment that owns the destination file.
+                ///   - path: The relative destination path inside the environment workspace.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    environment: Swift.String,
+                    path: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.environment = environment
+                    self.path = path
+                }
+            }
+            public var path: Operations.StartEnvironmentFileUpload.Input.Path
+            /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/query/extract`.
+                public var extract: Components.Parameters.InteractionsEnvironmentFileExtract?
+                /// Optional. Whether to overwrite the destination file if it already exists.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/query/overwrite`.
+                public var overwrite: Components.Parameters.InteractionsEnvironmentFileOverwrite?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - extract: Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
+                ///   - overwrite: Optional. Whether to overwrite the destination file if it already exists.
+                public init(
+                    extract: Components.Parameters.InteractionsEnvironmentFileExtract? = nil,
+                    overwrite: Components.Parameters.InteractionsEnvironmentFileOverwrite? = nil
+                ) {
+                    self.extract = extract
+                    self.overwrite = overwrite
+                }
+            }
+            public var query: Operations.StartEnvironmentFileUpload.Input.Query
+            /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/header`.
+            public struct Headers: Sendable, Hashable {
+                /// - Remark: Generated from `#/components/parameters/InteractionsEnvironmentFileUploadCommand`.
+                @frozen public enum InteractionsEnvironmentFileUploadCommand: String, Codable, Hashable, Sendable, CaseIterable {
+                    case start = "start"
+                }
+                /// Command that starts the resumable upload session.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/header/X-Goog-Upload-Command`.
+                public var xGoogUploadCommand: Components.Parameters.InteractionsEnvironmentFileUploadCommand
+                /// Total number of file bytes that will be uploaded to the session URL.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/header/X-Goog-Upload-Header-Content-Length`.
+                public var xGoogUploadHeaderContentLength: Components.Parameters.InteractionsEnvironmentFileUploadContentLength
+                /// MIME type of the file that will be uploaded to the session URL.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/header/X-Goog-Upload-Header-Content-Type`.
+                public var xGoogUploadHeaderContentType: Components.Parameters.InteractionsEnvironmentFileUploadContentType
+                /// - Remark: Generated from `#/components/parameters/InteractionsEnvironmentFileUploadProtocol`.
+                @frozen public enum InteractionsEnvironmentFileUploadProtocol: String, Codable, Hashable, Sendable, CaseIterable {
+                    case resumable = "resumable"
+                }
+                /// Resumable upload protocol selector.
+                ///
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/header/X-Goog-Upload-Protocol`.
+                public var xGoogUploadProtocol: Components.Parameters.InteractionsEnvironmentFileUploadProtocol
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - xGoogUploadCommand: Command that starts the resumable upload session.
+                ///   - xGoogUploadHeaderContentLength: Total number of file bytes that will be uploaded to the session URL.
+                ///   - xGoogUploadHeaderContentType: MIME type of the file that will be uploaded to the session URL.
+                ///   - xGoogUploadProtocol: Resumable upload protocol selector.
+                public init(
+                    xGoogUploadCommand: Components.Parameters.InteractionsEnvironmentFileUploadCommand,
+                    xGoogUploadHeaderContentLength: Components.Parameters.InteractionsEnvironmentFileUploadContentLength,
+                    xGoogUploadHeaderContentType: Components.Parameters.InteractionsEnvironmentFileUploadContentType,
+                    xGoogUploadProtocol: Components.Parameters.InteractionsEnvironmentFileUploadProtocol
+                ) {
+                    self.xGoogUploadCommand = xGoogUploadCommand
+                    self.xGoogUploadHeaderContentLength = xGoogUploadHeaderContentLength
+                    self.xGoogUploadHeaderContentType = xGoogUploadHeaderContentType
+                    self.xGoogUploadProtocol = xGoogUploadProtocol
+                }
+            }
+            public var headers: Operations.StartEnvironmentFileUpload.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.StartEnvironmentFileUpload.Input.Path,
+                query: Operations.StartEnvironmentFileUpload.Input.Query = .init(),
+                headers: Operations.StartEnvironmentFileUpload.Input.Headers
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/responses/200/headers`.
+                public struct Headers: Sendable, Hashable {
+                    /// Opaque URL to which file chunks are uploaded and finalized.
+                    ///
+                    /// - Remark: Generated from `#/paths/upload/{api_version}/environments/{environment}/files/{path}/PUT/responses/200/headers/X-Goog-Upload-URL`.
+                    public var xGoogUploadURL: Components.Headers.InteractionsEnvironmentFileUploadUrl?
+                    /// Creates a new `Headers`.
+                    ///
+                    /// - Parameters:
+                    ///   - xGoogUploadURL: Opaque URL to which file chunks are uploaded and finalized.
+                    public init(xGoogUploadURL: Components.Headers.InteractionsEnvironmentFileUploadUrl? = nil) {
+                        self.xGoogUploadURL = xGoogUploadURL
+                    }
+                }
+                /// Received HTTP response headers
+                public var headers: Operations.StartEnvironmentFileUpload.Output.Ok.Headers
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - headers: Received HTTP response headers
+                public init(headers: Operations.StartEnvironmentFileUpload.Output.Ok.Headers = .init()) {
+                    self.headers = headers
+                }
+            }
+            /// Upload session created successfully. Send the file bytes to the returned upload URL.
+            ///
+            /// - Remark: Generated from `#/paths//upload/{api_version}/environments/{environment}/files/{path}/put(StartEnvironmentFileUpload)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.StartEnvironmentFileUpload.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.StartEnvironmentFileUpload.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ClientError: Sendable, Hashable {
+                /// Creates a new `ClientError`.
+                public init() {}
+            }
+            /// The upload session request failed with a client error.
+            ///
+            /// - Remark: Generated from `#/paths//upload/{api_version}/environments/{environment}/files/{path}/put(StartEnvironmentFileUpload)/responses/4XX`.
+            ///
+            /// HTTP response code: `400...499 clientError`.
+            case clientError(statusCode: Swift.Int, Operations.StartEnvironmentFileUpload.Output.ClientError)
+            /// The associated value of the enum case if `self` is `.clientError`.
+            ///
+            /// - Throws: An error if `self` is not `.clientError`.
+            /// - SeeAlso: `.clientError`.
+            public var clientError: Operations.StartEnvironmentFileUpload.Output.ClientError {
+                get throws {
+                    switch self {
+                    case let .clientError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "clientError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ServerError: Sendable, Hashable {
+                /// Creates a new `ServerError`.
+                public init() {}
+            }
+            /// The upload session request failed with a server error.
+            ///
+            /// - Remark: Generated from `#/paths//upload/{api_version}/environments/{environment}/files/{path}/put(StartEnvironmentFileUpload)/responses/5XX`.
+            ///
+            /// HTTP response code: `500...599 serverError`.
+            case serverError(statusCode: Swift.Int, Operations.StartEnvironmentFileUpload.Output.ServerError)
+            /// The associated value of the enum case if `self` is `.serverError`.
+            ///
+            /// - Throws: An error if `self` is not `.serverError`.
+            /// - SeeAlso: `.serverError`.
+            public var serverError: Operations.StartEnvironmentFileUpload.Output.ServerError {
+                get throws {
+                    switch self {
+                    case let .serverError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "serverError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+    }
+    /// Lists all Agents.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/agents`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/get(ListAgents)`.
+    public enum ListAgents {
+        public static let id: Swift.String = "ListAgents"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/agents/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/agents/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.ListAgents.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/agents/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/agents/GET/query/page_size`.
+                public var pageSize: Swift.Int32?
+                /// - Remark: Generated from `#/paths/{api_version}/agents/GET/query/page_token`.
+                public var pageToken: Swift.String?
+                /// Required. The parent resource to list agents from.
+                /// Format: `projects/{project}/locations/{location}`
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/agents/GET/query/parent`.
+                public var parent: Swift.String
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - pageSize:
+                ///   - pageToken:
+                ///   - parent: Required. The parent resource to list agents from.
+                public init(
+                    pageSize: Swift.Int32? = nil,
+                    pageToken: Swift.String? = nil,
+                    parent: Swift.String
+                ) {
+                    self.pageSize = pageSize
+                    self.pageToken = pageToken
+                    self.parent = parent
+                }
+            }
+            public var query: Operations.ListAgents.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/agents/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListAgents.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListAgents.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.ListAgents.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.ListAgents.Input.Path,
+                query: Operations.ListAgents.Input.Query,
+                headers: Operations.ListAgents.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/agents/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/agents/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsListAgentsResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsListAgentsResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.ListAgents.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.ListAgents.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/agents/get(ListAgents)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.ListAgents.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.ListAgents.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Creates a new Agent (Typed version for SDK).
+    ///
+    /// - Remark: HTTP `POST /{api_version}/agents`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/post(CreateAgent)`.
+    public enum CreateAgent {
+        public static let id: Swift.String = "CreateAgent"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/agents/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/agents/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.CreateAgent.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/agents/POST/query`.
+            public struct Query: Sendable, Hashable {
+                /// Required. The parent resource where this agent will be created.
+                /// Format: `projects/{project}/locations/{location}`
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/agents/POST/query/parent`.
+                public var parent: Swift.String
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - parent: Required. The parent resource where this agent will be created.
+                public init(parent: Swift.String) {
+                    self.parent = parent
+                }
+            }
+            public var query: Operations.CreateAgent.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/agents/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateAgent.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateAgent.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.CreateAgent.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/agents/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/agents/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsAgent)
+            }
+            public var body: Operations.CreateAgent.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.CreateAgent.Input.Path,
+                query: Operations.CreateAgent.Input.Query,
+                headers: Operations.CreateAgent.Input.Headers = .init(),
+                body: Operations.CreateAgent.Input.Body
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/agents/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/agents/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsAgent)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsAgent {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CreateAgent.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CreateAgent.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/agents/post(CreateAgent)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.CreateAgent.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.CreateAgent.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Gets a specific Agent.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/agents/{agentsId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/{agentsId}/get(GetAgent)`.
+    public enum GetAgent {
+        public static let id: Swift.String = "GetAgent"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The name of the agent to retrieve.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/GET/path/agentsId`.
+                public var agentsId: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - agentsId: Required. The name of the agent to retrieve.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    agentsId: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.agentsId = agentsId
+                }
+            }
+            public var path: Operations.GetAgent.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetAgent.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetAgent.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.GetAgent.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.GetAgent.Input.Path,
+                headers: Operations.GetAgent.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsAgent)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsAgent {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetAgent.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetAgent.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/agents/{agentsId}/get(GetAgent)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.GetAgent.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.GetAgent.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Deletes an Agent.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/agents/{agentsId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/{agentsId}/delete(DeleteAgent)`.
+    public enum DeleteAgent {
+        public static let id: Swift.String = "DeleteAgent"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/DELETE/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/DELETE/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The name of the agent to delete.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/DELETE/path/agentsId`.
+                public var agentsId: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - agentsId: Required. The name of the agent to delete.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    agentsId: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.agentsId = agentsId
+                }
+            }
+            public var path: Operations.DeleteAgent.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/DELETE/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteAgent.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteAgent.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.DeleteAgent.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.DeleteAgent.Input.Path,
+                headers: Operations.DeleteAgent.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/DELETE/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/agents/{agentsId}/DELETE/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsEmpty)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsEmpty {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.DeleteAgent.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.DeleteAgent.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/agents/{agentsId}/delete(DeleteAgent)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.DeleteAgent.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.DeleteAgent.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Lists credentials.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/credentials`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/get(ListCredentials)`.
+    public enum ListCredentials {
+        public static let id: Swift.String = "ListCredentials"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.ListCredentials.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. Maximum number of credentials to return.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/GET/query/page_size`.
+                public var pageSize: Swift.Int32?
+                /// Optional. Pagination token.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/GET/query/page_token`.
+                public var pageToken: Swift.String?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - pageSize: Optional. Maximum number of credentials to return.
+                ///   - pageToken: Optional. Pagination token.
+                public init(
+                    pageSize: Swift.Int32? = nil,
+                    pageToken: Swift.String? = nil
+                ) {
+                    self.pageSize = pageSize
+                    self.pageToken = pageToken
+                }
+            }
+            public var query: Operations.ListCredentials.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListCredentials.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListCredentials.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.ListCredentials.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.ListCredentials.Input.Path,
+                query: Operations.ListCredentials.Input.Query = .init(),
+                headers: Operations.ListCredentials.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/credentials/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsListCredentialsResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsListCredentialsResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.ListCredentials.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.ListCredentials.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/credentials/get(ListCredentials)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.ListCredentials.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.ListCredentials.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Creates a new credential.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/credentials`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/post(CreateCredential)`.
+    public enum CreateCredential {
+        public static let id: Swift.String = "CreateCredential"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.CreateCredential.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateCredential.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateCredential.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.CreateCredential.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsCredentialCreateParams)
+            }
+            public var body: Operations.CreateCredential.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.CreateCredential.Input.Path,
+                headers: Operations.CreateCredential.Input.Headers = .init(),
+                body: Operations.CreateCredential.Input.Body
+            ) {
+                self.path = path
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/credentials/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsCredential)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsCredential {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CreateCredential.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CreateCredential.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/credentials/post(CreateCredential)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.CreateCredential.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.CreateCredential.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Gets a credential by ID.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/get(GetCredential)`.
+    public enum GetCredential {
+        public static let id: Swift.String = "GetCredential"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource ID segment making up resource `name`. It identifies the resource
+                /// within its parent collection as described in https://google.aip.dev/122.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/GET/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. Resource ID segment making up resource `name`. It identifies the resource
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.GetCredential.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetCredential.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetCredential.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.GetCredential.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.GetCredential.Input.Path,
+                headers: Operations.GetCredential.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsCredential)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsCredential {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetCredential.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetCredential.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/get(GetCredential)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.GetCredential.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.GetCredential.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Updates a credential.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/patch(UpdateCredential)`.
+    public enum UpdateCredential {
+        public static let id: Swift.String = "UpdateCredential"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource ID segment making up resource `name`. It identifies the resource
+                /// within its parent collection as described in https://google.aip.dev/122.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. Resource ID segment making up resource `name`. It identifies the resource
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.UpdateCredential.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. The list of fields to update.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/query/update_mask`.
+                public var updateMask: Swift.String?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - updateMask: Optional. The list of fields to update.
+                public init(updateMask: Swift.String? = nil) {
+                    self.updateMask = updateMask
+                }
+            }
+            public var query: Operations.UpdateCredential.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UpdateCredential.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UpdateCredential.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.UpdateCredential.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsCredentialUpdateParams)
+            }
+            public var body: Operations.UpdateCredential.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.UpdateCredential.Input.Path,
+                query: Operations.UpdateCredential.Input.Query = .init(),
+                headers: Operations.UpdateCredential.Input.Headers = .init(),
+                body: Operations.UpdateCredential.Input.Body
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/PATCH/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsCredential)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsCredential {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.UpdateCredential.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.UpdateCredential.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/patch(UpdateCredential)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.UpdateCredential.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.UpdateCredential.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Deletes a credential.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/delete(DeleteCredential)`.
+    public enum DeleteCredential {
+        public static let id: Swift.String = "DeleteCredential"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/DELETE/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/DELETE/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource ID segment making up resource `name`. It identifies the resource
+                /// within its parent collection as described in https://google.aip.dev/122.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/DELETE/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. Resource ID segment making up resource `name`. It identifies the resource
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.DeleteCredential.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/DELETE/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteCredential.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteCredential.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.DeleteCredential.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.DeleteCredential.Input.Path,
+                headers: Operations.DeleteCredential.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/DELETE/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/credentials/{id}/DELETE/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsEmpty)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsEmpty {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.DeleteCredential.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.DeleteCredential.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/delete(DeleteCredential)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.DeleteCredential.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.DeleteCredential.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Lists environments.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/get(InteractionsListEnvironments)`.
+    public enum InteractionsListEnvironments {
+        public static let id: Swift.String = "InteractionsListEnvironments"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/environments/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.InteractionsListEnvironments.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/environments/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. Maximum number of environments to return.
+                /// If unspecified, defaults to 50. Maximum is 1000.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/GET/query/page_size`.
+                public var pageSize: Swift.Int32?
+                /// Optional. Pagination token.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/GET/query/page_token`.
+                public var pageToken: Swift.String?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - pageSize: Optional. Maximum number of environments to return.
+                ///   - pageToken: Optional. Pagination token.
+                public init(
+                    pageSize: Swift.Int32? = nil,
+                    pageToken: Swift.String? = nil
+                ) {
+                    self.pageSize = pageSize
+                    self.pageToken = pageToken
+                }
+            }
+            public var query: Operations.InteractionsListEnvironments.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/environments/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.InteractionsListEnvironments.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.InteractionsListEnvironments.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.InteractionsListEnvironments.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.InteractionsListEnvironments.Input.Path,
+                query: Operations.InteractionsListEnvironments.Input.Query = .init(),
+                headers: Operations.InteractionsListEnvironments.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/environments/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/environments/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsListEnvironmentsResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsListEnvironmentsResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.InteractionsListEnvironments.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.InteractionsListEnvironments.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/environments/get(InteractionsListEnvironments)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.InteractionsListEnvironments.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.InteractionsListEnvironments.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Creates an environment.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/environments`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/post(InteractionsCreateEnvironment)`.
+    public enum InteractionsCreateEnvironment {
+        public static let id: Swift.String = "InteractionsCreateEnvironment"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/environments/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.InteractionsCreateEnvironment.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/environments/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.InteractionsCreateEnvironment.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.InteractionsCreateEnvironment.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.InteractionsCreateEnvironment.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/environments/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/environments/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsCreateEnvironmentRequest)
+            }
+            public var body: Operations.InteractionsCreateEnvironment.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.InteractionsCreateEnvironment.Input.Path,
+                headers: Operations.InteractionsCreateEnvironment.Input.Headers = .init(),
+                body: Operations.InteractionsCreateEnvironment.Input.Body
+            ) {
+                self.path = path
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/environments/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/environments/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsEnvironment)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsEnvironment {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.InteractionsCreateEnvironment.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.InteractionsCreateEnvironment.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/environments/post(InteractionsCreateEnvironment)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.InteractionsCreateEnvironment.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.InteractionsCreateEnvironment.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Retrieves file metadata or directory contents from an environment's snapshot. To download file content, use the download URL returned in the response.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments/{environment}/files/{path}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{environment}/files/{path}/get(GetEnvironmentFiles)`.
+    public enum GetEnvironmentFiles {
+        public static let id: Swift.String = "GetEnvironmentFiles"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// The ID of the environment whose snapshot to read.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/path/environment`.
+                public var environment: Swift.String
+                /// Path of the file or directory inside the environment workspace, relative to its root (e.g. src).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/path/path`.
+                public var path: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - environment: The ID of the environment whose snapshot to read.
+                ///   - path: Path of the file or directory inside the environment workspace, relative to its root (e.g. src).
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    environment: Swift.String,
+                    path: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.environment = environment
+                    self.path = path
+                }
+            }
+            public var path: Operations.GetEnvironmentFiles.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. Maximum number of entries to return per page (for directory listing).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/query/page_size`.
+                public var pageSize: Swift.Int32?
+                /// Optional. Pagination token for directory listing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/query/page_token`.
+                public var pageToken: Swift.String?
+                /// Optional. If true and the path is a directory, recursively lists all files.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/query/recursive`.
+                public var recursive: Swift.Bool?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - pageSize: Optional. Maximum number of entries to return per page (for directory listing).
+                ///   - pageToken: Optional. Pagination token for directory listing.
+                ///   - recursive: Optional. If true and the path is a directory, recursively lists all files.
+                public init(
+                    pageSize: Swift.Int32? = nil,
+                    pageToken: Swift.String? = nil,
+                    recursive: Swift.Bool? = nil
+                ) {
+                    self.pageSize = pageSize
+                    self.pageToken = pageToken
+                    self.recursive = recursive
+                }
+            }
+            public var query: Operations.GetEnvironmentFiles.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetEnvironmentFiles.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetEnvironmentFiles.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.GetEnvironmentFiles.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.GetEnvironmentFiles.Input.Path,
+                query: Operations.GetEnvironmentFiles.Input.Query = .init(),
+                headers: Operations.GetEnvironmentFiles.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/responses/200/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/environments/{environment}/files/{path}/GET/responses/200/content/application\/json`.
+                    case json(Components.Schemas.InteractionsGetEnvironmentFilesResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsGetEnvironmentFilesResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetEnvironmentFiles.Output.Ok.Body
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetEnvironmentFiles.Output.Ok.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/environments/{environment}/files/{path}/get(GetEnvironmentFiles)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.GetEnvironmentFiles.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.GetEnvironmentFiles.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Gets an environment.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{id}/get(InteractionsGetEnvironment)`.
+    public enum InteractionsGetEnvironment {
+        public static let id: Swift.String = "InteractionsGetEnvironment"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource ID segment making up resource `name`. It identifies the resource
+                /// within its parent collection as described in https://google.aip.dev/122.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/GET/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. Resource ID segment making up resource `name`. It identifies the resource
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.InteractionsGetEnvironment.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.InteractionsGetEnvironment.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.InteractionsGetEnvironment.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.InteractionsGetEnvironment.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.InteractionsGetEnvironment.Input.Path,
+                headers: Operations.InteractionsGetEnvironment.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsEnvironment)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsEnvironment {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.InteractionsGetEnvironment.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.InteractionsGetEnvironment.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/environments/{id}/get(InteractionsGetEnvironment)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.InteractionsGetEnvironment.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.InteractionsGetEnvironment.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Deletes an environment.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/environments/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{id}/delete(InteractionsDeleteEnvironment)`.
+    public enum InteractionsDeleteEnvironment {
+        public static let id: Swift.String = "InteractionsDeleteEnvironment"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/DELETE/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/DELETE/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource ID segment making up resource `name`. It identifies the resource
+                /// within its parent collection as described in https://google.aip.dev/122.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/DELETE/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. Resource ID segment making up resource `name`. It identifies the resource
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.InteractionsDeleteEnvironment.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/DELETE/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.InteractionsDeleteEnvironment.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.InteractionsDeleteEnvironment.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.InteractionsDeleteEnvironment.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.InteractionsDeleteEnvironment.Input.Path,
+                headers: Operations.InteractionsDeleteEnvironment.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/DELETE/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/environments/{id}/DELETE/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsEmpty)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsEmpty {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.InteractionsDeleteEnvironment.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.InteractionsDeleteEnvironment.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/environments/{id}/delete(InteractionsDeleteEnvironment)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.InteractionsDeleteEnvironment.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.InteractionsDeleteEnvironment.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Creating an interaction
+    ///
+    /// Creates a new interaction.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/interactions`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/post(CreateInteraction)`.
+    public enum CreateInteraction {
+        public static let id: Swift.String = "CreateInteraction"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.CreateInteraction.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateInteraction.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateInteraction.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.CreateInteraction.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/requestBody/json`.
+                @frozen public enum JsonPayload: Codable, Hashable, Sendable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/requestBody/json/case1`.
+                    case InteractionsCreateAgentInteractionParams(Components.Schemas.InteractionsCreateAgentInteractionParams)
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/requestBody/json/case2`.
+                    case InteractionsCreateModelInteractionParams(Components.Schemas.InteractionsCreateModelInteractionParams)
+                    public init(from decoder: any Swift.Decoder) throws {
+                        var errors: [any Swift.Error] = []
+                        do {
+                            self = .InteractionsCreateAgentInteractionParams(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        do {
+                            self = .InteractionsCreateModelInteractionParams(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                            type: Self.self,
+                            codingPath: decoder.codingPath,
+                            errors: errors
+                        )
+                    }
+                    public func encode(to encoder: any Swift.Encoder) throws {
+                        switch self {
+                        case let .InteractionsCreateAgentInteractionParams(value):
+                            try value.encode(to: encoder)
+                        case let .InteractionsCreateModelInteractionParams(value):
+                            try value.encode(to: encoder)
+                        }
+                    }
+                }
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/requestBody/content/application\/json`.
+                case json(Operations.CreateInteraction.Input.Body.JsonPayload)
+            }
+            public var body: Operations.CreateInteraction.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.CreateInteraction.Input.Path,
+                headers: Operations.CreateInteraction.Input.Headers = .init(),
+                body: Operations.CreateInteraction.Input.Body
+            ) {
+                self.path = path
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/200/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/200/content/application\/json`.
+                    case json(Components.Schemas.InteractionsInteraction)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsInteraction {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            default:
+                                try throwUnexpectedResponseBody(
+                                    expectedContent: "application/json",
+                                    body: self
+                                )
+                            }
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/200/content/text\/event-stream`.
+                    case textEventStream(OpenAPIRuntime.HTTPBody)
+                    /// The associated value of the enum case if `self` is `.textEventStream`.
+                    ///
+                    /// - Throws: An error if `self` is not `.textEventStream`.
+                    /// - SeeAlso: `.textEventStream`.
+                    public var textEventStream: OpenAPIRuntime.HTTPBody {
+                        get throws {
+                            switch self {
+                            case let .textEventStream(body):
+                                return body
+                            default:
+                                try throwUnexpectedResponseBody(
+                                    expectedContent: "text/event-stream",
+                                    body: self
+                                )
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CreateInteraction.Output.Ok.Body
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CreateInteraction.Output.Ok.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/post(CreateInteraction)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.CreateInteraction.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.CreateInteraction.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ClientError: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/4XX/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/4XX/content/json`.
+                    public struct JsonPayload: Codable, Hashable, Sendable {
+                        /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/4XX/content/json/error`.
+                        public var error: Components.Schemas.InteractionsError
+                        /// Creates a new `JsonPayload`.
+                        ///
+                        /// - Parameters:
+                        ///   - error:
+                        public init(error: Components.Schemas.InteractionsError) {
+                            self.error = error
+                        }
+                        public enum CodingKeys: String, CodingKey {
+                            case error
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/4XX/content/application\/json`.
+                    case json(Operations.CreateInteraction.Output.ClientError.Body.JsonPayload)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Operations.CreateInteraction.Output.ClientError.Body.JsonPayload {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CreateInteraction.Output.ClientError.Body
+                /// Creates a new `ClientError`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CreateInteraction.Output.ClientError.Body) {
+                    self.body = body
+                }
+            }
+            /// Error creating interaction
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/post(CreateInteraction)/responses/4XX`.
+            ///
+            /// HTTP response code: `400...499 clientError`.
+            case clientError(statusCode: Swift.Int, Operations.CreateInteraction.Output.ClientError)
+            /// The associated value of the enum case if `self` is `.clientError`.
+            ///
+            /// - Throws: An error if `self` is not `.clientError`.
+            /// - SeeAlso: `.clientError`.
+            public var clientError: Operations.CreateInteraction.Output.ClientError {
+                get throws {
+                    switch self {
+                    case let .clientError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "clientError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ServerError: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/5XX/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/5XX/content/json`.
+                    public struct JsonPayload: Codable, Hashable, Sendable {
+                        /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/5XX/content/json/error`.
+                        public var error: Components.Schemas.InteractionsError
+                        /// Creates a new `JsonPayload`.
+                        ///
+                        /// - Parameters:
+                        ///   - error:
+                        public init(error: Components.Schemas.InteractionsError) {
+                            self.error = error
+                        }
+                        public enum CodingKeys: String, CodingKey {
+                            case error
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/POST/responses/5XX/content/application\/json`.
+                    case json(Operations.CreateInteraction.Output.ServerError.Body.JsonPayload)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Operations.CreateInteraction.Output.ServerError.Body.JsonPayload {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CreateInteraction.Output.ServerError.Body
+                /// Creates a new `ServerError`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CreateInteraction.Output.ServerError.Body) {
+                    self.body = body
+                }
+            }
+            /// Error creating interaction
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/post(CreateInteraction)/responses/5XX`.
+            ///
+            /// HTTP response code: `500...599 serverError`.
+            case serverError(statusCode: Swift.Int, Operations.CreateInteraction.Output.ServerError)
+            /// The associated value of the enum case if `self` is `.serverError`.
+            ///
+            /// - Throws: An error if `self` is not `.serverError`.
+            /// - SeeAlso: `.serverError`.
+            public var serverError: Operations.CreateInteraction.Output.ServerError {
+                get throws {
+                    switch self {
+                    case let .serverError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "serverError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case textEventStream
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                case "text/event-stream":
+                    self = .textEventStream
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                case .textEventStream:
+                    return "text/event-stream"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json,
+                    .textEventStream
+                ]
+            }
+        }
+    }
+    /// Retrieving an interaction
+    ///
+    /// Retrieves the full details of a single interaction based on its `Interaction.id`.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/interactions/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/get(getInteractionById)`.
+    public enum GetInteractionById {
+        public static let id: Swift.String = "getInteractionById"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// The unique identifier of the interaction to retrieve.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: The unique identifier of the interaction to retrieve.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.GetInteractionById.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. If set, resumes the interaction stream from the next chunk after the event marked by the event id. Can only be used if `stream` is true.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/query/last_event_id`.
+                public var lastEventId: Swift.String?
+                /// If set to true, the generated content will be streamed incrementally.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/query/stream`.
+                public var stream: Swift.Bool?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - lastEventId: Optional. If set, resumes the interaction stream from the next chunk after the event marked by the event id. Can only be used if `stream` is true.
+                ///   - stream: If set to true, the generated content will be streamed incrementally.
+                public init(
+                    lastEventId: Swift.String? = nil,
+                    stream: Swift.Bool? = nil
+                ) {
+                    self.lastEventId = lastEventId
+                    self.stream = stream
+                }
+            }
+            public var query: Operations.GetInteractionById.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetInteractionById.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetInteractionById.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.GetInteractionById.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.GetInteractionById.Input.Path,
+                query: Operations.GetInteractionById.Input.Query = .init(),
+                headers: Operations.GetInteractionById.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/200/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/200/content/application\/json`.
+                    case json(Components.Schemas.InteractionsInteraction)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsInteraction {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            default:
+                                try throwUnexpectedResponseBody(
+                                    expectedContent: "application/json",
+                                    body: self
+                                )
+                            }
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/200/content/text\/event-stream`.
+                    case textEventStream(OpenAPIRuntime.HTTPBody)
+                    /// The associated value of the enum case if `self` is `.textEventStream`.
+                    ///
+                    /// - Throws: An error if `self` is not `.textEventStream`.
+                    /// - SeeAlso: `.textEventStream`.
+                    public var textEventStream: OpenAPIRuntime.HTTPBody {
+                        get throws {
+                            switch self {
+                            case let .textEventStream(body):
+                                return body
+                            default:
+                                try throwUnexpectedResponseBody(
+                                    expectedContent: "text/event-stream",
+                                    body: self
+                                )
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetInteractionById.Output.Ok.Body
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetInteractionById.Output.Ok.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful retrieval of the interaction.
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/get(getInteractionById)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.GetInteractionById.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.GetInteractionById.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ClientError: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/4XX/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/4XX/content/json`.
+                    public struct JsonPayload: Codable, Hashable, Sendable {
+                        /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/4XX/content/json/error`.
+                        public var error: Components.Schemas.InteractionsError
+                        /// Creates a new `JsonPayload`.
+                        ///
+                        /// - Parameters:
+                        ///   - error:
+                        public init(error: Components.Schemas.InteractionsError) {
+                            self.error = error
+                        }
+                        public enum CodingKeys: String, CodingKey {
+                            case error
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/4XX/content/application\/json`.
+                    case json(Operations.GetInteractionById.Output.ClientError.Body.JsonPayload)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Operations.GetInteractionById.Output.ClientError.Body.JsonPayload {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetInteractionById.Output.ClientError.Body
+                /// Creates a new `ClientError`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetInteractionById.Output.ClientError.Body) {
+                    self.body = body
+                }
+            }
+            /// Error getting interaction
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/get(getInteractionById)/responses/4XX`.
+            ///
+            /// HTTP response code: `400...499 clientError`.
+            case clientError(statusCode: Swift.Int, Operations.GetInteractionById.Output.ClientError)
+            /// The associated value of the enum case if `self` is `.clientError`.
+            ///
+            /// - Throws: An error if `self` is not `.clientError`.
+            /// - SeeAlso: `.clientError`.
+            public var clientError: Operations.GetInteractionById.Output.ClientError {
+                get throws {
+                    switch self {
+                    case let .clientError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "clientError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ServerError: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/5XX/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/5XX/content/json`.
+                    public struct JsonPayload: Codable, Hashable, Sendable {
+                        /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/5XX/content/json/error`.
+                        public var error: Components.Schemas.InteractionsError
+                        /// Creates a new `JsonPayload`.
+                        ///
+                        /// - Parameters:
+                        ///   - error:
+                        public init(error: Components.Schemas.InteractionsError) {
+                            self.error = error
+                        }
+                        public enum CodingKeys: String, CodingKey {
+                            case error
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/GET/responses/5XX/content/application\/json`.
+                    case json(Operations.GetInteractionById.Output.ServerError.Body.JsonPayload)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Operations.GetInteractionById.Output.ServerError.Body.JsonPayload {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetInteractionById.Output.ServerError.Body
+                /// Creates a new `ServerError`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetInteractionById.Output.ServerError.Body) {
+                    self.body = body
+                }
+            }
+            /// Error getting interaction
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/get(getInteractionById)/responses/5XX`.
+            ///
+            /// HTTP response code: `500...599 serverError`.
+            case serverError(statusCode: Swift.Int, Operations.GetInteractionById.Output.ServerError)
+            /// The associated value of the enum case if `self` is `.serverError`.
+            ///
+            /// - Throws: An error if `self` is not `.serverError`.
+            /// - SeeAlso: `.serverError`.
+            public var serverError: Operations.GetInteractionById.Output.ServerError {
+                get throws {
+                    switch self {
+                    case let .serverError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "serverError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case textEventStream
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                case "text/event-stream":
+                    self = .textEventStream
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                case .textEventStream:
+                    return "text/event-stream"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json,
+                    .textEventStream
+                ]
+            }
+        }
+    }
+    /// Deleting an interaction
+    ///
+    /// Deletes the interaction by id.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/interactions/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/delete(deleteInteraction)`.
+    public enum DeleteInteraction {
+        public static let id: Swift.String = "deleteInteraction"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// The unique identifier of the interaction to delete.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/path/id`.
+                public var id: Swift.String
+                /// Required. The name of the interaction to delete.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/path/interactionsId`.
+                public var interactionsId: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: The unique identifier of the interaction to delete.
+                ///   - interactionsId: Required. The name of the interaction to delete.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String,
+                    interactionsId: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                    self.interactionsId = interactionsId
+                }
+            }
+            public var path: Operations.DeleteInteraction.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteInteraction.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteInteraction.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.DeleteInteraction.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.DeleteInteraction.Input.Path,
+                headers: Operations.DeleteInteraction.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// Creates a new `Ok`.
+                public init() {}
+            }
+            /// Successful deletion of the interaction.
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/delete(deleteInteraction)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.DeleteInteraction.Output.Ok)
+            /// Successful deletion of the interaction.
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/delete(deleteInteraction)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            public static var ok: Self {
+                .ok(.init())
+            }
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.DeleteInteraction.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ClientError: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/responses/4XX/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/responses/4XX/content/json`.
+                    public struct JsonPayload: Codable, Hashable, Sendable {
+                        /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/responses/4XX/content/json/error`.
+                        public var error: Components.Schemas.InteractionsError
+                        /// Creates a new `JsonPayload`.
+                        ///
+                        /// - Parameters:
+                        ///   - error:
+                        public init(error: Components.Schemas.InteractionsError) {
+                            self.error = error
+                        }
+                        public enum CodingKeys: String, CodingKey {
+                            case error
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/responses/4XX/content/application\/json`.
+                    case json(Operations.DeleteInteraction.Output.ClientError.Body.JsonPayload)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Operations.DeleteInteraction.Output.ClientError.Body.JsonPayload {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.DeleteInteraction.Output.ClientError.Body
+                /// Creates a new `ClientError`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.DeleteInteraction.Output.ClientError.Body) {
+                    self.body = body
+                }
+            }
+            /// Error deleting interaction
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/delete(deleteInteraction)/responses/4XX`.
+            ///
+            /// HTTP response code: `400...499 clientError`.
+            case clientError(statusCode: Swift.Int, Operations.DeleteInteraction.Output.ClientError)
+            /// The associated value of the enum case if `self` is `.clientError`.
+            ///
+            /// - Throws: An error if `self` is not `.clientError`.
+            /// - SeeAlso: `.clientError`.
+            public var clientError: Operations.DeleteInteraction.Output.ClientError {
+                get throws {
+                    switch self {
+                    case let .clientError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "clientError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ServerError: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/responses/5XX/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/responses/5XX/content/json`.
+                    public struct JsonPayload: Codable, Hashable, Sendable {
+                        /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/responses/5XX/content/json/error`.
+                        public var error: Components.Schemas.InteractionsError
+                        /// Creates a new `JsonPayload`.
+                        ///
+                        /// - Parameters:
+                        ///   - error:
+                        public init(error: Components.Schemas.InteractionsError) {
+                            self.error = error
+                        }
+                        public enum CodingKeys: String, CodingKey {
+                            case error
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/DELETE/responses/5XX/content/application\/json`.
+                    case json(Operations.DeleteInteraction.Output.ServerError.Body.JsonPayload)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Operations.DeleteInteraction.Output.ServerError.Body.JsonPayload {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.DeleteInteraction.Output.ServerError.Body
+                /// Creates a new `ServerError`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.DeleteInteraction.Output.ServerError.Body) {
+                    self.body = body
+                }
+            }
+            /// Error deleting interaction
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/delete(deleteInteraction)/responses/5XX`.
+            ///
+            /// HTTP response code: `500...599 serverError`.
+            case serverError(statusCode: Swift.Int, Operations.DeleteInteraction.Output.ServerError)
+            /// The associated value of the enum case if `self` is `.serverError`.
+            ///
+            /// - Throws: An error if `self` is not `.serverError`.
+            /// - SeeAlso: `.serverError`.
+            public var serverError: Operations.DeleteInteraction.Output.ServerError {
+                get throws {
+                    switch self {
+                    case let .serverError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "serverError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Canceling an interaction
+    ///
+    /// Cancels an interaction by id. This only applies to background interactions that are still running.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/interactions/{id}/cancel`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/cancel/post(cancelInteractionById)`.
+    public enum CancelInteractionById {
+        public static let id: Swift.String = "cancelInteractionById"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// The unique identifier of the interaction to cancel.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: The unique identifier of the interaction to cancel.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.CancelInteractionById.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CancelInteractionById.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CancelInteractionById.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.CancelInteractionById.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.CancelInteractionById.Input.Path,
+                headers: Operations.CancelInteractionById.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Ok: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/200/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/200/content/application\/json`.
+                    case json(Components.Schemas.InteractionsInteraction)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsInteraction {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CancelInteractionById.Output.Ok.Body
+                /// Creates a new `Ok`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CancelInteractionById.Output.Ok.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/cancel/post(cancelInteractionById)/responses/200`.
+            ///
+            /// HTTP response code: `200 ok`.
+            case ok(Operations.CancelInteractionById.Output.Ok)
+            /// The associated value of the enum case if `self` is `.ok`.
+            ///
+            /// - Throws: An error if `self` is not `.ok`.
+            /// - SeeAlso: `.ok`.
+            public var ok: Operations.CancelInteractionById.Output.Ok {
+                get throws {
+                    switch self {
+                    case let .ok(response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "ok",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ClientError: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/4XX/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/4XX/content/json`.
+                    public struct JsonPayload: Codable, Hashable, Sendable {
+                        /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/4XX/content/json/error`.
+                        public var error: Components.Schemas.InteractionsError
+                        /// Creates a new `JsonPayload`.
+                        ///
+                        /// - Parameters:
+                        ///   - error:
+                        public init(error: Components.Schemas.InteractionsError) {
+                            self.error = error
+                        }
+                        public enum CodingKeys: String, CodingKey {
+                            case error
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/4XX/content/application\/json`.
+                    case json(Operations.CancelInteractionById.Output.ClientError.Body.JsonPayload)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Operations.CancelInteractionById.Output.ClientError.Body.JsonPayload {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CancelInteractionById.Output.ClientError.Body
+                /// Creates a new `ClientError`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CancelInteractionById.Output.ClientError.Body) {
+                    self.body = body
+                }
+            }
+            /// Error cancelling interaction
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/cancel/post(cancelInteractionById)/responses/4XX`.
+            ///
+            /// HTTP response code: `400...499 clientError`.
+            case clientError(statusCode: Swift.Int, Operations.CancelInteractionById.Output.ClientError)
+            /// The associated value of the enum case if `self` is `.clientError`.
+            ///
+            /// - Throws: An error if `self` is not `.clientError`.
+            /// - SeeAlso: `.clientError`.
+            public var clientError: Operations.CancelInteractionById.Output.ClientError {
+                get throws {
+                    switch self {
+                    case let .clientError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "clientError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            public struct ServerError: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/5XX/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/5XX/content/json`.
+                    public struct JsonPayload: Codable, Hashable, Sendable {
+                        /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/5XX/content/json/error`.
+                        public var error: Components.Schemas.InteractionsError
+                        /// Creates a new `JsonPayload`.
+                        ///
+                        /// - Parameters:
+                        ///   - error:
+                        public init(error: Components.Schemas.InteractionsError) {
+                            self.error = error
+                        }
+                        public enum CodingKeys: String, CodingKey {
+                            case error
+                        }
+                    }
+                    /// - Remark: Generated from `#/paths/{api_version}/interactions/{id}/cancel/POST/responses/5XX/content/application\/json`.
+                    case json(Operations.CancelInteractionById.Output.ServerError.Body.JsonPayload)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Operations.CancelInteractionById.Output.ServerError.Body.JsonPayload {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CancelInteractionById.Output.ServerError.Body
+                /// Creates a new `ServerError`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CancelInteractionById.Output.ServerError.Body) {
+                    self.body = body
+                }
+            }
+            /// Error cancelling interaction
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/cancel/post(cancelInteractionById)/responses/5XX`.
+            ///
+            /// HTTP response code: `500...599 serverError`.
+            case serverError(statusCode: Swift.Int, Operations.CancelInteractionById.Output.ServerError)
+            /// The associated value of the enum case if `self` is `.serverError`.
+            ///
+            /// - Throws: An error if `self` is not `.serverError`.
+            /// - SeeAlso: `.serverError`.
+            public var serverError: Operations.CancelInteractionById.Output.ServerError {
+                get throws {
+                    switch self {
+                    case let .serverError(_, response):
+                        return response
+                    default:
+                        try throwUnexpectedResponseStatus(
+                            expectedStatus: "serverError",
+                            response: self
+                        )
+                    }
+                }
+            }
+            /// Undocumented response.
+            ///
+            /// A response with a code that is not documented in the OpenAPI document.
+            case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Lists triggers for a project.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/get(ListTriggers)`.
+    public enum ListTriggers {
+        public static let id: Swift.String = "ListTriggers"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.ListTriggers.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. Filter expression (e.g., by state).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/query/filter`.
+                public var filter: Swift.String?
+                /// Optional. The maximum number of triggers to return per page.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/query/page_size`.
+                public var pageSize: Swift.Int32?
+                /// Optional. A page token from a previous ListTriggers call.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/query/page_token`.
+                public var pageToken: Swift.String?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - filter: Optional. Filter expression (e.g., by state).
+                ///   - pageSize: Optional. The maximum number of triggers to return per page.
+                ///   - pageToken: Optional. A page token from a previous ListTriggers call.
+                public init(
+                    filter: Swift.String? = nil,
+                    pageSize: Swift.Int32? = nil,
+                    pageToken: Swift.String? = nil
+                ) {
+                    self.filter = filter
+                    self.pageSize = pageSize
+                    self.pageToken = pageToken
+                }
+            }
+            public var query: Operations.ListTriggers.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListTriggers.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListTriggers.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.ListTriggers.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.ListTriggers.Input.Path,
+                query: Operations.ListTriggers.Input.Query = .init(),
+                headers: Operations.ListTriggers.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/triggers/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsListTriggersResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsListTriggersResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.ListTriggers.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.ListTriggers.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/triggers/get(ListTriggers)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.ListTriggers.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.ListTriggers.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Creates a new trigger that will invoke the specified agent on the given
+    /// cron schedule.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/triggers`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/post(CreateTrigger)`.
+    public enum CreateTrigger {
+        public static let id: Swift.String = "CreateTrigger"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.CreateTrigger.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateTrigger.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateTrigger.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.CreateTrigger.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsTrigger)
+            }
+            public var body: Operations.CreateTrigger.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.CreateTrigger.Input.Path,
+                headers: Operations.CreateTrigger.Input.Headers = .init(),
+                body: Operations.CreateTrigger.Input.Body
+            ) {
+                self.path = path
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/triggers/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsTrigger)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsTrigger {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CreateTrigger.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CreateTrigger.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/triggers/post(CreateTrigger)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.CreateTrigger.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.CreateTrigger.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Gets details of a single trigger.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/get(GetTrigger)`.
+    public enum GetTrigger {
+        public static let id: Swift.String = "GetTrigger"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource name of the trigger.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/GET/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. Resource name of the trigger.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.GetTrigger.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetTrigger.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetTrigger.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.GetTrigger.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.GetTrigger.Input.Path,
+                headers: Operations.GetTrigger.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsTrigger)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsTrigger {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetTrigger.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetTrigger.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/get(GetTrigger)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.GetTrigger.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.GetTrigger.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Updates a trigger.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/patch(UpdateTrigger)`.
+    public enum UpdateTrigger {
+        public static let id: Swift.String = "UpdateTrigger"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/PATCH/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/PATCH/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource name of the trigger.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/PATCH/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. Resource name of the trigger.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.UpdateTrigger.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/PATCH/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UpdateTrigger.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UpdateTrigger.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.UpdateTrigger.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/PATCH/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/PATCH/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsUpdateTriggerRequest)
+            }
+            public var body: Operations.UpdateTrigger.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.UpdateTrigger.Input.Path,
+                headers: Operations.UpdateTrigger.Input.Headers = .init(),
+                body: Operations.UpdateTrigger.Input.Body
+            ) {
+                self.path = path
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/PATCH/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/PATCH/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsTrigger)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsTrigger {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.UpdateTrigger.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.UpdateTrigger.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/patch(UpdateTrigger)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.UpdateTrigger.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.UpdateTrigger.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Deletes a trigger.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/delete(DeleteTrigger)`.
+    public enum DeleteTrigger {
+        public static let id: Swift.String = "DeleteTrigger"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/DELETE/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/DELETE/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource name of the trigger.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/DELETE/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. Resource name of the trigger.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.DeleteTrigger.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/DELETE/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteTrigger.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteTrigger.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.DeleteTrigger.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.DeleteTrigger.Input.Path,
+                headers: Operations.DeleteTrigger.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/DELETE/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/triggers/{id}/DELETE/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsEmpty)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsEmpty {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.DeleteTrigger.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.DeleteTrigger.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/delete(DeleteTrigger)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.DeleteTrigger.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.DeleteTrigger.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Lists executions for a trigger.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers/{triggerId}/executions`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{triggerId}/executions/get(ListTriggerExecutions)`.
+    public enum ListTriggerExecutions {
+        public static let id: Swift.String = "ListTriggerExecutions"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The trigger ID to list executions from.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/path/triggerId`.
+                public var triggerId: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - triggerId: Required. The trigger ID to list executions from.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    triggerId: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.triggerId = triggerId
+                }
+            }
+            public var path: Operations.ListTriggerExecutions.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. Filter expression.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/query/filter`.
+                public var filter: Swift.String?
+                /// The maximum number of executions to return per page.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/query/page_size`.
+                public var pageSize: Swift.Int32?
+                /// A page token from a previous ListTriggerExecutions call.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/query/page_token`.
+                public var pageToken: Swift.String?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - filter: Optional. Filter expression.
+                ///   - pageSize: The maximum number of executions to return per page.
+                ///   - pageToken: A page token from a previous ListTriggerExecutions call.
+                public init(
+                    filter: Swift.String? = nil,
+                    pageSize: Swift.Int32? = nil,
+                    pageToken: Swift.String? = nil
+                ) {
+                    self.filter = filter
+                    self.pageSize = pageSize
+                    self.pageToken = pageToken
+                }
+            }
+            public var query: Operations.ListTriggerExecutions.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListTriggerExecutions.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListTriggerExecutions.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.ListTriggerExecutions.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.ListTriggerExecutions.Input.Path,
+                query: Operations.ListTriggerExecutions.Input.Query = .init(),
+                headers: Operations.ListTriggerExecutions.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsListTriggerExecutionsResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsListTriggerExecutionsResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.ListTriggerExecutions.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.ListTriggerExecutions.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/triggers/{triggerId}/executions/get(ListTriggerExecutions)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.ListTriggerExecutions.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.ListTriggerExecutions.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Runs a trigger immediately.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/triggers/{triggerId}/executions`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{triggerId}/executions/post(RunTrigger)`.
+    public enum RunTrigger {
+        public static let id: Swift.String = "RunTrigger"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. Resource name of the trigger.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/POST/path/triggerId`.
+                public var triggerId: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - triggerId: Required. Resource name of the trigger.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    triggerId: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.triggerId = triggerId
+                }
+            }
+            public var path: Operations.RunTrigger.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.RunTrigger.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.RunTrigger.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.RunTrigger.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.RunTrigger.Input.Path,
+                headers: Operations.RunTrigger.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/triggers/{triggerId}/executions/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsTriggerExecution)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsTriggerExecution {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.RunTrigger.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.RunTrigger.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/triggers/{triggerId}/executions/post(RunTrigger)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.RunTrigger.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.RunTrigger.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Lists custom stored voices owned by the caller (ordered newest first)
+    /// followed by prebuilt system voices from Google's voice catalog.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/voices`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/get(ListVoices)`.
+    public enum ListVoices {
+        public static let id: Swift.String = "ListVoices"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/voices/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.ListVoices.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. Filter by accent description (e.g. "American", "British").
+                /// Case-insensitive exact match. If multiple values are specified, matches
+                /// voices with any of the specified accents (OR).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/accent`.
+                public var accent: [Swift.String]?
+                /// Optional. Filter by intended context or domain (e.g. "News, Commercial").
+                /// Case-insensitive exact match. If multiple values are specified, matches
+                /// voices with any of the specified contexts (OR).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/context`.
+                public var context: [Swift.String]?
+                /// Optional. Filter by gender presentation (e.g. "female", "male", "neutral").
+                /// Case-insensitive exact match. If multiple values are specified, matches
+                /// voices with any of the specified genders (OR).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/gender`.
+                public var gender: [Swift.String]?
+                /// Optional. Filter by BCP-47 language code (e.g. "en-US").
+                /// Case-insensitive exact match. If multiple values are specified, matches
+                /// voices with any of the specified language codes (OR).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/language_code`.
+                public var languageCode: [Swift.String]?
+                /// Optional. The maximum number of voices to return per page. The service may
+                /// return fewer than this value. If unspecified, at most 50 voices are
+                /// returned. The maximum value is 1000; values above 1000 are coerced to
+                /// 1000.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/page_size`.
+                public var pageSize: Swift.Int32?
+                /// Optional. A page token received from a previous `ListVoices` call. Provide
+                /// this to retrieve the subsequent page.
+                ///
+                /// When paginating, all filter query parameters (`language_code`,
+                /// `region_code`, `accent`, `persona`, `context`, `gender`, `pitch`, `type`,
+                /// and `search`) must match the call that returned this token; otherwise the
+                /// request fails with `INVALID_ARGUMENT`. `page_size` may change between
+                /// pages.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/page_token`.
+                public var pageToken: Swift.String?
+                /// Optional. Filter by vocal persona (e.g. "Warm, Friendly").
+                /// Case-insensitive exact match. If multiple values are specified, matches
+                /// voices with any of the specified personas (OR).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/persona`.
+                public var persona: [Swift.String]?
+                /// Optional. Filter by vocal pitch. Accepts `"low"`, `"medium"`, `"high"`
+                /// (case-insensitive). If multiple values are specified, matches voices with
+                /// any of the specified pitches (OR).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/pitch`.
+                public var pitch: [Swift.String]?
+                /// Optional. Filter by ISO 3166-1 alpha-2 or UN M.49 region code (e.g. "US",
+                /// "001").
+                /// Case-insensitive exact match. If multiple values are specified, matches
+                /// voices with any of the specified region codes (OR).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/region_code`.
+                public var regionCode: [Swift.String]?
+                /// Optional. Free-text substring search query matched case-insensitively
+                /// against both `display_name` and `description`. Maximum 2048 bytes.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/search`.
+                public var search: Swift.String?
+                /// Optional. Filter by voice type. Accepts `"prebuilt"`, `"replicated"`,
+                /// `"prompted"` (case-insensitive). If multiple values are specified, matches
+                /// voices with any of the specified types (OR).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/query/type`.
+                public var _type: [Swift.String]?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - accent: Optional. Filter by accent description (e.g. "American", "British").
+                ///   - context: Optional. Filter by intended context or domain (e.g. "News, Commercial").
+                ///   - gender: Optional. Filter by gender presentation (e.g. "female", "male", "neutral").
+                ///   - languageCode: Optional. Filter by BCP-47 language code (e.g. "en-US").
+                ///   - pageSize: Optional. The maximum number of voices to return per page. The service may
+                ///   - pageToken: Optional. A page token received from a previous `ListVoices` call. Provide
+                ///   - persona: Optional. Filter by vocal persona (e.g. "Warm, Friendly").
+                ///   - pitch: Optional. Filter by vocal pitch. Accepts `"low"`, `"medium"`, `"high"`
+                ///   - regionCode: Optional. Filter by ISO 3166-1 alpha-2 or UN M.49 region code (e.g. "US",
+                ///   - search: Optional. Free-text substring search query matched case-insensitively
+                ///   - _type: Optional. Filter by voice type. Accepts `"prebuilt"`, `"replicated"`,
+                public init(
+                    accent: [Swift.String]? = nil,
+                    context: [Swift.String]? = nil,
+                    gender: [Swift.String]? = nil,
+                    languageCode: [Swift.String]? = nil,
+                    pageSize: Swift.Int32? = nil,
+                    pageToken: Swift.String? = nil,
+                    persona: [Swift.String]? = nil,
+                    pitch: [Swift.String]? = nil,
+                    regionCode: [Swift.String]? = nil,
+                    search: Swift.String? = nil,
+                    _type: [Swift.String]? = nil
+                ) {
+                    self.accent = accent
+                    self.context = context
+                    self.gender = gender
+                    self.languageCode = languageCode
+                    self.pageSize = pageSize
+                    self.pageToken = pageToken
+                    self.persona = persona
+                    self.pitch = pitch
+                    self.regionCode = regionCode
+                    self.search = search
+                    self._type = _type
+                }
+            }
+            public var query: Operations.ListVoices.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/voices/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListVoices.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListVoices.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.ListVoices.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.ListVoices.Input.Path,
+                query: Operations.ListVoices.Input.Query = .init(),
+                headers: Operations.ListVoices.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/voices/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/voices/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsListVoicesResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsListVoicesResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.ListVoices.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.ListVoices.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/voices/get(ListVoices)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.ListVoices.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.ListVoices.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Creates a custom voice from a natural-language prompt
+    /// (`VOICE_TYPE_PROMPTED`) or from reference and consent audio recordings
+    /// (`VOICE_TYPE_REPLICATED`).
+    ///
+    /// - Remark: HTTP `POST /{api_version}/voices`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/post(CreateVoice)`.
+    public enum CreateVoice {
+        public static let id: Swift.String = "CreateVoice"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/voices/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.CreateVoice.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/voices/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateVoice.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateVoice.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.CreateVoice.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/voices/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/voices/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsCreateVoiceRequest)
+            }
+            public var body: Operations.CreateVoice.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.CreateVoice.Input.Path,
+                headers: Operations.CreateVoice.Input.Headers = .init(),
+                body: Operations.CreateVoice.Input.Body
+            ) {
+                self.path = path
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/voices/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/voices/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsVoice)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsVoice {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CreateVoice.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CreateVoice.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/voices/post(CreateVoice)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.CreateVoice.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.CreateVoice.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Gets a custom stored voice (`store = true`) by resource name.
+    /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be retrieved via
+    /// `GetVoice`; use `ListVoices` instead.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/voices/{voicesId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/{voicesId}/get(GetVoice)`.
+    public enum GetVoice {
+        public static let id: Swift.String = "GetVoice"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The resource name of the custom stored voice to retrieve
+                /// (for example, `voices/voice_abc123def456`).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/GET/path/voicesId`.
+                public var voicesId: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - voicesId: Required. The resource name of the custom stored voice to retrieve
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    voicesId: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.voicesId = voicesId
+                }
+            }
+            public var path: Operations.GetVoice.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetVoice.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetVoice.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.GetVoice.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.GetVoice.Input.Path,
+                headers: Operations.GetVoice.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsVoice)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsVoice {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetVoice.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetVoice.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/voices/{voicesId}/get(GetVoice)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.GetVoice.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.GetVoice.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Deletes a custom stored voice (`store = true`) by resource name.
+    /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be deleted.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/voices/{voicesId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/{voicesId}/delete(DeleteVoice)`.
+    public enum DeleteVoice {
+        public static let id: Swift.String = "DeleteVoice"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/DELETE/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/DELETE/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The resource name of the custom stored voice to delete
+                /// (for example, `voices/voice_abc123def456`).
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/DELETE/path/voicesId`.
+                public var voicesId: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - voicesId: Required. The resource name of the custom stored voice to delete
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    voicesId: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.voicesId = voicesId
+                }
+            }
+            public var path: Operations.DeleteVoice.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/DELETE/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteVoice.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteVoice.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.DeleteVoice.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.DeleteVoice.Input.Path,
+                headers: Operations.DeleteVoice.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/DELETE/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/voices/{voicesId}/DELETE/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsDeleteVoiceResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsDeleteVoiceResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.DeleteVoice.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.DeleteVoice.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/voices/{voicesId}/delete(DeleteVoice)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.DeleteVoice.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.DeleteVoice.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Lists all Webhooks.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/webhooks`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/get(ListWebhooks)`.
+    public enum ListWebhooks {
+        public static let id: Swift.String = "ListWebhooks"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.ListWebhooks.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/GET/query`.
+            public struct Query: Sendable, Hashable {
+                /// Optional. The maximum number of webhooks to return. The service may return
+                /// fewer than this value. If unspecified, at most 50 webhooks will be
+                /// returned. The maximum value is 1000.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/GET/query/page_size`.
+                public var pageSize: Swift.Int32?
+                /// Optional. A page token, received from a previous `ListWebhooks` call.
+                /// Provide this to retrieve the subsequent page.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/GET/query/page_token`.
+                public var pageToken: Swift.String?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - pageSize: Optional. The maximum number of webhooks to return. The service may return
+                ///   - pageToken: Optional. A page token, received from a previous `ListWebhooks` call.
+                public init(
+                    pageSize: Swift.Int32? = nil,
+                    pageToken: Swift.String? = nil
+                ) {
+                    self.pageSize = pageSize
+                    self.pageToken = pageToken
+                }
+            }
+            public var query: Operations.ListWebhooks.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListWebhooks.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.ListWebhooks.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.ListWebhooks.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            public init(
+                path: Operations.ListWebhooks.Input.Path,
+                query: Operations.ListWebhooks.Input.Query = .init(),
+                headers: Operations.ListWebhooks.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/webhooks/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsListWebhooksResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsListWebhooksResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.ListWebhooks.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.ListWebhooks.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/webhooks/get(ListWebhooks)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.ListWebhooks.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.ListWebhooks.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Creates a new Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/post(CreateWebhook)`.
+    public enum CreateWebhook {
+        public static let id: Swift.String = "CreateWebhook"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                public init(apiVersion: Components.Parameters.InteractionsapiVersion) {
+                    self.apiVersion = apiVersion
+                }
+            }
+            public var path: Operations.CreateWebhook.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/query`.
+            public struct Query: Sendable, Hashable {
+                /// The webhook_id to use for the webhook. If not specified, the server will
+                /// generate a unique ID.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/query/webhook_id`.
+                public var webhookId: Swift.String?
+                /// Creates a new `Query`.
+                ///
+                /// - Parameters:
+                ///   - webhookId: The webhook_id to use for the webhook. If not specified, the server will
+                public init(webhookId: Swift.String? = nil) {
+                    self.webhookId = webhookId
+                }
+            }
+            public var query: Operations.CreateWebhook.Input.Query
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateWebhook.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.CreateWebhook.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.CreateWebhook.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsCreateWebhookRequest)
+            }
+            public var body: Operations.CreateWebhook.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - query:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.CreateWebhook.Input.Path,
+                query: Operations.CreateWebhook.Input.Query = .init(),
+                headers: Operations.CreateWebhook.Input.Headers = .init(),
+                body: Operations.CreateWebhook.Input.Body
+            ) {
+                self.path = path
+                self.query = query
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/webhooks/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsWebhook)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsWebhook {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.CreateWebhook.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.CreateWebhook.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/webhooks/post(CreateWebhook)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.CreateWebhook.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.CreateWebhook.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Gets a specific Webhook.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/get(GetWebhook)`.
+    public enum GetWebhook {
+        public static let id: Swift.String = "GetWebhook"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/GET/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/GET/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The ID of the webhook to retrieve.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/GET/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. The ID of the webhook to retrieve.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.GetWebhook.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/GET/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetWebhook.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.GetWebhook.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.GetWebhook.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.GetWebhook.Input.Path,
+                headers: Operations.GetWebhook.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/GET/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/GET/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsWebhook)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsWebhook {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.GetWebhook.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.GetWebhook.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/get(GetWebhook)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.GetWebhook.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.GetWebhook.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Updates an existing Webhook.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/patch(UpdateWebhook)`.
+    public enum UpdateWebhook {
+        public static let id: Swift.String = "UpdateWebhook"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/PATCH/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/PATCH/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The ID of the webhook to update.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/PATCH/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. The ID of the webhook to update.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.UpdateWebhook.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/PATCH/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UpdateWebhook.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.UpdateWebhook.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.UpdateWebhook.Input.Headers
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/PATCH/requestBody`.
+            @frozen public enum Body: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/PATCH/requestBody/content/application\/json`.
+                case json(Components.Schemas.InteractionsUpdateWebhookRequest)
+            }
+            public var body: Operations.UpdateWebhook.Input.Body
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            ///   - body:
+            public init(
+                path: Operations.UpdateWebhook.Input.Path,
+                headers: Operations.UpdateWebhook.Input.Headers = .init(),
+                body: Operations.UpdateWebhook.Input.Body
+            ) {
+                self.path = path
+                self.headers = headers
+                self.body = body
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/PATCH/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/PATCH/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsWebhook)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsWebhook {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.UpdateWebhook.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.UpdateWebhook.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/patch(UpdateWebhook)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.UpdateWebhook.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.UpdateWebhook.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Deletes a Webhook.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/delete(DeleteWebhook)`.
+    public enum DeleteWebhook {
+        public static let id: Swift.String = "DeleteWebhook"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/DELETE/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/DELETE/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The ID of the webhook to delete.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/DELETE/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. The ID of the webhook to delete.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.DeleteWebhook.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/DELETE/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteWebhook.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.DeleteWebhook.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.DeleteWebhook.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.DeleteWebhook.Input.Path,
+                headers: Operations.DeleteWebhook.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/DELETE/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}/DELETE/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsEmpty)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsEmpty {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.DeleteWebhook.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.DeleteWebhook.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/delete(DeleteWebhook)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.DeleteWebhook.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.DeleteWebhook.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Sends a ping event to a Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks/{id}:ping`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}:ping/post(PingWebhook)`.
+    public enum PingWebhook {
+        public static let id: Swift.String = "PingWebhook"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:ping/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:ping/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The ID of the webhook to ping.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:ping/POST/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. The ID of the webhook to ping.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.PingWebhook.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:ping/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.PingWebhook.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.PingWebhook.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.PingWebhook.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.PingWebhook.Input.Path,
+                headers: Operations.PingWebhook.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:ping/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:ping/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsPingWebhookResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsPingWebhookResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.PingWebhook.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.PingWebhook.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}:ping/post(PingWebhook)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.PingWebhook.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.PingWebhook.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
+    /// Generates a new signing secret for a Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks/{id}:rotateSigningSecret`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}:rotateSigningSecret/post(RotateSigningSecret)`.
+    public enum RotateSigningSecret {
+        public static let id: Swift.String = "RotateSigningSecret"
+        public struct Input: Sendable, Hashable {
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:rotateSigningSecret/POST/path`.
+            public struct Path: Sendable, Hashable {
+                /// API version for request routing.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:rotateSigningSecret/POST/path/api_version`.
+                public var apiVersion: Components.Parameters.InteractionsapiVersion
+                /// Required. The ID of the webhook for which to generate a signing secret.
+                ///
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:rotateSigningSecret/POST/path/id`.
+                public var id: Swift.String
+                /// Creates a new `Path`.
+                ///
+                /// - Parameters:
+                ///   - apiVersion: API version for request routing.
+                ///   - id: Required. The ID of the webhook for which to generate a signing secret.
+                public init(
+                    apiVersion: Components.Parameters.InteractionsapiVersion,
+                    id: Swift.String
+                ) {
+                    self.apiVersion = apiVersion
+                    self.id = id
+                }
+            }
+            public var path: Operations.RotateSigningSecret.Input.Path
+            /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:rotateSigningSecret/POST/header`.
+            public struct Headers: Sendable, Hashable {
+                public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.RotateSigningSecret.AcceptableContentType>]
+                /// Creates a new `Headers`.
+                ///
+                /// - Parameters:
+                ///   - accept:
+                public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Operations.RotateSigningSecret.AcceptableContentType>] = .defaultValues()) {
+                    self.accept = accept
+                }
+            }
+            public var headers: Operations.RotateSigningSecret.Input.Headers
+            /// Creates a new `Input`.
+            ///
+            /// - Parameters:
+            ///   - path:
+            ///   - headers:
+            public init(
+                path: Operations.RotateSigningSecret.Input.Path,
+                headers: Operations.RotateSigningSecret.Input.Headers = .init()
+            ) {
+                self.path = path
+                self.headers = headers
+            }
+        }
+        @frozen public enum Output: Sendable, Hashable {
+            public struct Default: Sendable, Hashable {
+                /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:rotateSigningSecret/POST/responses/default/content`.
+                @frozen public enum Body: Sendable, Hashable {
+                    /// - Remark: Generated from `#/paths/{api_version}/webhooks/{id}:rotateSigningSecret/POST/responses/default/content/application\/json`.
+                    case json(Components.Schemas.InteractionsRotateSigningSecretResponse)
+                    /// The associated value of the enum case if `self` is `.json`.
+                    ///
+                    /// - Throws: An error if `self` is not `.json`.
+                    /// - SeeAlso: `.json`.
+                    public var json: Components.Schemas.InteractionsRotateSigningSecretResponse {
+                        get throws {
+                            switch self {
+                            case let .json(body):
+                                return body
+                            }
+                        }
+                    }
+                }
+                /// Received HTTP response body
+                public var body: Operations.RotateSigningSecret.Output.Default.Body
+                /// Creates a new `Default`.
+                ///
+                /// - Parameters:
+                ///   - body: Received HTTP response body
+                public init(body: Operations.RotateSigningSecret.Output.Default.Body) {
+                    self.body = body
+                }
+            }
+            /// Successful operation
+            ///
+            /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}:rotateSigningSecret/post(RotateSigningSecret)/responses/default`.
+            ///
+            /// HTTP response code: `default`.
+            case `default`(statusCode: Swift.Int, Operations.RotateSigningSecret.Output.Default)
+            /// The associated value of the enum case if `self` is `.`default``.
+            ///
+            /// - Throws: An error if `self` is not `.`default``.
+            /// - SeeAlso: `.`default``.
+            public var `default`: Operations.RotateSigningSecret.Output.Default {
+                get throws {
+                    switch self {
+                    case let .`default`(_, response):
+                        return response
+                    }
+                }
+            }
+        }
+        @frozen public enum AcceptableContentType: AcceptableProtocol {
+            case json
+            case other(Swift.String)
+            public init?(rawValue: Swift.String) {
+                switch rawValue.lowercased() {
+                case "application/json":
+                    self = .json
+                default:
+                    self = .other(rawValue)
+                }
+            }
+            public var rawValue: Swift.String {
+                switch self {
+                case let .other(string):
+                    return string
+                case .json:
+                    return "application/json"
+                }
+            }
+            public static var allCases: [Self] {
+                [
+                    .json
+                ]
+            }
+        }
+    }
 }

@@ -21,3 +21,7 @@ trufflehog-report.json
 # Local byte relocation transactions and interrupted spec downloads
 .srcmv/
 .original-openapi.*
+
+# Sanitized per-source generation intermediates and Python caches
+.generation/
+__pycache__/

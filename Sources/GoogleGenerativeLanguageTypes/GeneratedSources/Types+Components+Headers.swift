@@ -17,5 +17,10 @@ public import struct Foundation.Data
 public import struct Foundation.Date
 extension Components {
     /// Types generated from the `#/components/headers` section of the OpenAPI document.
-    public enum Headers {}
+    public enum Headers {
+        /// Opaque URL to which file chunks are uploaded and finalized.
+        ///
+        /// - Remark: Generated from `#/components/headers/InteractionsEnvironmentFileUploadUrl`.
+        public typealias InteractionsEnvironmentFileUploadUrl = Swift.String
+    }
 }

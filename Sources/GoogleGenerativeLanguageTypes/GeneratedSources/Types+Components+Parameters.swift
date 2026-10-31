@@ -42,5 +42,41 @@ extension Components {
         ///
         /// - Remark: Generated from `#/components/parameters/prettyPrint`.
         public typealias PrettyPrint = Swift.Bool
+        /// Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
+        ///
+        /// - Remark: Generated from `#/components/parameters/InteractionsEnvironmentFileExtract`.
+        public typealias InteractionsEnvironmentFileExtract = Swift.Bool
+        /// Optional. Whether to overwrite the destination file if it already exists.
+        ///
+        /// - Remark: Generated from `#/components/parameters/InteractionsEnvironmentFileOverwrite`.
+        public typealias InteractionsEnvironmentFileOverwrite = Swift.Bool
+        /// Command that starts the resumable upload session.
+        ///
+        /// - Remark: Generated from `#/components/parameters/InteractionsEnvironmentFileUploadCommand`.
+        @frozen public enum InteractionsEnvironmentFileUploadCommand: String, Codable, Hashable, Sendable, CaseIterable {
+            case start = "start"
+        }
+        /// Total number of file bytes that will be uploaded to the session URL.
+        ///
+        /// - Remark: Generated from `#/components/parameters/InteractionsEnvironmentFileUploadContentLength`.
+        public typealias InteractionsEnvironmentFileUploadContentLength = Swift.Int64
+        /// MIME type of the file that will be uploaded to the session URL.
+        ///
+        /// - Remark: Generated from `#/components/parameters/InteractionsEnvironmentFileUploadContentType`.
+        public typealias InteractionsEnvironmentFileUploadContentType = Swift.String
+        /// Resumable upload protocol selector.
+        ///
+        /// - Remark: Generated from `#/components/parameters/InteractionsEnvironmentFileUploadProtocol`.
+        @frozen public enum InteractionsEnvironmentFileUploadProtocol: String, Codable, Hashable, Sendable, CaseIterable {
+            case resumable = "resumable"
+        }
+        /// API version for request routing.
+        ///
+        /// - Remark: Generated from `#/components/parameters/Interactionsapi_version`.
+        public typealias InteractionsapiVersion = Swift.String
+        /// Quota project header to send with Google GenAI API requests.
+        ///
+        /// - Remark: Generated from `#/components/parameters/Interactionsgoogle_genai_user_project`.
+        public typealias InteractionsgoogleGenaiUserProject = Swift.String
     }
 }

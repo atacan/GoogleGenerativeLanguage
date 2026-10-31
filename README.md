@@ -114,14 +114,46 @@ let uri = try await uploadFileToGemini(
 
 The helper starts a resumable session and uploads the bytes. The supplied MIME type and byte count are sent in upload headers; an omitted MIME type defaults to `application/octet-stream`.
 
+## Transcribe audio
+
+The [beta Interactions schema](https://ai.google.dev/static/api/interactions.openapi.json) supplies the endpoint used by Google's [transcription guide](https://ai.google.dev/gemini-api/docs/transcribe#rest). Use the same client with the global server URL from `Servers.Server1.url()`:
+
+```swift
+let audio = try Data(contentsOf: URL(fileURLWithPath: "sample.mp3"))
+let audioURI = try await uploadFileToGemini(
+    client: client, fileData: HTTPBody(audio),
+    mimeType: "audio/mpeg", sizeBytes: audio.count
+)
+let interaction = try await client.transcribeAudio(
+    fileURI: audioURI,
+    mimeType: .audioMpeg,
+    configuration: .init(
+        languageCodes: ["en-US"],
+        mode: .InteractionsTranscriptionMode(.InteractionsVerbatimTranscriptionMode(.init(
+            diarizationMode: "speaker", timestampGranularities: ["word"], _type: .verbatim
+        )))
+    )
+)
+print(interaction.outputText)
+for word in interaction.wordAnnotations {
+    print(word.text ?? "", word.speaker ?? "", word.startOffset ?? "", word.endOffset ?? "")
+}
+```
+
+The helper defaults to `gemini-3.5-transcribe` and returns the full generated interaction. Omit `configuration` for default transcription. Smart transcription uses `configuration: .init(mode: .case2(.smart))`; language hints and custom vocabulary are also available in the typed configuration. Follow Google's documented constraints when combining features.
+
+For direct access, `client.createInteraction(path: .init(apiVersion: "v1beta"), body: ...)` supports inline audio, other interaction inputs, typed error responses, and SSE with `stream: true`. Decode `response.ok.body.textEventStream` using `asDecodedServerSentEventsWithJSONData(of: Components.Schemas.InteractionsInteractionSseEvent.self)`. The transcription helper requests a JSON response; use the generated operation when you need streaming or direct status/error handling.
+
+Interactions components carry an `Interactions` prefix, such as `Components.Schemas.InteractionsTranscriptionConfig`, to avoid collisions with Discovery types. Existing client products and transport factories serve both APIs. API-key or bearer credentials can authenticate Interactions operations; model strings accept the documented transcription model and future IDs.
+
 ## Regenerate
 
 Install `uv`, Swift 6.2+, Python 3, curl, and Speakeasy's `openapi` CLI (`brew install openapi`). Then:
 
 ```sh
-make prepare-openapi   # Download the latest spec, sanitize, overlay, generate
+make prepare-openapi   # Download both official specs, sanitize, overlay, merge, generate
 make download-openapi  # Only download and sort; no API key needed
-make regenerate        # Regenerate from the checked-in source spec
+make regenerate        # Regenerate from both checked-in source specs
 make build
 make test-offline
 ```
@@ -132,9 +164,11 @@ make test-offline
 make regenerate BOOTSTRAPPER='uv run --directory ../swift-package-generator-based-on-openapi swift-bootstrapper'
 ```
 
-`original_openapi.json` is the downloaded source; `openapi.json` and `Sources/*/GeneratedSources/` are generated. Edit `openapi-overlay.json` for Google-specific corrections. Regeneration starts from the original spec and preserves handwritten helpers and configuration. `generate`, `generate-openapi`, and `overlay-openapi` remain compatibility aliases for full regeneration.
+The downloaded sources and editable overlays live in `specifications/discovery/` and `specifications/interactions/`. `make regenerate` sanitizes and overlays each input independently, then `scripts/merge_openapi.py` combines them while preserving existing operation IDs and namespacing added components. It carries Interactions authentication onto each operation so the Discovery root security does not override it.
 
-The overlay adds missing API-key security while retaining OAuth/bearer alternatives, streaming response types and `sse`, the resumable upload operation, a role enum, and relaxed model response requirements. These are Google-specific semantics and should remain outside the general sanitizer. No common schema blocker required a new transformer. A general Makefile compatibility bug was fixed in the generator template: shell flags now work with macOS GNU Make 3.81, which ignores `.SHELLFLAGS`. See [MIGRATION.md](MIGRATION.md) for source compatibility changes and validation notes.
+The root `original_openapi.json` is the generated combined bootstrapper input; `openapi.json` is its final sanitized output. Both are checked in with the generated Swift. Per-source intermediates live in ignored `.generation/`. Edit the overlays under `specifications/`; the root `openapi-overlay.json` intentionally has no actions. `generate`, `generate-openapi`, and `overlay-openapi` remain compatibility aliases for full regeneration.
+
+The Discovery overlay retains API-key/OAuth/bearer alternatives, streaming responses, resumable uploads, a role enum, and relaxed model response requirements. The Interactions overlay makes Google's open model enum a string, maps Speakeasy authentication to API-key/bearer alternatives, and supplies missing string types for union tags. Inferring scalar types from `const` is a possible general sanitizer improvement; the current Google tag correction is explicit in its overlay. The Makefile also handles shell failures on macOS GNU Make 3.81. See [MIGRATION.md](MIGRATION.md) for source compatibility changes and validation notes.
 
 Offline tests use stub responses and do not load API keys. The existing live tests require explicit opt-in with exported `RUN_LIVE_TESTS=1` and `GEMINI_API_KEY`; audio tests also need their local fixture paths updated. The migration did not run live API requests.
 

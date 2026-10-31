@@ -16496,5 +16496,10503 @@ extension Components {
             case user = "user"
             case model = "model"
         }
+        /// An agent definition for the CreateAgent API.
+        /// This message is the target for annotation-parser-based JSON parsing.
+        /// New format:
+        ///   {
+        ///     "id": "customer-sentinel",
+        ///     "base_agent": "",
+        ///     "system_instruction": "...",
+        ///     "base_environment": { "type": "remote", "sources": [...] },
+        ///     "tools": [ {"type": "code_execution"} ]
+        ///   }
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAgent`.
+        public struct InteractionsAgent: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgent/agent_config`.
+            public var agentConfig: Components.Schemas.InteractionsAntigravityAgentConfig?
+            /// The base agent to extend.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgent/base_agent`.
+            public var baseAgent: Swift.String?
+            /// The environment configuration for the agent.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgent/base_environment`.
+            @frozen public enum BaseEnvironmentPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsAgent/base_environment/case1`.
+                case InteractionsEnvironmentConfig(Components.Schemas.InteractionsEnvironmentConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsAgent/base_environment/case2`.
+                case case2(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsEnvironmentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsEnvironmentConfig(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// The environment configuration for the agent.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgent/base_environment`.
+            public var baseEnvironment: Components.Schemas.InteractionsAgent.BaseEnvironmentPayload?
+            /// Agent description for developers to quickly read and understand.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgent/description`.
+            public var description: Swift.String?
+            /// The unique identifier for the agent.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgent/id`.
+            public var id: Swift.String?
+            /// System instruction for the agent.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgent/system_instruction`.
+            public var systemInstruction: Swift.String?
+            /// The tools available to the agent.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgent/tools`.
+            public var tools: [Components.Schemas.InteractionsAgentTool]?
+            /// Creates a new `InteractionsAgent`.
+            ///
+            /// - Parameters:
+            ///   - agentConfig:
+            ///   - baseAgent: The base agent to extend.
+            ///   - baseEnvironment: The environment configuration for the agent.
+            ///   - description: Agent description for developers to quickly read and understand.
+            ///   - id: The unique identifier for the agent.
+            ///   - systemInstruction: System instruction for the agent.
+            ///   - tools: The tools available to the agent.
+            public init(
+                agentConfig: Components.Schemas.InteractionsAntigravityAgentConfig? = nil,
+                baseAgent: Swift.String? = nil,
+                baseEnvironment: Components.Schemas.InteractionsAgent.BaseEnvironmentPayload? = nil,
+                description: Swift.String? = nil,
+                id: Swift.String? = nil,
+                systemInstruction: Swift.String? = nil,
+                tools: [Components.Schemas.InteractionsAgentTool]? = nil
+            ) {
+                self.agentConfig = agentConfig
+                self.baseAgent = baseAgent
+                self.baseEnvironment = baseEnvironment
+                self.description = description
+                self.id = id
+                self.systemInstruction = systemInstruction
+                self.tools = tools
+            }
+            public enum CodingKeys: String, CodingKey {
+                case agentConfig = "agent_config"
+                case baseAgent = "base_agent"
+                case baseEnvironment = "base_environment"
+                case description
+                case id
+                case systemInstruction = "system_instruction"
+                case tools
+            }
+        }
+        /// The agent to interact with.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAgentOption`.
+        @frozen public enum InteractionsAgentOption: String, Codable, Hashable, Sendable, CaseIterable {
+            case deepResearchPreview042026 = "deep-research-preview-04-2026"
+            case deepResearchMaxPreview042026 = "deep-research-max-preview-04-2026"
+            case antigravityPreview052026 = "antigravity-preview-05-2026"
+        }
+        /// A tool that the agent can use.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAgentTool`.
+        @frozen public enum InteractionsAgentTool: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgentTool/case1`.
+            case InteractionsCodeExecution(Components.Schemas.InteractionsCodeExecution)
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgentTool/case2`.
+            case InteractionsFunction(Components.Schemas.InteractionsFunction)
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgentTool/case3`.
+            case InteractionsGoogleSearch(Components.Schemas.InteractionsGoogleSearch)
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgentTool/case4`.
+            case InteractionsMcpServer(Components.Schemas.InteractionsMcpServer)
+            /// - Remark: Generated from `#/components/schemas/InteractionsAgentTool/case5`.
+            case InteractionsUrlContext(Components.Schemas.InteractionsUrlContext)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsCodeExecution(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFunction(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleSearch(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsMcpServer(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsUrlContext(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsCodeExecution(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFunction(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleSearch(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsMcpServer(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsUrlContext(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// The configuration for allowed tools.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAllowedTools`.
+        public struct InteractionsAllowedTools: Codable, Hashable, Sendable {
+            /// The mode of the tool choice.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAllowedTools/mode`.
+            @frozen public enum ModePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case auto = "auto"
+                case any = "any"
+                case none = "none"
+                case validated = "validated"
+            }
+            /// The mode of the tool choice.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAllowedTools/mode`.
+            public var mode: Components.Schemas.InteractionsAllowedTools.ModePayload?
+            /// The names of the allowed tools.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAllowedTools/tools`.
+            public var tools: [Swift.String]?
+            /// Creates a new `InteractionsAllowedTools`.
+            ///
+            /// - Parameters:
+            ///   - mode: The mode of the tool choice.
+            ///   - tools: The names of the allowed tools.
+            public init(
+                mode: Components.Schemas.InteractionsAllowedTools.ModePayload? = nil,
+                tools: [Swift.String]? = nil
+            ) {
+                self.mode = mode
+                self.tools = tools
+            }
+            public enum CodingKeys: String, CodingKey {
+                case mode
+                case tools
+            }
+        }
+        /// Citation information for model-generated content.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAnnotation`.
+        @frozen public enum InteractionsAnnotation: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsAnnotation/case1`.
+            case InteractionsFileCitation(Components.Schemas.InteractionsFileCitation)
+            /// - Remark: Generated from `#/components/schemas/InteractionsAnnotation/case2`.
+            case InteractionsPlaceCitation(Components.Schemas.InteractionsPlaceCitation)
+            /// - Remark: Generated from `#/components/schemas/InteractionsAnnotation/case3`.
+            case InteractionsSpeechAnnotation(Components.Schemas.InteractionsSpeechAnnotation)
+            /// - Remark: Generated from `#/components/schemas/InteractionsAnnotation/case4`.
+            case InteractionsUrlCitation(Components.Schemas.InteractionsUrlCitation)
+            /// - Remark: Generated from `#/components/schemas/InteractionsAnnotation/case5`.
+            case InteractionsWordInfo(Components.Schemas.InteractionsWordInfo)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsFileCitation(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsPlaceCitation(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsSpeechAnnotation(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsUrlCitation(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsWordInfo(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsFileCitation(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsPlaceCitation(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsSpeechAnnotation(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsUrlCitation(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsWordInfo(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// Configuration for the Antigravity agent runtime.
+        /// Provides server-side control over the agent's execution environment
+        /// and tool configuration.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAntigravityAgentConfig`.
+        public struct InteractionsAntigravityAgentConfig: Codable, Hashable, Sendable {
+            /// Max total tokens for the agent run.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAntigravityAgentConfig/max_total_tokens`.
+            public var maxTotalTokens: Swift.String?
+            /// The model to use for agent reasoning.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAntigravityAgentConfig/model`.
+            public var model: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsAntigravityAgentConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case antigravity = "antigravity"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsAntigravityAgentConfig/type`.
+            public var _type: Components.Schemas.InteractionsAntigravityAgentConfig._TypePayload
+            /// Creates a new `InteractionsAntigravityAgentConfig`.
+            ///
+            /// - Parameters:
+            ///   - maxTotalTokens: Max total tokens for the agent run.
+            ///   - model: The model to use for agent reasoning.
+            ///   - _type:
+            public init(
+                maxTotalTokens: Swift.String? = nil,
+                model: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsAntigravityAgentConfig._TypePayload
+            ) {
+                self.maxTotalTokens = maxTotalTokens
+                self.model = model
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case maxTotalTokens = "max_total_tokens"
+                case model
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsArgumentsDelta`.
+        public struct InteractionsArgumentsDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsArgumentsDelta/arguments`.
+            public var arguments: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsArgumentsDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case argumentsDelta = "arguments_delta"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsArgumentsDelta/type`.
+            public var _type: Components.Schemas.InteractionsArgumentsDelta._TypePayload
+            /// Creates a new `InteractionsArgumentsDelta`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - _type:
+            public init(
+                arguments: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsArgumentsDelta._TypePayload
+            ) {
+                self.arguments = arguments
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case _type = "type"
+            }
+        }
+        /// An audio content block.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent`.
+        public struct InteractionsAudioContent: Codable, Hashable, Sendable {
+            /// The number of audio channels.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent/channels`.
+            public var channels: Swift.Int32?
+            /// The audio content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// The mime type of the audio.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case audioWav = "audio/wav"
+                case audioMp3 = "audio/mp3"
+                case audioAiff = "audio/aiff"
+                case audioAac = "audio/aac"
+                case audioOgg = "audio/ogg"
+                case audioFlac = "audio/flac"
+                case audioMpeg = "audio/mpeg"
+                case audioM4a = "audio/m4a"
+                case audioL16 = "audio/l16"
+                case audioOpus = "audio/opus"
+                case audioAlaw = "audio/alaw"
+                case audioMulaw = "audio/mulaw"
+                case audioWebm = "audio/webm"
+            }
+            /// The mime type of the audio.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsAudioContent.MimeTypePayload?
+            /// The sample rate of the audio.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent/sample_rate`.
+            public var sampleRate: Swift.Int32?
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case audio = "audio"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent/type`.
+            public var _type: Components.Schemas.InteractionsAudioContent._TypePayload
+            /// The URI of the audio.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioContent/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsAudioContent`.
+            ///
+            /// - Parameters:
+            ///   - channels: The number of audio channels.
+            ///   - data: The audio content.
+            ///   - mimeType: The mime type of the audio.
+            ///   - sampleRate: The sample rate of the audio.
+            ///   - _type:
+            ///   - uri: The URI of the audio.
+            public init(
+                channels: Swift.Int32? = nil,
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                mimeType: Components.Schemas.InteractionsAudioContent.MimeTypePayload? = nil,
+                sampleRate: Swift.Int32? = nil,
+                _type: Components.Schemas.InteractionsAudioContent._TypePayload,
+                uri: Swift.String? = nil
+            ) {
+                self.channels = channels
+                self.data = data
+                self.mimeType = mimeType
+                self.sampleRate = sampleRate
+                self._type = _type
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case channels
+                case data
+                case mimeType = "mime_type"
+                case sampleRate = "sample_rate"
+                case _type = "type"
+                case uri
+            }
+        }
+        /// Audio payload used for voice creation.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAudioData`.
+        public struct InteractionsAudioData: Codable, Hashable, Sendable {
+            /// Required. The raw audio bytes.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioData/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData
+            /// Required. The IANA MIME type of the audio data (for example, `audio/wav` or
+            /// `audio/mpeg`).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioData/mime_type`.
+            public var mimeType: Swift.String
+            /// Creates a new `InteractionsAudioData`.
+            ///
+            /// - Parameters:
+            ///   - data: Required. The raw audio bytes.
+            ///   - mimeType: Required. The IANA MIME type of the audio data (for example, `audio/wav` or
+            public init(
+                data: OpenAPIRuntime.Base64EncodedData,
+                mimeType: Swift.String
+            ) {
+                self.data = data
+                self.mimeType = mimeType
+            }
+            public enum CodingKeys: String, CodingKey {
+                case data
+                case mimeType = "mime_type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta`.
+        public struct InteractionsAudioDelta: Codable, Hashable, Sendable {
+            /// The number of audio channels.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/channels`.
+            public var channels: Swift.Int32?
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case audioWav = "audio/wav"
+                case audioMp3 = "audio/mp3"
+                case audioAiff = "audio/aiff"
+                case audioAac = "audio/aac"
+                case audioOgg = "audio/ogg"
+                case audioFlac = "audio/flac"
+                case audioMpeg = "audio/mpeg"
+                case audioM4a = "audio/m4a"
+                case audioL16 = "audio/l16"
+                case audioOpus = "audio/opus"
+                case audioAlaw = "audio/alaw"
+                case audioMulaw = "audio/mulaw"
+                case audioWebm = "audio/webm"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsAudioDelta.MimeTypePayload?
+            /// Deprecated. Use sample_rate instead. The value is ignored.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/rate`.
+            @available(*, deprecated)
+            public var rate: Swift.Int32?
+            /// The sample rate of the audio.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/sample_rate`.
+            public var sampleRate: Swift.Int32?
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case audio = "audio"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/type`.
+            public var _type: Components.Schemas.InteractionsAudioDelta._TypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsAudioDelta`.
+            ///
+            /// - Parameters:
+            ///   - channels: The number of audio channels.
+            ///   - data:
+            ///   - mimeType:
+            ///   - rate: Deprecated. Use sample_rate instead. The value is ignored.
+            ///   - sampleRate: The sample rate of the audio.
+            ///   - _type:
+            ///   - uri:
+            public init(
+                channels: Swift.Int32? = nil,
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                mimeType: Components.Schemas.InteractionsAudioDelta.MimeTypePayload? = nil,
+                rate: Swift.Int32? = nil,
+                sampleRate: Swift.Int32? = nil,
+                _type: Components.Schemas.InteractionsAudioDelta._TypePayload,
+                uri: Swift.String? = nil
+            ) {
+                self.channels = channels
+                self.data = data
+                self.mimeType = mimeType
+                self.rate = rate
+                self.sampleRate = sampleRate
+                self._type = _type
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case channels
+                case data
+                case mimeType = "mime_type"
+                case rate
+                case sampleRate = "sample_rate"
+                case _type = "type"
+                case uri
+            }
+        }
+        /// Configuration for audio output format.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat`.
+        public struct InteractionsAudioResponseFormat: Codable, Hashable, Sendable {
+            /// Bit rate in bits per second (bps). Only applicable for compressed formats
+            /// (MP3, Opus).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat/bit_rate`.
+            public var bitRate: Swift.Int32?
+            /// The delivery mode for the audio output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat/delivery`.
+            @frozen public enum DeliveryPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inline = "inline"
+                case uri = "uri"
+            }
+            /// The delivery mode for the audio output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat/delivery`.
+            public var delivery: Components.Schemas.InteractionsAudioResponseFormat.DeliveryPayload?
+            /// The MIME type of the audio output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case audioMp3 = "audio/mp3"
+                case audioOggOpus = "audio/ogg_opus"
+                case audioL16 = "audio/l16"
+                case audioWav = "audio/wav"
+                case audioAlaw = "audio/alaw"
+                case audioMulaw = "audio/mulaw"
+            }
+            /// The MIME type of the audio output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsAudioResponseFormat.MimeTypePayload?
+            /// Sample rate in Hz.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat/sample_rate`.
+            public var sampleRate: Swift.Int32?
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case audio = "audio"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsAudioResponseFormat/type`.
+            public var _type: Components.Schemas.InteractionsAudioResponseFormat._TypePayload
+            /// Creates a new `InteractionsAudioResponseFormat`.
+            ///
+            /// - Parameters:
+            ///   - bitRate: Bit rate in bits per second (bps). Only applicable for compressed formats
+            ///   - delivery: The delivery mode for the audio output.
+            ///   - mimeType: The MIME type of the audio output.
+            ///   - sampleRate: Sample rate in Hz.
+            ///   - _type:
+            public init(
+                bitRate: Swift.Int32? = nil,
+                delivery: Components.Schemas.InteractionsAudioResponseFormat.DeliveryPayload? = nil,
+                mimeType: Components.Schemas.InteractionsAudioResponseFormat.MimeTypePayload? = nil,
+                sampleRate: Swift.Int32? = nil,
+                _type: Components.Schemas.InteractionsAudioResponseFormat._TypePayload
+            ) {
+                self.bitRate = bitRate
+                self.delivery = delivery
+                self.mimeType = mimeType
+                self.sampleRate = sampleRate
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case bitRate = "bit_rate"
+                case delivery
+                case mimeType = "mime_type"
+                case sampleRate = "sample_rate"
+                case _type = "type"
+            }
+        }
+        /// A tool that can be used by the model to execute code.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecution`.
+        public struct InteractionsCodeExecution: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecution/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case codeExecution = "code_execution"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecution/type`.
+            public var _type: Components.Schemas.InteractionsCodeExecution._TypePayload
+            /// Creates a new `InteractionsCodeExecution`.
+            ///
+            /// - Parameters:
+            ///   - _type:
+            public init(_type: Components.Schemas.InteractionsCodeExecution._TypePayload) {
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case _type = "type"
+            }
+        }
+        /// The arguments to pass to the code execution.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallArguments`.
+        public struct InteractionsCodeExecutionCallArguments: Codable, Hashable, Sendable {
+            /// The code to be executed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallArguments/code`.
+            public var code: Swift.String?
+            /// Programming language of the `code`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallArguments/language`.
+            @frozen public enum LanguagePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case python = "python"
+                case bash = "bash"
+            }
+            /// Programming language of the `code`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallArguments/language`.
+            public var language: Components.Schemas.InteractionsCodeExecutionCallArguments.LanguagePayload?
+            /// Creates a new `InteractionsCodeExecutionCallArguments`.
+            ///
+            /// - Parameters:
+            ///   - code: The code to be executed.
+            ///   - language: Programming language of the `code`.
+            public init(
+                code: Swift.String? = nil,
+                language: Components.Schemas.InteractionsCodeExecutionCallArguments.LanguagePayload? = nil
+            ) {
+                self.code = code
+                self.language = language
+            }
+            public enum CodingKeys: String, CodingKey {
+                case code
+                case language
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallDelta`.
+        public struct InteractionsCodeExecutionCallDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallDelta/arguments`.
+            public var arguments: Components.Schemas.InteractionsCodeExecutionCallArguments
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case codeExecutionCall = "code_execution_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallDelta/type`.
+            public var _type: Components.Schemas.InteractionsCodeExecutionCallDelta._TypePayload
+            /// Creates a new `InteractionsCodeExecutionCallDelta`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsCodeExecutionCallArguments,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsCodeExecutionCallDelta._TypePayload
+            ) {
+                self.arguments = arguments
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case signature
+                case _type = "type"
+            }
+        }
+        /// Code execution call step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStep`.
+        public struct InteractionsCodeExecutionCallStep: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStep/arguments`.
+            public var arguments: Components.Schemas.InteractionsCodeExecutionCallStepArguments
+            /// Required. A unique ID for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStep/id`.
+            public var id: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case codeExecutionCall = "code_execution_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStep/type`.
+            public var _type: Components.Schemas.InteractionsCodeExecutionCallStep._TypePayload
+            /// Creates a new `InteractionsCodeExecutionCallStep`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - id: Required. A unique ID for this specific tool call.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsCodeExecutionCallStepArguments,
+                id: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsCodeExecutionCallStep._TypePayload
+            ) {
+                self.arguments = arguments
+                self.id = id
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case id
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The arguments to pass to the code execution.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStepArguments`.
+        public struct InteractionsCodeExecutionCallStepArguments: Codable, Hashable, Sendable {
+            /// The code to be executed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStepArguments/code`.
+            public var code: Swift.String?
+            /// Programming language of the `code`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStepArguments/language`.
+            @frozen public enum LanguagePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case python = "python"
+                case bash = "bash"
+            }
+            /// Programming language of the `code`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionCallStepArguments/language`.
+            public var language: Components.Schemas.InteractionsCodeExecutionCallStepArguments.LanguagePayload?
+            /// Creates a new `InteractionsCodeExecutionCallStepArguments`.
+            ///
+            /// - Parameters:
+            ///   - code: The code to be executed.
+            ///   - language: Programming language of the `code`.
+            public init(
+                code: Swift.String? = nil,
+                language: Components.Schemas.InteractionsCodeExecutionCallStepArguments.LanguagePayload? = nil
+            ) {
+                self.code = code
+                self.language = language
+            }
+            public enum CodingKeys: String, CodingKey {
+                case code
+                case language
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultDelta`.
+        public struct InteractionsCodeExecutionResultDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultDelta/is_error`.
+            public var isError: Swift.Bool?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultDelta/result`.
+            public var result: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case codeExecutionResult = "code_execution_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultDelta/type`.
+            public var _type: Components.Schemas.InteractionsCodeExecutionResultDelta._TypePayload
+            /// Creates a new `InteractionsCodeExecutionResultDelta`.
+            ///
+            /// - Parameters:
+            ///   - isError:
+            ///   - result:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                isError: Swift.Bool? = nil,
+                result: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsCodeExecutionResultDelta._TypePayload
+            ) {
+                self.isError = isError
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case isError = "is_error"
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// Code execution result step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultStep`.
+        public struct InteractionsCodeExecutionResultStep: Codable, Hashable, Sendable {
+            /// Required. ID to match the ID from the function call block.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultStep/call_id`.
+            public var callId: Swift.String
+            /// Whether the code execution resulted in an error.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultStep/is_error`.
+            public var isError: Swift.Bool?
+            /// Required. The output of the code execution.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultStep/result`.
+            public var result: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case codeExecutionResult = "code_execution_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsCodeExecutionResultStep/type`.
+            public var _type: Components.Schemas.InteractionsCodeExecutionResultStep._TypePayload
+            /// Creates a new `InteractionsCodeExecutionResultStep`.
+            ///
+            /// - Parameters:
+            ///   - callId: Required. ID to match the ID from the function call block.
+            ///   - isError: Whether the code execution resulted in an error.
+            ///   - result: Required. The output of the code execution.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                callId: Swift.String,
+                isError: Swift.Bool? = nil,
+                result: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsCodeExecutionResultStep._TypePayload
+            ) {
+                self.callId = callId
+                self.isError = isError
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case callId = "call_id"
+                case isError = "is_error"
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// A tool that can be used by the model to interact with the computer.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse`.
+        public struct InteractionsComputerUse: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/DisabledSafetyPoliciesPayload`.
+            @frozen public enum DisabledSafetyPoliciesPayloadPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case financialTransactions = "financial_transactions"
+                case sensitiveDataModification = "sensitive_data_modification"
+                case communicationTool = "communication_tool"
+                case accountCreation = "account_creation"
+                case dataModification = "data_modification"
+                case userConsentManagement = "user_consent_management"
+                case legalTermsAndAgreements = "legal_terms_and_agreements"
+            }
+            /// Optional. Disabled safety policies for computer use.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/disabled_safety_policies`.
+            public typealias DisabledSafetyPoliciesPayload = [Components.Schemas.InteractionsComputerUse.DisabledSafetyPoliciesPayloadPayload]
+            /// Optional. Disabled safety policies for computer use.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/disabled_safety_policies`.
+            public var disabledSafetyPolicies: Components.Schemas.InteractionsComputerUse.DisabledSafetyPoliciesPayload?
+            /// Whether enable the prompt injection detection check on computer-use
+            /// request.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/enable_prompt_injection_detection`.
+            public var enablePromptInjectionDetection: Swift.Bool?
+            /// The environment being operated.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/environment`.
+            @frozen public enum EnvironmentPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case browser = "browser"
+                case mobile = "mobile"
+                case desktop = "desktop"
+            }
+            /// The environment being operated.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/environment`.
+            public var environment: Components.Schemas.InteractionsComputerUse.EnvironmentPayload?
+            /// The list of predefined functions that are excluded from the model call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/excluded_predefined_functions`.
+            public var excludedPredefinedFunctions: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case computerUse = "computer_use"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsComputerUse/type`.
+            public var _type: Components.Schemas.InteractionsComputerUse._TypePayload
+            /// Creates a new `InteractionsComputerUse`.
+            ///
+            /// - Parameters:
+            ///   - disabledSafetyPolicies: Optional. Disabled safety policies for computer use.
+            ///   - enablePromptInjectionDetection: Whether enable the prompt injection detection check on computer-use
+            ///   - environment: The environment being operated.
+            ///   - excludedPredefinedFunctions: The list of predefined functions that are excluded from the model call.
+            ///   - _type:
+            public init(
+                disabledSafetyPolicies: Components.Schemas.InteractionsComputerUse.DisabledSafetyPoliciesPayload? = nil,
+                enablePromptInjectionDetection: Swift.Bool? = nil,
+                environment: Components.Schemas.InteractionsComputerUse.EnvironmentPayload? = nil,
+                excludedPredefinedFunctions: [Swift.String]? = nil,
+                _type: Components.Schemas.InteractionsComputerUse._TypePayload
+            ) {
+                self.disabledSafetyPolicies = disabledSafetyPolicies
+                self.enablePromptInjectionDetection = enablePromptInjectionDetection
+                self.environment = environment
+                self.excludedPredefinedFunctions = excludedPredefinedFunctions
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case disabledSafetyPolicies = "disabled_safety_policies"
+                case enablePromptInjectionDetection = "enable_prompt_injection_detection"
+                case environment
+                case excludedPredefinedFunctions = "excluded_predefined_functions"
+                case _type = "type"
+            }
+        }
+        /// The content of the response.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsContent`.
+        @frozen public enum InteractionsContent: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsContent/case1`.
+            case InteractionsAudioContent(Components.Schemas.InteractionsAudioContent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsContent/case2`.
+            case InteractionsDocumentContent(Components.Schemas.InteractionsDocumentContent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsContent/case3`.
+            case InteractionsImageContent(Components.Schemas.InteractionsImageContent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsContent/case4`.
+            case InteractionsTextContent(Components.Schemas.InteractionsTextContent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsContent/case5`.
+            case InteractionsVideoContent(Components.Schemas.InteractionsVideoContent)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsAudioContent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsDocumentContent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsImageContent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsTextContent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsVideoContent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsAudioContent(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsDocumentContent(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsImageContent(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsTextContent(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsVideoContent(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// Parameters for creating agent interactions
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams`.
+        public struct InteractionsCreateAgentInteractionParams: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/agent`.
+            public var agent: Components.Schemas.InteractionsAgentOption
+            /// Configuration parameters for the agent interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/agent_config`.
+            @frozen public enum AgentConfigPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/agent_config/case1`.
+                case InteractionsAntigravityAgentConfig(Components.Schemas.InteractionsAntigravityAgentConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/agent_config/case2`.
+                case InteractionsDeepResearchAgentConfig(Components.Schemas.InteractionsDeepResearchAgentConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/agent_config/case3`.
+                case InteractionsDynamicAgentConfig(Components.Schemas.InteractionsDynamicAgentConfig)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsAntigravityAgentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .InteractionsDeepResearchAgentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .InteractionsDynamicAgentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsAntigravityAgentConfig(value):
+                        try value.encode(to: encoder)
+                    case let .InteractionsDeepResearchAgentConfig(value):
+                        try value.encode(to: encoder)
+                    case let .InteractionsDynamicAgentConfig(value):
+                        try value.encode(to: encoder)
+                    }
+                }
+            }
+            /// Configuration parameters for the agent interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/agent_config`.
+            public var agentConfig: Components.Schemas.InteractionsCreateAgentInteractionParams.AgentConfigPayload?
+            /// Input only. Whether to run the model interaction in the background.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/background`.
+            public var background: Swift.Bool?
+            /// Opaque token to resume a long decode. Output: set when status is
+            /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest
+            /// token back unchanged in CreateInteraction to continue decoding.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/continuation_token`.
+            public var continuationToken: OpenAPIRuntime.Base64EncodedData?
+            /// Required. Output only. The time at which the response was created in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/created`.
+            public var created: Swift.String?
+            /// The environment configuration for the interaction. Can be an object
+            /// specifying remote environment sources or a string referencing an existing
+            /// environment ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/environment`.
+            @frozen public enum EnvironmentPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/environment/case1`.
+                case InteractionsEnvironmentConfig(Components.Schemas.InteractionsEnvironmentConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/environment/case2`.
+                case case2(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsEnvironmentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsEnvironmentConfig(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// The environment configuration for the interaction. Can be an object
+            /// specifying remote environment sources or a string referencing an existing
+            /// environment ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/environment`.
+            public var environment: Components.Schemas.InteractionsCreateAgentInteractionParams.EnvironmentPayload?
+            /// Output only. The environment ID for the interaction. Only populated if environment
+            /// config is set in the request.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/environment_id`.
+            public var environmentId: Swift.String?
+            /// Required. Output only. A unique identifier for the interaction completion.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/id`.
+            public var id: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/input`.
+            public var input: Components.Schemas.InteractionsInput
+            /// The labels with user-defined metadata for the request.
+            ///
+            /// Label keys and values can be no longer than 63 characters
+            /// (Unicode codepoints) and can only contain lowercase letters, numeric
+            /// characters, underscores, and dashes. International characters are allowed.
+            /// Label values are optional. Label keys must start with a letter.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/labels`.
+            public struct LabelsPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: Swift.String]
+                /// Creates a new `LabelsPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: Swift.String] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// The labels with user-defined metadata for the request.
+            ///
+            /// Label keys and values can be no longer than 63 characters
+            /// (Unicode codepoints) and can only contain lowercase letters, numeric
+            /// characters, underscores, and dashes. International characters are allowed.
+            /// Label values are optional. Label keys must start with a letter.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/labels`.
+            public var labels: Components.Schemas.InteractionsCreateAgentInteractionParams.LabelsPayload?
+            /// The ID of the previous interaction, if any.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/previous_interaction_id`.
+            public var previousInteractionId: Swift.String?
+            /// Enforces that the generated response is a JSON object that complies with
+            /// the JSON schema specified in this field.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_format`.
+            @frozen public enum ResponseFormatPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_format/case1`.
+                case InteractionsResponseFormat(Components.Schemas.InteractionsResponseFormat)
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_format/case2`.
+                case case2([Components.Schemas.InteractionsResponseFormat])
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsResponseFormat(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsResponseFormat(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Enforces that the generated response is a JSON object that complies with
+            /// the JSON schema specified in this field.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_format`.
+            public var responseFormat: Components.Schemas.InteractionsCreateAgentInteractionParams.ResponseFormatPayload?
+            /// The mime type of the response. This is required if response_format is set.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_mime_type`.
+            @available(*, deprecated)
+            public var responseMimeType: Swift.String?
+            /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_modalities`.
+            @available(*, deprecated)
+            public var responseModalities: [Components.Schemas.InteractionsResponseModality]?
+            /// Safety settings for the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/safety_settings`.
+            public var safetySettings: [Components.Schemas.InteractionsSafetySetting]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/service_tier`.
+            public var serviceTier: Components.Schemas.InteractionsServiceTier?
+            /// Required. Output only. The status of the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inProgress = "in_progress"
+                case requiresAction = "requires_action"
+                case completed = "completed"
+                case failed = "failed"
+                case cancelled = "cancelled"
+                case incomplete = "incomplete"
+                case budgetExceeded = "budget_exceeded"
+                case requiresContinuation = "requires_continuation"
+            }
+            /// Required. Output only. The status of the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/status`.
+            public var status: Components.Schemas.InteractionsCreateAgentInteractionParams.StatusPayload?
+            /// Input only. Whether to store the response and request for later retrieval.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/store`.
+            public var store: Swift.Bool?
+            /// Input only. Whether the interaction will be streamed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/stream`.
+            public var stream: Swift.Bool?
+            /// System instruction for the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/system_instruction`.
+            public var systemInstruction: Swift.String?
+            /// A list of tool declarations the model may call during interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/tools`.
+            public var tools: [Components.Schemas.InteractionsTool]?
+            /// Required. Output only. The time at which the response was last updated in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/updated`.
+            public var updated: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/webhook_config`.
+            public var webhookConfig: Components.Schemas.InteractionsWebhookConfig?
+            /// Creates a new `InteractionsCreateAgentInteractionParams`.
+            ///
+            /// - Parameters:
+            ///   - agent:
+            ///   - agentConfig: Configuration parameters for the agent interaction.
+            ///   - background: Input only. Whether to run the model interaction in the background.
+            ///   - continuationToken: Opaque token to resume a long decode. Output: set when status is
+            ///   - created: Required. Output only. The time at which the response was created in ISO 8601 format
+            ///   - environment: The environment configuration for the interaction. Can be an object
+            ///   - environmentId: Output only. The environment ID for the interaction. Only populated if environment
+            ///   - id: Required. Output only. A unique identifier for the interaction completion.
+            ///   - input:
+            ///   - labels: The labels with user-defined metadata for the request.
+            ///   - previousInteractionId: The ID of the previous interaction, if any.
+            ///   - responseFormat: Enforces that the generated response is a JSON object that complies with
+            ///   - responseMimeType: The mime type of the response. This is required if response_format is set.
+            ///   - responseModalities: The requested modalities of the response (TEXT, IMAGE, AUDIO).
+            ///   - safetySettings: Safety settings for the interaction.
+            ///   - serviceTier:
+            ///   - status: Required. Output only. The status of the interaction.
+            ///   - store: Input only. Whether to store the response and request for later retrieval.
+            ///   - stream: Input only. Whether the interaction will be streamed.
+            ///   - systemInstruction: System instruction for the interaction.
+            ///   - tools: A list of tool declarations the model may call during interaction.
+            ///   - updated: Required. Output only. The time at which the response was last updated in ISO 8601 format
+            ///   - webhookConfig:
+            public init(
+                agent: Components.Schemas.InteractionsAgentOption,
+                agentConfig: Components.Schemas.InteractionsCreateAgentInteractionParams.AgentConfigPayload? = nil,
+                background: Swift.Bool? = nil,
+                continuationToken: OpenAPIRuntime.Base64EncodedData? = nil,
+                created: Swift.String? = nil,
+                environment: Components.Schemas.InteractionsCreateAgentInteractionParams.EnvironmentPayload? = nil,
+                environmentId: Swift.String? = nil,
+                id: Swift.String? = nil,
+                input: Components.Schemas.InteractionsInput,
+                labels: Components.Schemas.InteractionsCreateAgentInteractionParams.LabelsPayload? = nil,
+                previousInteractionId: Swift.String? = nil,
+                responseFormat: Components.Schemas.InteractionsCreateAgentInteractionParams.ResponseFormatPayload? = nil,
+                responseMimeType: Swift.String? = nil,
+                responseModalities: [Components.Schemas.InteractionsResponseModality]? = nil,
+                safetySettings: [Components.Schemas.InteractionsSafetySetting]? = nil,
+                serviceTier: Components.Schemas.InteractionsServiceTier? = nil,
+                status: Components.Schemas.InteractionsCreateAgentInteractionParams.StatusPayload? = nil,
+                store: Swift.Bool? = nil,
+                stream: Swift.Bool? = nil,
+                systemInstruction: Swift.String? = nil,
+                tools: [Components.Schemas.InteractionsTool]? = nil,
+                updated: Swift.String? = nil,
+                webhookConfig: Components.Schemas.InteractionsWebhookConfig? = nil
+            ) {
+                self.agent = agent
+                self.agentConfig = agentConfig
+                self.background = background
+                self.continuationToken = continuationToken
+                self.created = created
+                self.environment = environment
+                self.environmentId = environmentId
+                self.id = id
+                self.input = input
+                self.labels = labels
+                self.previousInteractionId = previousInteractionId
+                self.responseFormat = responseFormat
+                self.responseMimeType = responseMimeType
+                self.responseModalities = responseModalities
+                self.safetySettings = safetySettings
+                self.serviceTier = serviceTier
+                self.status = status
+                self.store = store
+                self.stream = stream
+                self.systemInstruction = systemInstruction
+                self.tools = tools
+                self.updated = updated
+                self.webhookConfig = webhookConfig
+            }
+            public enum CodingKeys: String, CodingKey {
+                case agent
+                case agentConfig = "agent_config"
+                case background
+                case continuationToken = "continuation_token"
+                case created
+                case environment
+                case environmentId = "environment_id"
+                case id
+                case input
+                case labels
+                case previousInteractionId = "previous_interaction_id"
+                case responseFormat = "response_format"
+                case responseMimeType = "response_mime_type"
+                case responseModalities = "response_modalities"
+                case safetySettings = "safety_settings"
+                case serviceTier = "service_tier"
+                case status
+                case store
+                case stream
+                case systemInstruction = "system_instruction"
+                case tools
+                case updated
+                case webhookConfig = "webhook_config"
+            }
+        }
+        /// Request for `CreateEnvironment`.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCreateEnvironmentRequest`.
+        public struct InteractionsCreateEnvironmentRequest: Codable, Hashable, Sendable {
+            /// Optional. The source environment to copy/fork from.
+            /// Format: `environments/{environment_id}` or `{environment_id}`.
+            /// When specified, `sources` and `env` must be empty.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateEnvironmentRequest/from_environment`.
+            public var fromEnvironment: Swift.String?
+            /// Network configuration for the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateEnvironmentRequest/network`.
+            @frozen public enum NetworkPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateEnvironmentRequest/network/case1`.
+                case InteractionsEnvironmentNetworkEgressAllowlist(Components.Schemas.InteractionsEnvironmentNetworkEgressAllowlist)
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateEnvironmentRequest/network/case2`.
+                @frozen public enum Case2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case disabled = "disabled"
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateEnvironmentRequest/network/case2`.
+                case case2(Components.Schemas.InteractionsCreateEnvironmentRequest.NetworkPayload.Case2Payload)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsEnvironmentNetworkEgressAllowlist(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsEnvironmentNetworkEgressAllowlist(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Network configuration for the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateEnvironmentRequest/network`.
+            public var network: Components.Schemas.InteractionsCreateEnvironmentRequest.NetworkPayload?
+            /// Sources to be mounted into the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateEnvironmentRequest/sources`.
+            public var sources: [Components.Schemas.InteractionsSource]?
+            /// Creates a new `InteractionsCreateEnvironmentRequest`.
+            ///
+            /// - Parameters:
+            ///   - fromEnvironment: Optional. The source environment to copy/fork from.
+            ///   - network: Network configuration for the environment.
+            ///   - sources: Sources to be mounted into the environment.
+            public init(
+                fromEnvironment: Swift.String? = nil,
+                network: Components.Schemas.InteractionsCreateEnvironmentRequest.NetworkPayload? = nil,
+                sources: [Components.Schemas.InteractionsSource]? = nil
+            ) {
+                self.fromEnvironment = fromEnvironment
+                self.network = network
+                self.sources = sources
+            }
+            public enum CodingKeys: String, CodingKey {
+                case fromEnvironment = "from_environment"
+                case network
+                case sources
+            }
+        }
+        /// Parameters for creating model interactions
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams`.
+        public struct InteractionsCreateModelInteractionParams: Codable, Hashable, Sendable {
+            /// Input only. Whether to run the model interaction in the background.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/background`.
+            public var background: Swift.Bool?
+            /// Opaque token to resume a long decode. Output: set when status is
+            /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest
+            /// token back unchanged in CreateInteraction to continue decoding.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/continuation_token`.
+            public var continuationToken: OpenAPIRuntime.Base64EncodedData?
+            /// Required. Output only. The time at which the response was created in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/created`.
+            public var created: Swift.String?
+            /// The environment configuration for the interaction. Can be an object
+            /// specifying remote environment sources or a string referencing an existing
+            /// environment ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/environment`.
+            @frozen public enum EnvironmentPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/environment/case1`.
+                case InteractionsEnvironmentConfig(Components.Schemas.InteractionsEnvironmentConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/environment/case2`.
+                case case2(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsEnvironmentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsEnvironmentConfig(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// The environment configuration for the interaction. Can be an object
+            /// specifying remote environment sources or a string referencing an existing
+            /// environment ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/environment`.
+            public var environment: Components.Schemas.InteractionsCreateModelInteractionParams.EnvironmentPayload?
+            /// Output only. The environment ID for the interaction. Only populated if environment
+            /// config is set in the request.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/environment_id`.
+            public var environmentId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/generation_config`.
+            public var generationConfig: Components.Schemas.InteractionsGenerationConfig?
+            /// Required. Output only. A unique identifier for the interaction completion.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/id`.
+            public var id: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/input`.
+            public var input: Components.Schemas.InteractionsInput
+            /// The labels with user-defined metadata for the request.
+            ///
+            /// Label keys and values can be no longer than 63 characters
+            /// (Unicode codepoints) and can only contain lowercase letters, numeric
+            /// characters, underscores, and dashes. International characters are allowed.
+            /// Label values are optional. Label keys must start with a letter.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/labels`.
+            public struct LabelsPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: Swift.String]
+                /// Creates a new `LabelsPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: Swift.String] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// The labels with user-defined metadata for the request.
+            ///
+            /// Label keys and values can be no longer than 63 characters
+            /// (Unicode codepoints) and can only contain lowercase letters, numeric
+            /// characters, underscores, and dashes. International characters are allowed.
+            /// Label values are optional. Label keys must start with a letter.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/labels`.
+            public var labels: Components.Schemas.InteractionsCreateModelInteractionParams.LabelsPayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/model`.
+            public var model: Components.Schemas.InteractionsModelOption
+            /// The ID of the previous interaction, if any.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/previous_interaction_id`.
+            public var previousInteractionId: Swift.String?
+            /// Enforces that the generated response is a JSON object that complies with
+            /// the JSON schema specified in this field.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_format`.
+            @frozen public enum ResponseFormatPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_format/case1`.
+                case InteractionsResponseFormat(Components.Schemas.InteractionsResponseFormat)
+                /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_format/case2`.
+                case case2([Components.Schemas.InteractionsResponseFormat])
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsResponseFormat(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsResponseFormat(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Enforces that the generated response is a JSON object that complies with
+            /// the JSON schema specified in this field.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_format`.
+            public var responseFormat: Components.Schemas.InteractionsCreateModelInteractionParams.ResponseFormatPayload?
+            /// The mime type of the response. This is required if response_format is set.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_mime_type`.
+            @available(*, deprecated)
+            public var responseMimeType: Swift.String?
+            /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_modalities`.
+            @available(*, deprecated)
+            public var responseModalities: [Components.Schemas.InteractionsResponseModality]?
+            /// Safety settings for the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/safety_settings`.
+            public var safetySettings: [Components.Schemas.InteractionsSafetySetting]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/service_tier`.
+            public var serviceTier: Components.Schemas.InteractionsServiceTier?
+            /// Required. Output only. The status of the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inProgress = "in_progress"
+                case requiresAction = "requires_action"
+                case completed = "completed"
+                case failed = "failed"
+                case cancelled = "cancelled"
+                case incomplete = "incomplete"
+                case budgetExceeded = "budget_exceeded"
+                case requiresContinuation = "requires_continuation"
+            }
+            /// Required. Output only. The status of the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/status`.
+            public var status: Components.Schemas.InteractionsCreateModelInteractionParams.StatusPayload?
+            /// Input only. Whether to store the response and request for later retrieval.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/store`.
+            public var store: Swift.Bool?
+            /// Input only. Whether the interaction will be streamed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/stream`.
+            public var stream: Swift.Bool?
+            /// System instruction for the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/system_instruction`.
+            public var systemInstruction: Swift.String?
+            /// A list of tool declarations the model may call during interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/tools`.
+            public var tools: [Components.Schemas.InteractionsTool]?
+            /// Required. Output only. The time at which the response was last updated in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/updated`.
+            public var updated: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/webhook_config`.
+            public var webhookConfig: Components.Schemas.InteractionsWebhookConfig?
+            /// Creates a new `InteractionsCreateModelInteractionParams`.
+            ///
+            /// - Parameters:
+            ///   - background: Input only. Whether to run the model interaction in the background.
+            ///   - continuationToken: Opaque token to resume a long decode. Output: set when status is
+            ///   - created: Required. Output only. The time at which the response was created in ISO 8601 format
+            ///   - environment: The environment configuration for the interaction. Can be an object
+            ///   - environmentId: Output only. The environment ID for the interaction. Only populated if environment
+            ///   - generationConfig:
+            ///   - id: Required. Output only. A unique identifier for the interaction completion.
+            ///   - input:
+            ///   - labels: The labels with user-defined metadata for the request.
+            ///   - model:
+            ///   - previousInteractionId: The ID of the previous interaction, if any.
+            ///   - responseFormat: Enforces that the generated response is a JSON object that complies with
+            ///   - responseMimeType: The mime type of the response. This is required if response_format is set.
+            ///   - responseModalities: The requested modalities of the response (TEXT, IMAGE, AUDIO).
+            ///   - safetySettings: Safety settings for the interaction.
+            ///   - serviceTier:
+            ///   - status: Required. Output only. The status of the interaction.
+            ///   - store: Input only. Whether to store the response and request for later retrieval.
+            ///   - stream: Input only. Whether the interaction will be streamed.
+            ///   - systemInstruction: System instruction for the interaction.
+            ///   - tools: A list of tool declarations the model may call during interaction.
+            ///   - updated: Required. Output only. The time at which the response was last updated in ISO 8601 format
+            ///   - webhookConfig:
+            public init(
+                background: Swift.Bool? = nil,
+                continuationToken: OpenAPIRuntime.Base64EncodedData? = nil,
+                created: Swift.String? = nil,
+                environment: Components.Schemas.InteractionsCreateModelInteractionParams.EnvironmentPayload? = nil,
+                environmentId: Swift.String? = nil,
+                generationConfig: Components.Schemas.InteractionsGenerationConfig? = nil,
+                id: Swift.String? = nil,
+                input: Components.Schemas.InteractionsInput,
+                labels: Components.Schemas.InteractionsCreateModelInteractionParams.LabelsPayload? = nil,
+                model: Components.Schemas.InteractionsModelOption,
+                previousInteractionId: Swift.String? = nil,
+                responseFormat: Components.Schemas.InteractionsCreateModelInteractionParams.ResponseFormatPayload? = nil,
+                responseMimeType: Swift.String? = nil,
+                responseModalities: [Components.Schemas.InteractionsResponseModality]? = nil,
+                safetySettings: [Components.Schemas.InteractionsSafetySetting]? = nil,
+                serviceTier: Components.Schemas.InteractionsServiceTier? = nil,
+                status: Components.Schemas.InteractionsCreateModelInteractionParams.StatusPayload? = nil,
+                store: Swift.Bool? = nil,
+                stream: Swift.Bool? = nil,
+                systemInstruction: Swift.String? = nil,
+                tools: [Components.Schemas.InteractionsTool]? = nil,
+                updated: Swift.String? = nil,
+                webhookConfig: Components.Schemas.InteractionsWebhookConfig? = nil
+            ) {
+                self.background = background
+                self.continuationToken = continuationToken
+                self.created = created
+                self.environment = environment
+                self.environmentId = environmentId
+                self.generationConfig = generationConfig
+                self.id = id
+                self.input = input
+                self.labels = labels
+                self.model = model
+                self.previousInteractionId = previousInteractionId
+                self.responseFormat = responseFormat
+                self.responseMimeType = responseMimeType
+                self.responseModalities = responseModalities
+                self.safetySettings = safetySettings
+                self.serviceTier = serviceTier
+                self.status = status
+                self.store = store
+                self.stream = stream
+                self.systemInstruction = systemInstruction
+                self.tools = tools
+                self.updated = updated
+                self.webhookConfig = webhookConfig
+            }
+            public enum CodingKeys: String, CodingKey {
+                case background
+                case continuationToken = "continuation_token"
+                case created
+                case environment
+                case environmentId = "environment_id"
+                case generationConfig = "generation_config"
+                case id
+                case input
+                case labels
+                case model
+                case previousInteractionId = "previous_interaction_id"
+                case responseFormat = "response_format"
+                case responseMimeType = "response_mime_type"
+                case responseModalities = "response_modalities"
+                case safetySettings = "safety_settings"
+                case serviceTier = "service_tier"
+                case status
+                case store
+                case stream
+                case systemInstruction = "system_instruction"
+                case tools
+                case updated
+                case webhookConfig = "webhook_config"
+            }
+        }
+        /// Request message for `VoicesService.CreateVoice`.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCreateVoiceRequest`.
+        public struct InteractionsCreateVoiceRequest: Codable, Hashable, Sendable {
+            /// Optional. Whether the created voice is persisted and managed by Google.
+            ///
+            /// * When `true`, Google stores the voice and returns `Voice.id` (for example,
+            ///   `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`,
+            ///   and `DeleteVoice` and referenced by ID in synthesis requests. Stored
+            ///   voices expire after 1 year of inactivity; using a stored voice in speech
+            ///   synthesis or as a `base_voice` in `CreateVoice` extends its
+            ///   `expire_time`. Projects are subject to a maximum active stored voice
+            ///   quota; exceeding the quota returns `RESOURCE_EXHAUSTED`.
+            /// * When `false` (default), the voice is not stored by Google and `Voice.key`
+            ///   (for example, `voicekey_...`) is returned for client-side storage and
+            ///   synthesis. Optional discovery metadata fields on `voice` are not
+            ///   persisted or returned when `store` is `false`.
+            /// * Required to be `true` when `voice.type` is `"prompted"`
+            ///   (otherwise fails with `INVALID_ARGUMENT`).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateVoiceRequest/store`.
+            public var store: Swift.Bool?
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateVoiceRequest/voice`.
+            public var voice: Components.Schemas.InteractionsVoice
+            /// Creates a new `InteractionsCreateVoiceRequest`.
+            ///
+            /// - Parameters:
+            ///   - store: Optional. Whether the created voice is persisted and managed by Google.
+            ///   - voice:
+            public init(
+                store: Swift.Bool? = nil,
+                voice: Components.Schemas.InteractionsVoice
+            ) {
+                self.store = store
+                self.voice = voice
+            }
+            public enum CodingKeys: String, CodingKey {
+                case store
+                case voice
+            }
+        }
+        /// Request message for WebhookService.CreateWebhook.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCreateWebhookRequest`.
+        public struct InteractionsCreateWebhookRequest: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsCreateWebhookRequest/webhook`.
+            public var webhook: Components.Schemas.InteractionsWebhook
+            /// Creates a new `InteractionsCreateWebhookRequest`.
+            ///
+            /// - Parameters:
+            ///   - webhook:
+            public init(webhook: Components.Schemas.InteractionsWebhook) {
+                self.webhook = webhook
+            }
+            public enum CodingKeys: String, CodingKey {
+                case webhook
+            }
+        }
+        /// Server-managed credential resource stored in Secret Manager.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCredential`.
+        public struct InteractionsCredential: Codable, Hashable, Sendable {
+            /// Output only. The timestamp when the credential was created.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredential/create_time`.
+            public var createTime: Foundation.Date?
+            /// Required. Output only. Identifier. Unique identifier for the credential.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredential/id`.
+            public var id: Swift.String
+            /// Output only. Current status of the credential.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredential/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case active = "active"
+                case revoked = "revoked"
+            }
+            /// Output only. Current status of the credential.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredential/status`.
+            public var status: Components.Schemas.InteractionsCredential.StatusPayload?
+            /// Required. Output only. The type of credential.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredential/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case bearerToken = "bearer_token"
+                case oauth2 = "oauth2"
+                case environmentVariable = "environment_variable"
+            }
+            /// Required. Output only. The type of credential.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredential/type`.
+            public var _type: Components.Schemas.InteractionsCredential._TypePayload
+            /// Output only. The timestamp when the credential was last updated.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredential/update_time`.
+            public var updateTime: Foundation.Date?
+            /// Creates a new `InteractionsCredential`.
+            ///
+            /// - Parameters:
+            ///   - createTime: Output only. The timestamp when the credential was created.
+            ///   - id: Required. Output only. Identifier. Unique identifier for the credential.
+            ///   - status: Output only. Current status of the credential.
+            ///   - _type: Required. Output only. The type of credential.
+            ///   - updateTime: Output only. The timestamp when the credential was last updated.
+            public init(
+                createTime: Foundation.Date? = nil,
+                id: Swift.String,
+                status: Components.Schemas.InteractionsCredential.StatusPayload? = nil,
+                _type: Components.Schemas.InteractionsCredential._TypePayload,
+                updateTime: Foundation.Date? = nil
+            ) {
+                self.createTime = createTime
+                self.id = id
+                self.status = status
+                self._type = _type
+                self.updateTime = updateTime
+            }
+            public enum CodingKeys: String, CodingKey {
+                case createTime = "create_time"
+                case id
+                case status
+                case _type = "type"
+                case updateTime = "update_time"
+            }
+        }
+        /// Represents the fields of a Credential provided on creation.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCredentialCreateParams`.
+        @frozen public enum InteractionsCredentialCreateParams: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredentialCreateParams/case1`.
+            case InteractionsEnvironmentVariableConfig(Components.Schemas.InteractionsEnvironmentVariableConfig)
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredentialCreateParams/case2`.
+            case InteractionsHttpBearerConfig(Components.Schemas.InteractionsHttpBearerConfig)
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredentialCreateParams/case3`.
+            case InteractionsOAuth2Config(Components.Schemas.InteractionsOAuth2Config)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsEnvironmentVariableConfig(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsHttpBearerConfig(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsOAuth2Config(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsEnvironmentVariableConfig(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsHttpBearerConfig(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsOAuth2Config(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// Represents the fields of a Credential that can be updated.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsCredentialUpdateParams`.
+        @frozen public enum InteractionsCredentialUpdateParams: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredentialUpdateParams/case1`.
+            case InteractionsEnvironmentVariableUpdateConfig(Components.Schemas.InteractionsEnvironmentVariableUpdateConfig)
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredentialUpdateParams/case2`.
+            case InteractionsHttpBearerUpdateConfig(Components.Schemas.InteractionsHttpBearerUpdateConfig)
+            /// - Remark: Generated from `#/components/schemas/InteractionsCredentialUpdateParams/case3`.
+            case InteractionsOAuth2UpdateConfig(Components.Schemas.InteractionsOAuth2UpdateConfig)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsEnvironmentVariableUpdateConfig(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsHttpBearerUpdateConfig(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsOAuth2UpdateConfig(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsEnvironmentVariableUpdateConfig(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsHttpBearerUpdateConfig(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsOAuth2UpdateConfig(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// Configuration for the Deep Research agent.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsDeepResearchAgentConfig`.
+        public struct InteractionsDeepResearchAgentConfig: Codable, Hashable, Sendable {
+            /// Enables human-in-the-loop planning for the Deep Research agent. If set to
+            /// true, the Deep Research agent will provide a research plan in its response.
+            /// The agent will then proceed only if the user confirms the plan in the next
+            /// turn.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsDeepResearchAgentConfig/collaborative_planning`.
+            public var collaborativePlanning: Swift.Bool?
+            /// - Remark: Generated from `#/components/schemas/InteractionsDeepResearchAgentConfig/thinking_summaries`.
+            public var thinkingSummaries: Components.Schemas.InteractionsThinkingSummaries?
+            /// - Remark: Generated from `#/components/schemas/InteractionsDeepResearchAgentConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case deepResearch = "deep-research"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsDeepResearchAgentConfig/type`.
+            public var _type: Components.Schemas.InteractionsDeepResearchAgentConfig._TypePayload
+            /// Whether to include visualizations in the response.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsDeepResearchAgentConfig/visualization`.
+            @frozen public enum VisualizationPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case off = "off"
+                case auto = "auto"
+            }
+            /// Whether to include visualizations in the response.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsDeepResearchAgentConfig/visualization`.
+            public var visualization: Components.Schemas.InteractionsDeepResearchAgentConfig.VisualizationPayload?
+            /// Creates a new `InteractionsDeepResearchAgentConfig`.
+            ///
+            /// - Parameters:
+            ///   - collaborativePlanning: Enables human-in-the-loop planning for the Deep Research agent. If set to
+            ///   - thinkingSummaries:
+            ///   - _type:
+            ///   - visualization: Whether to include visualizations in the response.
+            public init(
+                collaborativePlanning: Swift.Bool? = nil,
+                thinkingSummaries: Components.Schemas.InteractionsThinkingSummaries? = nil,
+                _type: Components.Schemas.InteractionsDeepResearchAgentConfig._TypePayload,
+                visualization: Components.Schemas.InteractionsDeepResearchAgentConfig.VisualizationPayload? = nil
+            ) {
+                self.collaborativePlanning = collaborativePlanning
+                self.thinkingSummaries = thinkingSummaries
+                self._type = _type
+                self.visualization = visualization
+            }
+            public enum CodingKeys: String, CodingKey {
+                case collaborativePlanning = "collaborative_planning"
+                case thinkingSummaries = "thinking_summaries"
+                case _type = "type"
+                case visualization
+            }
+        }
+        /// Response message for `VoicesService.DeleteVoice`.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsDeleteVoiceResponse`.
+        public typealias InteractionsDeleteVoiceResponse = OpenAPIRuntime.OpenAPIObjectContainer
+        /// A document content block.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsDocumentContent`.
+        public struct InteractionsDocumentContent: Codable, Hashable, Sendable {
+            /// The document content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentContent/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// The mime type of the document.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentContent/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case applicationPdf = "application/pdf"
+                case textCsv = "text/csv"
+            }
+            /// The mime type of the document.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentContent/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsDocumentContent.MimeTypePayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentContent/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case document = "document"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentContent/type`.
+            public var _type: Components.Schemas.InteractionsDocumentContent._TypePayload
+            /// The URI of the document.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentContent/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsDocumentContent`.
+            ///
+            /// - Parameters:
+            ///   - data: The document content.
+            ///   - mimeType: The mime type of the document.
+            ///   - _type:
+            ///   - uri: The URI of the document.
+            public init(
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                mimeType: Components.Schemas.InteractionsDocumentContent.MimeTypePayload? = nil,
+                _type: Components.Schemas.InteractionsDocumentContent._TypePayload,
+                uri: Swift.String? = nil
+            ) {
+                self.data = data
+                self.mimeType = mimeType
+                self._type = _type
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case data
+                case mimeType = "mime_type"
+                case _type = "type"
+                case uri
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsDocumentDelta`.
+        public struct InteractionsDocumentDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentDelta/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentDelta/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case applicationPdf = "application/pdf"
+                case textCsv = "text/csv"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentDelta/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsDocumentDelta.MimeTypePayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case document = "document"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentDelta/type`.
+            public var _type: Components.Schemas.InteractionsDocumentDelta._TypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsDocumentDelta/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsDocumentDelta`.
+            ///
+            /// - Parameters:
+            ///   - data:
+            ///   - mimeType:
+            ///   - _type:
+            ///   - uri:
+            public init(
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                mimeType: Components.Schemas.InteractionsDocumentDelta.MimeTypePayload? = nil,
+                _type: Components.Schemas.InteractionsDocumentDelta._TypePayload,
+                uri: Swift.String? = nil
+            ) {
+                self.data = data
+                self.mimeType = mimeType
+                self._type = _type
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case data
+                case mimeType = "mime_type"
+                case _type = "type"
+                case uri
+            }
+        }
+        /// Configuration for dynamic agents.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsDynamicAgentConfig`.
+        public struct InteractionsDynamicAgentConfig: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsDynamicAgentConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case dynamic = "dynamic"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsDynamicAgentConfig/type`.
+            public var _type: Components.Schemas.InteractionsDynamicAgentConfig._TypePayload
+            /// A container of undocumented properties.
+            public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+            /// Creates a new `InteractionsDynamicAgentConfig`.
+            ///
+            /// - Parameters:
+            ///   - _type:
+            ///   - additionalProperties: A container of undocumented properties.
+            public init(
+                _type: Components.Schemas.InteractionsDynamicAgentConfig._TypePayload,
+                additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()
+            ) {
+                self._type = _type
+                self.additionalProperties = additionalProperties
+            }
+            public enum CodingKeys: String, CodingKey {
+                case _type = "type"
+            }
+            public init(from decoder: any Swift.Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self._type = try container.decode(
+                    Components.Schemas.InteractionsDynamicAgentConfig._TypePayload.self,
+                    forKey: ._type
+                )
+                additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [
+                    "type"
+                ])
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(
+                    self._type,
+                    forKey: ._type
+                )
+                try encoder.encodeAdditionalProperties(additionalProperties)
+            }
+        }
+        /// A single domain allowlist rule with optional header injection.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEgressRule`.
+        public struct InteractionsEgressRule: Codable, Hashable, Sendable {
+            /// Optional. Reference to a server-managed Credential resource by ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEgressRule/credential`.
+            public var credential: Swift.String?
+            /// Domain to allow outbound requests to. Supports wildcards (e.g.
+            /// '*.googleapis.com'). Use '*' to allow all domains.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEgressRule/domain`.
+            public var domain: Swift.String
+            /// Headers to inject into requests matching this rule.
+            /// Key: header name (e.g., "Authorization").
+            /// Value: header value (e.g., "Bearer your-token").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEgressRule/transform`.
+            public struct TransformPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: Swift.String]
+                /// Creates a new `TransformPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: Swift.String] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// Headers to inject into requests matching this rule.
+            /// Key: header name (e.g., "Authorization").
+            /// Value: header value (e.g., "Bearer your-token").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEgressRule/transform`.
+            public var transform: Components.Schemas.InteractionsEgressRule.TransformPayload?
+            /// Creates a new `InteractionsEgressRule`.
+            ///
+            /// - Parameters:
+            ///   - credential: Optional. Reference to a server-managed Credential resource by ID.
+            ///   - domain: Domain to allow outbound requests to. Supports wildcards (e.g.
+            ///   - transform: Headers to inject into requests matching this rule.
+            public init(
+                credential: Swift.String? = nil,
+                domain: Swift.String,
+                transform: Components.Schemas.InteractionsEgressRule.TransformPayload? = nil
+            ) {
+                self.credential = credential
+                self.domain = domain
+                self.transform = transform
+            }
+            public enum CodingKeys: String, CodingKey {
+                case credential
+                case domain
+                case transform
+            }
+        }
+        /// A generic empty message that you can re-use to avoid defining duplicated
+        /// empty messages in your APIs. A typical example is to use it as the request
+        /// or the response type of an API method. For instance:
+        ///
+        ///     service Foo {
+        ///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+        ///     }
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEmpty`.
+        public typealias InteractionsEmpty = OpenAPIRuntime.OpenAPIObjectContainer
+        /// An environment variable to set in the execution environment.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEnvVar`.
+        public struct InteractionsEnvVar: Codable, Hashable, Sendable {
+            /// Optional reference to a server-managed Credential resource by ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvVar/credential`.
+            public var credential: Swift.String?
+            /// Direct string value for plain environment variables.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvVar/value`.
+            public var value: Swift.String?
+            /// Creates a new `InteractionsEnvVar`.
+            ///
+            /// - Parameters:
+            ///   - credential: Optional reference to a server-managed Credential resource by ID.
+            ///   - value: Direct string value for plain environment variables.
+            public init(
+                credential: Swift.String? = nil,
+                value: Swift.String? = nil
+            ) {
+                self.credential = credential
+                self.value = value
+            }
+            public enum CodingKeys: String, CodingKey {
+                case credential
+                case value
+            }
+        }
+        /// An execution environment for an agent.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment`.
+        public struct InteractionsEnvironment: Codable, Hashable, Sendable {
+            /// Output only. The time at which the environment was created in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/created`.
+            public var created: Swift.String?
+            /// Output only. The number of files in the environment, output only.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/file_count`.
+            public var fileCount: Swift.String?
+            /// Required. Output only. The ID of the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/id`.
+            public var id: Swift.String
+            /// Output only. The time at which the environment was last accessed in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/last_accessed`.
+            public var lastAccessed: Swift.String?
+            /// Network configuration for the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/network`.
+            @frozen public enum NetworkPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/network/case1`.
+                case InteractionsEnvironmentNetworkEgressAllowlist(Components.Schemas.InteractionsEnvironmentNetworkEgressAllowlist)
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/network/case2`.
+                @frozen public enum Case2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case disabled = "disabled"
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/network/case2`.
+                case case2(Components.Schemas.InteractionsEnvironment.NetworkPayload.Case2Payload)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsEnvironmentNetworkEgressAllowlist(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsEnvironmentNetworkEgressAllowlist(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Network configuration for the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/network`.
+            public var network: Components.Schemas.InteractionsEnvironment.NetworkPayload?
+            /// Output only. The total size of the environment files in bytes, output only.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/size_bytes`.
+            public var sizeBytes: Swift.String?
+            /// Sources to be mounted into the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/sources`.
+            public var sources: [Components.Schemas.InteractionsSource]?
+            /// Output only. The status of the environment container.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case active = "active"
+                case expired = "expired"
+            }
+            /// Output only. The status of the environment container.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/status`.
+            public var status: Components.Schemas.InteractionsEnvironment.StatusPayload?
+            /// Output only. The time at which the environment was last updated in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironment/updated`.
+            public var updated: Swift.String?
+            /// Creates a new `InteractionsEnvironment`.
+            ///
+            /// - Parameters:
+            ///   - created: Output only. The time at which the environment was created in ISO 8601 format
+            ///   - fileCount: Output only. The number of files in the environment, output only.
+            ///   - id: Required. Output only. The ID of the environment.
+            ///   - lastAccessed: Output only. The time at which the environment was last accessed in ISO 8601 format
+            ///   - network: Network configuration for the environment.
+            ///   - sizeBytes: Output only. The total size of the environment files in bytes, output only.
+            ///   - sources: Sources to be mounted into the environment.
+            ///   - status: Output only. The status of the environment container.
+            ///   - updated: Output only. The time at which the environment was last updated in ISO 8601 format
+            public init(
+                created: Swift.String? = nil,
+                fileCount: Swift.String? = nil,
+                id: Swift.String,
+                lastAccessed: Swift.String? = nil,
+                network: Components.Schemas.InteractionsEnvironment.NetworkPayload? = nil,
+                sizeBytes: Swift.String? = nil,
+                sources: [Components.Schemas.InteractionsSource]? = nil,
+                status: Components.Schemas.InteractionsEnvironment.StatusPayload? = nil,
+                updated: Swift.String? = nil
+            ) {
+                self.created = created
+                self.fileCount = fileCount
+                self.id = id
+                self.lastAccessed = lastAccessed
+                self.network = network
+                self.sizeBytes = sizeBytes
+                self.sources = sources
+                self.status = status
+                self.updated = updated
+            }
+            public enum CodingKeys: String, CodingKey {
+                case created
+                case fileCount = "file_count"
+                case id
+                case lastAccessed = "last_accessed"
+                case network
+                case sizeBytes = "size_bytes"
+                case sources
+                case status
+                case updated
+            }
+        }
+        /// Configuration for a custom environment.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig`.
+        public struct InteractionsEnvironmentConfig: Codable, Hashable, Sendable {
+            /// Environment variables to set in the sandbox environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/env`.
+            @frozen public enum EnvPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/env/case1`.
+                public struct Case1Payload: Codable, Hashable, Sendable {
+                    /// A container of undocumented properties.
+                    public var additionalProperties: [String: Components.Schemas.InteractionsEnvVar]
+                    /// Creates a new `Case1Payload`.
+                    ///
+                    /// - Parameters:
+                    ///   - additionalProperties: A container of undocumented properties.
+                    public init(additionalProperties: [String: Components.Schemas.InteractionsEnvVar] = .init()) {
+                        self.additionalProperties = additionalProperties
+                    }
+                    public init(from decoder: any Swift.Decoder) throws {
+                        additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                    }
+                    public func encode(to encoder: any Swift.Encoder) throws {
+                        try encoder.encodeAdditionalProperties(additionalProperties)
+                    }
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/env/case1`.
+                case case1(Components.Schemas.InteractionsEnvironmentConfig.EnvPayload.Case1Payload)
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/env/case2`.
+                case case2(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .case1(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .case1(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Environment variables to set in the sandbox environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/env`.
+            public var env: Components.Schemas.InteractionsEnvironmentConfig.EnvPayload?
+            /// Optional. The environment ID for the interaction. If specified, the request will
+            /// update the existing environment instead of creating a new one.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/environment_id`.
+            public var environmentId: Swift.String?
+            /// Network configuration for the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/network`.
+            @frozen public enum NetworkPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/network/case1`.
+                case InteractionsEnvironmentNetworkEgressAllowlist(Components.Schemas.InteractionsEnvironmentNetworkEgressAllowlist)
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/network/case2`.
+                @frozen public enum Case2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case disabled = "disabled"
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/network/case2`.
+                case case2(Components.Schemas.InteractionsEnvironmentConfig.NetworkPayload.Case2Payload)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsEnvironmentNetworkEgressAllowlist(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsEnvironmentNetworkEgressAllowlist(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Network configuration for the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/network`.
+            public var network: Components.Schemas.InteractionsEnvironmentConfig.NetworkPayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/sources`.
+            public var sources: [Components.Schemas.InteractionsSource]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case remote = "remote"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentConfig/type`.
+            public var _type: Components.Schemas.InteractionsEnvironmentConfig._TypePayload
+            /// Creates a new `InteractionsEnvironmentConfig`.
+            ///
+            /// - Parameters:
+            ///   - env: Environment variables to set in the sandbox environment.
+            ///   - environmentId: Optional. The environment ID for the interaction. If specified, the request will
+            ///   - network: Network configuration for the environment.
+            ///   - sources:
+            ///   - _type:
+            public init(
+                env: Components.Schemas.InteractionsEnvironmentConfig.EnvPayload? = nil,
+                environmentId: Swift.String? = nil,
+                network: Components.Schemas.InteractionsEnvironmentConfig.NetworkPayload? = nil,
+                sources: [Components.Schemas.InteractionsSource]? = nil,
+                _type: Components.Schemas.InteractionsEnvironmentConfig._TypePayload
+            ) {
+                self.env = env
+                self.environmentId = environmentId
+                self.network = network
+                self.sources = sources
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case env
+                case environmentId = "environment_id"
+                case network
+                case sources
+                case _type = "type"
+            }
+        }
+        /// Metadata for a file or directory within an environment.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile`.
+        public struct InteractionsEnvironmentFile: Codable, Hashable, Sendable {
+            /// Output only. The creation time of the file/directory.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile/created`.
+            public var created: Foundation.Date?
+            /// Output only. The MIME type of the file (e.g., "text/python", "image/png").
+            /// Empty for directories.
+            /// NOLINT
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile/mime_type`.
+            public var mimeType: Swift.String?
+            /// Output only. The modification time of the file/directory.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile/modified`.
+            public var modified: Foundation.Date?
+            /// Output only. The name of the file or directory (e.g., "main.py" or "src").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile/name`.
+            public var name: Swift.String?
+            /// Output only. The full relative path within the environment
+            /// (e.g., "workspace/src/main.py").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile/path`.
+            public var path: Swift.String?
+            /// Output only. The size of the file/directory in bytes.
+            /// NOLINT
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile/size_bytes`.
+            public var sizeBytes: Swift.String?
+            /// Output only. The type of the entry.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case file = "file"
+                case directory = "directory"
+            }
+            /// Output only. The type of the entry.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentFile/type`.
+            public var _type: Components.Schemas.InteractionsEnvironmentFile._TypePayload?
+            /// Creates a new `InteractionsEnvironmentFile`.
+            ///
+            /// - Parameters:
+            ///   - created: Output only. The creation time of the file/directory.
+            ///   - mimeType: Output only. The MIME type of the file (e.g., "text/python", "image/png").
+            ///   - modified: Output only. The modification time of the file/directory.
+            ///   - name: Output only. The name of the file or directory (e.g., "main.py" or "src").
+            ///   - path: Output only. The full relative path within the environment
+            ///   - sizeBytes: Output only. The size of the file/directory in bytes.
+            ///   - _type: Output only. The type of the entry.
+            public init(
+                created: Foundation.Date? = nil,
+                mimeType: Swift.String? = nil,
+                modified: Foundation.Date? = nil,
+                name: Swift.String? = nil,
+                path: Swift.String? = nil,
+                sizeBytes: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsEnvironmentFile._TypePayload? = nil
+            ) {
+                self.created = created
+                self.mimeType = mimeType
+                self.modified = modified
+                self.name = name
+                self.path = path
+                self.sizeBytes = sizeBytes
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case created
+                case mimeType = "mime_type"
+                case modified
+                case name
+                case path
+                case sizeBytes = "size_bytes"
+                case _type = "type"
+            }
+        }
+        /// Network egress configuration for the environment.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentNetworkEgressAllowlist`.
+        public struct InteractionsEnvironmentNetworkEgressAllowlist: Codable, Hashable, Sendable {
+            /// List of allowed domains and their configurations. Set to `"disabled"`
+            /// to block all network egress.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentNetworkEgressAllowlist/allowlist`.
+            @frozen public enum AllowlistPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentNetworkEgressAllowlist/allowlist/case1`.
+                case case1([Components.Schemas.InteractionsEgressRule])
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentNetworkEgressAllowlist/allowlist/case2`.
+                @frozen public enum Case2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case disabled = "disabled"
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentNetworkEgressAllowlist/allowlist/case2`.
+                case case2(Components.Schemas.InteractionsEnvironmentNetworkEgressAllowlist.AllowlistPayload.Case2Payload)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .case1(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .case1(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// List of allowed domains and their configurations. Set to `"disabled"`
+            /// to block all network egress.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentNetworkEgressAllowlist/allowlist`.
+            public var allowlist: Components.Schemas.InteractionsEnvironmentNetworkEgressAllowlist.AllowlistPayload?
+            /// Creates a new `InteractionsEnvironmentNetworkEgressAllowlist`.
+            ///
+            /// - Parameters:
+            ///   - allowlist: List of allowed domains and their configurations. Set to `"disabled"`
+            public init(allowlist: Components.Schemas.InteractionsEnvironmentNetworkEgressAllowlist.AllowlistPayload? = nil) {
+                self.allowlist = allowlist
+            }
+            public enum CodingKeys: String, CodingKey {
+                case allowlist
+            }
+        }
+        /// Configuration for environment variable credentials.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig`.
+        public struct InteractionsEnvironmentVariableConfig: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/id`.
+            public var id: Swift.String
+            /// Required. Locations where the environment variable can be injected in
+            /// outgoing HTTP requests. Must contain at least one location.
+            /// Accepts either a single location (e.g. "header") or an array of locations.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/injection_location`.
+            @frozen public enum InjectionLocationPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/injection_location/case1`.
+                case InteractionsInjectionLocation(Components.Schemas.InteractionsInjectionLocation)
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/injection_location/case2`.
+                case case2([Components.Schemas.InteractionsInjectionLocation])
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsInjectionLocation(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsInjectionLocation(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Required. Locations where the environment variable can be injected in
+            /// outgoing HTTP requests. Must contain at least one location.
+            /// Accepts either a single location (e.g. "header") or an array of locations.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/injection_location`.
+            public var injectionLocation: Components.Schemas.InteractionsEnvironmentVariableConfig.InjectionLocationPayload
+            /// Optional. List of domains allowed to receive this environment variable
+            /// value in HTTP requests.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/trusted_domains`.
+            public var trustedDomains: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case environmentVariable = "environment_variable"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/type`.
+            public var _type: Components.Schemas.InteractionsEnvironmentVariableConfig._TypePayload
+            /// Required. Input only. Secret value of the environment variable. Write-only; never
+            /// returned in responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableConfig/value`.
+            public var value: Swift.String
+            /// Creates a new `InteractionsEnvironmentVariableConfig`.
+            ///
+            /// - Parameters:
+            ///   - id:
+            ///   - injectionLocation: Required. Locations where the environment variable can be injected in
+            ///   - trustedDomains: Optional. List of domains allowed to receive this environment variable
+            ///   - _type:
+            ///   - value: Required. Input only. Secret value of the environment variable. Write-only; never
+            public init(
+                id: Swift.String,
+                injectionLocation: Components.Schemas.InteractionsEnvironmentVariableConfig.InjectionLocationPayload,
+                trustedDomains: [Swift.String]? = nil,
+                _type: Components.Schemas.InteractionsEnvironmentVariableConfig._TypePayload,
+                value: Swift.String
+            ) {
+                self.id = id
+                self.injectionLocation = injectionLocation
+                self.trustedDomains = trustedDomains
+                self._type = _type
+                self.value = value
+            }
+            public enum CodingKeys: String, CodingKey {
+                case id
+                case injectionLocation = "injection_location"
+                case trustedDomains = "trusted_domains"
+                case _type = "type"
+                case value
+            }
+        }
+        /// Configuration for updating environment variable credentials.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig`.
+        public struct InteractionsEnvironmentVariableUpdateConfig: Codable, Hashable, Sendable {
+            /// Optional. Locations where the environment variable can be injected in
+            /// outgoing HTTP requests.
+            /// Accepts either a single location (e.g. "header") or an array of locations.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig/injection_location`.
+            @frozen public enum InjectionLocationPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig/injection_location/case1`.
+                case InteractionsInjectionLocation(Components.Schemas.InteractionsInjectionLocation)
+                /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig/injection_location/case2`.
+                case case2([Components.Schemas.InteractionsInjectionLocation])
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsInjectionLocation(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsInjectionLocation(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Optional. Locations where the environment variable can be injected in
+            /// outgoing HTTP requests.
+            /// Accepts either a single location (e.g. "header") or an array of locations.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig/injection_location`.
+            public var injectionLocation: Components.Schemas.InteractionsEnvironmentVariableUpdateConfig.InjectionLocationPayload?
+            /// Optional. List of domains allowed to receive this environment variable
+            /// value in HTTP requests.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig/trusted_domains`.
+            public var trustedDomains: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case environmentVariable = "environment_variable"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig/type`.
+            public var _type: Components.Schemas.InteractionsEnvironmentVariableUpdateConfig._TypePayload
+            /// Optional. Input only. Secret value of the environment variable. Write-only; never
+            /// returned in responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsEnvironmentVariableUpdateConfig/value`.
+            public var value: Swift.String?
+            /// Creates a new `InteractionsEnvironmentVariableUpdateConfig`.
+            ///
+            /// - Parameters:
+            ///   - injectionLocation: Optional. Locations where the environment variable can be injected in
+            ///   - trustedDomains: Optional. List of domains allowed to receive this environment variable
+            ///   - _type:
+            ///   - value: Optional. Input only. Secret value of the environment variable. Write-only; never
+            public init(
+                injectionLocation: Components.Schemas.InteractionsEnvironmentVariableUpdateConfig.InjectionLocationPayload? = nil,
+                trustedDomains: [Swift.String]? = nil,
+                _type: Components.Schemas.InteractionsEnvironmentVariableUpdateConfig._TypePayload,
+                value: Swift.String? = nil
+            ) {
+                self.injectionLocation = injectionLocation
+                self.trustedDomains = trustedDomains
+                self._type = _type
+                self.value = value
+            }
+            public enum CodingKeys: String, CodingKey {
+                case injectionLocation = "injection_location"
+                case trustedDomains = "trusted_domains"
+                case _type = "type"
+                case value
+            }
+        }
+        /// Error message from an interaction.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsError`.
+        public struct InteractionsError: Codable, Hashable, Sendable {
+            /// A URI that identifies the error type.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsError/code`.
+            public var code: Swift.String?
+            /// A human-readable error message.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsError/message`.
+            public var message: Swift.String?
+            /// Creates a new `InteractionsError`.
+            ///
+            /// - Parameters:
+            ///   - code: A URI that identifies the error type.
+            ///   - message: A human-readable error message.
+            public init(
+                code: Swift.String? = nil,
+                message: Swift.String? = nil
+            ) {
+                self.code = code
+                self.message = message
+            }
+            public enum CodingKeys: String, CodingKey {
+                case code
+                case message
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsErrorEvent`.
+        public struct InteractionsErrorEvent: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsErrorEvent/error`.
+            public var error: Components.Schemas.InteractionsError?
+            /// The event_id token to be used to resume the interaction stream, from
+            /// this event.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsErrorEvent/event_id`.
+            public var eventId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsErrorEvent/event_type`.
+            @frozen public enum EventTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case error = "error"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsErrorEvent/event_type`.
+            public var eventType: Components.Schemas.InteractionsErrorEvent.EventTypePayload
+            /// Creates a new `InteractionsErrorEvent`.
+            ///
+            /// - Parameters:
+            ///   - error:
+            ///   - eventId: The event_id token to be used to resume the interaction stream, from
+            ///   - eventType:
+            public init(
+                error: Components.Schemas.InteractionsError? = nil,
+                eventId: Swift.String? = nil,
+                eventType: Components.Schemas.InteractionsErrorEvent.EventTypePayload
+            ) {
+                self.error = error
+                self.eventId = eventId
+                self.eventType = eventType
+            }
+            public enum CodingKeys: String, CodingKey {
+                case error
+                case eventId = "event_id"
+                case eventType = "event_type"
+            }
+        }
+        /// A file citation annotation.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation`.
+        public struct InteractionsFileCitation: Codable, Hashable, Sendable {
+            /// User provided metadata about the retrieved context.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/custom_metadata`.
+            public struct CustomMetadataPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `CustomMetadataPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// User provided metadata about the retrieved context.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/custom_metadata`.
+            public var customMetadata: Components.Schemas.InteractionsFileCitation.CustomMetadataPayload?
+            /// The URI of the file.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/document_uri`.
+            public var documentUri: Swift.String?
+            /// End of the attributed segment, exclusive.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/end_index`.
+            public var endIndex: Swift.Int32?
+            /// The name of the file.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/file_name`.
+            public var fileName: Swift.String?
+            /// Media ID in-case of image citations, if applicable.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/media_id`.
+            public var mediaId: Swift.String?
+            /// Page number of the cited document, if applicable.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/page_number`.
+            public var pageNumber: Swift.Int32?
+            /// Source attributed for a portion of the text.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/source`.
+            public var source: Swift.String?
+            /// Start of segment of the response that is attributed to this source.
+            ///
+            /// Index indicates the start of the segment, measured in bytes.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/start_index`.
+            public var startIndex: Swift.Int32?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case fileCitation = "file_citation"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileCitation/type`.
+            public var _type: Components.Schemas.InteractionsFileCitation._TypePayload
+            /// Creates a new `InteractionsFileCitation`.
+            ///
+            /// - Parameters:
+            ///   - customMetadata: User provided metadata about the retrieved context.
+            ///   - documentUri: The URI of the file.
+            ///   - endIndex: End of the attributed segment, exclusive.
+            ///   - fileName: The name of the file.
+            ///   - mediaId: Media ID in-case of image citations, if applicable.
+            ///   - pageNumber: Page number of the cited document, if applicable.
+            ///   - source: Source attributed for a portion of the text.
+            ///   - startIndex: Start of segment of the response that is attributed to this source.
+            ///   - _type:
+            public init(
+                customMetadata: Components.Schemas.InteractionsFileCitation.CustomMetadataPayload? = nil,
+                documentUri: Swift.String? = nil,
+                endIndex: Swift.Int32? = nil,
+                fileName: Swift.String? = nil,
+                mediaId: Swift.String? = nil,
+                pageNumber: Swift.Int32? = nil,
+                source: Swift.String? = nil,
+                startIndex: Swift.Int32? = nil,
+                _type: Components.Schemas.InteractionsFileCitation._TypePayload
+            ) {
+                self.customMetadata = customMetadata
+                self.documentUri = documentUri
+                self.endIndex = endIndex
+                self.fileName = fileName
+                self.mediaId = mediaId
+                self.pageNumber = pageNumber
+                self.source = source
+                self.startIndex = startIndex
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case customMetadata = "custom_metadata"
+                case documentUri = "document_uri"
+                case endIndex = "end_index"
+                case fileName = "file_name"
+                case mediaId = "media_id"
+                case pageNumber = "page_number"
+                case source
+                case startIndex = "start_index"
+                case _type = "type"
+            }
+        }
+        /// A tool that can be used by the model to search files.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsFileSearch`.
+        public struct InteractionsFileSearch: Codable, Hashable, Sendable {
+            /// The file search store names to search.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearch/file_search_store_names`.
+            public var fileSearchStoreNames: [Swift.String]?
+            /// Metadata filter to apply to the semantic retrieval documents and chunks.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearch/metadata_filter`.
+            public var metadataFilter: Swift.String?
+            /// The number of semantic retrieval chunks to retrieve.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearch/top_k`.
+            public var topK: Swift.Int32?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearch/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case fileSearch = "file_search"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearch/type`.
+            public var _type: Components.Schemas.InteractionsFileSearch._TypePayload
+            /// Creates a new `InteractionsFileSearch`.
+            ///
+            /// - Parameters:
+            ///   - fileSearchStoreNames: The file search store names to search.
+            ///   - metadataFilter: Metadata filter to apply to the semantic retrieval documents and chunks.
+            ///   - topK: The number of semantic retrieval chunks to retrieve.
+            ///   - _type:
+            public init(
+                fileSearchStoreNames: [Swift.String]? = nil,
+                metadataFilter: Swift.String? = nil,
+                topK: Swift.Int32? = nil,
+                _type: Components.Schemas.InteractionsFileSearch._TypePayload
+            ) {
+                self.fileSearchStoreNames = fileSearchStoreNames
+                self.metadataFilter = metadataFilter
+                self.topK = topK
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case fileSearchStoreNames = "file_search_store_names"
+                case metadataFilter = "metadata_filter"
+                case topK = "top_k"
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallDelta`.
+        public struct InteractionsFileSearchCallDelta: Codable, Hashable, Sendable {
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case fileSearchCall = "file_search_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallDelta/type`.
+            public var _type: Components.Schemas.InteractionsFileSearchCallDelta._TypePayload
+            /// Creates a new `InteractionsFileSearchCallDelta`.
+            ///
+            /// - Parameters:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsFileSearchCallDelta._TypePayload
+            ) {
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case signature
+                case _type = "type"
+            }
+        }
+        /// File Search call step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallStep`.
+        public struct InteractionsFileSearchCallStep: Codable, Hashable, Sendable {
+            /// Required. A unique ID for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallStep/id`.
+            public var id: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case fileSearchCall = "file_search_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchCallStep/type`.
+            public var _type: Components.Schemas.InteractionsFileSearchCallStep._TypePayload
+            /// Creates a new `InteractionsFileSearchCallStep`.
+            ///
+            /// - Parameters:
+            ///   - id: Required. A unique ID for this specific tool call.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                id: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsFileSearchCallStep._TypePayload
+            ) {
+                self.id = id
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case id
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The result of the File Search.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResult`.
+        public typealias InteractionsFileSearchResult = OpenAPIRuntime.OpenAPIObjectContainer
+        /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultDelta`.
+        public struct InteractionsFileSearchResultDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultDelta/result`.
+            public var result: [Components.Schemas.InteractionsFileSearchResult]
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case fileSearchResult = "file_search_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultDelta/type`.
+            public var _type: Components.Schemas.InteractionsFileSearchResultDelta._TypePayload
+            /// Creates a new `InteractionsFileSearchResultDelta`.
+            ///
+            /// - Parameters:
+            ///   - result:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                result: [Components.Schemas.InteractionsFileSearchResult],
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsFileSearchResultDelta._TypePayload
+            ) {
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// File Search result step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultStep`.
+        public struct InteractionsFileSearchResultStep: Codable, Hashable, Sendable {
+            /// Required. ID to match the ID from the function call block.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultStep/call_id`.
+            public var callId: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case fileSearchResult = "file_search_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFileSearchResultStep/type`.
+            public var _type: Components.Schemas.InteractionsFileSearchResultStep._TypePayload
+            /// Creates a new `InteractionsFileSearchResultStep`.
+            ///
+            /// - Parameters:
+            ///   - callId: Required. ID to match the ID from the function call block.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                callId: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsFileSearchResultStep._TypePayload
+            ) {
+                self.callId = callId
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case callId = "call_id"
+                case signature
+                case _type = "type"
+            }
+        }
+        /// A tool that can be used by the model.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsFunction`.
+        public struct InteractionsFunction: Codable, Hashable, Sendable {
+            /// A description of the function.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunction/description`.
+            public var description: Swift.String?
+            /// The name of the function.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunction/name`.
+            public var name: Swift.String?
+            /// The JSON Schema for the function's parameters.
+            ///
+            /// Supports a subset of JSON Schema. `minLength`, `maxLength`,
+            /// `minProperties`, `maxProperties`, `uniqueItems`, `contains`,
+            /// `minContains`, and `maxContains` are ignored and not enforced.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunction/parameters`.
+            public var parameters: OpenAPIRuntime.OpenAPIValueContainer?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunction/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case function = "function"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunction/type`.
+            public var _type: Components.Schemas.InteractionsFunction._TypePayload
+            /// Creates a new `InteractionsFunction`.
+            ///
+            /// - Parameters:
+            ///   - description: A description of the function.
+            ///   - name: The name of the function.
+            ///   - parameters: The JSON Schema for the function's parameters.
+            ///   - _type:
+            public init(
+                description: Swift.String? = nil,
+                name: Swift.String? = nil,
+                parameters: OpenAPIRuntime.OpenAPIValueContainer? = nil,
+                _type: Components.Schemas.InteractionsFunction._TypePayload
+            ) {
+                self.description = description
+                self.name = name
+                self.parameters = parameters
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case description
+                case name
+                case parameters
+                case _type = "type"
+            }
+        }
+        /// A function tool call step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsFunctionCallStep`.
+        public struct InteractionsFunctionCallStep: Codable, Hashable, Sendable {
+            /// Required. The arguments to pass to the function.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionCallStep/arguments`.
+            public struct ArgumentsPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `ArgumentsPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// Required. The arguments to pass to the function.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionCallStep/arguments`.
+            public var arguments: Components.Schemas.InteractionsFunctionCallStep.ArgumentsPayload
+            /// Required. A unique ID for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionCallStep/id`.
+            public var id: Swift.String
+            /// Required. The name of the tool to call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionCallStep/name`.
+            public var name: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionCallStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case functionCall = "function_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionCallStep/type`.
+            public var _type: Components.Schemas.InteractionsFunctionCallStep._TypePayload
+            /// Creates a new `InteractionsFunctionCallStep`.
+            ///
+            /// - Parameters:
+            ///   - arguments: Required. The arguments to pass to the function.
+            ///   - id: Required. A unique ID for this specific tool call.
+            ///   - name: Required. The name of the tool to call.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsFunctionCallStep.ArgumentsPayload,
+                id: Swift.String,
+                name: Swift.String,
+                _type: Components.Schemas.InteractionsFunctionCallStep._TypePayload
+            ) {
+                self.arguments = arguments
+                self.id = id
+                self.name = name
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case id
+                case name
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta`.
+        public struct InteractionsFunctionResultDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/is_error`.
+            public var isError: Swift.Bool?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/name`.
+            public var name: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result`.
+            @frozen public enum ResultPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result/Case1Payload`.
+                @frozen public enum Case1PayloadPayload: Codable, Hashable, Sendable {
+                    /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result/Case1Payload/case1`.
+                    case InteractionsImageContent(Components.Schemas.InteractionsImageContent)
+                    /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result/Case1Payload/case2`.
+                    case InteractionsTextContent(Components.Schemas.InteractionsTextContent)
+                    public init(from decoder: any Swift.Decoder) throws {
+                        var errors: [any Swift.Error] = []
+                        do {
+                            self = .InteractionsImageContent(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        do {
+                            self = .InteractionsTextContent(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                            type: Self.self,
+                            codingPath: decoder.codingPath,
+                            errors: errors
+                        )
+                    }
+                    public func encode(to encoder: any Swift.Encoder) throws {
+                        switch self {
+                        case let .InteractionsImageContent(value):
+                            try value.encode(to: encoder)
+                        case let .InteractionsTextContent(value):
+                            try value.encode(to: encoder)
+                        }
+                    }
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result/case1`.
+                public typealias Case1Payload = [Components.Schemas.InteractionsFunctionResultDelta.ResultPayload.Case1PayloadPayload]
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result/case1`.
+                case case1(Components.Schemas.InteractionsFunctionResultDelta.ResultPayload.Case1Payload)
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result/case2`.
+                case case2(OpenAPIRuntime.OpenAPIObjectContainer)
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result/case3`.
+                case case3(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .case1(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case3(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .case1(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    case let .case2(value):
+                        try value.encode(to: encoder)
+                    case let .case3(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/result`.
+            public var result: Components.Schemas.InteractionsFunctionResultDelta.ResultPayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case functionResult = "function_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultDelta/type`.
+            public var _type: Components.Schemas.InteractionsFunctionResultDelta._TypePayload
+            /// Creates a new `InteractionsFunctionResultDelta`.
+            ///
+            /// - Parameters:
+            ///   - isError:
+            ///   - name:
+            ///   - result:
+            ///   - _type:
+            public init(
+                isError: Swift.Bool? = nil,
+                name: Swift.String? = nil,
+                result: Components.Schemas.InteractionsFunctionResultDelta.ResultPayload,
+                _type: Components.Schemas.InteractionsFunctionResultDelta._TypePayload
+            ) {
+                self.isError = isError
+                self.name = name
+                self.result = result
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case isError = "is_error"
+                case name
+                case result
+                case _type = "type"
+            }
+        }
+        /// Result of a function tool call.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep`.
+        public struct InteractionsFunctionResultStep: Codable, Hashable, Sendable {
+            /// Required. ID to match the ID from the function call block.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/call_id`.
+            public var callId: Swift.String
+            /// Whether the tool call resulted in an error.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/is_error`.
+            public var isError: Swift.Bool?
+            /// The name of the tool that was called.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/name`.
+            public var name: Swift.String?
+            /// Required. The result of the tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result`.
+            @frozen public enum ResultPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result/Case1Payload`.
+                @frozen public enum Case1PayloadPayload: Codable, Hashable, Sendable {
+                    /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result/Case1Payload/case1`.
+                    case InteractionsImageContent(Components.Schemas.InteractionsImageContent)
+                    /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result/Case1Payload/case2`.
+                    case InteractionsTextContent(Components.Schemas.InteractionsTextContent)
+                    public init(from decoder: any Swift.Decoder) throws {
+                        var errors: [any Swift.Error] = []
+                        do {
+                            self = .InteractionsImageContent(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        do {
+                            self = .InteractionsTextContent(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                            type: Self.self,
+                            codingPath: decoder.codingPath,
+                            errors: errors
+                        )
+                    }
+                    public func encode(to encoder: any Swift.Encoder) throws {
+                        switch self {
+                        case let .InteractionsImageContent(value):
+                            try value.encode(to: encoder)
+                        case let .InteractionsTextContent(value):
+                            try value.encode(to: encoder)
+                        }
+                    }
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result/case1`.
+                public typealias Case1Payload = [Components.Schemas.InteractionsFunctionResultStep.ResultPayload.Case1PayloadPayload]
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result/case1`.
+                case case1(Components.Schemas.InteractionsFunctionResultStep.ResultPayload.Case1Payload)
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result/case2`.
+                case case2(OpenAPIRuntime.OpenAPIObjectContainer)
+                /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result/case3`.
+                case case3(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .case1(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case3(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .case1(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    case let .case2(value):
+                        try value.encode(to: encoder)
+                    case let .case3(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Required. The result of the tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/result`.
+            public var result: Components.Schemas.InteractionsFunctionResultStep.ResultPayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case functionResult = "function_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsFunctionResultStep/type`.
+            public var _type: Components.Schemas.InteractionsFunctionResultStep._TypePayload
+            /// Creates a new `InteractionsFunctionResultStep`.
+            ///
+            /// - Parameters:
+            ///   - callId: Required. ID to match the ID from the function call block.
+            ///   - isError: Whether the tool call resulted in an error.
+            ///   - name: The name of the tool that was called.
+            ///   - result: Required. The result of the tool call.
+            ///   - _type:
+            public init(
+                callId: Swift.String,
+                isError: Swift.Bool? = nil,
+                name: Swift.String? = nil,
+                result: Components.Schemas.InteractionsFunctionResultStep.ResultPayload,
+                _type: Components.Schemas.InteractionsFunctionResultStep._TypePayload
+            ) {
+                self.callId = callId
+                self.isError = isError
+                self.name = name
+                self.result = result
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case callId = "call_id"
+                case isError = "is_error"
+                case name
+                case result
+                case _type = "type"
+            }
+        }
+        /// Configuration parameters for model interactions.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig`.
+        public struct InteractionsGenerationConfig: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/image_config`.
+            public var imageConfig: Components.Schemas.InteractionsImageConfig?
+            /// The maximum number of tokens to include in the response.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/max_output_tokens`.
+            public var maxOutputTokens: Swift.Int32?
+            /// Seed used in decoding for reproducibility.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/seed`.
+            public var seed: Swift.Int32?
+            /// A list of character sequences that will stop output interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/stop_sequences`.
+            public var stopSequences: [Swift.String]?
+            /// Speech and multi-speaker configuration.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/structured_speech_config`.
+            @frozen public enum StructuredSpeechConfigPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/structured_speech_config/case1`.
+                case InteractionsSpeakerConfig(Components.Schemas.InteractionsSpeakerConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/structured_speech_config/case2`.
+                case case2([Components.Schemas.InteractionsSpeechConfig])
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsSpeakerConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsSpeakerConfig(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Speech and multi-speaker configuration.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/structured_speech_config`.
+            public var structuredSpeechConfig: Components.Schemas.InteractionsGenerationConfig.StructuredSpeechConfigPayload?
+            /// Controls the randomness of the output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/temperature`.
+            @available(*, deprecated)
+            public var temperature: Swift.Float?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/thinking_level`.
+            public var thinkingLevel: Components.Schemas.InteractionsThinkingLevel?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/thinking_summaries`.
+            public var thinkingSummaries: Components.Schemas.InteractionsThinkingSummaries?
+            /// The tool choice configuration.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/tool_choice`.
+            @frozen public enum ToolChoicePayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/tool_choice/case1`.
+                case InteractionsToolChoiceConfig(Components.Schemas.InteractionsToolChoiceConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/tool_choice/case2`.
+                @frozen public enum Case2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case auto = "auto"
+                    case any = "any"
+                    case none = "none"
+                    case validated = "validated"
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/tool_choice/case2`.
+                case case2(Components.Schemas.InteractionsGenerationConfig.ToolChoicePayload.Case2Payload)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsToolChoiceConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsToolChoiceConfig(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// The tool choice configuration.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/tool_choice`.
+            public var toolChoice: Components.Schemas.InteractionsGenerationConfig.ToolChoicePayload?
+            /// The maximum cumulative probability of tokens to consider when sampling.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/top_p`.
+            @available(*, deprecated)
+            public var topP: Swift.Float?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/transcription_config`.
+            public var transcriptionConfig: Components.Schemas.InteractionsTranscriptionConfig?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/video_config`.
+            public var videoConfig: Components.Schemas.InteractionsVideoConfig?
+            /// Creates a new `InteractionsGenerationConfig`.
+            ///
+            /// - Parameters:
+            ///   - imageConfig:
+            ///   - maxOutputTokens: The maximum number of tokens to include in the response.
+            ///   - seed: Seed used in decoding for reproducibility.
+            ///   - stopSequences: A list of character sequences that will stop output interaction.
+            ///   - structuredSpeechConfig: Speech and multi-speaker configuration.
+            ///   - temperature: Controls the randomness of the output.
+            ///   - thinkingLevel:
+            ///   - thinkingSummaries:
+            ///   - toolChoice: The tool choice configuration.
+            ///   - topP: The maximum cumulative probability of tokens to consider when sampling.
+            ///   - transcriptionConfig:
+            ///   - videoConfig:
+            public init(
+                imageConfig: Components.Schemas.InteractionsImageConfig? = nil,
+                maxOutputTokens: Swift.Int32? = nil,
+                seed: Swift.Int32? = nil,
+                stopSequences: [Swift.String]? = nil,
+                structuredSpeechConfig: Components.Schemas.InteractionsGenerationConfig.StructuredSpeechConfigPayload? = nil,
+                temperature: Swift.Float? = nil,
+                thinkingLevel: Components.Schemas.InteractionsThinkingLevel? = nil,
+                thinkingSummaries: Components.Schemas.InteractionsThinkingSummaries? = nil,
+                toolChoice: Components.Schemas.InteractionsGenerationConfig.ToolChoicePayload? = nil,
+                topP: Swift.Float? = nil,
+                transcriptionConfig: Components.Schemas.InteractionsTranscriptionConfig? = nil,
+                videoConfig: Components.Schemas.InteractionsVideoConfig? = nil
+            ) {
+                self.imageConfig = imageConfig
+                self.maxOutputTokens = maxOutputTokens
+                self.seed = seed
+                self.stopSequences = stopSequences
+                self.structuredSpeechConfig = structuredSpeechConfig
+                self.temperature = temperature
+                self.thinkingLevel = thinkingLevel
+                self.thinkingSummaries = thinkingSummaries
+                self.toolChoice = toolChoice
+                self.topP = topP
+                self.transcriptionConfig = transcriptionConfig
+                self.videoConfig = videoConfig
+            }
+            public enum CodingKeys: String, CodingKey {
+                case imageConfig = "image_config"
+                case maxOutputTokens = "max_output_tokens"
+                case seed
+                case stopSequences = "stop_sequences"
+                case structuredSpeechConfig = "structured_speech_config"
+                case temperature
+                case thinkingLevel = "thinking_level"
+                case thinkingSummaries = "thinking_summaries"
+                case toolChoice = "tool_choice"
+                case topP = "top_p"
+                case transcriptionConfig = "transcription_config"
+                case videoConfig = "video_config"
+            }
+        }
+        /// Response for `GetEnvironmentFiles`.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGetEnvironmentFilesResponse`.
+        public struct InteractionsGetEnvironmentFilesResponse: Codable, Hashable, Sendable {
+            /// If the requested path is a directory, this contains its contents.
+            /// If the requested path is a file, this contains a single entry with the
+            /// file's metadata.
+            /// If alt=media was specified, this is empty (content is served via `blob`).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGetEnvironmentFilesResponse/files`.
+            public var files: [Components.Schemas.InteractionsEnvironmentFile]?
+            /// Pagination token for directory listing.
+            /// NOLINT
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGetEnvironmentFilesResponse/next_page_token`.
+            public var nextPageToken: Swift.String?
+            /// Creates a new `InteractionsGetEnvironmentFilesResponse`.
+            ///
+            /// - Parameters:
+            ///   - files: If the requested path is a directory, this contains its contents.
+            ///   - nextPageToken: Pagination token for directory listing.
+            public init(
+                files: [Components.Schemas.InteractionsEnvironmentFile]? = nil,
+                nextPageToken: Swift.String? = nil
+            ) {
+                self.files = files
+                self.nextPageToken = nextPageToken
+            }
+            public enum CodingKeys: String, CodingKey {
+                case files
+                case nextPageToken = "next_page_token"
+            }
+        }
+        /// A tool that can be used by the model to call Google Maps.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMaps`.
+        public struct InteractionsGoogleMaps: Codable, Hashable, Sendable {
+            /// Whether to return a widget context token in the tool call result of the
+            /// response.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMaps/enable_widget`.
+            public var enableWidget: Swift.Bool?
+            /// The latitude of the user's location.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMaps/latitude`.
+            public var latitude: Swift.Double?
+            /// The longitude of the user's location.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMaps/longitude`.
+            public var longitude: Swift.Double?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMaps/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleMaps = "google_maps"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMaps/type`.
+            public var _type: Components.Schemas.InteractionsGoogleMaps._TypePayload
+            /// Creates a new `InteractionsGoogleMaps`.
+            ///
+            /// - Parameters:
+            ///   - enableWidget: Whether to return a widget context token in the tool call result of the
+            ///   - latitude: The latitude of the user's location.
+            ///   - longitude: The longitude of the user's location.
+            ///   - _type:
+            public init(
+                enableWidget: Swift.Bool? = nil,
+                latitude: Swift.Double? = nil,
+                longitude: Swift.Double? = nil,
+                _type: Components.Schemas.InteractionsGoogleMaps._TypePayload
+            ) {
+                self.enableWidget = enableWidget
+                self.latitude = latitude
+                self.longitude = longitude
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case enableWidget = "enable_widget"
+                case latitude
+                case longitude
+                case _type = "type"
+            }
+        }
+        /// The arguments to pass to the Google Maps tool.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallArguments`.
+        public struct InteractionsGoogleMapsCallArguments: Codable, Hashable, Sendable {
+            /// The queries to be executed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallArguments/queries`.
+            public var queries: [Swift.String]?
+            /// Creates a new `InteractionsGoogleMapsCallArguments`.
+            ///
+            /// - Parameters:
+            ///   - queries: The queries to be executed.
+            public init(queries: [Swift.String]? = nil) {
+                self.queries = queries
+            }
+            public enum CodingKeys: String, CodingKey {
+                case queries
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallDelta`.
+        public struct InteractionsGoogleMapsCallDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallDelta/arguments`.
+            public var arguments: Components.Schemas.InteractionsGoogleMapsCallArguments?
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleMapsCall = "google_maps_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallDelta/type`.
+            public var _type: Components.Schemas.InteractionsGoogleMapsCallDelta._TypePayload
+            /// Creates a new `InteractionsGoogleMapsCallDelta`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsGoogleMapsCallArguments? = nil,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsGoogleMapsCallDelta._TypePayload
+            ) {
+                self.arguments = arguments
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case signature
+                case _type = "type"
+            }
+        }
+        /// Google Maps call step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallStep`.
+        public struct InteractionsGoogleMapsCallStep: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallStep/arguments`.
+            public var arguments: Components.Schemas.InteractionsGoogleMapsCallStepArguments?
+            /// Required. A unique ID for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallStep/id`.
+            public var id: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleMapsCall = "google_maps_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallStep/type`.
+            public var _type: Components.Schemas.InteractionsGoogleMapsCallStep._TypePayload
+            /// Creates a new `InteractionsGoogleMapsCallStep`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - id: Required. A unique ID for this specific tool call.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsGoogleMapsCallStepArguments? = nil,
+                id: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsGoogleMapsCallStep._TypePayload
+            ) {
+                self.arguments = arguments
+                self.id = id
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case id
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The arguments to pass to the Google Maps tool.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallStepArguments`.
+        public struct InteractionsGoogleMapsCallStepArguments: Codable, Hashable, Sendable {
+            /// The queries to be executed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsCallStepArguments/queries`.
+            public var queries: [Swift.String]?
+            /// Creates a new `InteractionsGoogleMapsCallStepArguments`.
+            ///
+            /// - Parameters:
+            ///   - queries: The queries to be executed.
+            public init(queries: [Swift.String]? = nil) {
+                self.queries = queries
+            }
+            public enum CodingKeys: String, CodingKey {
+                case queries
+            }
+        }
+        /// The result of the Google Maps.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResult`.
+        public struct InteractionsGoogleMapsResult: Codable, Hashable, Sendable {
+            /// The places that were found.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResult/places`.
+            public var places: [Components.Schemas.InteractionsPlaces]?
+            /// Resource name of the Google Maps widget context token.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResult/widget_context_token`.
+            public var widgetContextToken: Swift.String?
+            /// Creates a new `InteractionsGoogleMapsResult`.
+            ///
+            /// - Parameters:
+            ///   - places: The places that were found.
+            ///   - widgetContextToken: Resource name of the Google Maps widget context token.
+            public init(
+                places: [Components.Schemas.InteractionsPlaces]? = nil,
+                widgetContextToken: Swift.String? = nil
+            ) {
+                self.places = places
+                self.widgetContextToken = widgetContextToken
+            }
+            public enum CodingKeys: String, CodingKey {
+                case places
+                case widgetContextToken = "widget_context_token"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultDelta`.
+        public struct InteractionsGoogleMapsResultDelta: Codable, Hashable, Sendable {
+            /// The results of the Google Maps.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultDelta/result`.
+            public var result: [Components.Schemas.InteractionsGoogleMapsResult]?
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleMapsResult = "google_maps_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultDelta/type`.
+            public var _type: Components.Schemas.InteractionsGoogleMapsResultDelta._TypePayload
+            /// Creates a new `InteractionsGoogleMapsResultDelta`.
+            ///
+            /// - Parameters:
+            ///   - result: The results of the Google Maps.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                result: [Components.Schemas.InteractionsGoogleMapsResult]? = nil,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsGoogleMapsResultDelta._TypePayload
+            ) {
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The result of the Google Maps.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultItem`.
+        public struct InteractionsGoogleMapsResultItem: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultItem/places`.
+            public var places: [Components.Schemas.InteractionsGoogleMapsResultPlaces]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultItem/widget_context_token`.
+            public var widgetContextToken: Swift.String?
+            /// Creates a new `InteractionsGoogleMapsResultItem`.
+            ///
+            /// - Parameters:
+            ///   - places:
+            ///   - widgetContextToken:
+            public init(
+                places: [Components.Schemas.InteractionsGoogleMapsResultPlaces]? = nil,
+                widgetContextToken: Swift.String? = nil
+            ) {
+                self.places = places
+                self.widgetContextToken = widgetContextToken
+            }
+            public enum CodingKeys: String, CodingKey {
+                case places
+                case widgetContextToken = "widget_context_token"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultPlaces`.
+        public struct InteractionsGoogleMapsResultPlaces: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultPlaces/name`.
+            public var name: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultPlaces/place_id`.
+            public var placeId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultPlaces/review_snippets`.
+            public var reviewSnippets: [Components.Schemas.InteractionsReviewSnippet]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultPlaces/url`.
+            public var url: Swift.String?
+            /// Creates a new `InteractionsGoogleMapsResultPlaces`.
+            ///
+            /// - Parameters:
+            ///   - name:
+            ///   - placeId:
+            ///   - reviewSnippets:
+            ///   - url:
+            public init(
+                name: Swift.String? = nil,
+                placeId: Swift.String? = nil,
+                reviewSnippets: [Components.Schemas.InteractionsReviewSnippet]? = nil,
+                url: Swift.String? = nil
+            ) {
+                self.name = name
+                self.placeId = placeId
+                self.reviewSnippets = reviewSnippets
+                self.url = url
+            }
+            public enum CodingKeys: String, CodingKey {
+                case name
+                case placeId = "place_id"
+                case reviewSnippets = "review_snippets"
+                case url
+            }
+        }
+        /// Google Maps result step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultStep`.
+        public struct InteractionsGoogleMapsResultStep: Codable, Hashable, Sendable {
+            /// Required. ID to match the ID from the function call block.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultStep/call_id`.
+            public var callId: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultStep/result`.
+            public var result: [Components.Schemas.InteractionsGoogleMapsResultItem]
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleMapsResult = "google_maps_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleMapsResultStep/type`.
+            public var _type: Components.Schemas.InteractionsGoogleMapsResultStep._TypePayload
+            /// Creates a new `InteractionsGoogleMapsResultStep`.
+            ///
+            /// - Parameters:
+            ///   - callId: Required. ID to match the ID from the function call block.
+            ///   - result:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                callId: Swift.String,
+                result: [Components.Schemas.InteractionsGoogleMapsResultItem],
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsGoogleMapsResultStep._TypePayload
+            ) {
+                self.callId = callId
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case callId = "call_id"
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// A tool that can be used by the model to search Google.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearch`.
+        public struct InteractionsGoogleSearch: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearch/SearchTypesPayload`.
+            @frozen public enum SearchTypesPayloadPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case webSearch = "web_search"
+                case imageSearch = "image_search"
+            }
+            /// The types of search grounding to enable.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearch/search_types`.
+            public typealias SearchTypesPayload = [Components.Schemas.InteractionsGoogleSearch.SearchTypesPayloadPayload]
+            /// The types of search grounding to enable.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearch/search_types`.
+            public var searchTypes: Components.Schemas.InteractionsGoogleSearch.SearchTypesPayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearch/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleSearch = "google_search"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearch/type`.
+            public var _type: Components.Schemas.InteractionsGoogleSearch._TypePayload
+            /// Creates a new `InteractionsGoogleSearch`.
+            ///
+            /// - Parameters:
+            ///   - searchTypes: The types of search grounding to enable.
+            ///   - _type:
+            public init(
+                searchTypes: Components.Schemas.InteractionsGoogleSearch.SearchTypesPayload? = nil,
+                _type: Components.Schemas.InteractionsGoogleSearch._TypePayload
+            ) {
+                self.searchTypes = searchTypes
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case searchTypes = "search_types"
+                case _type = "type"
+            }
+        }
+        /// The arguments to pass to Google Search.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallArguments`.
+        public struct InteractionsGoogleSearchCallArguments: Codable, Hashable, Sendable {
+            /// Web search queries for the following-up web search.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallArguments/queries`.
+            public var queries: [Swift.String]?
+            /// Creates a new `InteractionsGoogleSearchCallArguments`.
+            ///
+            /// - Parameters:
+            ///   - queries: Web search queries for the following-up web search.
+            public init(queries: [Swift.String]? = nil) {
+                self.queries = queries
+            }
+            public enum CodingKeys: String, CodingKey {
+                case queries
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallDelta`.
+        public struct InteractionsGoogleSearchCallDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallDelta/arguments`.
+            public var arguments: Components.Schemas.InteractionsGoogleSearchCallArguments
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleSearchCall = "google_search_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallDelta/type`.
+            public var _type: Components.Schemas.InteractionsGoogleSearchCallDelta._TypePayload
+            /// Creates a new `InteractionsGoogleSearchCallDelta`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsGoogleSearchCallArguments,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsGoogleSearchCallDelta._TypePayload
+            ) {
+                self.arguments = arguments
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case signature
+                case _type = "type"
+            }
+        }
+        /// Google Search call step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStep`.
+        public struct InteractionsGoogleSearchCallStep: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStep/arguments`.
+            public var arguments: Components.Schemas.InteractionsGoogleSearchCallStepArguments
+            /// Required. A unique ID for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStep/id`.
+            public var id: Swift.String
+            /// The type of search grounding enabled.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStep/search_type`.
+            @frozen public enum SearchTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case webSearch = "web_search"
+                case imageSearch = "image_search"
+            }
+            /// The type of search grounding enabled.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStep/search_type`.
+            public var searchType: Components.Schemas.InteractionsGoogleSearchCallStep.SearchTypePayload?
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleSearchCall = "google_search_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStep/type`.
+            public var _type: Components.Schemas.InteractionsGoogleSearchCallStep._TypePayload
+            /// Creates a new `InteractionsGoogleSearchCallStep`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - id: Required. A unique ID for this specific tool call.
+            ///   - searchType: The type of search grounding enabled.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsGoogleSearchCallStepArguments,
+                id: Swift.String,
+                searchType: Components.Schemas.InteractionsGoogleSearchCallStep.SearchTypePayload? = nil,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsGoogleSearchCallStep._TypePayload
+            ) {
+                self.arguments = arguments
+                self.id = id
+                self.searchType = searchType
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case id
+                case searchType = "search_type"
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The arguments to pass to Google Search.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStepArguments`.
+        public struct InteractionsGoogleSearchCallStepArguments: Codable, Hashable, Sendable {
+            /// Web search queries for the following-up web search.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchCallStepArguments/queries`.
+            public var queries: [Swift.String]?
+            /// Creates a new `InteractionsGoogleSearchCallStepArguments`.
+            ///
+            /// - Parameters:
+            ///   - queries: Web search queries for the following-up web search.
+            public init(queries: [Swift.String]? = nil) {
+                self.queries = queries
+            }
+            public enum CodingKeys: String, CodingKey {
+                case queries
+            }
+        }
+        /// The result of the Google Search.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResult`.
+        public struct InteractionsGoogleSearchResult: Codable, Hashable, Sendable {
+            /// Web content snippet that can be embedded in a web page or an app webview.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResult/search_suggestions`.
+            public var searchSuggestions: Swift.String?
+            /// Creates a new `InteractionsGoogleSearchResult`.
+            ///
+            /// - Parameters:
+            ///   - searchSuggestions: Web content snippet that can be embedded in a web page or an app webview.
+            public init(searchSuggestions: Swift.String? = nil) {
+                self.searchSuggestions = searchSuggestions
+            }
+            public enum CodingKeys: String, CodingKey {
+                case searchSuggestions = "search_suggestions"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultDelta`.
+        public struct InteractionsGoogleSearchResultDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultDelta/is_error`.
+            public var isError: Swift.Bool?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultDelta/result`.
+            public var result: [Components.Schemas.InteractionsGoogleSearchResult]
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleSearchResult = "google_search_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultDelta/type`.
+            public var _type: Components.Schemas.InteractionsGoogleSearchResultDelta._TypePayload
+            /// Creates a new `InteractionsGoogleSearchResultDelta`.
+            ///
+            /// - Parameters:
+            ///   - isError:
+            ///   - result:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                isError: Swift.Bool? = nil,
+                result: [Components.Schemas.InteractionsGoogleSearchResult],
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsGoogleSearchResultDelta._TypePayload
+            ) {
+                self.isError = isError
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case isError = "is_error"
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The result of the Google Search.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultItem`.
+        public struct InteractionsGoogleSearchResultItem: Codable, Hashable, Sendable {
+            /// Web content snippet that can be embedded in a web page or an app webview.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultItem/search_suggestions`.
+            public var searchSuggestions: Swift.String?
+            /// Creates a new `InteractionsGoogleSearchResultItem`.
+            ///
+            /// - Parameters:
+            ///   - searchSuggestions: Web content snippet that can be embedded in a web page or an app webview.
+            public init(searchSuggestions: Swift.String? = nil) {
+                self.searchSuggestions = searchSuggestions
+            }
+            public enum CodingKeys: String, CodingKey {
+                case searchSuggestions = "search_suggestions"
+            }
+        }
+        /// Google Search result step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultStep`.
+        public struct InteractionsGoogleSearchResultStep: Codable, Hashable, Sendable {
+            /// Required. ID to match the ID from the function call block.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultStep/call_id`.
+            public var callId: Swift.String
+            /// Whether the Google Search resulted in an error.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultStep/is_error`.
+            public var isError: Swift.Bool?
+            /// Required. The results of the Google Search.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultStep/result`.
+            public var result: [Components.Schemas.InteractionsGoogleSearchResultItem]
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleSearchResult = "google_search_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsGoogleSearchResultStep/type`.
+            public var _type: Components.Schemas.InteractionsGoogleSearchResultStep._TypePayload
+            /// Creates a new `InteractionsGoogleSearchResultStep`.
+            ///
+            /// - Parameters:
+            ///   - callId: Required. ID to match the ID from the function call block.
+            ///   - isError: Whether the Google Search resulted in an error.
+            ///   - result: Required. The results of the Google Search.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                callId: Swift.String,
+                isError: Swift.Bool? = nil,
+                result: [Components.Schemas.InteractionsGoogleSearchResultItem],
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsGoogleSearchResultStep._TypePayload
+            ) {
+                self.callId = callId
+                self.isError = isError
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case callId = "call_id"
+                case isError = "is_error"
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The number of grounding tool counts.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsGroundingToolCount`.
+        public struct InteractionsGroundingToolCount: Codable, Hashable, Sendable {
+            /// The number of grounding tool counts.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGroundingToolCount/count`.
+            public var count: Swift.Int32?
+            /// The grounding tool type associated with the count.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGroundingToolCount/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case googleSearch = "google_search"
+                case googleMaps = "google_maps"
+            }
+            /// The grounding tool type associated with the count.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsGroundingToolCount/type`.
+            public var _type: Components.Schemas.InteractionsGroundingToolCount._TypePayload?
+            /// Creates a new `InteractionsGroundingToolCount`.
+            ///
+            /// - Parameters:
+            ///   - count: The number of grounding tool counts.
+            ///   - _type: The grounding tool type associated with the count.
+            public init(
+                count: Swift.Int32? = nil,
+                _type: Components.Schemas.InteractionsGroundingToolCount._TypePayload? = nil
+            ) {
+                self.count = count
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case count
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsHarmCategory`.
+        @frozen public enum InteractionsHarmCategory: String, Codable, Hashable, Sendable, CaseIterable {
+            case hateSpeech = "hate_speech"
+            case dangerousContent = "dangerous_content"
+            case harassment = "harassment"
+            case sexuallyExplicit = "sexually_explicit"
+            case jailbreak = "jailbreak"
+        }
+        /// Configuration for HTTP Bearer token credentials.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerConfig`.
+        public struct InteractionsHttpBearerConfig: Codable, Hashable, Sendable {
+            /// Optional. Header name to inject the token into. Defaults to
+            /// 'Authorization'.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerConfig/header_name`.
+            public var headerName: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerConfig/id`.
+            public var id: Swift.String
+            /// Optional. Prefix to prepend to the token. Defaults to 'Bearer'. Set to ''
+            /// for no prefix.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerConfig/prefix`.
+            public var prefix: Swift.String?
+            /// Required. Input only. The static bearer token. Write-only; never returned in responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerConfig/token`.
+            public var token: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case bearerToken = "bearer_token"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerConfig/type`.
+            public var _type: Components.Schemas.InteractionsHttpBearerConfig._TypePayload
+            /// Creates a new `InteractionsHttpBearerConfig`.
+            ///
+            /// - Parameters:
+            ///   - headerName: Optional. Header name to inject the token into. Defaults to
+            ///   - id:
+            ///   - prefix: Optional. Prefix to prepend to the token. Defaults to 'Bearer'. Set to ''
+            ///   - token: Required. Input only. The static bearer token. Write-only; never returned in responses.
+            ///   - _type:
+            public init(
+                headerName: Swift.String? = nil,
+                id: Swift.String,
+                prefix: Swift.String? = nil,
+                token: Swift.String,
+                _type: Components.Schemas.InteractionsHttpBearerConfig._TypePayload
+            ) {
+                self.headerName = headerName
+                self.id = id
+                self.prefix = prefix
+                self.token = token
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case headerName = "header_name"
+                case id
+                case prefix
+                case token
+                case _type = "type"
+            }
+        }
+        /// Configuration for updating HTTP Bearer token credentials.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerUpdateConfig`.
+        public struct InteractionsHttpBearerUpdateConfig: Codable, Hashable, Sendable {
+            /// Optional. Header name to inject the token into. Defaults to
+            /// 'Authorization'.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerUpdateConfig/header_name`.
+            public var headerName: Swift.String?
+            /// Optional. Prefix to prepend to the token. Defaults to 'Bearer'. Set to ''
+            /// for no prefix.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerUpdateConfig/prefix`.
+            public var prefix: Swift.String?
+            /// Optional. Input only. The static bearer token. Write-only; never returned in responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerUpdateConfig/token`.
+            public var token: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerUpdateConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case bearerToken = "bearer_token"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBearerUpdateConfig/type`.
+            public var _type: Components.Schemas.InteractionsHttpBearerUpdateConfig._TypePayload
+            /// Creates a new `InteractionsHttpBearerUpdateConfig`.
+            ///
+            /// - Parameters:
+            ///   - headerName: Optional. Header name to inject the token into. Defaults to
+            ///   - prefix: Optional. Prefix to prepend to the token. Defaults to 'Bearer'. Set to ''
+            ///   - token: Optional. Input only. The static bearer token. Write-only; never returned in responses.
+            ///   - _type:
+            public init(
+                headerName: Swift.String? = nil,
+                prefix: Swift.String? = nil,
+                token: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsHttpBearerUpdateConfig._TypePayload
+            ) {
+                self.headerName = headerName
+                self.prefix = prefix
+                self.token = token
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case headerName = "header_name"
+                case prefix
+                case token
+                case _type = "type"
+            }
+        }
+        /// Message that represents an arbitrary HTTP body. It should only be used for
+        /// payload formats that can't be represented as JSON, such as raw binary or
+        /// an HTML page.
+        ///
+        ///
+        /// This message can be used both in streaming and non-streaming API methods in
+        /// the request as well as the response.
+        ///
+        /// It can be used as a top-level request field, which is convenient if one
+        /// wants to extract parameters from either the URL or HTTP template into the
+        /// request fields and also want access to the raw HTTP body.
+        ///
+        /// Example:
+        ///
+        ///     message GetResourceRequest {
+        ///       // A unique request id.
+        ///       string request_id = 1;
+        ///
+        ///       // The raw HTTP body is bound to this field.
+        ///       google.api.HttpBody http_body = 2;
+        ///
+        ///     }
+        ///
+        ///     service ResourceService {
+        ///       rpc GetResource(GetResourceRequest)
+        ///         returns (google.api.HttpBody);
+        ///       rpc UpdateResource(google.api.HttpBody)
+        ///         returns (google.protobuf.Empty);
+        ///
+        ///     }
+        ///
+        /// Example with streaming methods:
+        ///
+        ///     service CaldavService {
+        ///       rpc GetCalendar(stream google.api.HttpBody)
+        ///         returns (stream google.api.HttpBody);
+        ///       rpc UpdateCalendar(stream google.api.HttpBody)
+        ///         returns (stream google.api.HttpBody);
+        ///
+        ///     }
+        ///
+        /// Use of this type only changes how the request and response bodies are
+        /// handled, all other features will continue to work unchanged.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsHttpBody`.
+        public struct InteractionsHttpBody: Codable, Hashable, Sendable {
+            /// The HTTP Content-Type header value specifying the content type of the body.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBody/content_type`.
+            public var contentType: Swift.String?
+            /// The HTTP request/response body as raw binary.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBody/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBody/ExtensionsPayload`.
+            public struct ExtensionsPayloadPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `ExtensionsPayloadPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// Application specific response metadata. Must be set in the first response
+            /// for streaming APIs.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBody/extensions`.
+            public typealias ExtensionsPayload = [Components.Schemas.InteractionsHttpBody.ExtensionsPayloadPayload]
+            /// Application specific response metadata. Must be set in the first response
+            /// for streaming APIs.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsHttpBody/extensions`.
+            public var extensions: Components.Schemas.InteractionsHttpBody.ExtensionsPayload?
+            /// Creates a new `InteractionsHttpBody`.
+            ///
+            /// - Parameters:
+            ///   - contentType: The HTTP Content-Type header value specifying the content type of the body.
+            ///   - data: The HTTP request/response body as raw binary.
+            ///   - extensions: Application specific response metadata. Must be set in the first response
+            public init(
+                contentType: Swift.String? = nil,
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                extensions: Components.Schemas.InteractionsHttpBody.ExtensionsPayload? = nil
+            ) {
+                self.contentType = contentType
+                self.data = data
+                self.extensions = extensions
+            }
+            public enum CodingKeys: String, CodingKey {
+                case contentType = "content_type"
+                case data
+                case extensions
+            }
+        }
+        /// The configuration for image interaction.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsImageConfig`.
+        @available(*, deprecated)
+        public struct InteractionsImageConfig: Codable, Hashable, Sendable {
+            /// The aspect ratio of the image to generate. Supported aspect ratios: 1:1,
+            /// 2:3, 3:2, 3:4, 4:3, 9:16, 16:9, 21:9.
+            ///
+            /// If not specified, the model will choose a default aspect ratio based on any
+            /// reference images provided.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageConfig/aspect_ratio`.
+            public var aspectRatio: Swift.String?
+            /// Specifies the size of generated images. Supported values are `1K`, `2K`,
+            /// `4K`. If not specified, the model will use default value `1K`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageConfig/image_size`.
+            public var imageSize: Swift.String?
+            /// Creates a new `InteractionsImageConfig`.
+            ///
+            /// - Parameters:
+            ///   - aspectRatio: The aspect ratio of the image to generate. Supported aspect ratios: 1:1,
+            ///   - imageSize: Specifies the size of generated images. Supported values are `1K`, `2K`,
+            public init(
+                aspectRatio: Swift.String? = nil,
+                imageSize: Swift.String? = nil
+            ) {
+                self.aspectRatio = aspectRatio
+                self.imageSize = imageSize
+            }
+            public enum CodingKeys: String, CodingKey {
+                case aspectRatio = "aspect_ratio"
+                case imageSize = "image_size"
+            }
+        }
+        /// An image content block.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsImageContent`.
+        public struct InteractionsImageContent: Codable, Hashable, Sendable {
+            /// The image content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageContent/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// The mime type of the image.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageContent/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case imagePng = "image/png"
+                case imageJpeg = "image/jpeg"
+                case imageWebp = "image/webp"
+                case imageHeic = "image/heic"
+                case imageHeif = "image/heif"
+                case imageGif = "image/gif"
+                case imageBmp = "image/bmp"
+                case imageTiff = "image/tiff"
+            }
+            /// The mime type of the image.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageContent/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsImageContent.MimeTypePayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageContent/resolution`.
+            public var resolution: Components.Schemas.InteractionsMediaResolution?
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageContent/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case image = "image"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageContent/type`.
+            public var _type: Components.Schemas.InteractionsImageContent._TypePayload
+            /// The URI of the image.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageContent/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsImageContent`.
+            ///
+            /// - Parameters:
+            ///   - data: The image content.
+            ///   - mimeType: The mime type of the image.
+            ///   - resolution:
+            ///   - _type:
+            ///   - uri: The URI of the image.
+            public init(
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                mimeType: Components.Schemas.InteractionsImageContent.MimeTypePayload? = nil,
+                resolution: Components.Schemas.InteractionsMediaResolution? = nil,
+                _type: Components.Schemas.InteractionsImageContent._TypePayload,
+                uri: Swift.String? = nil
+            ) {
+                self.data = data
+                self.mimeType = mimeType
+                self.resolution = resolution
+                self._type = _type
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case data
+                case mimeType = "mime_type"
+                case resolution
+                case _type = "type"
+                case uri
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsImageDelta`.
+        public struct InteractionsImageDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageDelta/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageDelta/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case imagePng = "image/png"
+                case imageJpeg = "image/jpeg"
+                case imageWebp = "image/webp"
+                case imageHeic = "image/heic"
+                case imageHeif = "image/heif"
+                case imageGif = "image/gif"
+                case imageBmp = "image/bmp"
+                case imageTiff = "image/tiff"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageDelta/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsImageDelta.MimeTypePayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageDelta/resolution`.
+            public var resolution: Components.Schemas.InteractionsMediaResolution?
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case image = "image"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageDelta/type`.
+            public var _type: Components.Schemas.InteractionsImageDelta._TypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageDelta/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsImageDelta`.
+            ///
+            /// - Parameters:
+            ///   - data:
+            ///   - mimeType:
+            ///   - resolution:
+            ///   - _type:
+            ///   - uri:
+            public init(
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                mimeType: Components.Schemas.InteractionsImageDelta.MimeTypePayload? = nil,
+                resolution: Components.Schemas.InteractionsMediaResolution? = nil,
+                _type: Components.Schemas.InteractionsImageDelta._TypePayload,
+                uri: Swift.String? = nil
+            ) {
+                self.data = data
+                self.mimeType = mimeType
+                self.resolution = resolution
+                self._type = _type
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case data
+                case mimeType = "mime_type"
+                case resolution
+                case _type = "type"
+                case uri
+            }
+        }
+        /// Configuration for image output format.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat`.
+        public struct InteractionsImageResponseFormat: Codable, Hashable, Sendable {
+            /// The aspect ratio for the image output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/aspect_ratio`.
+            @frozen public enum AspectRatioPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case _1_colon_1 = "1:1"
+                case _2_colon_3 = "2:3"
+                case _3_colon_2 = "3:2"
+                case _3_colon_4 = "3:4"
+                case _4_colon_3 = "4:3"
+                case _4_colon_5 = "4:5"
+                case _5_colon_4 = "5:4"
+                case _9_colon_16 = "9:16"
+                case _16_colon_9 = "16:9"
+                case _21_colon_9 = "21:9"
+                case _1_colon_8 = "1:8"
+                case _8_colon_1 = "8:1"
+                case _1_colon_4 = "1:4"
+                case _4_colon_1 = "4:1"
+            }
+            /// The aspect ratio for the image output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/aspect_ratio`.
+            public var aspectRatio: Components.Schemas.InteractionsImageResponseFormat.AspectRatioPayload?
+            /// The delivery mode for the image output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/delivery`.
+            @frozen public enum DeliveryPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inline = "inline"
+                case uri = "uri"
+            }
+            /// The delivery mode for the image output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/delivery`.
+            public var delivery: Components.Schemas.InteractionsImageResponseFormat.DeliveryPayload?
+            /// The size of the image output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/image_size`.
+            @frozen public enum ImageSizePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case _512 = "512"
+                case _1k = "1K"
+                case _2k = "2K"
+                case _4k = "4K"
+            }
+            /// The size of the image output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/image_size`.
+            public var imageSize: Components.Schemas.InteractionsImageResponseFormat.ImageSizePayload?
+            /// The MIME type of the image output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case imageJpeg = "image/jpeg"
+            }
+            /// The MIME type of the image output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsImageResponseFormat.MimeTypePayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case image = "image"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsImageResponseFormat/type`.
+            public var _type: Components.Schemas.InteractionsImageResponseFormat._TypePayload
+            /// Creates a new `InteractionsImageResponseFormat`.
+            ///
+            /// - Parameters:
+            ///   - aspectRatio: The aspect ratio for the image output.
+            ///   - delivery: The delivery mode for the image output.
+            ///   - imageSize: The size of the image output.
+            ///   - mimeType: The MIME type of the image output.
+            ///   - _type:
+            public init(
+                aspectRatio: Components.Schemas.InteractionsImageResponseFormat.AspectRatioPayload? = nil,
+                delivery: Components.Schemas.InteractionsImageResponseFormat.DeliveryPayload? = nil,
+                imageSize: Components.Schemas.InteractionsImageResponseFormat.ImageSizePayload? = nil,
+                mimeType: Components.Schemas.InteractionsImageResponseFormat.MimeTypePayload? = nil,
+                _type: Components.Schemas.InteractionsImageResponseFormat._TypePayload
+            ) {
+                self.aspectRatio = aspectRatio
+                self.delivery = delivery
+                self.imageSize = imageSize
+                self.mimeType = mimeType
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case aspectRatio = "aspect_ratio"
+                case delivery
+                case imageSize = "image_size"
+                case mimeType = "mime_type"
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsInjectionLocation`.
+        @frozen public enum InteractionsInjectionLocation: String, Codable, Hashable, Sendable, CaseIterable {
+            case header = "header"
+            case query = "query"
+            case body = "body"
+        }
+        /// The Interaction resource.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsInteraction`.
+        public struct InteractionsInteraction: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/agent`.
+            public var agent: Components.Schemas.InteractionsAgentOption?
+            /// Configuration parameters for the agent interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/agent_config`.
+            @frozen public enum AgentConfigPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/agent_config/case1`.
+                case InteractionsAntigravityAgentConfig(Components.Schemas.InteractionsAntigravityAgentConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/agent_config/case2`.
+                case InteractionsDeepResearchAgentConfig(Components.Schemas.InteractionsDeepResearchAgentConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/agent_config/case3`.
+                case InteractionsDynamicAgentConfig(Components.Schemas.InteractionsDynamicAgentConfig)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsAntigravityAgentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .InteractionsDeepResearchAgentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .InteractionsDynamicAgentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsAntigravityAgentConfig(value):
+                        try value.encode(to: encoder)
+                    case let .InteractionsDeepResearchAgentConfig(value):
+                        try value.encode(to: encoder)
+                    case let .InteractionsDynamicAgentConfig(value):
+                        try value.encode(to: encoder)
+                    }
+                }
+            }
+            /// Configuration parameters for the agent interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/agent_config`.
+            public var agentConfig: Components.Schemas.InteractionsInteraction.AgentConfigPayload?
+            /// Input only. Whether to run the model interaction in the background.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/background`.
+            public var background: Swift.Bool?
+            /// Opaque token to resume a long decode. Output: set when status is
+            /// REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest
+            /// token back unchanged in CreateInteraction to continue decoding.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/continuation_token`.
+            public var continuationToken: OpenAPIRuntime.Base64EncodedData?
+            /// Required. Output only. The time at which the response was created in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/created`.
+            public var created: Swift.String
+            /// The environment configuration for the interaction. Can be an object
+            /// specifying remote environment sources or a string referencing an existing
+            /// environment ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/environment`.
+            @frozen public enum EnvironmentPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/environment/case1`.
+                case InteractionsEnvironmentConfig(Components.Schemas.InteractionsEnvironmentConfig)
+                /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/environment/case2`.
+                case case2(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsEnvironmentConfig(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsEnvironmentConfig(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// The environment configuration for the interaction. Can be an object
+            /// specifying remote environment sources or a string referencing an existing
+            /// environment ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/environment`.
+            public var environment: Components.Schemas.InteractionsInteraction.EnvironmentPayload?
+            /// Output only. The environment ID for the interaction. Only populated if environment
+            /// config is set in the request.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/environment_id`.
+            public var environmentId: Swift.String?
+            /// Output only. Diagnostic faults / platform errors recorded on the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/errors`.
+            public var errors: [Components.Schemas.InteractionsError]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/generation_config`.
+            public var generationConfig: Components.Schemas.InteractionsGenerationConfig?
+            /// Required. Output only. A unique identifier for the interaction completion.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/id`.
+            public var id: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/input`.
+            public var input: Components.Schemas.InteractionsInput?
+            /// The labels with user-defined metadata for the request.
+            ///
+            /// Label keys and values can be no longer than 63 characters
+            /// (Unicode codepoints) and can only contain lowercase letters, numeric
+            /// characters, underscores, and dashes. International characters are allowed.
+            /// Label values are optional. Label keys must start with a letter.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/labels`.
+            public struct LabelsPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: Swift.String]
+                /// Creates a new `LabelsPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: Swift.String] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// The labels with user-defined metadata for the request.
+            ///
+            /// Label keys and values can be no longer than 63 characters
+            /// (Unicode codepoints) and can only contain lowercase letters, numeric
+            /// characters, underscores, and dashes. International characters are allowed.
+            /// Label values are optional. Label keys must start with a letter.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/labels`.
+            public var labels: Components.Schemas.InteractionsInteraction.LabelsPayload?
+            /// Max total tokens for the agent run.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/max_total_tokens`.
+            public var maxTotalTokens: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/model`.
+            public var model: Components.Schemas.InteractionsModelOption?
+            /// The ID of the previous interaction, if any.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/previous_interaction_id`.
+            public var previousInteractionId: Swift.String?
+            /// Enforces that the generated response is a JSON object that complies with
+            /// the JSON schema specified in this field.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_format`.
+            @frozen public enum ResponseFormatPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_format/case1`.
+                case InteractionsResponseFormat(Components.Schemas.InteractionsResponseFormat)
+                /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_format/case2`.
+                case case2([Components.Schemas.InteractionsResponseFormat])
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsResponseFormat(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsResponseFormat(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Enforces that the generated response is a JSON object that complies with
+            /// the JSON schema specified in this field.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_format`.
+            public var responseFormat: Components.Schemas.InteractionsInteraction.ResponseFormatPayload?
+            /// The mime type of the response. This is required if response_format is set.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_mime_type`.
+            @available(*, deprecated)
+            public var responseMimeType: Swift.String?
+            /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_modalities`.
+            @available(*, deprecated)
+            public var responseModalities: [Components.Schemas.InteractionsResponseModality]?
+            /// Safety settings for the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/safety_settings`.
+            public var safetySettings: [Components.Schemas.InteractionsSafetySetting]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/service_tier`.
+            public var serviceTier: Components.Schemas.InteractionsServiceTier?
+            /// Required. Output only. The status of the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inProgress = "in_progress"
+                case requiresAction = "requires_action"
+                case completed = "completed"
+                case failed = "failed"
+                case cancelled = "cancelled"
+                case incomplete = "incomplete"
+                case budgetExceeded = "budget_exceeded"
+                case requiresContinuation = "requires_continuation"
+            }
+            /// Required. Output only. The status of the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/status`.
+            public var status: Components.Schemas.InteractionsInteraction.StatusPayload
+            /// Required. Output only. The steps that make up the interaction, when included in the response.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/steps`.
+            public var steps: [Components.Schemas.InteractionsStep]
+            /// Input only. Whether to store the response and request for later retrieval.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/store`.
+            public var store: Swift.Bool?
+            /// Input only. Whether the interaction will be streamed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/stream`.
+            public var stream: Swift.Bool?
+            /// System instruction for the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/system_instruction`.
+            public var systemInstruction: Swift.String?
+            /// A list of tool declarations the model may call during interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/tools`.
+            public var tools: [Components.Schemas.InteractionsTool]?
+            /// Required. Output only. The time at which the response was last updated in ISO 8601 format
+            /// (YYYY-MM-DDThh:mm:ssZ).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/updated`.
+            public var updated: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/usage`.
+            public var usage: Components.Schemas.InteractionsUsage?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/webhook_config`.
+            public var webhookConfig: Components.Schemas.InteractionsWebhookConfig?
+            /// Creates a new `InteractionsInteraction`.
+            ///
+            /// - Parameters:
+            ///   - agent:
+            ///   - agentConfig: Configuration parameters for the agent interaction.
+            ///   - background: Input only. Whether to run the model interaction in the background.
+            ///   - continuationToken: Opaque token to resume a long decode. Output: set when status is
+            ///   - created: Required. Output only. The time at which the response was created in ISO 8601 format
+            ///   - environment: The environment configuration for the interaction. Can be an object
+            ///   - environmentId: Output only. The environment ID for the interaction. Only populated if environment
+            ///   - errors: Output only. Diagnostic faults / platform errors recorded on the interaction.
+            ///   - generationConfig:
+            ///   - id: Required. Output only. A unique identifier for the interaction completion.
+            ///   - input:
+            ///   - labels: The labels with user-defined metadata for the request.
+            ///   - maxTotalTokens: Max total tokens for the agent run.
+            ///   - model:
+            ///   - previousInteractionId: The ID of the previous interaction, if any.
+            ///   - responseFormat: Enforces that the generated response is a JSON object that complies with
+            ///   - responseMimeType: The mime type of the response. This is required if response_format is set.
+            ///   - responseModalities: The requested modalities of the response (TEXT, IMAGE, AUDIO).
+            ///   - safetySettings: Safety settings for the interaction.
+            ///   - serviceTier:
+            ///   - status: Required. Output only. The status of the interaction.
+            ///   - steps: Required. Output only. The steps that make up the interaction, when included in the response.
+            ///   - store: Input only. Whether to store the response and request for later retrieval.
+            ///   - stream: Input only. Whether the interaction will be streamed.
+            ///   - systemInstruction: System instruction for the interaction.
+            ///   - tools: A list of tool declarations the model may call during interaction.
+            ///   - updated: Required. Output only. The time at which the response was last updated in ISO 8601 format
+            ///   - usage:
+            ///   - webhookConfig:
+            public init(
+                agent: Components.Schemas.InteractionsAgentOption? = nil,
+                agentConfig: Components.Schemas.InteractionsInteraction.AgentConfigPayload? = nil,
+                background: Swift.Bool? = nil,
+                continuationToken: OpenAPIRuntime.Base64EncodedData? = nil,
+                created: Swift.String,
+                environment: Components.Schemas.InteractionsInteraction.EnvironmentPayload? = nil,
+                environmentId: Swift.String? = nil,
+                errors: [Components.Schemas.InteractionsError]? = nil,
+                generationConfig: Components.Schemas.InteractionsGenerationConfig? = nil,
+                id: Swift.String,
+                input: Components.Schemas.InteractionsInput? = nil,
+                labels: Components.Schemas.InteractionsInteraction.LabelsPayload? = nil,
+                maxTotalTokens: Swift.String? = nil,
+                model: Components.Schemas.InteractionsModelOption? = nil,
+                previousInteractionId: Swift.String? = nil,
+                responseFormat: Components.Schemas.InteractionsInteraction.ResponseFormatPayload? = nil,
+                responseMimeType: Swift.String? = nil,
+                responseModalities: [Components.Schemas.InteractionsResponseModality]? = nil,
+                safetySettings: [Components.Schemas.InteractionsSafetySetting]? = nil,
+                serviceTier: Components.Schemas.InteractionsServiceTier? = nil,
+                status: Components.Schemas.InteractionsInteraction.StatusPayload,
+                steps: [Components.Schemas.InteractionsStep],
+                store: Swift.Bool? = nil,
+                stream: Swift.Bool? = nil,
+                systemInstruction: Swift.String? = nil,
+                tools: [Components.Schemas.InteractionsTool]? = nil,
+                updated: Swift.String,
+                usage: Components.Schemas.InteractionsUsage? = nil,
+                webhookConfig: Components.Schemas.InteractionsWebhookConfig? = nil
+            ) {
+                self.agent = agent
+                self.agentConfig = agentConfig
+                self.background = background
+                self.continuationToken = continuationToken
+                self.created = created
+                self.environment = environment
+                self.environmentId = environmentId
+                self.errors = errors
+                self.generationConfig = generationConfig
+                self.id = id
+                self.input = input
+                self.labels = labels
+                self.maxTotalTokens = maxTotalTokens
+                self.model = model
+                self.previousInteractionId = previousInteractionId
+                self.responseFormat = responseFormat
+                self.responseMimeType = responseMimeType
+                self.responseModalities = responseModalities
+                self.safetySettings = safetySettings
+                self.serviceTier = serviceTier
+                self.status = status
+                self.steps = steps
+                self.store = store
+                self.stream = stream
+                self.systemInstruction = systemInstruction
+                self.tools = tools
+                self.updated = updated
+                self.usage = usage
+                self.webhookConfig = webhookConfig
+            }
+            public enum CodingKeys: String, CodingKey {
+                case agent
+                case agentConfig = "agent_config"
+                case background
+                case continuationToken = "continuation_token"
+                case created
+                case environment
+                case environmentId = "environment_id"
+                case errors
+                case generationConfig = "generation_config"
+                case id
+                case input
+                case labels
+                case maxTotalTokens = "max_total_tokens"
+                case model
+                case previousInteractionId = "previous_interaction_id"
+                case responseFormat = "response_format"
+                case responseMimeType = "response_mime_type"
+                case responseModalities = "response_modalities"
+                case safetySettings = "safety_settings"
+                case serviceTier = "service_tier"
+                case status
+                case steps
+                case store
+                case stream
+                case systemInstruction = "system_instruction"
+                case tools
+                case updated
+                case usage
+                case webhookConfig = "webhook_config"
+            }
+        }
+        /// Signals that the Interaction completed. Sent when the Interaction receives
+        /// Complete/Cancel or naturally terminates. No more input can be sent to the
+        /// Interaction after this.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCompletedEvent`.
+        public struct InteractionsInteractionCompletedEvent: Codable, Hashable, Sendable {
+            /// The event_id token to be used to resume the interaction stream, from
+            /// this event.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCompletedEvent/event_id`.
+            public var eventId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCompletedEvent/event_type`.
+            @frozen public enum EventTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case interaction_completed = "interaction.completed"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCompletedEvent/event_type`.
+            public var eventType: Components.Schemas.InteractionsInteractionCompletedEvent.EventTypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCompletedEvent/interaction`.
+            public var interaction: Components.Schemas.InteractionsInteractionSseEventInteraction
+            /// Creates a new `InteractionsInteractionCompletedEvent`.
+            ///
+            /// - Parameters:
+            ///   - eventId: The event_id token to be used to resume the interaction stream, from
+            ///   - eventType:
+            ///   - interaction:
+            public init(
+                eventId: Swift.String? = nil,
+                eventType: Components.Schemas.InteractionsInteractionCompletedEvent.EventTypePayload,
+                interaction: Components.Schemas.InteractionsInteractionSseEventInteraction
+            ) {
+                self.eventId = eventId
+                self.eventType = eventType
+                self.interaction = interaction
+            }
+            public enum CodingKeys: String, CodingKey {
+                case eventId = "event_id"
+                case eventType = "event_type"
+                case interaction
+            }
+        }
+        /// Server response confirming that a new interaction was created.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCreatedEvent`.
+        public struct InteractionsInteractionCreatedEvent: Codable, Hashable, Sendable {
+            /// The event_id token to be used to resume the interaction stream, from
+            /// this event.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCreatedEvent/event_id`.
+            public var eventId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCreatedEvent/event_type`.
+            @frozen public enum EventTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case interaction_created = "interaction.created"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCreatedEvent/event_type`.
+            public var eventType: Components.Schemas.InteractionsInteractionCreatedEvent.EventTypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionCreatedEvent/interaction`.
+            public var interaction: Components.Schemas.InteractionsInteractionSseEventInteraction
+            /// Creates a new `InteractionsInteractionCreatedEvent`.
+            ///
+            /// - Parameters:
+            ///   - eventId: The event_id token to be used to resume the interaction stream, from
+            ///   - eventType:
+            ///   - interaction:
+            public init(
+                eventId: Swift.String? = nil,
+                eventType: Components.Schemas.InteractionsInteractionCreatedEvent.EventTypePayload,
+                interaction: Components.Schemas.InteractionsInteractionSseEventInteraction
+            ) {
+                self.eventId = eventId
+                self.eventType = eventType
+                self.interaction = interaction
+            }
+            public enum CodingKeys: String, CodingKey {
+                case eventId = "event_id"
+                case eventType = "event_type"
+                case interaction
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEvent`.
+        @frozen public enum InteractionsInteractionSseEvent: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEvent/case1`.
+            case InteractionsErrorEvent(Components.Schemas.InteractionsErrorEvent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEvent/case2`.
+            case InteractionsInteractionCompletedEvent(Components.Schemas.InteractionsInteractionCompletedEvent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEvent/case3`.
+            case InteractionsInteractionCreatedEvent(Components.Schemas.InteractionsInteractionCreatedEvent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEvent/case4`.
+            case InteractionsInteractionStatusUpdate(Components.Schemas.InteractionsInteractionStatusUpdate)
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEvent/case5`.
+            case InteractionsStepDelta(Components.Schemas.InteractionsStepDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEvent/case6`.
+            case InteractionsStepStart(Components.Schemas.InteractionsStepStart)
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEvent/case7`.
+            case InteractionsStepStop(Components.Schemas.InteractionsStepStop)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsErrorEvent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsInteractionCompletedEvent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsInteractionCreatedEvent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsInteractionStatusUpdate(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsStepDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsStepStart(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsStepStop(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsErrorEvent(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsInteractionCompletedEvent(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsInteractionCreatedEvent(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsInteractionStatusUpdate(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsStepDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsStepStart(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsStepStop(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// Partial interaction resource emitted by interaction lifecycle SSE events.
+        /// Streaming lifecycle payloads may omit fields that are only available on
+        /// full non-streaming Interaction responses.
+        ///
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction`.
+        public struct InteractionsInteractionSseEventInteraction: Codable, Hashable, Sendable {
+            /// The agent to interact with.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/agent`.
+            public var agent: Swift.String?
+            /// Opaque token to resume a long decode.
+            /// Output: set when status is INCOMPLETE and decoding can be resumed.
+            /// Input: pass the latest token back unchanged in CreateInteraction to
+            /// continue decoding.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/continuation_token`.
+            public var continuationToken: OpenAPIRuntime.Base64EncodedData?
+            /// Output only. The time at which the response was created in ISO 8601 format.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/created`.
+            public var created: Swift.String?
+            /// Required. Output only. A unique identifier for the interaction completion.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/id`.
+            public var id: Swift.String
+            /// The model that will complete your prompt.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/model`.
+            public var model: Swift.String?
+            /// Output only. The resource type.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/object`.
+            public var object: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/service_tier`.
+            public var serviceTier: Components.Schemas.InteractionsServiceTier?
+            /// Required. Output only. The status of the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inProgress = "in_progress"
+                case requiresAction = "requires_action"
+                case completed = "completed"
+                case failed = "failed"
+                case cancelled = "cancelled"
+                case incomplete = "incomplete"
+            }
+            /// Required. Output only. The status of the interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/status`.
+            public var status: Components.Schemas.InteractionsInteractionSseEventInteraction.StatusPayload
+            /// Output only. The steps that make up the interaction, if included in this event.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/steps`.
+            public var steps: [Components.Schemas.InteractionsStep]?
+            /// Output only. The time at which the response was last updated in ISO 8601 format.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/updated`.
+            public var updated: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseEventInteraction/usage`.
+            public var usage: Components.Schemas.InteractionsUsage?
+            /// Creates a new `InteractionsInteractionSseEventInteraction`.
+            ///
+            /// - Parameters:
+            ///   - agent: The agent to interact with.
+            ///   - continuationToken: Opaque token to resume a long decode.
+            ///   - created: Output only. The time at which the response was created in ISO 8601 format.
+            ///   - id: Required. Output only. A unique identifier for the interaction completion.
+            ///   - model: The model that will complete your prompt.
+            ///   - object: Output only. The resource type.
+            ///   - serviceTier:
+            ///   - status: Required. Output only. The status of the interaction.
+            ///   - steps: Output only. The steps that make up the interaction, if included in this event.
+            ///   - updated: Output only. The time at which the response was last updated in ISO 8601 format.
+            ///   - usage:
+            public init(
+                agent: Swift.String? = nil,
+                continuationToken: OpenAPIRuntime.Base64EncodedData? = nil,
+                created: Swift.String? = nil,
+                id: Swift.String,
+                model: Swift.String? = nil,
+                object: Swift.String? = nil,
+                serviceTier: Components.Schemas.InteractionsServiceTier? = nil,
+                status: Components.Schemas.InteractionsInteractionSseEventInteraction.StatusPayload,
+                steps: [Components.Schemas.InteractionsStep]? = nil,
+                updated: Swift.String? = nil,
+                usage: Components.Schemas.InteractionsUsage? = nil
+            ) {
+                self.agent = agent
+                self.continuationToken = continuationToken
+                self.created = created
+                self.id = id
+                self.model = model
+                self.object = object
+                self.serviceTier = serviceTier
+                self.status = status
+                self.steps = steps
+                self.updated = updated
+                self.usage = usage
+            }
+            public enum CodingKeys: String, CodingKey {
+                case agent
+                case continuationToken = "continuation_token"
+                case created
+                case id
+                case model
+                case object
+                case serviceTier = "service_tier"
+                case status
+                case steps
+                case updated
+                case usage
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseStreamEvent`.
+        public struct InteractionsInteractionSseStreamEvent: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionSseStreamEvent/data`.
+            public var data: Components.Schemas.InteractionsInteractionSseEvent
+            /// Creates a new `InteractionsInteractionSseStreamEvent`.
+            ///
+            /// - Parameters:
+            ///   - data:
+            public init(data: Components.Schemas.InteractionsInteractionSseEvent) {
+                self.data = data
+            }
+            public enum CodingKeys: String, CodingKey {
+                case data
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate`.
+        public struct InteractionsInteractionStatusUpdate: Codable, Hashable, Sendable {
+            /// An optional opaque continuation token used to resume decoding from the
+            /// latest checkpoint after a disconnected stream.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate/continuation_token`.
+            public var continuationToken: OpenAPIRuntime.Base64EncodedData?
+            /// The event_id token to be used to resume the interaction stream, from
+            /// this event.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate/event_id`.
+            public var eventId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate/event_type`.
+            @frozen public enum EventTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case interaction_statusUpdate = "interaction.status_update"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate/event_type`.
+            public var eventType: Components.Schemas.InteractionsInteractionStatusUpdate.EventTypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate/interaction_id`.
+            public var interactionId: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inProgress = "in_progress"
+                case requiresAction = "requires_action"
+                case completed = "completed"
+                case failed = "failed"
+                case cancelled = "cancelled"
+                case incomplete = "incomplete"
+                case budgetExceeded = "budget_exceeded"
+                case requiresContinuation = "requires_continuation"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate/status`.
+            public var status: Components.Schemas.InteractionsInteractionStatusUpdate.StatusPayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsInteractionStatusUpdate/usage`.
+            public var usage: Components.Schemas.InteractionsUsage?
+            /// Creates a new `InteractionsInteractionStatusUpdate`.
+            ///
+            /// - Parameters:
+            ///   - continuationToken: An optional opaque continuation token used to resume decoding from the
+            ///   - eventId: The event_id token to be used to resume the interaction stream, from
+            ///   - eventType:
+            ///   - interactionId:
+            ///   - status:
+            ///   - usage:
+            public init(
+                continuationToken: OpenAPIRuntime.Base64EncodedData? = nil,
+                eventId: Swift.String? = nil,
+                eventType: Components.Schemas.InteractionsInteractionStatusUpdate.EventTypePayload,
+                interactionId: Swift.String,
+                status: Components.Schemas.InteractionsInteractionStatusUpdate.StatusPayload,
+                usage: Components.Schemas.InteractionsUsage? = nil
+            ) {
+                self.continuationToken = continuationToken
+                self.eventId = eventId
+                self.eventType = eventType
+                self.interactionId = interactionId
+                self.status = status
+                self.usage = usage
+            }
+            public enum CodingKeys: String, CodingKey {
+                case continuationToken = "continuation_token"
+                case eventId = "event_id"
+                case eventType = "event_type"
+                case interactionId = "interaction_id"
+                case status
+                case usage
+            }
+        }
+        /// The input for the interaction.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsInput`.
+        @frozen public enum InteractionsInput: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsInput/case1`.
+            case InteractionsContent(Components.Schemas.InteractionsContent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsInput/case2`.
+            case case2([Components.Schemas.InteractionsStep])
+            /// - Remark: Generated from `#/components/schemas/InteractionsInput/case3`.
+            case case3([Components.Schemas.InteractionsContent])
+            /// - Remark: Generated from `#/components/schemas/InteractionsInput/case4`.
+            case case4(Swift.String)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsContent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .case2(try decoder.decodeFromSingleValueContainer())
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .case3(try decoder.decodeFromSingleValueContainer())
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .case4(try decoder.decodeFromSingleValueContainer())
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsContent(value):
+                    try value.encode(to: encoder)
+                case let .case2(value):
+                    try encoder.encodeToSingleValueContainer(value)
+                case let .case3(value):
+                    try encoder.encodeToSingleValueContainer(value)
+                case let .case4(value):
+                    try encoder.encodeToSingleValueContainer(value)
+                }
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsListAgentsResponse`.
+        public struct InteractionsListAgentsResponse: Codable, Hashable, Sendable {
+            /// The list of agents.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListAgentsResponse/agents`.
+            public var agents: [Components.Schemas.InteractionsAgent]?
+            /// A token to retrieve the next page of results.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListAgentsResponse/next_page_token`.
+            public var nextPageToken: Swift.String?
+            /// Creates a new `InteractionsListAgentsResponse`.
+            ///
+            /// - Parameters:
+            ///   - agents: The list of agents.
+            ///   - nextPageToken: A token to retrieve the next page of results.
+            public init(
+                agents: [Components.Schemas.InteractionsAgent]? = nil,
+                nextPageToken: Swift.String? = nil
+            ) {
+                self.agents = agents
+                self.nextPageToken = nextPageToken
+            }
+            public enum CodingKeys: String, CodingKey {
+                case agents
+                case nextPageToken = "next_page_token"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsListCredentialsResponse`.
+        public struct InteractionsListCredentialsResponse: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsListCredentialsResponse/credentials`.
+            public var credentials: [Components.Schemas.InteractionsCredential]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsListCredentialsResponse/next_page_token`.
+            public var nextPageToken: Swift.String?
+            /// Creates a new `InteractionsListCredentialsResponse`.
+            ///
+            /// - Parameters:
+            ///   - credentials:
+            ///   - nextPageToken:
+            public init(
+                credentials: [Components.Schemas.InteractionsCredential]? = nil,
+                nextPageToken: Swift.String? = nil
+            ) {
+                self.credentials = credentials
+                self.nextPageToken = nextPageToken
+            }
+            public enum CodingKeys: String, CodingKey {
+                case credentials
+                case nextPageToken = "next_page_token"
+            }
+        }
+        /// Response for `ListEnvironments`.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsListEnvironmentsResponse`.
+        public struct InteractionsListEnvironmentsResponse: Codable, Hashable, Sendable {
+            /// Environments belonging to the provided project.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListEnvironmentsResponse/environments`.
+            public var environments: [Components.Schemas.InteractionsEnvironment]?
+            /// Pagination token.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListEnvironmentsResponse/next_page_token`.
+            public var nextPageToken: Swift.String?
+            /// Creates a new `InteractionsListEnvironmentsResponse`.
+            ///
+            /// - Parameters:
+            ///   - environments: Environments belonging to the provided project.
+            ///   - nextPageToken: Pagination token.
+            public init(
+                environments: [Components.Schemas.InteractionsEnvironment]? = nil,
+                nextPageToken: Swift.String? = nil
+            ) {
+                self.environments = environments
+                self.nextPageToken = nextPageToken
+            }
+            public enum CodingKeys: String, CodingKey {
+                case environments
+                case nextPageToken = "next_page_token"
+            }
+        }
+        /// Response message for TriggerService.ListTriggerExecutions.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsListTriggerExecutionsResponse`.
+        public struct InteractionsListTriggerExecutionsResponse: Codable, Hashable, Sendable {
+            /// A page token, received from a previous `ListTriggerExecutions` call.
+            /// Provide this to retrieve the subsequent page.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListTriggerExecutionsResponse/next_page_token`.
+            public var nextPageToken: Swift.String?
+            /// The list of trigger executions.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListTriggerExecutionsResponse/trigger_executions`.
+            public var triggerExecutions: [Components.Schemas.InteractionsTriggerExecution]?
+            /// Creates a new `InteractionsListTriggerExecutionsResponse`.
+            ///
+            /// - Parameters:
+            ///   - nextPageToken: A page token, received from a previous `ListTriggerExecutions` call.
+            ///   - triggerExecutions: The list of trigger executions.
+            public init(
+                nextPageToken: Swift.String? = nil,
+                triggerExecutions: [Components.Schemas.InteractionsTriggerExecution]? = nil
+            ) {
+                self.nextPageToken = nextPageToken
+                self.triggerExecutions = triggerExecutions
+            }
+            public enum CodingKeys: String, CodingKey {
+                case nextPageToken = "next_page_token"
+                case triggerExecutions = "trigger_executions"
+            }
+        }
+        /// Response message for TriggerService.ListTriggers.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsListTriggersResponse`.
+        public struct InteractionsListTriggersResponse: Codable, Hashable, Sendable {
+            /// A page token, received from a previous `ListTriggers` call.
+            /// Provide this to retrieve the subsequent page.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListTriggersResponse/next_page_token`.
+            public var nextPageToken: Swift.String?
+            /// The list of triggers.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListTriggersResponse/triggers`.
+            public var triggers: [Components.Schemas.InteractionsTrigger]?
+            /// Creates a new `InteractionsListTriggersResponse`.
+            ///
+            /// - Parameters:
+            ///   - nextPageToken: A page token, received from a previous `ListTriggers` call.
+            ///   - triggers: The list of triggers.
+            public init(
+                nextPageToken: Swift.String? = nil,
+                triggers: [Components.Schemas.InteractionsTrigger]? = nil
+            ) {
+                self.nextPageToken = nextPageToken
+                self.triggers = triggers
+            }
+            public enum CodingKeys: String, CodingKey {
+                case nextPageToken = "next_page_token"
+                case triggers
+            }
+        }
+        /// Response message for `VoicesService.ListVoices`.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsListVoicesResponse`.
+        public struct InteractionsListVoicesResponse: Codable, Hashable, Sendable {
+            /// A token that can be sent as `page_token` to retrieve the next page.
+            /// If empty, there are no subsequent pages.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListVoicesResponse/next_page_token`.
+            public var nextPageToken: Swift.String?
+            /// The voices from the specified collection.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListVoicesResponse/voices`.
+            public var voices: [Components.Schemas.InteractionsVoice]?
+            /// Creates a new `InteractionsListVoicesResponse`.
+            ///
+            /// - Parameters:
+            ///   - nextPageToken: A token that can be sent as `page_token` to retrieve the next page.
+            ///   - voices: The voices from the specified collection.
+            public init(
+                nextPageToken: Swift.String? = nil,
+                voices: [Components.Schemas.InteractionsVoice]? = nil
+            ) {
+                self.nextPageToken = nextPageToken
+                self.voices = voices
+            }
+            public enum CodingKeys: String, CodingKey {
+                case nextPageToken = "next_page_token"
+                case voices
+            }
+        }
+        /// Response message for WebhookService.ListWebhooks.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsListWebhooksResponse`.
+        public struct InteractionsListWebhooksResponse: Codable, Hashable, Sendable {
+            /// A token, which can be sent as `page_token` to retrieve the next page.
+            /// If this field is omitted, there are no subsequent pages.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListWebhooksResponse/next_page_token`.
+            public var nextPageToken: Swift.String?
+            /// The webhooks.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsListWebhooksResponse/webhooks`.
+            public var webhooks: [Components.Schemas.InteractionsWebhook]?
+            /// Creates a new `InteractionsListWebhooksResponse`.
+            ///
+            /// - Parameters:
+            ///   - nextPageToken: A token, which can be sent as `page_token` to retrieve the next page.
+            ///   - webhooks: The webhooks.
+            public init(
+                nextPageToken: Swift.String? = nil,
+                webhooks: [Components.Schemas.InteractionsWebhook]? = nil
+            ) {
+                self.nextPageToken = nextPageToken
+                self.webhooks = webhooks
+            }
+            public enum CodingKeys: String, CodingKey {
+                case nextPageToken = "next_page_token"
+                case webhooks
+            }
+        }
+        /// A MCPServer is a server that can be called by the model to perform actions.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsMcpServer`.
+        public struct InteractionsMcpServer: Codable, Hashable, Sendable {
+            /// The allowed tools.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServer/allowed_tools`.
+            public var allowedTools: [Components.Schemas.InteractionsAllowedTools]?
+            /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServer/headers`.
+            public struct HeadersPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: Swift.String]
+                /// Creates a new `HeadersPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: Swift.String] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServer/headers`.
+            public var headers: Components.Schemas.InteractionsMcpServer.HeadersPayload?
+            /// The name of the MCPServer.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServer/name`.
+            public var name: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServer/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case mcpServer = "mcp_server"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServer/type`.
+            public var _type: Components.Schemas.InteractionsMcpServer._TypePayload
+            /// The full URL for the MCPServer endpoint.
+            /// Example: "https://api.example.com/mcp"
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServer/url`.
+            public var url: Swift.String?
+            /// Creates a new `InteractionsMcpServer`.
+            ///
+            /// - Parameters:
+            ///   - allowedTools: The allowed tools.
+            ///   - headers: Optional: Fields for authentication headers, timeouts, etc., if needed.
+            ///   - name: The name of the MCPServer.
+            ///   - _type:
+            ///   - url: The full URL for the MCPServer endpoint.
+            public init(
+                allowedTools: [Components.Schemas.InteractionsAllowedTools]? = nil,
+                headers: Components.Schemas.InteractionsMcpServer.HeadersPayload? = nil,
+                name: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsMcpServer._TypePayload,
+                url: Swift.String? = nil
+            ) {
+                self.allowedTools = allowedTools
+                self.headers = headers
+                self.name = name
+                self._type = _type
+                self.url = url
+            }
+            public enum CodingKeys: String, CodingKey {
+                case allowedTools = "allowed_tools"
+                case headers
+                case name
+                case _type = "type"
+                case url
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallDelta`.
+        public struct InteractionsMcpServerToolCallDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallDelta/arguments`.
+            public struct ArgumentsPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `ArgumentsPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallDelta/arguments`.
+            public var arguments: Components.Schemas.InteractionsMcpServerToolCallDelta.ArgumentsPayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallDelta/name`.
+            public var name: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallDelta/server_name`.
+            public var serverName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case mcpServerToolCall = "mcp_server_tool_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallDelta/type`.
+            public var _type: Components.Schemas.InteractionsMcpServerToolCallDelta._TypePayload
+            /// Creates a new `InteractionsMcpServerToolCallDelta`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - name:
+            ///   - serverName:
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsMcpServerToolCallDelta.ArgumentsPayload,
+                name: Swift.String,
+                serverName: Swift.String,
+                _type: Components.Schemas.InteractionsMcpServerToolCallDelta._TypePayload
+            ) {
+                self.arguments = arguments
+                self.name = name
+                self.serverName = serverName
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case name
+                case serverName = "server_name"
+                case _type = "type"
+            }
+        }
+        /// MCPServer tool call step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallStep`.
+        public struct InteractionsMcpServerToolCallStep: Codable, Hashable, Sendable {
+            /// Required. The JSON object of arguments for the function.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallStep/arguments`.
+            public struct ArgumentsPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `ArgumentsPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// Required. The JSON object of arguments for the function.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallStep/arguments`.
+            public var arguments: Components.Schemas.InteractionsMcpServerToolCallStep.ArgumentsPayload
+            /// Required. A unique ID for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallStep/id`.
+            public var id: Swift.String
+            /// Required. The name of the tool which was called.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallStep/name`.
+            public var name: Swift.String
+            /// Required. The name of the used MCP server.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallStep/server_name`.
+            public var serverName: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case mcpServerToolCall = "mcp_server_tool_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolCallStep/type`.
+            public var _type: Components.Schemas.InteractionsMcpServerToolCallStep._TypePayload
+            /// Creates a new `InteractionsMcpServerToolCallStep`.
+            ///
+            /// - Parameters:
+            ///   - arguments: Required. The JSON object of arguments for the function.
+            ///   - id: Required. A unique ID for this specific tool call.
+            ///   - name: Required. The name of the tool which was called.
+            ///   - serverName: Required. The name of the used MCP server.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsMcpServerToolCallStep.ArgumentsPayload,
+                id: Swift.String,
+                name: Swift.String,
+                serverName: Swift.String,
+                _type: Components.Schemas.InteractionsMcpServerToolCallStep._TypePayload
+            ) {
+                self.arguments = arguments
+                self.id = id
+                self.name = name
+                self.serverName = serverName
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case id
+                case name
+                case serverName = "server_name"
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta`.
+        public struct InteractionsMcpServerToolResultDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/name`.
+            public var name: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result`.
+            @frozen public enum ResultPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result/Case1Payload`.
+                @frozen public enum Case1PayloadPayload: Codable, Hashable, Sendable {
+                    /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result/Case1Payload/case1`.
+                    case InteractionsImageContent(Components.Schemas.InteractionsImageContent)
+                    /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result/Case1Payload/case2`.
+                    case InteractionsTextContent(Components.Schemas.InteractionsTextContent)
+                    public init(from decoder: any Swift.Decoder) throws {
+                        var errors: [any Swift.Error] = []
+                        do {
+                            self = .InteractionsImageContent(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        do {
+                            self = .InteractionsTextContent(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                            type: Self.self,
+                            codingPath: decoder.codingPath,
+                            errors: errors
+                        )
+                    }
+                    public func encode(to encoder: any Swift.Encoder) throws {
+                        switch self {
+                        case let .InteractionsImageContent(value):
+                            try value.encode(to: encoder)
+                        case let .InteractionsTextContent(value):
+                            try value.encode(to: encoder)
+                        }
+                    }
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result/case1`.
+                public typealias Case1Payload = [Components.Schemas.InteractionsMcpServerToolResultDelta.ResultPayload.Case1PayloadPayload]
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result/case1`.
+                case case1(Components.Schemas.InteractionsMcpServerToolResultDelta.ResultPayload.Case1Payload)
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result/case2`.
+                case case2(OpenAPIRuntime.OpenAPIObjectContainer)
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result/case3`.
+                case case3(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .case1(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case3(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .case1(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    case let .case2(value):
+                        try value.encode(to: encoder)
+                    case let .case3(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/result`.
+            public var result: Components.Schemas.InteractionsMcpServerToolResultDelta.ResultPayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/server_name`.
+            public var serverName: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case mcpServerToolResult = "mcp_server_tool_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultDelta/type`.
+            public var _type: Components.Schemas.InteractionsMcpServerToolResultDelta._TypePayload
+            /// Creates a new `InteractionsMcpServerToolResultDelta`.
+            ///
+            /// - Parameters:
+            ///   - name:
+            ///   - result:
+            ///   - serverName:
+            ///   - _type:
+            public init(
+                name: Swift.String? = nil,
+                result: Components.Schemas.InteractionsMcpServerToolResultDelta.ResultPayload,
+                serverName: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsMcpServerToolResultDelta._TypePayload
+            ) {
+                self.name = name
+                self.result = result
+                self.serverName = serverName
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case name
+                case result
+                case serverName = "server_name"
+                case _type = "type"
+            }
+        }
+        /// MCPServer tool result step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep`.
+        public struct InteractionsMcpServerToolResultStep: Codable, Hashable, Sendable {
+            /// Required. ID to match the ID from the function call block.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/call_id`.
+            public var callId: Swift.String
+            /// Name of the tool which is called for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/name`.
+            public var name: Swift.String?
+            /// Required. The output from the MCP server call. Can be simple text or rich content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result`.
+            @frozen public enum ResultPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result/Case1Payload`.
+                @frozen public enum Case1PayloadPayload: Codable, Hashable, Sendable {
+                    /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result/Case1Payload/case1`.
+                    case InteractionsImageContent(Components.Schemas.InteractionsImageContent)
+                    /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result/Case1Payload/case2`.
+                    case InteractionsTextContent(Components.Schemas.InteractionsTextContent)
+                    public init(from decoder: any Swift.Decoder) throws {
+                        var errors: [any Swift.Error] = []
+                        do {
+                            self = .InteractionsImageContent(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        do {
+                            self = .InteractionsTextContent(try .init(from: decoder))
+                            return
+                        } catch {
+                            errors.append(error)
+                        }
+                        throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                            type: Self.self,
+                            codingPath: decoder.codingPath,
+                            errors: errors
+                        )
+                    }
+                    public func encode(to encoder: any Swift.Encoder) throws {
+                        switch self {
+                        case let .InteractionsImageContent(value):
+                            try value.encode(to: encoder)
+                        case let .InteractionsTextContent(value):
+                            try value.encode(to: encoder)
+                        }
+                    }
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result/case1`.
+                public typealias Case1Payload = [Components.Schemas.InteractionsMcpServerToolResultStep.ResultPayload.Case1PayloadPayload]
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result/case1`.
+                case case1(Components.Schemas.InteractionsMcpServerToolResultStep.ResultPayload.Case1Payload)
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result/case2`.
+                case case2(OpenAPIRuntime.OpenAPIObjectContainer)
+                /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result/case3`.
+                case case3(Swift.String)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .case1(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case3(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .case1(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    case let .case2(value):
+                        try value.encode(to: encoder)
+                    case let .case3(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Required. The output from the MCP server call. Can be simple text or rich content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/result`.
+            public var result: Components.Schemas.InteractionsMcpServerToolResultStep.ResultPayload
+            /// The name of the used MCP server.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/server_name`.
+            public var serverName: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case mcpServerToolResult = "mcp_server_tool_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsMcpServerToolResultStep/type`.
+            public var _type: Components.Schemas.InteractionsMcpServerToolResultStep._TypePayload
+            /// Creates a new `InteractionsMcpServerToolResultStep`.
+            ///
+            /// - Parameters:
+            ///   - callId: Required. ID to match the ID from the function call block.
+            ///   - name: Name of the tool which is called for this specific tool call.
+            ///   - result: Required. The output from the MCP server call. Can be simple text or rich content.
+            ///   - serverName: The name of the used MCP server.
+            ///   - _type:
+            public init(
+                callId: Swift.String,
+                name: Swift.String? = nil,
+                result: Components.Schemas.InteractionsMcpServerToolResultStep.ResultPayload,
+                serverName: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsMcpServerToolResultStep._TypePayload
+            ) {
+                self.callId = callId
+                self.name = name
+                self.result = result
+                self.serverName = serverName
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case callId = "call_id"
+                case name
+                case result
+                case serverName = "server_name"
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsMediaProcessing`.
+        public typealias InteractionsMediaProcessing = Components.Schemas.InteractionsStaticMediaProcessing
+        /// - Remark: Generated from `#/components/schemas/InteractionsMediaResolution`.
+        @frozen public enum InteractionsMediaResolution: String, Codable, Hashable, Sendable, CaseIterable {
+            case low = "low"
+            case medium = "medium"
+            case high = "high"
+            case ultraHigh = "ultra_high"
+        }
+        /// The token count for a single response modality.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsModalityTokens`.
+        public struct InteractionsModalityTokens: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsModalityTokens/modality`.
+            public var modality: Components.Schemas.InteractionsResponseModality?
+            /// Number of tokens for the modality.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsModalityTokens/tokens`.
+            public var tokens: Swift.Int32?
+            /// Creates a new `InteractionsModalityTokens`.
+            ///
+            /// - Parameters:
+            ///   - modality:
+            ///   - tokens: Number of tokens for the modality.
+            public init(
+                modality: Components.Schemas.InteractionsResponseModality? = nil,
+                tokens: Swift.Int32? = nil
+            ) {
+                self.modality = modality
+                self.tokens = tokens
+            }
+            public enum CodingKeys: String, CodingKey {
+                case modality
+                case tokens
+            }
+        }
+        /// The model that will complete your prompt.\n\nSee [models](https://aistudio.google.com/docs/models) for additional details.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsModelOption`.
+        public typealias InteractionsModelOption = Swift.String
+        /// Output generated by the model.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsModelOutputStep`.
+        public struct InteractionsModelOutputStep: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsModelOutputStep/content`.
+            public var content: [Components.Schemas.InteractionsContent]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsModelOutputStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case modelOutput = "model_output"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsModelOutputStep/type`.
+            public var _type: Components.Schemas.InteractionsModelOutputStep._TypePayload
+            /// Creates a new `InteractionsModelOutputStep`.
+            ///
+            /// - Parameters:
+            ///   - content:
+            ///   - _type:
+            public init(
+                content: [Components.Schemas.InteractionsContent]? = nil,
+                _type: Components.Schemas.InteractionsModelOutputStep._TypePayload
+            ) {
+                self.content = content
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case content
+                case _type = "type"
+            }
+        }
+        /// Configuration for OAuth2 credentials with automatic token refresh.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config`.
+        public struct InteractionsOAuth2Config: Codable, Hashable, Sendable {
+            /// Required. OAuth2 client ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config/client_id`.
+            public var clientId: Swift.String
+            /// Required. Input only. OAuth2 client secret. Write-only; never returned in responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config/client_secret`.
+            public var clientSecret: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config/id`.
+            public var id: Swift.String
+            /// Required. Input only. OAuth2 refresh token. Write-only; never returned in responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config/refresh_token`.
+            public var refreshToken: Swift.String
+            /// Optional. List of OAuth2 scopes.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config/scopes`.
+            public var scopes: [Swift.String]?
+            /// Required. OAuth2 token endpoint URL for refreshing access tokens.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config/token_url`.
+            public var tokenUrl: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case oauth2 = "oauth2"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2Config/type`.
+            public var _type: Components.Schemas.InteractionsOAuth2Config._TypePayload
+            /// Creates a new `InteractionsOAuth2Config`.
+            ///
+            /// - Parameters:
+            ///   - clientId: Required. OAuth2 client ID.
+            ///   - clientSecret: Required. Input only. OAuth2 client secret. Write-only; never returned in responses.
+            ///   - id:
+            ///   - refreshToken: Required. Input only. OAuth2 refresh token. Write-only; never returned in responses.
+            ///   - scopes: Optional. List of OAuth2 scopes.
+            ///   - tokenUrl: Required. OAuth2 token endpoint URL for refreshing access tokens.
+            ///   - _type:
+            public init(
+                clientId: Swift.String,
+                clientSecret: Swift.String,
+                id: Swift.String,
+                refreshToken: Swift.String,
+                scopes: [Swift.String]? = nil,
+                tokenUrl: Swift.String,
+                _type: Components.Schemas.InteractionsOAuth2Config._TypePayload
+            ) {
+                self.clientId = clientId
+                self.clientSecret = clientSecret
+                self.id = id
+                self.refreshToken = refreshToken
+                self.scopes = scopes
+                self.tokenUrl = tokenUrl
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case clientId = "client_id"
+                case clientSecret = "client_secret"
+                case id
+                case refreshToken = "refresh_token"
+                case scopes
+                case tokenUrl = "token_url"
+                case _type = "type"
+            }
+        }
+        /// Configuration for updating OAuth2 credentials.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2UpdateConfig`.
+        public struct InteractionsOAuth2UpdateConfig: Codable, Hashable, Sendable {
+            /// Optional. OAuth2 client ID.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2UpdateConfig/client_id`.
+            public var clientId: Swift.String?
+            /// Optional. Input only. OAuth2 client secret. Write-only; never returned in responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2UpdateConfig/client_secret`.
+            public var clientSecret: Swift.String?
+            /// Optional. Input only. OAuth2 refresh token. Write-only; never returned in responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2UpdateConfig/refresh_token`.
+            public var refreshToken: Swift.String?
+            /// Optional. List of OAuth2 scopes.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2UpdateConfig/scopes`.
+            public var scopes: [Swift.String]?
+            /// Optional. OAuth2 token endpoint URL for refreshing access tokens.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2UpdateConfig/token_url`.
+            public var tokenUrl: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2UpdateConfig/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case oauth2 = "oauth2"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsOAuth2UpdateConfig/type`.
+            public var _type: Components.Schemas.InteractionsOAuth2UpdateConfig._TypePayload
+            /// Creates a new `InteractionsOAuth2UpdateConfig`.
+            ///
+            /// - Parameters:
+            ///   - clientId: Optional. OAuth2 client ID.
+            ///   - clientSecret: Optional. Input only. OAuth2 client secret. Write-only; never returned in responses.
+            ///   - refreshToken: Optional. Input only. OAuth2 refresh token. Write-only; never returned in responses.
+            ///   - scopes: Optional. List of OAuth2 scopes.
+            ///   - tokenUrl: Optional. OAuth2 token endpoint URL for refreshing access tokens.
+            ///   - _type:
+            public init(
+                clientId: Swift.String? = nil,
+                clientSecret: Swift.String? = nil,
+                refreshToken: Swift.String? = nil,
+                scopes: [Swift.String]? = nil,
+                tokenUrl: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsOAuth2UpdateConfig._TypePayload
+            ) {
+                self.clientId = clientId
+                self.clientSecret = clientSecret
+                self.refreshToken = refreshToken
+                self.scopes = scopes
+                self.tokenUrl = tokenUrl
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case clientId = "client_id"
+                case clientSecret = "client_secret"
+                case refreshToken = "refresh_token"
+                case scopes
+                case tokenUrl = "token_url"
+                case _type = "type"
+            }
+        }
+        /// Request message for WebhookService.PingWebhook.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsPingWebhookRequest`.
+        public struct InteractionsPingWebhookRequest: Codable, Hashable, Sendable {
+            /// Required. The ID of the webhook to ping.
+            /// Format: `{webhook_id}`
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPingWebhookRequest/id`.
+            public var id: Swift.String
+            /// Creates a new `InteractionsPingWebhookRequest`.
+            ///
+            /// - Parameters:
+            ///   - id: Required. The ID of the webhook to ping.
+            public init(id: Swift.String) {
+                self.id = id
+            }
+            public enum CodingKeys: String, CodingKey {
+                case id
+            }
+        }
+        /// Response message for WebhookService.PingWebhook.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsPingWebhookResponse`.
+        public typealias InteractionsPingWebhookResponse = OpenAPIRuntime.OpenAPIObjectContainer
+        /// - Remark: Generated from `#/components/schemas/InteractionsPitch`.
+        @frozen public enum InteractionsPitch: String, Codable, Hashable, Sendable, CaseIterable {
+            case low = "low"
+            case medium = "medium"
+            case high = "high"
+        }
+        /// A place citation annotation.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation`.
+        public struct InteractionsPlaceCitation: Codable, Hashable, Sendable {
+            /// End of the attributed segment, exclusive.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation/end_index`.
+            public var endIndex: Swift.Int32?
+            /// Title of the place.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation/name`.
+            public var name: Swift.String?
+            /// The ID of the place, in `places/{place_id}` format.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation/place_id`.
+            public var placeId: Swift.String?
+            /// Snippets of reviews that are used to generate answers about the
+            /// features of a given place in Google Maps.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation/review_snippets`.
+            public var reviewSnippets: [Components.Schemas.InteractionsReviewSnippet]?
+            /// Start of segment of the response that is attributed to this source.
+            ///
+            /// Index indicates the start of the segment, measured in bytes.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation/start_index`.
+            public var startIndex: Swift.Int32?
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case placeCitation = "place_citation"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation/type`.
+            public var _type: Components.Schemas.InteractionsPlaceCitation._TypePayload
+            /// URI reference of the place.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaceCitation/url`.
+            public var url: Swift.String?
+            /// Creates a new `InteractionsPlaceCitation`.
+            ///
+            /// - Parameters:
+            ///   - endIndex: End of the attributed segment, exclusive.
+            ///   - name: Title of the place.
+            ///   - placeId: The ID of the place, in `places/{place_id}` format.
+            ///   - reviewSnippets: Snippets of reviews that are used to generate answers about the
+            ///   - startIndex: Start of segment of the response that is attributed to this source.
+            ///   - _type:
+            ///   - url: URI reference of the place.
+            public init(
+                endIndex: Swift.Int32? = nil,
+                name: Swift.String? = nil,
+                placeId: Swift.String? = nil,
+                reviewSnippets: [Components.Schemas.InteractionsReviewSnippet]? = nil,
+                startIndex: Swift.Int32? = nil,
+                _type: Components.Schemas.InteractionsPlaceCitation._TypePayload,
+                url: Swift.String? = nil
+            ) {
+                self.endIndex = endIndex
+                self.name = name
+                self.placeId = placeId
+                self.reviewSnippets = reviewSnippets
+                self.startIndex = startIndex
+                self._type = _type
+                self.url = url
+            }
+            public enum CodingKeys: String, CodingKey {
+                case endIndex = "end_index"
+                case name
+                case placeId = "place_id"
+                case reviewSnippets = "review_snippets"
+                case startIndex = "start_index"
+                case _type = "type"
+                case url
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsPlaces`.
+        public struct InteractionsPlaces: Codable, Hashable, Sendable {
+            /// Title of the place.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaces/name`.
+            public var name: Swift.String?
+            /// The ID of the place, in `places/{place_id}` format.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaces/place_id`.
+            public var placeId: Swift.String?
+            /// Snippets of reviews that are used to generate answers about the
+            /// features of a given place in Google Maps.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaces/review_snippets`.
+            public var reviewSnippets: [Components.Schemas.InteractionsReviewSnippet]?
+            /// URI reference of the place.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPlaces/url`.
+            public var url: Swift.String?
+            /// Creates a new `InteractionsPlaces`.
+            ///
+            /// - Parameters:
+            ///   - name: Title of the place.
+            ///   - placeId: The ID of the place, in `places/{place_id}` format.
+            ///   - reviewSnippets: Snippets of reviews that are used to generate answers about the
+            ///   - url: URI reference of the place.
+            public init(
+                name: Swift.String? = nil,
+                placeId: Swift.String? = nil,
+                reviewSnippets: [Components.Schemas.InteractionsReviewSnippet]? = nil,
+                url: Swift.String? = nil
+            ) {
+                self.name = name
+                self.placeId = placeId
+                self.reviewSnippets = reviewSnippets
+                self.url = url
+            }
+            public enum CodingKeys: String, CodingKey {
+                case name
+                case placeId = "place_id"
+                case reviewSnippets = "review_snippets"
+                case url
+            }
+        }
+        /// Streaming delta for a server-initiated media processing step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallDelta`.
+        public struct InteractionsProcessingCallDelta: Codable, Hashable, Sendable {
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case processingCall = "processing_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallDelta/type`.
+            public var _type: Components.Schemas.InteractionsProcessingCallDelta._TypePayload
+            /// Creates a new `InteractionsProcessingCallDelta`.
+            ///
+            /// - Parameters:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsProcessingCallDelta._TypePayload
+            ) {
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case signature
+                case _type = "type"
+            }
+        }
+        /// A server-initiated processing step for media analysis (e.g. video
+        /// understanding).
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallStep`.
+        public struct InteractionsProcessingCallStep: Codable, Hashable, Sendable {
+            /// Required. A unique ID for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallStep/id`.
+            public var id: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case processingCall = "processing_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingCallStep/type`.
+            public var _type: Components.Schemas.InteractionsProcessingCallStep._TypePayload
+            /// Creates a new `InteractionsProcessingCallStep`.
+            ///
+            /// - Parameters:
+            ///   - id: Required. A unique ID for this specific tool call.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                id: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsProcessingCallStep._TypePayload
+            ) {
+                self.id = id
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case id
+                case signature
+                case _type = "type"
+            }
+        }
+        /// Streaming delta for the result of a server-initiated media processing step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultDelta`.
+        public struct InteractionsProcessingResultDelta: Codable, Hashable, Sendable {
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case processingResult = "processing_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultDelta/type`.
+            public var _type: Components.Schemas.InteractionsProcessingResultDelta._TypePayload
+            /// Creates a new `InteractionsProcessingResultDelta`.
+            ///
+            /// - Parameters:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsProcessingResultDelta._TypePayload
+            ) {
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The result of a server-initiated media processing step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultStep`.
+        public struct InteractionsProcessingResultStep: Codable, Hashable, Sendable {
+            /// Required. ID to match the ID from the function call block.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultStep/call_id`.
+            public var callId: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case processingResult = "processing_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsProcessingResultStep/type`.
+            public var _type: Components.Schemas.InteractionsProcessingResultStep._TypePayload
+            /// Creates a new `InteractionsProcessingResultStep`.
+            ///
+            /// - Parameters:
+            ///   - callId: Required. ID to match the ID from the function call block.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                callId: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsProcessingResultStep._TypePayload
+            ) {
+                self.callId = callId
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case callId = "call_id"
+                case signature
+                case _type = "type"
+            }
+        }
+        /// Parameters for prompted voice generation.
+        /// Required in `CreateVoice` when `type` is `"prompted"`. Returned in
+        /// `CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsPromptedVoice`.
+        public struct InteractionsPromptedVoice: Codable, Hashable, Sendable {
+            /// Optional. The name or ID of an existing base voice to edit or remix.
+            /// Use the voice name for prebuilt voices (e.g., `Puck`) or the voice ID for
+            /// previously created voices (e.g., `voice_abc123`). This can be any
+            /// prompted or replicated voice that the user has access to.
+            /// When present, `input` describes relative alterations to make to the base
+            /// voice.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPromptedVoice/base_voice`.
+            public var baseVoice: Swift.String?
+            /// Required. The natural-language prompt describing the desired voice, e.g.
+            /// "A deep, booming male voice of a massive evil ogre in his middle years."
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsPromptedVoice/input`.
+            public var input: Swift.String
+            /// Creates a new `InteractionsPromptedVoice`.
+            ///
+            /// - Parameters:
+            ///   - baseVoice: Optional. The name or ID of an existing base voice to edit or remix.
+            ///   - input: Required. The natural-language prompt describing the desired voice, e.g.
+            public init(
+                baseVoice: Swift.String? = nil,
+                input: Swift.String
+            ) {
+                self.baseVoice = baseVoice
+                self.input = input
+            }
+            public enum CodingKeys: String, CodingKey {
+                case baseVoice = "base_voice"
+                case input
+            }
+        }
+        /// Input only. Parameters for replicated voice generation.
+        /// Required on input when `type` is `"replicated"`. Not returned in
+        /// responses.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsReplicatedVoice`.
+        public struct InteractionsReplicatedVoice: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsReplicatedVoice/consent_audio`.
+            public var consentAudio: Components.Schemas.InteractionsAudioData
+            /// - Remark: Generated from `#/components/schemas/InteractionsReplicatedVoice/source_audio`.
+            public var sourceAudio: Components.Schemas.InteractionsAudioData
+            /// Creates a new `InteractionsReplicatedVoice`.
+            ///
+            /// - Parameters:
+            ///   - consentAudio:
+            ///   - sourceAudio:
+            public init(
+                consentAudio: Components.Schemas.InteractionsAudioData,
+                sourceAudio: Components.Schemas.InteractionsAudioData
+            ) {
+                self.consentAudio = consentAudio
+                self.sourceAudio = sourceAudio
+            }
+            public enum CodingKeys: String, CodingKey {
+                case consentAudio = "consent_audio"
+                case sourceAudio = "source_audio"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsResponseFormat`.
+        @frozen public enum InteractionsResponseFormat: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsResponseFormat/case1`.
+            case InteractionsAudioResponseFormat(Components.Schemas.InteractionsAudioResponseFormat)
+            /// - Remark: Generated from `#/components/schemas/InteractionsResponseFormat/case2`.
+            case InteractionsImageResponseFormat(Components.Schemas.InteractionsImageResponseFormat)
+            /// - Remark: Generated from `#/components/schemas/InteractionsResponseFormat/case3`.
+            case InteractionsTextResponseFormat(Components.Schemas.InteractionsTextResponseFormat)
+            /// - Remark: Generated from `#/components/schemas/InteractionsResponseFormat/case4`.
+            case InteractionsVideoResponseFormat(Components.Schemas.InteractionsVideoResponseFormat)
+            /// - Remark: Generated from `#/components/schemas/InteractionsResponseFormat/case5`.
+            public struct Case5Payload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: OpenAPIRuntime.OpenAPIObjectContainer
+                /// Creates a new `Case5Payload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: OpenAPIRuntime.OpenAPIObjectContainer = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsResponseFormat/case5`.
+            case case5(Components.Schemas.InteractionsResponseFormat.Case5Payload)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsAudioResponseFormat(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsImageResponseFormat(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsTextResponseFormat(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsVideoResponseFormat(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .case5(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsAudioResponseFormat(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsImageResponseFormat(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsTextResponseFormat(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsVideoResponseFormat(value):
+                    try value.encode(to: encoder)
+                case let .case5(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsResponseModality`.
+        @frozen public enum InteractionsResponseModality: String, Codable, Hashable, Sendable, CaseIterable {
+            case text = "text"
+            case image = "image"
+            case audio = "audio"
+            case video = "video"
+            case document = "document"
+        }
+        /// Encapsulates a snippet of a user review that answers a question about
+        /// the features of a specific place in Google Maps.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsReviewSnippet`.
+        public struct InteractionsReviewSnippet: Codable, Hashable, Sendable {
+            /// The ID of the review snippet.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsReviewSnippet/review_id`.
+            public var reviewId: Swift.String?
+            /// Title of the review.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsReviewSnippet/title`.
+            public var title: Swift.String?
+            /// A link that corresponds to the user review on Google Maps.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsReviewSnippet/url`.
+            public var url: Swift.String?
+            /// Creates a new `InteractionsReviewSnippet`.
+            ///
+            /// - Parameters:
+            ///   - reviewId: The ID of the review snippet.
+            ///   - title: Title of the review.
+            ///   - url: A link that corresponds to the user review on Google Maps.
+            public init(
+                reviewId: Swift.String? = nil,
+                title: Swift.String? = nil,
+                url: Swift.String? = nil
+            ) {
+                self.reviewId = reviewId
+                self.title = title
+                self.url = url
+            }
+            public enum CodingKeys: String, CodingKey {
+                case reviewId = "review_id"
+                case title
+                case url
+            }
+        }
+        /// Request message for WebhookService.RotateSigningSecret.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsRotateSigningSecretRequest`.
+        public struct InteractionsRotateSigningSecretRequest: Codable, Hashable, Sendable {
+            /// Required. The ID of the webhook for which to generate a signing secret.
+            /// Format: `{webhook_id}`
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsRotateSigningSecretRequest/id`.
+            public var id: Swift.String
+            /// Optional. The revocation behavior for previous signing secrets.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsRotateSigningSecretRequest/revocation_behavior`.
+            @frozen public enum RevocationBehaviorPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case revokePreviousSecretsAfterH24 = "revoke_previous_secrets_after_h24"
+                case revokePreviousSecretsImmediately = "revoke_previous_secrets_immediately"
+            }
+            /// Optional. The revocation behavior for previous signing secrets.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsRotateSigningSecretRequest/revocation_behavior`.
+            public var revocationBehavior: Components.Schemas.InteractionsRotateSigningSecretRequest.RevocationBehaviorPayload?
+            /// Creates a new `InteractionsRotateSigningSecretRequest`.
+            ///
+            /// - Parameters:
+            ///   - id: Required. The ID of the webhook for which to generate a signing secret.
+            ///   - revocationBehavior: Optional. The revocation behavior for previous signing secrets.
+            public init(
+                id: Swift.String,
+                revocationBehavior: Components.Schemas.InteractionsRotateSigningSecretRequest.RevocationBehaviorPayload? = nil
+            ) {
+                self.id = id
+                self.revocationBehavior = revocationBehavior
+            }
+            public enum CodingKeys: String, CodingKey {
+                case id
+                case revocationBehavior = "revocation_behavior"
+            }
+        }
+        /// Response message for WebhookService.RotateSigningSecret.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsRotateSigningSecretResponse`.
+        public struct InteractionsRotateSigningSecretResponse: Codable, Hashable, Sendable {
+            /// Output only. The newly generated signing secret.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsRotateSigningSecretResponse/secret`.
+            public var secret: Swift.String?
+            /// Creates a new `InteractionsRotateSigningSecretResponse`.
+            ///
+            /// - Parameters:
+            ///   - secret: Output only. The newly generated signing secret.
+            public init(secret: Swift.String? = nil) {
+                self.secret = secret
+            }
+            public enum CodingKeys: String, CodingKey {
+                case secret
+            }
+        }
+        /// Request message for TriggerService.RunTrigger.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsRunTriggerRequest`.
+        public struct InteractionsRunTriggerRequest: Codable, Hashable, Sendable {
+            /// Required. The ID of the trigger to run immediately.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsRunTriggerRequest/id`.
+            public var id: Swift.String
+            /// Creates a new `InteractionsRunTriggerRequest`.
+            ///
+            /// - Parameters:
+            ///   - id: Required. The ID of the trigger to run immediately.
+            public init(id: Swift.String) {
+                self.id = id
+            }
+            public enum CodingKeys: String, CodingKey {
+                case id
+            }
+        }
+        /// A safety setting that affects the safety-blocking behavior.
+        ///
+        /// A SafetySetting consists of a
+        /// harm category and a
+        /// threshold for that
+        /// category.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsSafetySetting`.
+        public struct InteractionsSafetySetting: Codable, Hashable, Sendable {
+            /// Optional. The method for blocking content. If not specified, the default
+            /// behavior is to use the probability score.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSafetySetting/method`.
+            @frozen public enum MethodPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case severity = "severity"
+                case probability = "probability"
+            }
+            /// Optional. The method for blocking content. If not specified, the default
+            /// behavior is to use the probability score.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSafetySetting/method`.
+            public var method: Components.Schemas.InteractionsSafetySetting.MethodPayload?
+            /// Required. The threshold for blocking content. If the harm probability
+            /// exceeds this threshold, the content will be blocked.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSafetySetting/threshold`.
+            @frozen public enum ThresholdPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case blockLowAndAbove = "block_low_and_above"
+                case blockMediumAndAbove = "block_medium_and_above"
+                case blockOnlyHigh = "block_only_high"
+                case off = "off"
+            }
+            /// Required. The threshold for blocking content. If the harm probability
+            /// exceeds this threshold, the content will be blocked.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSafetySetting/threshold`.
+            public var threshold: Components.Schemas.InteractionsSafetySetting.ThresholdPayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsSafetySetting/type`.
+            public var _type: Components.Schemas.InteractionsHarmCategory
+            /// Creates a new `InteractionsSafetySetting`.
+            ///
+            /// - Parameters:
+            ///   - method: Optional. The method for blocking content. If not specified, the default
+            ///   - threshold: Required. The threshold for blocking content. If the harm probability
+            ///   - _type:
+            public init(
+                method: Components.Schemas.InteractionsSafetySetting.MethodPayload? = nil,
+                threshold: Components.Schemas.InteractionsSafetySetting.ThresholdPayload,
+                _type: Components.Schemas.InteractionsHarmCategory
+            ) {
+                self.method = method
+                self.threshold = threshold
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case method
+                case threshold
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsServiceTier`.
+        @frozen public enum InteractionsServiceTier: String, Codable, Hashable, Sendable, CaseIterable {
+            case flex = "flex"
+            case standard = "standard"
+            case priority = "priority"
+        }
+        /// Represents a signing secret used to verify webhook payloads.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsSigningSecret`.
+        public struct InteractionsSigningSecret: Codable, Hashable, Sendable {
+            /// Output only. The expiration date of the signing secret.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSigningSecret/expire_time`.
+            public var expireTime: Foundation.Date?
+            /// Output only. The truncated version of the signing secret.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSigningSecret/truncated_secret`.
+            public var truncatedSecret: Swift.String?
+            /// Creates a new `InteractionsSigningSecret`.
+            ///
+            /// - Parameters:
+            ///   - expireTime: Output only. The expiration date of the signing secret.
+            ///   - truncatedSecret: Output only. The truncated version of the signing secret.
+            public init(
+                expireTime: Foundation.Date? = nil,
+                truncatedSecret: Swift.String? = nil
+            ) {
+                self.expireTime = expireTime
+                self.truncatedSecret = truncatedSecret
+            }
+            public enum CodingKeys: String, CodingKey {
+                case expireTime = "expire_time"
+                case truncatedSecret = "truncated_secret"
+            }
+        }
+        /// Configuration for smart transcription mode.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsSmartTranscriptionMode`.
+        public struct InteractionsSmartTranscriptionMode: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsSmartTranscriptionMode/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case smart = "smart"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsSmartTranscriptionMode/type`.
+            public var _type: Components.Schemas.InteractionsSmartTranscriptionMode._TypePayload
+            /// Creates a new `InteractionsSmartTranscriptionMode`.
+            ///
+            /// - Parameters:
+            ///   - _type:
+            public init(_type: Components.Schemas.InteractionsSmartTranscriptionMode._TypePayload) {
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case _type = "type"
+            }
+        }
+        /// A source to be mounted into the environment.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsSource`.
+        public struct InteractionsSource: Codable, Hashable, Sendable {
+            /// The inline content if `type` is `INLINE`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSource/content`.
+            public var content: Swift.String?
+            /// Optional encoding for inline content (e.g. `base64`).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSource/encoding`.
+            public var encoding: Swift.String?
+            /// The source of the environment.
+            /// For Cloud Storage, this is the Cloud Storage path.
+            /// For GitHub, this is the GitHub path.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSource/source`.
+            public var source: Swift.String?
+            /// Where the source should appear in the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSource/target`.
+            public var target: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsSource/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case gcs = "gcs"
+                case inline = "inline"
+                case repository = "repository"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsSource/type`.
+            public var _type: Components.Schemas.InteractionsSource._TypePayload?
+            /// Creates a new `InteractionsSource`.
+            ///
+            /// - Parameters:
+            ///   - content: The inline content if `type` is `INLINE`.
+            ///   - encoding: Optional encoding for inline content (e.g. `base64`).
+            ///   - source: The source of the environment.
+            ///   - target: Where the source should appear in the environment.
+            ///   - _type:
+            public init(
+                content: Swift.String? = nil,
+                encoding: Swift.String? = nil,
+                source: Swift.String? = nil,
+                target: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsSource._TypePayload? = nil
+            ) {
+                self.content = content
+                self.encoding = encoding
+                self.source = source
+                self.target = target
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case content
+                case encoding
+                case source
+                case target
+                case _type = "type"
+            }
+        }
+        /// Configuration for multi-speaker and speech generation.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsSpeakerConfig`.
+        public struct InteractionsSpeakerConfig: Codable, Hashable, Sendable {
+            /// Individual speaker configurations.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeakerConfig/speakers`.
+            public var speakers: [Components.Schemas.InteractionsSpeechConfig]?
+            /// Creates a new `InteractionsSpeakerConfig`.
+            ///
+            /// - Parameters:
+            ///   - speakers: Individual speaker configurations.
+            public init(speakers: [Components.Schemas.InteractionsSpeechConfig]? = nil) {
+                self.speakers = speakers
+            }
+            public enum CodingKeys: String, CodingKey {
+                case speakers
+            }
+        }
+        /// Speech annotation for text content.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsSpeechAnnotation`.
+        public struct InteractionsSpeechAnnotation: Codable, Hashable, Sendable {
+            /// End of the attributed segment, exclusive.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechAnnotation/end_index`.
+            public var endIndex: Swift.Int32?
+            /// The speaker to associate with this turn.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechAnnotation/speaker`.
+            public var speaker: Swift.String?
+            /// Start of segment of the response that is attributed to this source.
+            ///
+            /// Index indicates the start of the segment, measured in bytes.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechAnnotation/start_index`.
+            public var startIndex: Swift.Int32?
+            /// Style instruction for the speech synthesis.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechAnnotation/style`.
+            public var style: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechAnnotation/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case speechMetadata = "speech_metadata"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechAnnotation/type`.
+            public var _type: Components.Schemas.InteractionsSpeechAnnotation._TypePayload
+            /// Creates a new `InteractionsSpeechAnnotation`.
+            ///
+            /// - Parameters:
+            ///   - endIndex: End of the attributed segment, exclusive.
+            ///   - speaker: The speaker to associate with this turn.
+            ///   - startIndex: Start of segment of the response that is attributed to this source.
+            ///   - style: Style instruction for the speech synthesis.
+            ///   - _type:
+            public init(
+                endIndex: Swift.Int32? = nil,
+                speaker: Swift.String? = nil,
+                startIndex: Swift.Int32? = nil,
+                style: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsSpeechAnnotation._TypePayload
+            ) {
+                self.endIndex = endIndex
+                self.speaker = speaker
+                self.startIndex = startIndex
+                self.style = style
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case endIndex = "end_index"
+                case speaker
+                case startIndex = "start_index"
+                case style
+                case _type = "type"
+            }
+        }
+        /// The configuration for speech interaction.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsSpeechConfig`.
+        public struct InteractionsSpeechConfig: Codable, Hashable, Sendable {
+            /// The language of the speech.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechConfig/language`.
+            public var language: Swift.String?
+            /// The speaker's name, it should match the speaker name given in the prompt.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechConfig/speaker`.
+            public var speaker: Swift.String?
+            /// The voice of the speaker.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsSpeechConfig/voice`.
+            public var voice: Swift.String?
+            /// Creates a new `InteractionsSpeechConfig`.
+            ///
+            /// - Parameters:
+            ///   - language: The language of the speech.
+            ///   - speaker: The speaker's name, it should match the speaker name given in the prompt.
+            ///   - voice: The voice of the speaker.
+            public init(
+                language: Swift.String? = nil,
+                speaker: Swift.String? = nil,
+                voice: Swift.String? = nil
+            ) {
+                self.language = language
+                self.speaker = speaker
+                self.voice = voice
+            }
+            public enum CodingKeys: String, CodingKey {
+                case language
+                case speaker
+                case voice
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsStaticMediaProcessing`.
+        public struct InteractionsStaticMediaProcessing: Codable, Hashable, Sendable {
+            /// Optional. Segment end time. Specified as a decimal number of seconds followed
+            /// by an 's' suffix, e.g., "30s". Must be non-negative and greater than
+            /// `start_offset` if `start_offset` is set.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsStaticMediaProcessing/end_offset`.
+            public var endOffset: Swift.String?
+            /// Optional. Video frame-rate sampling density.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsStaticMediaProcessing/fps`.
+            public var fps: Swift.Double?
+            /// Optional. Segment start time. Specified as a decimal number of seconds followed
+            /// by an 's' suffix, e.g., "10.5s". Must be non-negative.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsStaticMediaProcessing/start_offset`.
+            public var startOffset: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsStaticMediaProcessing/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case _static = "static"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsStaticMediaProcessing/type`.
+            public var _type: Components.Schemas.InteractionsStaticMediaProcessing._TypePayload
+            /// Creates a new `InteractionsStaticMediaProcessing`.
+            ///
+            /// - Parameters:
+            ///   - endOffset: Optional. Segment end time. Specified as a decimal number of seconds followed
+            ///   - fps: Optional. Video frame-rate sampling density.
+            ///   - startOffset: Optional. Segment start time. Specified as a decimal number of seconds followed
+            ///   - _type:
+            public init(
+                endOffset: Swift.String? = nil,
+                fps: Swift.Double? = nil,
+                startOffset: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsStaticMediaProcessing._TypePayload
+            ) {
+                self.endOffset = endOffset
+                self.fps = fps
+                self.startOffset = startOffset
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case endOffset = "end_offset"
+                case fps
+                case startOffset = "start_offset"
+                case _type = "type"
+            }
+        }
+        /// A step in the interaction.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsStep`.
+        @frozen public enum InteractionsStep: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case1`.
+            case InteractionsCodeExecutionCallStep(Components.Schemas.InteractionsCodeExecutionCallStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case2`.
+            case InteractionsCodeExecutionResultStep(Components.Schemas.InteractionsCodeExecutionResultStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case3`.
+            case InteractionsFileSearchCallStep(Components.Schemas.InteractionsFileSearchCallStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case4`.
+            case InteractionsFileSearchResultStep(Components.Schemas.InteractionsFileSearchResultStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case5`.
+            case InteractionsFunctionCallStep(Components.Schemas.InteractionsFunctionCallStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case6`.
+            case InteractionsFunctionResultStep(Components.Schemas.InteractionsFunctionResultStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case7`.
+            case InteractionsGoogleMapsCallStep(Components.Schemas.InteractionsGoogleMapsCallStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case8`.
+            case InteractionsGoogleMapsResultStep(Components.Schemas.InteractionsGoogleMapsResultStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case9`.
+            case InteractionsGoogleSearchCallStep(Components.Schemas.InteractionsGoogleSearchCallStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case10`.
+            case InteractionsGoogleSearchResultStep(Components.Schemas.InteractionsGoogleSearchResultStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case11`.
+            case InteractionsMcpServerToolCallStep(Components.Schemas.InteractionsMcpServerToolCallStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case12`.
+            case InteractionsMcpServerToolResultStep(Components.Schemas.InteractionsMcpServerToolResultStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case13`.
+            case InteractionsModelOutputStep(Components.Schemas.InteractionsModelOutputStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case14`.
+            case InteractionsProcessingCallStep(Components.Schemas.InteractionsProcessingCallStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case15`.
+            case InteractionsProcessingResultStep(Components.Schemas.InteractionsProcessingResultStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case16`.
+            case InteractionsThoughtStep(Components.Schemas.InteractionsThoughtStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case17`.
+            case InteractionsUrlContextCallStep(Components.Schemas.InteractionsUrlContextCallStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case18`.
+            case InteractionsUrlContextResultStep(Components.Schemas.InteractionsUrlContextResultStep)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStep/case19`.
+            case InteractionsUserInputStep(Components.Schemas.InteractionsUserInputStep)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsCodeExecutionCallStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsCodeExecutionResultStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFileSearchCallStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFileSearchResultStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFunctionCallStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFunctionResultStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleMapsCallStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleMapsResultStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleSearchCallStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleSearchResultStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsMcpServerToolCallStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsMcpServerToolResultStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsModelOutputStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsProcessingCallStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsProcessingResultStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsThoughtStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsUrlContextCallStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsUrlContextResultStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsUserInputStep(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsCodeExecutionCallStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsCodeExecutionResultStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFileSearchCallStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFileSearchResultStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFunctionCallStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFunctionResultStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleMapsCallStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleMapsResultStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleSearchCallStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleSearchResultStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsMcpServerToolCallStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsMcpServerToolResultStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsModelOutputStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsProcessingCallStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsProcessingResultStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsThoughtStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsUrlContextCallStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsUrlContextResultStep(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsUserInputStep(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsStepDelta`.
+        public struct InteractionsStepDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDelta/delta`.
+            public var delta: Components.Schemas.InteractionsStepDeltaData
+            /// The event_id token to be used to resume the interaction stream, from
+            /// this event.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDelta/event_id`.
+            public var eventId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDelta/event_type`.
+            @frozen public enum EventTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case step_delta = "step.delta"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDelta/event_type`.
+            public var eventType: Components.Schemas.InteractionsStepDelta.EventTypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDelta/index`.
+            public var index: Swift.Int32
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDelta/metadata`.
+            public var metadata: Components.Schemas.InteractionsStepDeltaMetadata?
+            /// Creates a new `InteractionsStepDelta`.
+            ///
+            /// - Parameters:
+            ///   - delta:
+            ///   - eventId: The event_id token to be used to resume the interaction stream, from
+            ///   - eventType:
+            ///   - index:
+            ///   - metadata:
+            public init(
+                delta: Components.Schemas.InteractionsStepDeltaData,
+                eventId: Swift.String? = nil,
+                eventType: Components.Schemas.InteractionsStepDelta.EventTypePayload,
+                index: Swift.Int32,
+                metadata: Components.Schemas.InteractionsStepDeltaMetadata? = nil
+            ) {
+                self.delta = delta
+                self.eventId = eventId
+                self.eventType = eventType
+                self.index = index
+                self.metadata = metadata
+            }
+            public enum CodingKeys: String, CodingKey {
+                case delta
+                case eventId = "event_id"
+                case eventType = "event_type"
+                case index
+                case metadata
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData`.
+        @frozen public enum InteractionsStepDeltaData: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case1`.
+            case InteractionsArgumentsDelta(Components.Schemas.InteractionsArgumentsDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case2`.
+            case InteractionsAudioDelta(Components.Schemas.InteractionsAudioDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case3`.
+            case InteractionsCodeExecutionCallDelta(Components.Schemas.InteractionsCodeExecutionCallDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case4`.
+            case InteractionsCodeExecutionResultDelta(Components.Schemas.InteractionsCodeExecutionResultDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case5`.
+            case InteractionsDocumentDelta(Components.Schemas.InteractionsDocumentDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case6`.
+            case InteractionsFileSearchCallDelta(Components.Schemas.InteractionsFileSearchCallDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case7`.
+            case InteractionsFileSearchResultDelta(Components.Schemas.InteractionsFileSearchResultDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case8`.
+            case InteractionsFunctionResultDelta(Components.Schemas.InteractionsFunctionResultDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case9`.
+            case InteractionsGoogleMapsCallDelta(Components.Schemas.InteractionsGoogleMapsCallDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case10`.
+            case InteractionsGoogleMapsResultDelta(Components.Schemas.InteractionsGoogleMapsResultDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case11`.
+            case InteractionsGoogleSearchCallDelta(Components.Schemas.InteractionsGoogleSearchCallDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case12`.
+            case InteractionsGoogleSearchResultDelta(Components.Schemas.InteractionsGoogleSearchResultDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case13`.
+            case InteractionsImageDelta(Components.Schemas.InteractionsImageDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case14`.
+            case InteractionsMcpServerToolCallDelta(Components.Schemas.InteractionsMcpServerToolCallDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case15`.
+            case InteractionsMcpServerToolResultDelta(Components.Schemas.InteractionsMcpServerToolResultDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case16`.
+            case InteractionsProcessingCallDelta(Components.Schemas.InteractionsProcessingCallDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case17`.
+            case InteractionsProcessingResultDelta(Components.Schemas.InteractionsProcessingResultDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case18`.
+            case InteractionsTextAnnotationDelta(Components.Schemas.InteractionsTextAnnotationDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case19`.
+            case InteractionsTextDelta(Components.Schemas.InteractionsTextDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case20`.
+            case InteractionsThoughtSignatureDelta(Components.Schemas.InteractionsThoughtSignatureDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case21`.
+            case InteractionsThoughtSummaryDelta(Components.Schemas.InteractionsThoughtSummaryDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case22`.
+            case InteractionsUrlContextCallDelta(Components.Schemas.InteractionsUrlContextCallDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case23`.
+            case InteractionsUrlContextResultDelta(Components.Schemas.InteractionsUrlContextResultDelta)
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaData/case24`.
+            case InteractionsVideoDelta(Components.Schemas.InteractionsVideoDelta)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsArgumentsDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsAudioDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsCodeExecutionCallDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsCodeExecutionResultDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsDocumentDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFileSearchCallDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFileSearchResultDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFunctionResultDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleMapsCallDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleMapsResultDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleSearchCallDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleSearchResultDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsImageDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsMcpServerToolCallDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsMcpServerToolResultDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsProcessingCallDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsProcessingResultDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsTextAnnotationDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsTextDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsThoughtSignatureDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsThoughtSummaryDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsUrlContextCallDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsUrlContextResultDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsVideoDelta(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsArgumentsDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsAudioDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsCodeExecutionCallDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsCodeExecutionResultDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsDocumentDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFileSearchCallDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFileSearchResultDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFunctionResultDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleMapsCallDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleMapsResultDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleSearchCallDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleSearchResultDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsImageDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsMcpServerToolCallDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsMcpServerToolResultDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsProcessingCallDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsProcessingResultDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsTextAnnotationDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsTextDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsThoughtSignatureDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsThoughtSummaryDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsUrlContextCallDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsUrlContextResultDelta(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsVideoDelta(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// Optional metadata accompanying ANY streamed event.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaMetadata`.
+        public struct InteractionsStepDeltaMetadata: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepDeltaMetadata/total_usage`.
+            public var totalUsage: Components.Schemas.InteractionsUsage?
+            /// Creates a new `InteractionsStepDeltaMetadata`.
+            ///
+            /// - Parameters:
+            ///   - totalUsage:
+            public init(totalUsage: Components.Schemas.InteractionsUsage? = nil) {
+                self.totalUsage = totalUsage
+            }
+            public enum CodingKeys: String, CodingKey {
+                case totalUsage = "total_usage"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsStepStart`.
+        public struct InteractionsStepStart: Codable, Hashable, Sendable {
+            /// The event_id token to be used to resume the interaction stream, from
+            /// this event.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStart/event_id`.
+            public var eventId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStart/event_type`.
+            @frozen public enum EventTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case step_start = "step.start"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStart/event_type`.
+            public var eventType: Components.Schemas.InteractionsStepStart.EventTypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStart/index`.
+            public var index: Swift.Int32
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStart/step`.
+            public var step: Components.Schemas.InteractionsStep
+            /// Creates a new `InteractionsStepStart`.
+            ///
+            /// - Parameters:
+            ///   - eventId: The event_id token to be used to resume the interaction stream, from
+            ///   - eventType:
+            ///   - index:
+            ///   - step:
+            public init(
+                eventId: Swift.String? = nil,
+                eventType: Components.Schemas.InteractionsStepStart.EventTypePayload,
+                index: Swift.Int32,
+                step: Components.Schemas.InteractionsStep
+            ) {
+                self.eventId = eventId
+                self.eventType = eventType
+                self.index = index
+                self.step = step
+            }
+            public enum CodingKeys: String, CodingKey {
+                case eventId = "event_id"
+                case eventType = "event_type"
+                case index
+                case step
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsStepStop`.
+        public struct InteractionsStepStop: Codable, Hashable, Sendable {
+            /// The event_id token to be used to resume the interaction stream, from
+            /// this event.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStop/event_id`.
+            public var eventId: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStop/event_type`.
+            @frozen public enum EventTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case step_stop = "step.stop"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStop/event_type`.
+            public var eventType: Components.Schemas.InteractionsStepStop.EventTypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStop/index`.
+            public var index: Swift.Int32
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStop/step_usage`.
+            public var stepUsage: Components.Schemas.InteractionsUsage?
+            /// - Remark: Generated from `#/components/schemas/InteractionsStepStop/usage`.
+            public var usage: Components.Schemas.InteractionsUsage?
+            /// Creates a new `InteractionsStepStop`.
+            ///
+            /// - Parameters:
+            ///   - eventId: The event_id token to be used to resume the interaction stream, from
+            ///   - eventType:
+            ///   - index:
+            ///   - stepUsage:
+            ///   - usage:
+            public init(
+                eventId: Swift.String? = nil,
+                eventType: Components.Schemas.InteractionsStepStop.EventTypePayload,
+                index: Swift.Int32,
+                stepUsage: Components.Schemas.InteractionsUsage? = nil,
+                usage: Components.Schemas.InteractionsUsage? = nil
+            ) {
+                self.eventId = eventId
+                self.eventType = eventType
+                self.index = index
+                self.stepUsage = stepUsage
+                self.usage = usage
+            }
+            public enum CodingKeys: String, CodingKey {
+                case eventId = "event_id"
+                case eventType = "event_type"
+                case index
+                case stepUsage = "step_usage"
+                case usage
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsTextAnnotationDelta`.
+        public struct InteractionsTextAnnotationDelta: Codable, Hashable, Sendable {
+            /// Citation information for model-generated content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextAnnotationDelta/annotations`.
+            public var annotations: [Components.Schemas.InteractionsAnnotation]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextAnnotationDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case textAnnotationDelta = "text_annotation_delta"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextAnnotationDelta/type`.
+            public var _type: Components.Schemas.InteractionsTextAnnotationDelta._TypePayload
+            /// Creates a new `InteractionsTextAnnotationDelta`.
+            ///
+            /// - Parameters:
+            ///   - annotations: Citation information for model-generated content.
+            ///   - _type:
+            public init(
+                annotations: [Components.Schemas.InteractionsAnnotation]? = nil,
+                _type: Components.Schemas.InteractionsTextAnnotationDelta._TypePayload
+            ) {
+                self.annotations = annotations
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case annotations
+                case _type = "type"
+            }
+        }
+        /// A text content block.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsTextContent`.
+        public struct InteractionsTextContent: Codable, Hashable, Sendable {
+            /// Citation information for model-generated content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextContent/annotations`.
+            public var annotations: [Components.Schemas.InteractionsAnnotation]?
+            /// Required. The text content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextContent/text`.
+            public var text: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextContent/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case text = "text"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextContent/type`.
+            public var _type: Components.Schemas.InteractionsTextContent._TypePayload
+            /// Creates a new `InteractionsTextContent`.
+            ///
+            /// - Parameters:
+            ///   - annotations: Citation information for model-generated content.
+            ///   - text: Required. The text content.
+            ///   - _type:
+            public init(
+                annotations: [Components.Schemas.InteractionsAnnotation]? = nil,
+                text: Swift.String,
+                _type: Components.Schemas.InteractionsTextContent._TypePayload
+            ) {
+                self.annotations = annotations
+                self.text = text
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case annotations
+                case text
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsTextDelta`.
+        public struct InteractionsTextDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextDelta/text`.
+            public var text: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case text = "text"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextDelta/type`.
+            public var _type: Components.Schemas.InteractionsTextDelta._TypePayload
+            /// Creates a new `InteractionsTextDelta`.
+            ///
+            /// - Parameters:
+            ///   - text:
+            ///   - _type:
+            public init(
+                text: Swift.String,
+                _type: Components.Schemas.InteractionsTextDelta._TypePayload
+            ) {
+                self.text = text
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case text
+                case _type = "type"
+            }
+        }
+        /// Configuration for text output format.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsTextResponseFormat`.
+        public struct InteractionsTextResponseFormat: Codable, Hashable, Sendable {
+            /// The MIME type of the text output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextResponseFormat/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case applicationJson = "application/json"
+                case textPlain = "text/plain"
+            }
+            /// The MIME type of the text output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextResponseFormat/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsTextResponseFormat.MimeTypePayload?
+            /// The JSON schema that the output should conform to. Only applicable when
+            /// mime_type is application/json.
+            ///
+            /// Supports a subset of JSON Schema. `minLength`, `maxLength`,
+            /// `minProperties`, `maxProperties`, `uniqueItems`, `contains`,
+            /// `minContains`, and `maxContains` are ignored and not enforced; validate
+            /// these in your application. `minItems` and `maxItems` are enforced. Schemas
+            /// that are too complex to enforce (for example, large `maxItems` on nested
+            /// arrays) return a 400 INVALID_ARGUMENT error.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextResponseFormat/schema`.
+            public struct SchemaPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `SchemaPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// The JSON schema that the output should conform to. Only applicable when
+            /// mime_type is application/json.
+            ///
+            /// Supports a subset of JSON Schema. `minLength`, `maxLength`,
+            /// `minProperties`, `maxProperties`, `uniqueItems`, `contains`,
+            /// `minContains`, and `maxContains` are ignored and not enforced; validate
+            /// these in your application. `minItems` and `maxItems` are enforced. Schemas
+            /// that are too complex to enforce (for example, large `maxItems` on nested
+            /// arrays) return a 400 INVALID_ARGUMENT error.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextResponseFormat/schema`.
+            public var schema: Components.Schemas.InteractionsTextResponseFormat.SchemaPayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextResponseFormat/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case text = "text"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsTextResponseFormat/type`.
+            public var _type: Components.Schemas.InteractionsTextResponseFormat._TypePayload
+            /// Creates a new `InteractionsTextResponseFormat`.
+            ///
+            /// - Parameters:
+            ///   - mimeType: The MIME type of the text output.
+            ///   - schema: The JSON schema that the output should conform to. Only applicable when
+            ///   - _type:
+            public init(
+                mimeType: Components.Schemas.InteractionsTextResponseFormat.MimeTypePayload? = nil,
+                schema: Components.Schemas.InteractionsTextResponseFormat.SchemaPayload? = nil,
+                _type: Components.Schemas.InteractionsTextResponseFormat._TypePayload
+            ) {
+                self.mimeType = mimeType
+                self.schema = schema
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case mimeType = "mime_type"
+                case schema
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsThinkingLevel`.
+        @frozen public enum InteractionsThinkingLevel: String, Codable, Hashable, Sendable, CaseIterable {
+            case minimal = "minimal"
+            case low = "low"
+            case medium = "medium"
+            case high = "high"
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsThinkingSummaries`.
+        @frozen public enum InteractionsThinkingSummaries: String, Codable, Hashable, Sendable, CaseIterable {
+            case auto = "auto"
+            case none = "none"
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSignatureDelta`.
+        public struct InteractionsThoughtSignatureDelta: Codable, Hashable, Sendable {
+            /// Signature to match the backend source to be part of the generation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSignatureDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSignatureDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case thoughtSignature = "thought_signature"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSignatureDelta/type`.
+            public var _type: Components.Schemas.InteractionsThoughtSignatureDelta._TypePayload
+            /// Creates a new `InteractionsThoughtSignatureDelta`.
+            ///
+            /// - Parameters:
+            ///   - signature: Signature to match the backend source to be part of the generation.
+            ///   - _type:
+            public init(
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsThoughtSignatureDelta._TypePayload
+            ) {
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case signature
+                case _type = "type"
+            }
+        }
+        /// A thought step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsThoughtStep`.
+        public struct InteractionsThoughtStep: Codable, Hashable, Sendable {
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// A summary of the thought.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtStep/summary`.
+            public var summary: [Components.Schemas.InteractionsContent]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case thought = "thought"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtStep/type`.
+            public var _type: Components.Schemas.InteractionsThoughtStep._TypePayload
+            /// Creates a new `InteractionsThoughtStep`.
+            ///
+            /// - Parameters:
+            ///   - signature: A signature hash for backend validation.
+            ///   - summary: A summary of the thought.
+            ///   - _type:
+            public init(
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                summary: [Components.Schemas.InteractionsContent]? = nil,
+                _type: Components.Schemas.InteractionsThoughtStep._TypePayload
+            ) {
+                self.signature = signature
+                self.summary = summary
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case signature
+                case summary
+                case _type = "type"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSummaryContent`.
+        @frozen public enum InteractionsThoughtSummaryContent: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSummaryContent/case1`.
+            case InteractionsImageContent(Components.Schemas.InteractionsImageContent)
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSummaryContent/case2`.
+            case InteractionsTextContent(Components.Schemas.InteractionsTextContent)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsImageContent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsTextContent(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsImageContent(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsTextContent(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSummaryDelta`.
+        public struct InteractionsThoughtSummaryDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSummaryDelta/content`.
+            public var content: Components.Schemas.InteractionsContent?
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSummaryDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case thoughtSummary = "thought_summary"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsThoughtSummaryDelta/type`.
+            public var _type: Components.Schemas.InteractionsThoughtSummaryDelta._TypePayload
+            /// Creates a new `InteractionsThoughtSummaryDelta`.
+            ///
+            /// - Parameters:
+            ///   - content:
+            ///   - _type:
+            public init(
+                content: Components.Schemas.InteractionsContent? = nil,
+                _type: Components.Schemas.InteractionsThoughtSummaryDelta._TypePayload
+            ) {
+                self.content = content
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case content
+                case _type = "type"
+            }
+        }
+        /// A tool that can be used by the model.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsTool`.
+        @frozen public enum InteractionsTool: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsTool/case1`.
+            case InteractionsCodeExecution(Components.Schemas.InteractionsCodeExecution)
+            /// - Remark: Generated from `#/components/schemas/InteractionsTool/case2`.
+            case InteractionsComputerUse(Components.Schemas.InteractionsComputerUse)
+            /// - Remark: Generated from `#/components/schemas/InteractionsTool/case3`.
+            case InteractionsFileSearch(Components.Schemas.InteractionsFileSearch)
+            /// - Remark: Generated from `#/components/schemas/InteractionsTool/case4`.
+            case InteractionsFunction(Components.Schemas.InteractionsFunction)
+            /// - Remark: Generated from `#/components/schemas/InteractionsTool/case5`.
+            case InteractionsGoogleMaps(Components.Schemas.InteractionsGoogleMaps)
+            /// - Remark: Generated from `#/components/schemas/InteractionsTool/case6`.
+            case InteractionsGoogleSearch(Components.Schemas.InteractionsGoogleSearch)
+            /// - Remark: Generated from `#/components/schemas/InteractionsTool/case7`.
+            case InteractionsMcpServer(Components.Schemas.InteractionsMcpServer)
+            /// - Remark: Generated from `#/components/schemas/InteractionsTool/case8`.
+            case InteractionsUrlContext(Components.Schemas.InteractionsUrlContext)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsCodeExecution(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsComputerUse(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFileSearch(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsFunction(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleMaps(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsGoogleSearch(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsMcpServer(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsUrlContext(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsCodeExecution(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsComputerUse(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFileSearch(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsFunction(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleMaps(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsGoogleSearch(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsMcpServer(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsUrlContext(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// The tool choice configuration containing allowed tools.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsToolChoiceConfig`.
+        public struct InteractionsToolChoiceConfig: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsToolChoiceConfig/allowed_tools`.
+            public var allowedTools: Components.Schemas.InteractionsAllowedTools?
+            /// Creates a new `InteractionsToolChoiceConfig`.
+            ///
+            /// - Parameters:
+            ///   - allowedTools:
+            public init(allowedTools: Components.Schemas.InteractionsAllowedTools? = nil) {
+                self.allowedTools = allowedTools
+            }
+            public enum CodingKeys: String, CodingKey {
+                case allowedTools = "allowed_tools"
+            }
+        }
+        /// Configuration for speech recognition (transcription).
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig`.
+        public struct InteractionsTranscriptionConfig: Codable, Hashable, Sendable {
+            /// Optional. A list of phrases to bias the ASR model towards.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/adaptation_phrases`.
+            @available(*, deprecated)
+            public var adaptationPhrases: [Swift.String]?
+            /// Optional. A list of custom vocabulary phrases to bias the speech recognition model
+            /// toward recognizing specific terms.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/custom_vocabulary`.
+            public var customVocabulary: [Swift.String]?
+            /// Optional. Configures speaker diarization. Supported values: "speaker".
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/diarization_mode`.
+            @available(*, deprecated)
+            public var diarizationMode: Swift.String?
+            /// Optional. BCP-47 language codes providing hints about the languages present in the
+            /// audio. If omitted or empty, defaults to automatic language detection.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/language_codes`.
+            public var languageCodes: [Swift.String]?
+            /// Discriminated transcription mode options or enum.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/mode`.
+            @frozen public enum ModePayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/mode/case1`.
+                case InteractionsTranscriptionMode(Components.Schemas.InteractionsTranscriptionMode)
+                /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/mode/case2`.
+                @frozen public enum Case2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case verbatim = "verbatim"
+                    case smart = "smart"
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/mode/case2`.
+                case case2(Components.Schemas.InteractionsTranscriptionConfig.ModePayload.Case2Payload)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsTranscriptionMode(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsTranscriptionMode(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// Discriminated transcription mode options or enum.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/mode`.
+            public var mode: Components.Schemas.InteractionsTranscriptionConfig.ModePayload?
+            /// Optional. The granularity of timestamps to include in the transcription output.
+            /// Supported values: "word". If empty, no timestamps are generated.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/timestamp_granularities`.
+            @available(*, deprecated)
+            public var timestampGranularities: [Swift.String]?
+            /// Creates a new `InteractionsTranscriptionConfig`.
+            ///
+            /// - Parameters:
+            ///   - adaptationPhrases: Optional. A list of phrases to bias the ASR model towards.
+            ///   - customVocabulary: Optional. A list of custom vocabulary phrases to bias the speech recognition model
+            ///   - diarizationMode: Optional. Configures speaker diarization. Supported values: "speaker".
+            ///   - languageCodes: Optional. BCP-47 language codes providing hints about the languages present in the
+            ///   - mode: Discriminated transcription mode options or enum.
+            ///   - timestampGranularities: Optional. The granularity of timestamps to include in the transcription output.
+            public init(
+                adaptationPhrases: [Swift.String]? = nil,
+                customVocabulary: [Swift.String]? = nil,
+                diarizationMode: Swift.String? = nil,
+                languageCodes: [Swift.String]? = nil,
+                mode: Components.Schemas.InteractionsTranscriptionConfig.ModePayload? = nil,
+                timestampGranularities: [Swift.String]? = nil
+            ) {
+                self.adaptationPhrases = adaptationPhrases
+                self.customVocabulary = customVocabulary
+                self.diarizationMode = diarizationMode
+                self.languageCodes = languageCodes
+                self.mode = mode
+                self.timestampGranularities = timestampGranularities
+            }
+            public enum CodingKeys: String, CodingKey {
+                case adaptationPhrases = "adaptation_phrases"
+                case customVocabulary = "custom_vocabulary"
+                case diarizationMode = "diarization_mode"
+                case languageCodes = "language_codes"
+                case mode
+                case timestampGranularities = "timestamp_granularities"
+            }
+        }
+        /// Configuration for transcription mode.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionMode`.
+        @frozen public enum InteractionsTranscriptionMode: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionMode/case1`.
+            case InteractionsSmartTranscriptionMode(Components.Schemas.InteractionsSmartTranscriptionMode)
+            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionMode/case2`.
+            case InteractionsVerbatimTranscriptionMode(Components.Schemas.InteractionsVerbatimTranscriptionMode)
+            public init(from decoder: any Swift.Decoder) throws {
+                var errors: [any Swift.Error] = []
+                do {
+                    self = .InteractionsSmartTranscriptionMode(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                do {
+                    self = .InteractionsVerbatimTranscriptionMode(try .init(from: decoder))
+                    return
+                } catch {
+                    errors.append(error)
+                }
+                throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                    type: Self.self,
+                    codingPath: decoder.codingPath,
+                    errors: errors
+                )
+            }
+            public func encode(to encoder: any Swift.Encoder) throws {
+                switch self {
+                case let .InteractionsSmartTranscriptionMode(value):
+                    try value.encode(to: encoder)
+                case let .InteractionsVerbatimTranscriptionMode(value):
+                    try value.encode(to: encoder)
+                }
+            }
+        }
+        /// A trigger configuration that is scheduled to run an agent.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsTrigger`.
+        public struct InteractionsTrigger: Codable, Hashable, Sendable {
+            /// Output only. The number of consecutive failures that have occurred
+            /// since the last successful execution.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/consecutive_failure_count`.
+            public var consecutiveFailureCount: Swift.Int32?
+            /// Output only. The time when the trigger was created.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/create_time`.
+            public var createTime: Foundation.Date?
+            /// Optional. The display name of the trigger.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/display_name`.
+            public var displayName: Swift.String?
+            /// Optional. The environment ID for the trigger execution.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/environment_id`.
+            public var environmentId: Swift.String?
+            /// Optional. The execution timeout for the triggered interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/execution_timeout_seconds`.
+            public var executionTimeoutSeconds: Swift.Int32?
+            /// Required. Output only. Identifier. The ID of the trigger.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/id`.
+            public var id: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/interaction`.
+            public var interaction: Components.Schemas.InteractionsCreateAgentInteractionParams
+            /// Output only. The time when the trigger was last paused.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/last_pause_time`.
+            public var lastPauseTime: Foundation.Date?
+            /// Output only. The time when the trigger was last resumed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/last_resume_time`.
+            public var lastResumeTime: Foundation.Date?
+            /// Output only. The time when the trigger was last run.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/last_run_time`.
+            public var lastRunTime: Foundation.Date?
+            /// Optional. The maximum number of consecutive failures allowed before
+            /// the trigger is automatically paused (status becomes ERROR).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/max_consecutive_failures`.
+            public var maxConsecutiveFailures: Swift.Int32?
+            /// Output only. The time when the trigger is scheduled to run next.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/next_run_time`.
+            public var nextRunTime: Foundation.Date?
+            /// Output only. The ID of the last interaction created by this trigger.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/previous_interaction_id`.
+            public var previousInteractionId: Swift.String?
+            /// Required. The cron schedule on which the trigger should run.
+            /// Standard cron format.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/schedule`.
+            public var schedule: Swift.String
+            /// Output only. The current status of the trigger.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case active = "active"
+                case paused = "paused"
+                case error = "error"
+            }
+            /// Output only. The current status of the trigger.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/status`.
+            public var status: Components.Schemas.InteractionsTrigger.StatusPayload?
+            /// Required. Time zone in which the schedule should be interpreted.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/time_zone`.
+            public var timeZone: Swift.String
+            /// Output only. The time when the trigger was last updated.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTrigger/update_time`.
+            public var updateTime: Foundation.Date?
+            /// Creates a new `InteractionsTrigger`.
+            ///
+            /// - Parameters:
+            ///   - consecutiveFailureCount: Output only. The number of consecutive failures that have occurred
+            ///   - createTime: Output only. The time when the trigger was created.
+            ///   - displayName: Optional. The display name of the trigger.
+            ///   - environmentId: Optional. The environment ID for the trigger execution.
+            ///   - executionTimeoutSeconds: Optional. The execution timeout for the triggered interaction.
+            ///   - id: Required. Output only. Identifier. The ID of the trigger.
+            ///   - interaction:
+            ///   - lastPauseTime: Output only. The time when the trigger was last paused.
+            ///   - lastResumeTime: Output only. The time when the trigger was last resumed.
+            ///   - lastRunTime: Output only. The time when the trigger was last run.
+            ///   - maxConsecutiveFailures: Optional. The maximum number of consecutive failures allowed before
+            ///   - nextRunTime: Output only. The time when the trigger is scheduled to run next.
+            ///   - previousInteractionId: Output only. The ID of the last interaction created by this trigger.
+            ///   - schedule: Required. The cron schedule on which the trigger should run.
+            ///   - status: Output only. The current status of the trigger.
+            ///   - timeZone: Required. Time zone in which the schedule should be interpreted.
+            ///   - updateTime: Output only. The time when the trigger was last updated.
+            public init(
+                consecutiveFailureCount: Swift.Int32? = nil,
+                createTime: Foundation.Date? = nil,
+                displayName: Swift.String? = nil,
+                environmentId: Swift.String? = nil,
+                executionTimeoutSeconds: Swift.Int32? = nil,
+                id: Swift.String,
+                interaction: Components.Schemas.InteractionsCreateAgentInteractionParams,
+                lastPauseTime: Foundation.Date? = nil,
+                lastResumeTime: Foundation.Date? = nil,
+                lastRunTime: Foundation.Date? = nil,
+                maxConsecutiveFailures: Swift.Int32? = nil,
+                nextRunTime: Foundation.Date? = nil,
+                previousInteractionId: Swift.String? = nil,
+                schedule: Swift.String,
+                status: Components.Schemas.InteractionsTrigger.StatusPayload? = nil,
+                timeZone: Swift.String,
+                updateTime: Foundation.Date? = nil
+            ) {
+                self.consecutiveFailureCount = consecutiveFailureCount
+                self.createTime = createTime
+                self.displayName = displayName
+                self.environmentId = environmentId
+                self.executionTimeoutSeconds = executionTimeoutSeconds
+                self.id = id
+                self.interaction = interaction
+                self.lastPauseTime = lastPauseTime
+                self.lastResumeTime = lastResumeTime
+                self.lastRunTime = lastRunTime
+                self.maxConsecutiveFailures = maxConsecutiveFailures
+                self.nextRunTime = nextRunTime
+                self.previousInteractionId = previousInteractionId
+                self.schedule = schedule
+                self.status = status
+                self.timeZone = timeZone
+                self.updateTime = updateTime
+            }
+            public enum CodingKeys: String, CodingKey {
+                case consecutiveFailureCount = "consecutive_failure_count"
+                case createTime = "create_time"
+                case displayName = "display_name"
+                case environmentId = "environment_id"
+                case executionTimeoutSeconds = "execution_timeout_seconds"
+                case id
+                case interaction
+                case lastPauseTime = "last_pause_time"
+                case lastResumeTime = "last_resume_time"
+                case lastRunTime = "last_run_time"
+                case maxConsecutiveFailures = "max_consecutive_failures"
+                case nextRunTime = "next_run_time"
+                case previousInteractionId = "previous_interaction_id"
+                case schedule
+                case status
+                case timeZone = "time_zone"
+                case updateTime = "update_time"
+            }
+        }
+        /// An execution instance of a trigger.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution`.
+        public struct InteractionsTriggerExecution: Codable, Hashable, Sendable {
+            /// Output only. The time when the execution finished.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/end_time`.
+            public var endTime: Foundation.Date?
+            /// Output only. The environment ID used for the execution.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/environment_id`.
+            public var environmentId: Swift.String?
+            /// Output only. The error message if the execution failed.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/error`.
+            public var error: Swift.String?
+            /// Required. Output only. Identifier. The ID of the trigger execution.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/id`.
+            public var id: Swift.String
+            /// Output only. The ID of the interaction created by this execution, if any.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/interaction_id`.
+            public var interactionId: Swift.String?
+            /// Output only. The time when the execution was scheduled to run.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/scheduled_time`.
+            public var scheduledTime: Foundation.Date?
+            /// Output only. The time when the execution started.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/start_time`.
+            public var startTime: Foundation.Date?
+            /// Output only. The status of the execution.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inProgress = "in_progress"
+                case completed = "completed"
+                case failed = "failed"
+                case skipped = "skipped"
+                case timedOut = "timed_out"
+            }
+            /// Output only. The status of the execution.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/status`.
+            public var status: Components.Schemas.InteractionsTriggerExecution.StatusPayload?
+            /// Required. Output only. Identifier. The ID of the trigger that created this execution.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerExecution/trigger_id`.
+            public var triggerId: Swift.String
+            /// Creates a new `InteractionsTriggerExecution`.
+            ///
+            /// - Parameters:
+            ///   - endTime: Output only. The time when the execution finished.
+            ///   - environmentId: Output only. The environment ID used for the execution.
+            ///   - error: Output only. The error message if the execution failed.
+            ///   - id: Required. Output only. Identifier. The ID of the trigger execution.
+            ///   - interactionId: Output only. The ID of the interaction created by this execution, if any.
+            ///   - scheduledTime: Output only. The time when the execution was scheduled to run.
+            ///   - startTime: Output only. The time when the execution started.
+            ///   - status: Output only. The status of the execution.
+            ///   - triggerId: Required. Output only. Identifier. The ID of the trigger that created this execution.
+            public init(
+                endTime: Foundation.Date? = nil,
+                environmentId: Swift.String? = nil,
+                error: Swift.String? = nil,
+                id: Swift.String,
+                interactionId: Swift.String? = nil,
+                scheduledTime: Foundation.Date? = nil,
+                startTime: Foundation.Date? = nil,
+                status: Components.Schemas.InteractionsTriggerExecution.StatusPayload? = nil,
+                triggerId: Swift.String
+            ) {
+                self.endTime = endTime
+                self.environmentId = environmentId
+                self.error = error
+                self.id = id
+                self.interactionId = interactionId
+                self.scheduledTime = scheduledTime
+                self.startTime = startTime
+                self.status = status
+                self.triggerId = triggerId
+            }
+            public enum CodingKeys: String, CodingKey {
+                case endTime = "end_time"
+                case environmentId = "environment_id"
+                case error
+                case id
+                case interactionId = "interaction_id"
+                case scheduledTime = "scheduled_time"
+                case startTime = "start_time"
+                case status
+                case triggerId = "trigger_id"
+            }
+        }
+        /// Represents the fields of a Trigger that can be updated.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsTriggerUpdate`.
+        public struct InteractionsTriggerUpdate: Codable, Hashable, Sendable {
+            /// Optional. The display name of the trigger.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerUpdate/display_name`.
+            public var displayName: Swift.String?
+            /// Optional. The status of the trigger.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerUpdate/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case active = "active"
+                case paused = "paused"
+                case error = "error"
+            }
+            /// Optional. The status of the trigger.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsTriggerUpdate/status`.
+            public var status: Components.Schemas.InteractionsTriggerUpdate.StatusPayload?
+            /// Creates a new `InteractionsTriggerUpdate`.
+            ///
+            /// - Parameters:
+            ///   - displayName: Optional. The display name of the trigger.
+            ///   - status: Optional. The status of the trigger.
+            public init(
+                displayName: Swift.String? = nil,
+                status: Components.Schemas.InteractionsTriggerUpdate.StatusPayload? = nil
+            ) {
+                self.displayName = displayName
+                self.status = status
+            }
+            public enum CodingKeys: String, CodingKey {
+                case displayName = "display_name"
+                case status
+            }
+        }
+        /// Request message for TriggerService.UpdateTrigger.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUpdateTriggerRequest`.
+        public struct InteractionsUpdateTriggerRequest: Codable, Hashable, Sendable {
+            /// Required. The ID of the trigger to update.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUpdateTriggerRequest/id`.
+            public var id: Swift.String
+            /// - Remark: Generated from `#/components/schemas/InteractionsUpdateTriggerRequest/trigger`.
+            public var trigger: Components.Schemas.InteractionsTriggerUpdate
+            /// Optional. The update mask applies to the resource.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUpdateTriggerRequest/update_mask`.
+            public var updateMask: Swift.String?
+            /// Creates a new `InteractionsUpdateTriggerRequest`.
+            ///
+            /// - Parameters:
+            ///   - id: Required. The ID of the trigger to update.
+            ///   - trigger:
+            ///   - updateMask: Optional. The update mask applies to the resource.
+            public init(
+                id: Swift.String,
+                trigger: Components.Schemas.InteractionsTriggerUpdate,
+                updateMask: Swift.String? = nil
+            ) {
+                self.id = id
+                self.trigger = trigger
+                self.updateMask = updateMask
+            }
+            public enum CodingKeys: String, CodingKey {
+                case id
+                case trigger
+                case updateMask = "update_mask"
+            }
+        }
+        /// Request message for WebhookService.UpdateWebhook.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUpdateWebhookRequest`.
+        public struct InteractionsUpdateWebhookRequest: Codable, Hashable, Sendable {
+            /// Required. The ID of the webhook to update.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUpdateWebhookRequest/id`.
+            public var id: Swift.String
+            /// Optional. The list of fields to update.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUpdateWebhookRequest/update_mask`.
+            public var updateMask: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsUpdateWebhookRequest/webhook`.
+            public var webhook: Components.Schemas.InteractionsWebhookUpdate
+            /// Creates a new `InteractionsUpdateWebhookRequest`.
+            ///
+            /// - Parameters:
+            ///   - id: Required. The ID of the webhook to update.
+            ///   - updateMask: Optional. The list of fields to update.
+            ///   - webhook:
+            public init(
+                id: Swift.String,
+                updateMask: Swift.String? = nil,
+                webhook: Components.Schemas.InteractionsWebhookUpdate
+            ) {
+                self.id = id
+                self.updateMask = updateMask
+                self.webhook = webhook
+            }
+            public enum CodingKeys: String, CodingKey {
+                case id
+                case updateMask = "update_mask"
+                case webhook
+            }
+        }
+        /// Request for `UploadEnvironmentFile`.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUploadEnvironmentFileRequest`.
+        public struct InteractionsUploadEnvironmentFileRequest: Codable, Hashable, Sendable {
+            /// Optional. If true, treats the uploaded file as a tar/tar.gz archive and
+            /// unpacks it into `path`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUploadEnvironmentFileRequest/extract`.
+            public var extract: Swift.Bool?
+            /// Optional. Whether to overwrite the destination file if it already exists.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUploadEnvironmentFileRequest/overwrite`.
+            public var overwrite: Swift.Bool?
+            /// Creates a new `InteractionsUploadEnvironmentFileRequest`.
+            ///
+            /// - Parameters:
+            ///   - extract: Optional. If true, treats the uploaded file as a tar/tar.gz archive and
+            ///   - overwrite: Optional. Whether to overwrite the destination file if it already exists.
+            public init(
+                extract: Swift.Bool? = nil,
+                overwrite: Swift.Bool? = nil
+            ) {
+                self.extract = extract
+                self.overwrite = overwrite
+            }
+            public enum CodingKeys: String, CodingKey {
+                case extract
+                case overwrite
+            }
+        }
+        /// Response for `UploadEnvironmentFile`.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUploadEnvironmentFileResponse`.
+        public struct InteractionsUploadEnvironmentFileResponse: Codable, Hashable, Sendable {
+            /// List of files created or extracted in the environment.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUploadEnvironmentFileResponse/files`.
+            public var files: [Components.Schemas.InteractionsEnvironmentFile]?
+            /// Creates a new `InteractionsUploadEnvironmentFileResponse`.
+            ///
+            /// - Parameters:
+            ///   - files: List of files created or extracted in the environment.
+            public init(files: [Components.Schemas.InteractionsEnvironmentFile]? = nil) {
+                self.files = files
+            }
+            public enum CodingKeys: String, CodingKey {
+                case files
+            }
+        }
+        /// A URL citation annotation.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUrlCitation`.
+        public struct InteractionsUrlCitation: Codable, Hashable, Sendable {
+            /// End of the attributed segment, exclusive.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlCitation/end_index`.
+            public var endIndex: Swift.Int32?
+            /// Start of segment of the response that is attributed to this source.
+            ///
+            /// Index indicates the start of the segment, measured in bytes.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlCitation/start_index`.
+            public var startIndex: Swift.Int32?
+            /// The title of the URL.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlCitation/title`.
+            public var title: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlCitation/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case urlCitation = "url_citation"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlCitation/type`.
+            public var _type: Components.Schemas.InteractionsUrlCitation._TypePayload
+            /// The URL.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlCitation/url`.
+            public var url: Swift.String?
+            /// Creates a new `InteractionsUrlCitation`.
+            ///
+            /// - Parameters:
+            ///   - endIndex: End of the attributed segment, exclusive.
+            ///   - startIndex: Start of segment of the response that is attributed to this source.
+            ///   - title: The title of the URL.
+            ///   - _type:
+            ///   - url: The URL.
+            public init(
+                endIndex: Swift.Int32? = nil,
+                startIndex: Swift.Int32? = nil,
+                title: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsUrlCitation._TypePayload,
+                url: Swift.String? = nil
+            ) {
+                self.endIndex = endIndex
+                self.startIndex = startIndex
+                self.title = title
+                self._type = _type
+                self.url = url
+            }
+            public enum CodingKeys: String, CodingKey {
+                case endIndex = "end_index"
+                case startIndex = "start_index"
+                case title
+                case _type = "type"
+                case url
+            }
+        }
+        /// A tool that can be used by the model to fetch URL context.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUrlContext`.
+        public struct InteractionsUrlContext: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContext/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case urlContext = "url_context"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContext/type`.
+            public var _type: Components.Schemas.InteractionsUrlContext._TypePayload
+            /// Creates a new `InteractionsUrlContext`.
+            ///
+            /// - Parameters:
+            ///   - _type:
+            public init(_type: Components.Schemas.InteractionsUrlContext._TypePayload) {
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case _type = "type"
+            }
+        }
+        /// The arguments to pass to the URL context.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallArguments`.
+        public struct InteractionsUrlContextCallArguments: Codable, Hashable, Sendable {
+            /// The URLs to fetch.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallArguments/urls`.
+            public var urls: [Swift.String]?
+            /// Creates a new `InteractionsUrlContextCallArguments`.
+            ///
+            /// - Parameters:
+            ///   - urls: The URLs to fetch.
+            public init(urls: [Swift.String]? = nil) {
+                self.urls = urls
+            }
+            public enum CodingKeys: String, CodingKey {
+                case urls
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallDelta`.
+        public struct InteractionsUrlContextCallDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallDelta/arguments`.
+            public var arguments: Components.Schemas.InteractionsUrlContextCallArguments
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case urlContextCall = "url_context_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallDelta/type`.
+            public var _type: Components.Schemas.InteractionsUrlContextCallDelta._TypePayload
+            /// Creates a new `InteractionsUrlContextCallDelta`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsUrlContextCallArguments,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsUrlContextCallDelta._TypePayload
+            ) {
+                self.arguments = arguments
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case signature
+                case _type = "type"
+            }
+        }
+        /// URL context call step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallStep`.
+        public struct InteractionsUrlContextCallStep: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallStep/arguments`.
+            public var arguments: Components.Schemas.InteractionsUrlContextCallArguments
+            /// Required. A unique ID for this specific tool call.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallStep/id`.
+            public var id: Swift.String
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case urlContextCall = "url_context_call"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextCallStep/type`.
+            public var _type: Components.Schemas.InteractionsUrlContextCallStep._TypePayload
+            /// Creates a new `InteractionsUrlContextCallStep`.
+            ///
+            /// - Parameters:
+            ///   - arguments:
+            ///   - id: Required. A unique ID for this specific tool call.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                arguments: Components.Schemas.InteractionsUrlContextCallArguments,
+                id: Swift.String,
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsUrlContextCallStep._TypePayload
+            ) {
+                self.arguments = arguments
+                self.id = id
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case arguments
+                case id
+                case signature
+                case _type = "type"
+            }
+        }
+        /// The result of the URL context.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResult`.
+        public struct InteractionsUrlContextResult: Codable, Hashable, Sendable {
+            /// The status of the URL retrieval.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResult/status`.
+            @frozen public enum StatusPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case success = "success"
+                case error = "error"
+                case paywall = "paywall"
+                case unsafe = "unsafe"
+            }
+            /// The status of the URL retrieval.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResult/status`.
+            public var status: Components.Schemas.InteractionsUrlContextResult.StatusPayload?
+            /// The URL that was fetched.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResult/url`.
+            public var url: Swift.String?
+            /// Creates a new `InteractionsUrlContextResult`.
+            ///
+            /// - Parameters:
+            ///   - status: The status of the URL retrieval.
+            ///   - url: The URL that was fetched.
+            public init(
+                status: Components.Schemas.InteractionsUrlContextResult.StatusPayload? = nil,
+                url: Swift.String? = nil
+            ) {
+                self.status = status
+                self.url = url
+            }
+            public enum CodingKeys: String, CodingKey {
+                case status
+                case url
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultDelta`.
+        public struct InteractionsUrlContextResultDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultDelta/is_error`.
+            public var isError: Swift.Bool?
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultDelta/result`.
+            public var result: [Components.Schemas.InteractionsUrlContextResult]
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultDelta/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case urlContextResult = "url_context_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultDelta/type`.
+            public var _type: Components.Schemas.InteractionsUrlContextResultDelta._TypePayload
+            /// Creates a new `InteractionsUrlContextResultDelta`.
+            ///
+            /// - Parameters:
+            ///   - isError:
+            ///   - result:
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                isError: Swift.Bool? = nil,
+                result: [Components.Schemas.InteractionsUrlContextResult],
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsUrlContextResultDelta._TypePayload
+            ) {
+                self.isError = isError
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case isError = "is_error"
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// URL context result step.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultStep`.
+        public struct InteractionsUrlContextResultStep: Codable, Hashable, Sendable {
+            /// Required. ID to match the ID from the function call block.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultStep/call_id`.
+            public var callId: Swift.String
+            /// Whether the URL context resulted in an error.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultStep/is_error`.
+            public var isError: Swift.Bool?
+            /// Required. The results of the URL context.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultStep/result`.
+            public var result: [Components.Schemas.InteractionsUrlContextResult]
+            /// A signature hash for backend validation.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultStep/signature`.
+            public var signature: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case urlContextResult = "url_context_result"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsUrlContextResultStep/type`.
+            public var _type: Components.Schemas.InteractionsUrlContextResultStep._TypePayload
+            /// Creates a new `InteractionsUrlContextResultStep`.
+            ///
+            /// - Parameters:
+            ///   - callId: Required. ID to match the ID from the function call block.
+            ///   - isError: Whether the URL context resulted in an error.
+            ///   - result: Required. The results of the URL context.
+            ///   - signature: A signature hash for backend validation.
+            ///   - _type:
+            public init(
+                callId: Swift.String,
+                isError: Swift.Bool? = nil,
+                result: [Components.Schemas.InteractionsUrlContextResult],
+                signature: OpenAPIRuntime.Base64EncodedData? = nil,
+                _type: Components.Schemas.InteractionsUrlContextResultStep._TypePayload
+            ) {
+                self.callId = callId
+                self.isError = isError
+                self.result = result
+                self.signature = signature
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case callId = "call_id"
+                case isError = "is_error"
+                case result
+                case signature
+                case _type = "type"
+            }
+        }
+        /// Statistics on the interaction request's token usage.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUsage`.
+        public struct InteractionsUsage: Codable, Hashable, Sendable {
+            /// A breakdown of cached token usage by modality.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/cached_tokens_by_modality`.
+            public var cachedTokensByModality: [Components.Schemas.InteractionsModalityTokens]?
+            /// Grounding tool count.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/grounding_tool_count`.
+            public var groundingToolCount: [Components.Schemas.InteractionsGroundingToolCount]?
+            /// Number of input tokens used in the first turn of this interaction.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/initial_input_tokens`.
+            public var initialInputTokens: Swift.Int32?
+            /// A breakdown of input token usage by modality.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/input_tokens_by_modality`.
+            public var inputTokensByModality: [Components.Schemas.InteractionsModalityTokens]?
+            /// A breakdown of output token usage by modality.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/output_tokens_by_modality`.
+            public var outputTokensByModality: [Components.Schemas.InteractionsModalityTokens]?
+            /// A breakdown of tool-use token usage by modality.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/tool_use_tokens_by_modality`.
+            public var toolUseTokensByModality: [Components.Schemas.InteractionsModalityTokens]?
+            /// Number of tokens in the cached part of the prompt (the cached content).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/total_cached_tokens`.
+            public var totalCachedTokens: Swift.Int32?
+            /// Number of tokens in the prompt (context).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/total_input_tokens`.
+            public var totalInputTokens: Swift.Int32?
+            /// Total number of tokens across all the generated responses.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/total_output_tokens`.
+            public var totalOutputTokens: Swift.Int32?
+            /// Number of tokens of thoughts for thinking models.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/total_thought_tokens`.
+            public var totalThoughtTokens: Swift.Int32?
+            /// Total token count for the interaction request (prompt + responses + other
+            /// internal tokens).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/total_tokens`.
+            public var totalTokens: Swift.Int32?
+            /// Number of tokens present in tool-use prompt(s).
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsUsage/total_tool_use_tokens`.
+            public var totalToolUseTokens: Swift.Int32?
+            /// Creates a new `InteractionsUsage`.
+            ///
+            /// - Parameters:
+            ///   - cachedTokensByModality: A breakdown of cached token usage by modality.
+            ///   - groundingToolCount: Grounding tool count.
+            ///   - initialInputTokens: Number of input tokens used in the first turn of this interaction.
+            ///   - inputTokensByModality: A breakdown of input token usage by modality.
+            ///   - outputTokensByModality: A breakdown of output token usage by modality.
+            ///   - toolUseTokensByModality: A breakdown of tool-use token usage by modality.
+            ///   - totalCachedTokens: Number of tokens in the cached part of the prompt (the cached content).
+            ///   - totalInputTokens: Number of tokens in the prompt (context).
+            ///   - totalOutputTokens: Total number of tokens across all the generated responses.
+            ///   - totalThoughtTokens: Number of tokens of thoughts for thinking models.
+            ///   - totalTokens: Total token count for the interaction request (prompt + responses + other
+            ///   - totalToolUseTokens: Number of tokens present in tool-use prompt(s).
+            public init(
+                cachedTokensByModality: [Components.Schemas.InteractionsModalityTokens]? = nil,
+                groundingToolCount: [Components.Schemas.InteractionsGroundingToolCount]? = nil,
+                initialInputTokens: Swift.Int32? = nil,
+                inputTokensByModality: [Components.Schemas.InteractionsModalityTokens]? = nil,
+                outputTokensByModality: [Components.Schemas.InteractionsModalityTokens]? = nil,
+                toolUseTokensByModality: [Components.Schemas.InteractionsModalityTokens]? = nil,
+                totalCachedTokens: Swift.Int32? = nil,
+                totalInputTokens: Swift.Int32? = nil,
+                totalOutputTokens: Swift.Int32? = nil,
+                totalThoughtTokens: Swift.Int32? = nil,
+                totalTokens: Swift.Int32? = nil,
+                totalToolUseTokens: Swift.Int32? = nil
+            ) {
+                self.cachedTokensByModality = cachedTokensByModality
+                self.groundingToolCount = groundingToolCount
+                self.initialInputTokens = initialInputTokens
+                self.inputTokensByModality = inputTokensByModality
+                self.outputTokensByModality = outputTokensByModality
+                self.toolUseTokensByModality = toolUseTokensByModality
+                self.totalCachedTokens = totalCachedTokens
+                self.totalInputTokens = totalInputTokens
+                self.totalOutputTokens = totalOutputTokens
+                self.totalThoughtTokens = totalThoughtTokens
+                self.totalTokens = totalTokens
+                self.totalToolUseTokens = totalToolUseTokens
+            }
+            public enum CodingKeys: String, CodingKey {
+                case cachedTokensByModality = "cached_tokens_by_modality"
+                case groundingToolCount = "grounding_tool_count"
+                case initialInputTokens = "initial_input_tokens"
+                case inputTokensByModality = "input_tokens_by_modality"
+                case outputTokensByModality = "output_tokens_by_modality"
+                case toolUseTokensByModality = "tool_use_tokens_by_modality"
+                case totalCachedTokens = "total_cached_tokens"
+                case totalInputTokens = "total_input_tokens"
+                case totalOutputTokens = "total_output_tokens"
+                case totalThoughtTokens = "total_thought_tokens"
+                case totalTokens = "total_tokens"
+                case totalToolUseTokens = "total_tool_use_tokens"
+            }
+        }
+        /// Input provided by the user.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsUserInputStep`.
+        public struct InteractionsUserInputStep: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsUserInputStep/content`.
+            public var content: [Components.Schemas.InteractionsContent]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsUserInputStep/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case userInput = "user_input"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsUserInputStep/type`.
+            public var _type: Components.Schemas.InteractionsUserInputStep._TypePayload
+            /// Creates a new `InteractionsUserInputStep`.
+            ///
+            /// - Parameters:
+            ///   - content:
+            ///   - _type:
+            public init(
+                content: [Components.Schemas.InteractionsContent]? = nil,
+                _type: Components.Schemas.InteractionsUserInputStep._TypePayload
+            ) {
+                self.content = content
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case content
+                case _type = "type"
+            }
+        }
+        /// Configuration for verbatim transcription mode.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsVerbatimTranscriptionMode`.
+        public struct InteractionsVerbatimTranscriptionMode: Codable, Hashable, Sendable {
+            /// Optional. Configures speaker diarization. Supported values: "speaker".
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVerbatimTranscriptionMode/diarization_mode`.
+            public var diarizationMode: Swift.String?
+            /// Optional. The granularity of timestamps to include in the transcription output.
+            /// Supported values: "word". If empty, no timestamps are generated.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVerbatimTranscriptionMode/timestamp_granularities`.
+            public var timestampGranularities: [Swift.String]?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVerbatimTranscriptionMode/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case verbatim = "verbatim"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsVerbatimTranscriptionMode/type`.
+            public var _type: Components.Schemas.InteractionsVerbatimTranscriptionMode._TypePayload
+            /// Creates a new `InteractionsVerbatimTranscriptionMode`.
+            ///
+            /// - Parameters:
+            ///   - diarizationMode: Optional. Configures speaker diarization. Supported values: "speaker".
+            ///   - timestampGranularities: Optional. The granularity of timestamps to include in the transcription output.
+            ///   - _type:
+            public init(
+                diarizationMode: Swift.String? = nil,
+                timestampGranularities: [Swift.String]? = nil,
+                _type: Components.Schemas.InteractionsVerbatimTranscriptionMode._TypePayload
+            ) {
+                self.diarizationMode = diarizationMode
+                self.timestampGranularities = timestampGranularities
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case diarizationMode = "diarization_mode"
+                case timestampGranularities = "timestamp_granularities"
+                case _type = "type"
+            }
+        }
+        /// Configuration options for video generation.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsVideoConfig`.
+        public struct InteractionsVideoConfig: Codable, Hashable, Sendable {
+            /// Optional task mode for video generation. If not specified, the model
+            /// automatically determines the appropriate mode based on the provided text
+            /// prompt and input media.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoConfig/task`.
+            @frozen public enum TaskPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case textToVideo = "text_to_video"
+                case imageToVideo = "image_to_video"
+                case referenceToVideo = "reference_to_video"
+                case edit = "edit"
+                case extend = "extend"
+            }
+            /// Optional task mode for video generation. If not specified, the model
+            /// automatically determines the appropriate mode based on the provided text
+            /// prompt and input media.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoConfig/task`.
+            public var task: Components.Schemas.InteractionsVideoConfig.TaskPayload?
+            /// Creates a new `InteractionsVideoConfig`.
+            ///
+            /// - Parameters:
+            ///   - task: Optional task mode for video generation. If not specified, the model
+            public init(task: Components.Schemas.InteractionsVideoConfig.TaskPayload? = nil) {
+                self.task = task
+            }
+            public enum CodingKeys: String, CodingKey {
+                case task
+            }
+        }
+        /// A video content block.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent`.
+        public struct InteractionsVideoContent: Codable, Hashable, Sendable {
+            /// The video content.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// The mime type of the video.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case videoMp4 = "video/mp4"
+                case videoMpeg = "video/mpeg"
+                case videoMpg = "video/mpg"
+                case videoMov = "video/mov"
+                case videoAvi = "video/avi"
+                case videoXFlv = "video/x-flv"
+                case videoWebm = "video/webm"
+                case videoWmv = "video/wmv"
+                case video3gpp = "video/3gpp"
+            }
+            /// The mime type of the video.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsVideoContent.MimeTypePayload?
+            /// A user-defined name for this content block. Can be referenced by the model
+            /// in the final response.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/name`.
+            public var name: Swift.String?
+            /// How the model processes this video for understanding.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/processing`.
+            @frozen public enum ProcessingPayload: Codable, Hashable, Sendable {
+                /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/processing/case1`.
+                case InteractionsMediaProcessing(Components.Schemas.InteractionsMediaProcessing)
+                /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/processing/case2`.
+                @frozen public enum Case2Payload: String, Codable, Hashable, Sendable, CaseIterable {
+                    case _static = "static"
+                    case agentic = "agentic"
+                }
+                /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/processing/case2`.
+                case case2(Components.Schemas.InteractionsVideoContent.ProcessingPayload.Case2Payload)
+                public init(from decoder: any Swift.Decoder) throws {
+                    var errors: [any Swift.Error] = []
+                    do {
+                        self = .InteractionsMediaProcessing(try .init(from: decoder))
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    do {
+                        self = .case2(try decoder.decodeFromSingleValueContainer())
+                        return
+                    } catch {
+                        errors.append(error)
+                    }
+                    throw Swift.DecodingError.failedToDecodeOneOfSchema(
+                        type: Self.self,
+                        codingPath: decoder.codingPath,
+                        errors: errors
+                    )
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    switch self {
+                    case let .InteractionsMediaProcessing(value):
+                        try value.encode(to: encoder)
+                    case let .case2(value):
+                        try encoder.encodeToSingleValueContainer(value)
+                    }
+                }
+            }
+            /// How the model processes this video for understanding.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/processing`.
+            public var processing: Components.Schemas.InteractionsVideoContent.ProcessingPayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/resolution`.
+            public var resolution: Components.Schemas.InteractionsMediaResolution?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case video = "video"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/type`.
+            public var _type: Components.Schemas.InteractionsVideoContent._TypePayload
+            /// The URI of the video.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoContent/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsVideoContent`.
+            ///
+            /// - Parameters:
+            ///   - data: The video content.
+            ///   - mimeType: The mime type of the video.
+            ///   - name: A user-defined name for this content block. Can be referenced by the model
+            ///   - processing: How the model processes this video for understanding.
+            ///   - resolution:
+            ///   - _type:
+            ///   - uri: The URI of the video.
+            public init(
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                mimeType: Components.Schemas.InteractionsVideoContent.MimeTypePayload? = nil,
+                name: Swift.String? = nil,
+                processing: Components.Schemas.InteractionsVideoContent.ProcessingPayload? = nil,
+                resolution: Components.Schemas.InteractionsMediaResolution? = nil,
+                _type: Components.Schemas.InteractionsVideoContent._TypePayload,
+                uri: Swift.String? = nil
+            ) {
+                self.data = data
+                self.mimeType = mimeType
+                self.name = name
+                self.processing = processing
+                self.resolution = resolution
+                self._type = _type
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case data
+                case mimeType = "mime_type"
+                case name
+                case processing
+                case resolution
+                case _type = "type"
+                case uri
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsVideoDelta`.
+        public struct InteractionsVideoDelta: Codable, Hashable, Sendable {
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoDelta/data`.
+            public var data: OpenAPIRuntime.Base64EncodedData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoDelta/mime_type`.
+            @frozen public enum MimeTypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case videoMp4 = "video/mp4"
+                case videoMpeg = "video/mpeg"
+                case videoMpg = "video/mpg"
+                case videoMov = "video/mov"
+                case videoAvi = "video/avi"
+                case videoXFlv = "video/x-flv"
+                case videoWebm = "video/webm"
+                case videoWmv = "video/wmv"
+                case video3gpp = "video/3gpp"
+                case videoJpeg2000 = "video/jpeg2000"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoDelta/mime_type`.
+            public var mimeType: Components.Schemas.InteractionsVideoDelta.MimeTypePayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoDelta/resolution`.
+            public var resolution: Components.Schemas.InteractionsMediaResolution?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoDelta/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case video = "video"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoDelta/type`.
+            public var _type: Components.Schemas.InteractionsVideoDelta._TypePayload
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoDelta/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsVideoDelta`.
+            ///
+            /// - Parameters:
+            ///   - data:
+            ///   - mimeType:
+            ///   - resolution:
+            ///   - _type:
+            ///   - uri:
+            public init(
+                data: OpenAPIRuntime.Base64EncodedData? = nil,
+                mimeType: Components.Schemas.InteractionsVideoDelta.MimeTypePayload? = nil,
+                resolution: Components.Schemas.InteractionsMediaResolution? = nil,
+                _type: Components.Schemas.InteractionsVideoDelta._TypePayload,
+                uri: Swift.String? = nil
+            ) {
+                self.data = data
+                self.mimeType = mimeType
+                self.resolution = resolution
+                self._type = _type
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case data
+                case mimeType = "mime_type"
+                case resolution
+                case _type = "type"
+                case uri
+            }
+        }
+        /// Configuration for video output format.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat`.
+        public struct InteractionsVideoResponseFormat: Codable, Hashable, Sendable {
+            /// The aspect ratio for the video output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/aspect_ratio`.
+            @frozen public enum AspectRatioPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case _16_colon_9 = "16:9"
+                case _9_colon_16 = "9:16"
+            }
+            /// The aspect ratio for the video output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/aspect_ratio`.
+            public var aspectRatio: Components.Schemas.InteractionsVideoResponseFormat.AspectRatioPayload?
+            /// The delivery mode for the video output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/delivery`.
+            @frozen public enum DeliveryPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case inline = "inline"
+                case uri = "uri"
+            }
+            /// The delivery mode for the video output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/delivery`.
+            public var delivery: Components.Schemas.InteractionsVideoResponseFormat.DeliveryPayload?
+            /// The duration for the video output.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/duration`.
+            public var duration: Swift.String?
+            /// The video output resolution. Defaults to 720p.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/resolution`.
+            @frozen public enum ResolutionPayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case _360p = "360p"
+                case _720p = "720p"
+                case _1080p = "1080p"
+                case _4k = "4k"
+            }
+            /// The video output resolution. Defaults to 720p.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/resolution`.
+            public var resolution: Components.Schemas.InteractionsVideoResponseFormat.ResolutionPayload?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case video = "video"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsVideoResponseFormat/type`.
+            public var _type: Components.Schemas.InteractionsVideoResponseFormat._TypePayload
+            /// Creates a new `InteractionsVideoResponseFormat`.
+            ///
+            /// - Parameters:
+            ///   - aspectRatio: The aspect ratio for the video output.
+            ///   - delivery: The delivery mode for the video output.
+            ///   - duration: The duration for the video output.
+            ///   - resolution: The video output resolution. Defaults to 720p.
+            ///   - _type:
+            public init(
+                aspectRatio: Components.Schemas.InteractionsVideoResponseFormat.AspectRatioPayload? = nil,
+                delivery: Components.Schemas.InteractionsVideoResponseFormat.DeliveryPayload? = nil,
+                duration: Swift.String? = nil,
+                resolution: Components.Schemas.InteractionsVideoResponseFormat.ResolutionPayload? = nil,
+                _type: Components.Schemas.InteractionsVideoResponseFormat._TypePayload
+            ) {
+                self.aspectRatio = aspectRatio
+                self.delivery = delivery
+                self.duration = duration
+                self.resolution = resolution
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case aspectRatio = "aspect_ratio"
+                case delivery
+                case duration
+                case resolution
+                case _type = "type"
+            }
+        }
+        /// A voice resource representing either a custom voice (created via
+        /// `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsVoice`.
+        public struct InteractionsVoice: Codable, Hashable, Sendable {
+            /// Optional. Regional accent descriptor (e.g. "American", "British").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/accent`.
+            public var accent: Swift.String?
+            /// Optional. Optimal usage context or domain (e.g. "Conversational",
+            /// "Audiobook", "News").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/context`.
+            public var context: Swift.String?
+            /// Optional. Descriptive summary of vocal timbre, personality, and tone.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/description`.
+            public var description: Swift.String?
+            /// Optional. User-provided display name for a stored voice (`store = true`),
+            /// or the catalog name for a prebuilt voice.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/display_name`.
+            public var displayName: Swift.String?
+            /// Output only. The timestamp at which a custom stored voice (`store = true`)
+            /// or replicated voice key (`store = false`) expires. For custom stored voices
+            /// (`store = true`), this expiration time is extended when the voice is used
+            /// for speech synthesis or as a `base_voice` in `CreateVoice`. Unset for
+            /// prebuilt catalog voices (`"prebuilt"`), which do not expire.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/expire_time`.
+            public var expireTime: Foundation.Date?
+            /// Optional. Perceived voice gender presentation (e.g. "female", "male",
+            /// "neutral").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/gender`.
+            public var gender: Swift.String?
+            /// Output only. The unique identifier of the voice.
+            ///
+            /// * For Google-managed custom voices (`store = true`), this is a generated ID
+            ///   with prefix `voice_` (for example, `voice_abc123def456`). Pass
+            ///   `voices/{id}` as the `name` in `GetVoice` and `DeleteVoice`, and pass
+            ///   `{id}` directly to `SpeechConfig.voice_config.voice` (or
+            ///   `SpeechConfig.voice`) during speech synthesis.
+            /// * For prebuilt catalog voices (`"prebuilt"` returned by `ListVoices`), this
+            ///   is the speaker name (for example, `Puck` or `Charon`).
+            /// * Unset when `CreateVoice` is called with `store = false`.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/id`.
+            public var id: Swift.String?
+            /// Output only. The client-managed voice replication key (with prefix
+            /// `voicekey_`). Returned only by `CreateVoice` when `type` is `"replicated"`
+            /// and `store` is `false`. Pass this key to `SpeechConfig.voice_config.voice`
+            /// (or `SpeechConfig.voice`) during speech synthesis.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/key`.
+            public var key: Swift.String?
+            /// Optional. Primary BCP-47 language tag (e.g. "en-US", "fr-FR").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/language_code`.
+            public var languageCode: Swift.String?
+            /// Optional. The model used to design or replicate the voice.
+            /// If omitted in `CreateVoice`, defaults to the latest supported voice design
+            /// model. Returned in `CreateVoice`, `GetVoice`, and `ListVoices` responses
+            /// for custom voices (`"prompted"` and `"replicated"`); unset for `"prebuilt"`
+            /// voices. Created voices can be synthesized across any supported TTS
+            /// synthesis model.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/model`.
+            public var model: Swift.String?
+            /// Optional. Intended persona or character archetype (e.g. "Warm, Friendly",
+            /// "Narrator").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/persona`.
+            public var persona: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/pitch`.
+            public var pitch: Components.Schemas.InteractionsPitch?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/prompted`.
+            public var prompted: Components.Schemas.InteractionsPromptedVoice?
+            /// Optional. ISO 3166-1 alpha-2 or UN M.49 geographic region code (e.g. "US",
+            /// "GB", "001").
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/region_code`.
+            public var regionCode: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/replicated`.
+            public var replicated: Components.Schemas.InteractionsReplicatedVoice?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/sample_audio`.
+            public var sampleAudio: Components.Schemas.InteractionsAudioData?
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/type`.
+            public var _type: Components.Schemas.InteractionsVoiceType
+            /// - Remark: Generated from `#/components/schemas/InteractionsVoice/usage`.
+            public var usage: Components.Schemas.InteractionsUsage?
+            /// Creates a new `InteractionsVoice`.
+            ///
+            /// - Parameters:
+            ///   - accent: Optional. Regional accent descriptor (e.g. "American", "British").
+            ///   - context: Optional. Optimal usage context or domain (e.g. "Conversational",
+            ///   - description: Optional. Descriptive summary of vocal timbre, personality, and tone.
+            ///   - displayName: Optional. User-provided display name for a stored voice (`store = true`),
+            ///   - expireTime: Output only. The timestamp at which a custom stored voice (`store = true`)
+            ///   - gender: Optional. Perceived voice gender presentation (e.g. "female", "male",
+            ///   - id: Output only. The unique identifier of the voice.
+            ///   - key: Output only. The client-managed voice replication key (with prefix
+            ///   - languageCode: Optional. Primary BCP-47 language tag (e.g. "en-US", "fr-FR").
+            ///   - model: Optional. The model used to design or replicate the voice.
+            ///   - persona: Optional. Intended persona or character archetype (e.g. "Warm, Friendly",
+            ///   - pitch:
+            ///   - prompted:
+            ///   - regionCode: Optional. ISO 3166-1 alpha-2 or UN M.49 geographic region code (e.g. "US",
+            ///   - replicated:
+            ///   - sampleAudio:
+            ///   - _type:
+            ///   - usage:
+            public init(
+                accent: Swift.String? = nil,
+                context: Swift.String? = nil,
+                description: Swift.String? = nil,
+                displayName: Swift.String? = nil,
+                expireTime: Foundation.Date? = nil,
+                gender: Swift.String? = nil,
+                id: Swift.String? = nil,
+                key: Swift.String? = nil,
+                languageCode: Swift.String? = nil,
+                model: Swift.String? = nil,
+                persona: Swift.String? = nil,
+                pitch: Components.Schemas.InteractionsPitch? = nil,
+                prompted: Components.Schemas.InteractionsPromptedVoice? = nil,
+                regionCode: Swift.String? = nil,
+                replicated: Components.Schemas.InteractionsReplicatedVoice? = nil,
+                sampleAudio: Components.Schemas.InteractionsAudioData? = nil,
+                _type: Components.Schemas.InteractionsVoiceType,
+                usage: Components.Schemas.InteractionsUsage? = nil
+            ) {
+                self.accent = accent
+                self.context = context
+                self.description = description
+                self.displayName = displayName
+                self.expireTime = expireTime
+                self.gender = gender
+                self.id = id
+                self.key = key
+                self.languageCode = languageCode
+                self.model = model
+                self.persona = persona
+                self.pitch = pitch
+                self.prompted = prompted
+                self.regionCode = regionCode
+                self.replicated = replicated
+                self.sampleAudio = sampleAudio
+                self._type = _type
+                self.usage = usage
+            }
+            public enum CodingKeys: String, CodingKey {
+                case accent
+                case context
+                case description
+                case displayName = "display_name"
+                case expireTime = "expire_time"
+                case gender
+                case id
+                case key
+                case languageCode = "language_code"
+                case model
+                case persona
+                case pitch
+                case prompted
+                case regionCode = "region_code"
+                case replicated
+                case sampleAudio = "sample_audio"
+                case _type = "type"
+                case usage
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsVoiceType`.
+        @frozen public enum InteractionsVoiceType: String, Codable, Hashable, Sendable, CaseIterable {
+            case replicated = "replicated"
+            case prompted = "prompted"
+            case prebuilt = "prebuilt"
+        }
+        /// A Webhook resource.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsWebhook`.
+        public struct InteractionsWebhook: Codable, Hashable, Sendable {
+            /// Output only. The timestamp when the webhook was created.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/create_time`.
+            public var createTime: Foundation.Date?
+            /// Output only. The ID of the webhook.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/id`.
+            public var id: Swift.String?
+            /// Optional. The user-provided name of the webhook.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/name`.
+            public var name: Swift.String?
+            /// Output only. The new signing secret for the webhook. Only populated on create.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/new_signing_secret`.
+            public var newSigningSecret: Swift.String?
+            /// Output only. The signing secrets associated with this webhook.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/signing_secrets`.
+            public var signingSecrets: [Components.Schemas.InteractionsSigningSecret]?
+            /// Output only. The state of the webhook.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/state`.
+            @frozen public enum StatePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case enabled = "enabled"
+                case disabled = "disabled"
+                case disabledDueToFailedDeliveries = "disabled_due_to_failed_deliveries"
+            }
+            /// Output only. The state of the webhook.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/state`.
+            public var state: Components.Schemas.InteractionsWebhook.StatePayload?
+            /// Required. The events that the webhook is subscribed to.
+            /// Available events:
+            /// - batch.succeeded
+            /// - batch.expired
+            /// - batch.failed
+            /// - interaction.requires_action
+            /// - interaction.completed
+            /// - interaction.failed
+            /// - video.generated
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/subscribed_events`.
+            public var subscribedEvents: [Swift.String]
+            /// Output only. The timestamp when the webhook was last updated.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/update_time`.
+            public var updateTime: Foundation.Date?
+            /// Required. The URI to which webhook events will be sent.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhook/uri`.
+            public var uri: Swift.String
+            /// Creates a new `InteractionsWebhook`.
+            ///
+            /// - Parameters:
+            ///   - createTime: Output only. The timestamp when the webhook was created.
+            ///   - id: Output only. The ID of the webhook.
+            ///   - name: Optional. The user-provided name of the webhook.
+            ///   - newSigningSecret: Output only. The new signing secret for the webhook. Only populated on create.
+            ///   - signingSecrets: Output only. The signing secrets associated with this webhook.
+            ///   - state: Output only. The state of the webhook.
+            ///   - subscribedEvents: Required. The events that the webhook is subscribed to.
+            ///   - updateTime: Output only. The timestamp when the webhook was last updated.
+            ///   - uri: Required. The URI to which webhook events will be sent.
+            public init(
+                createTime: Foundation.Date? = nil,
+                id: Swift.String? = nil,
+                name: Swift.String? = nil,
+                newSigningSecret: Swift.String? = nil,
+                signingSecrets: [Components.Schemas.InteractionsSigningSecret]? = nil,
+                state: Components.Schemas.InteractionsWebhook.StatePayload? = nil,
+                subscribedEvents: [Swift.String],
+                updateTime: Foundation.Date? = nil,
+                uri: Swift.String
+            ) {
+                self.createTime = createTime
+                self.id = id
+                self.name = name
+                self.newSigningSecret = newSigningSecret
+                self.signingSecrets = signingSecrets
+                self.state = state
+                self.subscribedEvents = subscribedEvents
+                self.updateTime = updateTime
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case createTime = "create_time"
+                case id
+                case name
+                case newSigningSecret = "new_signing_secret"
+                case signingSecrets = "signing_secrets"
+                case state
+                case subscribedEvents = "subscribed_events"
+                case updateTime = "update_time"
+                case uri
+            }
+        }
+        /// Message for configuring webhook events for a request.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsWebhookConfig`.
+        public struct InteractionsWebhookConfig: Codable, Hashable, Sendable {
+            /// Optional. If set, these webhook URIs will be used for webhook events instead of the
+            /// registered webhooks.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhookConfig/uris`.
+            public var uris: [Swift.String]?
+            /// Optional. The user metadata that will be returned on each event emission to the
+            /// webhooks.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhookConfig/user_metadata`.
+            public struct UserMetadataPayload: Codable, Hashable, Sendable {
+                /// A container of undocumented properties.
+                public var additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer]
+                /// Creates a new `UserMetadataPayload`.
+                ///
+                /// - Parameters:
+                ///   - additionalProperties: A container of undocumented properties.
+                public init(additionalProperties: [String: OpenAPIRuntime.OpenAPIValueContainer] = .init()) {
+                    self.additionalProperties = additionalProperties
+                }
+                public init(from decoder: any Swift.Decoder) throws {
+                    additionalProperties = try decoder.decodeAdditionalProperties(knownKeys: [])
+                }
+                public func encode(to encoder: any Swift.Encoder) throws {
+                    try encoder.encodeAdditionalProperties(additionalProperties)
+                }
+            }
+            /// Optional. The user metadata that will be returned on each event emission to the
+            /// webhooks.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhookConfig/user_metadata`.
+            public var userMetadata: Components.Schemas.InteractionsWebhookConfig.UserMetadataPayload?
+            /// Creates a new `InteractionsWebhookConfig`.
+            ///
+            /// - Parameters:
+            ///   - uris: Optional. If set, these webhook URIs will be used for webhook events instead of the
+            ///   - userMetadata: Optional. The user metadata that will be returned on each event emission to the
+            public init(
+                uris: [Swift.String]? = nil,
+                userMetadata: Components.Schemas.InteractionsWebhookConfig.UserMetadataPayload? = nil
+            ) {
+                self.uris = uris
+                self.userMetadata = userMetadata
+            }
+            public enum CodingKeys: String, CodingKey {
+                case uris
+                case userMetadata = "user_metadata"
+            }
+        }
+        /// - Remark: Generated from `#/components/schemas/InteractionsWebhookUpdate`.
+        public struct InteractionsWebhookUpdate: Codable, Hashable, Sendable {
+            /// Optional. The user-provided name of the webhook.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhookUpdate/name`.
+            public var name: Swift.String?
+            /// Optional. The state of the webhook.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhookUpdate/state`.
+            @frozen public enum StatePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case enabled = "enabled"
+                case disabled = "disabled"
+                case disabledDueToFailedDeliveries = "disabled_due_to_failed_deliveries"
+            }
+            /// Optional. The state of the webhook.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhookUpdate/state`.
+            public var state: Components.Schemas.InteractionsWebhookUpdate.StatePayload?
+            /// Optional. The events that the webhook is subscribed to.
+            /// Available events:
+            /// - batch.succeeded
+            /// - batch.expired
+            /// - batch.failed
+            /// - interaction.requires_action
+            /// - interaction.completed
+            /// - interaction.failed
+            /// - video.generated
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhookUpdate/subscribed_events`.
+            public var subscribedEvents: [Swift.String]?
+            /// Optional. The URI to which webhook events will be sent.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWebhookUpdate/uri`.
+            public var uri: Swift.String?
+            /// Creates a new `InteractionsWebhookUpdate`.
+            ///
+            /// - Parameters:
+            ///   - name: Optional. The user-provided name of the webhook.
+            ///   - state: Optional. The state of the webhook.
+            ///   - subscribedEvents: Optional. The events that the webhook is subscribed to.
+            ///   - uri: Optional. The URI to which webhook events will be sent.
+            public init(
+                name: Swift.String? = nil,
+                state: Components.Schemas.InteractionsWebhookUpdate.StatePayload? = nil,
+                subscribedEvents: [Swift.String]? = nil,
+                uri: Swift.String? = nil
+            ) {
+                self.name = name
+                self.state = state
+                self.subscribedEvents = subscribedEvents
+                self.uri = uri
+            }
+            public enum CodingKeys: String, CodingKey {
+                case name
+                case state
+                case subscribedEvents = "subscribed_events"
+                case uri
+            }
+        }
+        /// Word-level ASR annotation for transcription output.
+        /// Carries the word text, optional timing, and optional speaker attribution.
+        ///
+        /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo`.
+        public struct InteractionsWordInfo: Codable, Hashable, Sendable {
+            /// End of the attributed segment, exclusive.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo/end_index`.
+            public var endIndex: Swift.Int32?
+            /// End offset in time of the word relative to the start of the audio.
+            /// Present when timestamp_granularities contains "word".
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo/end_offset`.
+            public var endOffset: Swift.String?
+            /// Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
+            /// Present when diarization_mode is set in TranscriptionConfig.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo/speaker`.
+            public var speaker: Swift.String?
+            /// Start of segment of the response that is attributed to this source.
+            ///
+            /// Index indicates the start of the segment, measured in bytes.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo/start_index`.
+            public var startIndex: Swift.Int32?
+            /// Start offset in time of the word relative to the start of the audio.
+            /// Present when timestamp_granularities contains "word".
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo/start_offset`.
+            public var startOffset: Swift.String?
+            /// The transcribed word.
+            ///
+            /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo/text`.
+            public var text: Swift.String?
+            /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo/type`.
+            @frozen public enum _TypePayload: String, Codable, Hashable, Sendable, CaseIterable {
+                case wordInfo = "word_info"
+            }
+            /// - Remark: Generated from `#/components/schemas/InteractionsWordInfo/type`.
+            public var _type: Components.Schemas.InteractionsWordInfo._TypePayload
+            /// Creates a new `InteractionsWordInfo`.
+            ///
+            /// - Parameters:
+            ///   - endIndex: End of the attributed segment, exclusive.
+            ///   - endOffset: End offset in time of the word relative to the start of the audio.
+            ///   - speaker: Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
+            ///   - startIndex: Start of segment of the response that is attributed to this source.
+            ///   - startOffset: Start offset in time of the word relative to the start of the audio.
+            ///   - text: The transcribed word.
+            ///   - _type:
+            public init(
+                endIndex: Swift.Int32? = nil,
+                endOffset: Swift.String? = nil,
+                speaker: Swift.String? = nil,
+                startIndex: Swift.Int32? = nil,
+                startOffset: Swift.String? = nil,
+                text: Swift.String? = nil,
+                _type: Components.Schemas.InteractionsWordInfo._TypePayload
+            ) {
+                self.endIndex = endIndex
+                self.endOffset = endOffset
+                self.speaker = speaker
+                self.startIndex = startIndex
+                self.startOffset = startOffset
+                self.text = text
+                self._type = _type
+            }
+            public enum CodingKeys: String, CodingKey {
+                case endIndex = "end_index"
+                case endOffset = "end_offset"
+                case speaker
+                case startIndex = "start_index"
+                case startOffset = "start_offset"
+                case text
+                case _type = "type"
+            }
+        }
     }
 }

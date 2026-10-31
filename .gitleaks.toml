@@ -43,3 +43,15 @@ useDefault = true
     '''(test|tests|spec|specs|__tests__)/.*mocks?/''',
     '''(test|tests|spec|specs|__tests__)/.*stubs?/''',
   ]
+
+# Google's public webhook rotation enum is an API constant, not a credential.
+# Match only this exact generated line; retain the inherited detection rule.
+[[rules]]
+id = "generic-api-key"
+
+  [[rules.allowlists]]
+  description = "Public Interactions webhook revocation enum"
+  condition = "AND"
+  paths = ['''^Sources/GoogleGenerativeLanguageTypes/GeneratedSources/Types\+Components\+Schemas\.swift$''']
+  regexTarget = "line"
+  regexes = ['''^\s*case revokePreviousSecretsAfterH24 = "revoke_previous_secrets_after_h24"\s*$''']

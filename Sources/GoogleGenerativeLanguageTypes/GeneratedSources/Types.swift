@@ -583,6 +583,211 @@ public protocol APIProtocol: Sendable {
     /// - Remark: HTTP `POST /upload/v1beta/files`.
     /// - Remark: Generated from `#/paths//upload/v1beta/files/post(UploadFiles)`.
     func uploadFiles(_ input: Operations.UploadFiles.Input) async throws -> Operations.UploadFiles.Output
+    /// Start an environment file upload
+    ///
+    /// Starts a resumable upload session for a file in an environment workspace.
+    /// Upload the file bytes to the URL returned in the `X-Goog-Upload-URL`
+    /// response header, using the resumable upload protocol.
+    ///
+    ///
+    /// - Remark: HTTP `PUT /upload/{api_version}/environments/{environment}/files/{path}`.
+    /// - Remark: Generated from `#/paths//upload/{api_version}/environments/{environment}/files/{path}/put(StartEnvironmentFileUpload)`.
+    func startEnvironmentFileUpload(_ input: Operations.StartEnvironmentFileUpload.Input) async throws -> Operations.StartEnvironmentFileUpload.Output
+    /// Lists all Agents.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/agents`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/get(ListAgents)`.
+    func listAgents(_ input: Operations.ListAgents.Input) async throws -> Operations.ListAgents.Output
+    /// Creates a new Agent (Typed version for SDK).
+    ///
+    /// - Remark: HTTP `POST /{api_version}/agents`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/post(CreateAgent)`.
+    func createAgent(_ input: Operations.CreateAgent.Input) async throws -> Operations.CreateAgent.Output
+    /// Gets a specific Agent.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/agents/{agentsId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/{agentsId}/get(GetAgent)`.
+    func getAgent(_ input: Operations.GetAgent.Input) async throws -> Operations.GetAgent.Output
+    /// Deletes an Agent.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/agents/{agentsId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/{agentsId}/delete(DeleteAgent)`.
+    func deleteAgent(_ input: Operations.DeleteAgent.Input) async throws -> Operations.DeleteAgent.Output
+    /// Lists credentials.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/credentials`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/get(ListCredentials)`.
+    func listCredentials(_ input: Operations.ListCredentials.Input) async throws -> Operations.ListCredentials.Output
+    /// Creates a new credential.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/credentials`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/post(CreateCredential)`.
+    func createCredential(_ input: Operations.CreateCredential.Input) async throws -> Operations.CreateCredential.Output
+    /// Gets a credential by ID.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/get(GetCredential)`.
+    func getCredential(_ input: Operations.GetCredential.Input) async throws -> Operations.GetCredential.Output
+    /// Updates a credential.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/patch(UpdateCredential)`.
+    func updateCredential(_ input: Operations.UpdateCredential.Input) async throws -> Operations.UpdateCredential.Output
+    /// Deletes a credential.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/delete(DeleteCredential)`.
+    func deleteCredential(_ input: Operations.DeleteCredential.Input) async throws -> Operations.DeleteCredential.Output
+    /// Lists environments.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/get(InteractionsListEnvironments)`.
+    func interactionsListEnvironments(_ input: Operations.InteractionsListEnvironments.Input) async throws -> Operations.InteractionsListEnvironments.Output
+    /// Creates an environment.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/environments`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/post(InteractionsCreateEnvironment)`.
+    func interactionsCreateEnvironment(_ input: Operations.InteractionsCreateEnvironment.Input) async throws -> Operations.InteractionsCreateEnvironment.Output
+    /// Retrieves file metadata or directory contents from an environment's snapshot. To download file content, use the download URL returned in the response.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments/{environment}/files/{path}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{environment}/files/{path}/get(GetEnvironmentFiles)`.
+    func getEnvironmentFiles(_ input: Operations.GetEnvironmentFiles.Input) async throws -> Operations.GetEnvironmentFiles.Output
+    /// Gets an environment.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{id}/get(InteractionsGetEnvironment)`.
+    func interactionsGetEnvironment(_ input: Operations.InteractionsGetEnvironment.Input) async throws -> Operations.InteractionsGetEnvironment.Output
+    /// Deletes an environment.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/environments/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{id}/delete(InteractionsDeleteEnvironment)`.
+    func interactionsDeleteEnvironment(_ input: Operations.InteractionsDeleteEnvironment.Input) async throws -> Operations.InteractionsDeleteEnvironment.Output
+    /// Creating an interaction
+    ///
+    /// Creates a new interaction.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/interactions`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/post(CreateInteraction)`.
+    func createInteraction(_ input: Operations.CreateInteraction.Input) async throws -> Operations.CreateInteraction.Output
+    /// Retrieving an interaction
+    ///
+    /// Retrieves the full details of a single interaction based on its `Interaction.id`.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/interactions/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/get(getInteractionById)`.
+    func getInteractionById(_ input: Operations.GetInteractionById.Input) async throws -> Operations.GetInteractionById.Output
+    /// Deleting an interaction
+    ///
+    /// Deletes the interaction by id.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/interactions/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/delete(deleteInteraction)`.
+    func deleteInteraction(_ input: Operations.DeleteInteraction.Input) async throws -> Operations.DeleteInteraction.Output
+    /// Canceling an interaction
+    ///
+    /// Cancels an interaction by id. This only applies to background interactions that are still running.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/interactions/{id}/cancel`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/cancel/post(cancelInteractionById)`.
+    func cancelInteractionById(_ input: Operations.CancelInteractionById.Input) async throws -> Operations.CancelInteractionById.Output
+    /// Lists triggers for a project.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/get(ListTriggers)`.
+    func listTriggers(_ input: Operations.ListTriggers.Input) async throws -> Operations.ListTriggers.Output
+    /// Creates a new trigger that will invoke the specified agent on the given
+    /// cron schedule.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/triggers`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/post(CreateTrigger)`.
+    func createTrigger(_ input: Operations.CreateTrigger.Input) async throws -> Operations.CreateTrigger.Output
+    /// Gets details of a single trigger.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/get(GetTrigger)`.
+    func getTrigger(_ input: Operations.GetTrigger.Input) async throws -> Operations.GetTrigger.Output
+    /// Updates a trigger.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/patch(UpdateTrigger)`.
+    func updateTrigger(_ input: Operations.UpdateTrigger.Input) async throws -> Operations.UpdateTrigger.Output
+    /// Deletes a trigger.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/delete(DeleteTrigger)`.
+    func deleteTrigger(_ input: Operations.DeleteTrigger.Input) async throws -> Operations.DeleteTrigger.Output
+    /// Lists executions for a trigger.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers/{triggerId}/executions`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{triggerId}/executions/get(ListTriggerExecutions)`.
+    func listTriggerExecutions(_ input: Operations.ListTriggerExecutions.Input) async throws -> Operations.ListTriggerExecutions.Output
+    /// Runs a trigger immediately.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/triggers/{triggerId}/executions`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{triggerId}/executions/post(RunTrigger)`.
+    func runTrigger(_ input: Operations.RunTrigger.Input) async throws -> Operations.RunTrigger.Output
+    /// Lists custom stored voices owned by the caller (ordered newest first)
+    /// followed by prebuilt system voices from Google's voice catalog.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/voices`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/get(ListVoices)`.
+    func listVoices(_ input: Operations.ListVoices.Input) async throws -> Operations.ListVoices.Output
+    /// Creates a custom voice from a natural-language prompt
+    /// (`VOICE_TYPE_PROMPTED`) or from reference and consent audio recordings
+    /// (`VOICE_TYPE_REPLICATED`).
+    ///
+    /// - Remark: HTTP `POST /{api_version}/voices`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/post(CreateVoice)`.
+    func createVoice(_ input: Operations.CreateVoice.Input) async throws -> Operations.CreateVoice.Output
+    /// Gets a custom stored voice (`store = true`) by resource name.
+    /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be retrieved via
+    /// `GetVoice`; use `ListVoices` instead.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/voices/{voicesId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/{voicesId}/get(GetVoice)`.
+    func getVoice(_ input: Operations.GetVoice.Input) async throws -> Operations.GetVoice.Output
+    /// Deletes a custom stored voice (`store = true`) by resource name.
+    /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be deleted.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/voices/{voicesId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/{voicesId}/delete(DeleteVoice)`.
+    func deleteVoice(_ input: Operations.DeleteVoice.Input) async throws -> Operations.DeleteVoice.Output
+    /// Lists all Webhooks.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/webhooks`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/get(ListWebhooks)`.
+    func listWebhooks(_ input: Operations.ListWebhooks.Input) async throws -> Operations.ListWebhooks.Output
+    /// Creates a new Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/post(CreateWebhook)`.
+    func createWebhook(_ input: Operations.CreateWebhook.Input) async throws -> Operations.CreateWebhook.Output
+    /// Gets a specific Webhook.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/get(GetWebhook)`.
+    func getWebhook(_ input: Operations.GetWebhook.Input) async throws -> Operations.GetWebhook.Output
+    /// Updates an existing Webhook.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/patch(UpdateWebhook)`.
+    func updateWebhook(_ input: Operations.UpdateWebhook.Input) async throws -> Operations.UpdateWebhook.Output
+    /// Deletes a Webhook.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/delete(DeleteWebhook)`.
+    func deleteWebhook(_ input: Operations.DeleteWebhook.Input) async throws -> Operations.DeleteWebhook.Output
+    /// Sends a ping event to a Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks/{id}:ping`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}:ping/post(PingWebhook)`.
+    func pingWebhook(_ input: Operations.PingWebhook.Input) async throws -> Operations.PingWebhook.Output
+    /// Generates a new signing secret for a Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks/{id}:rotateSigningSecret`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}:rotateSigningSecret/post(RotateSigningSecret)`.
+    func rotateSigningSecret(_ input: Operations.RotateSigningSecret.Input) async throws -> Operations.RotateSigningSecret.Output
 }
 
 /// Convenience overloads for operation inputs.
@@ -2151,6 +2356,553 @@ extension APIProtocol {
             query: query,
             headers: headers,
             body: body
+        ))
+    }
+    /// Start an environment file upload
+    ///
+    /// Starts a resumable upload session for a file in an environment workspace.
+    /// Upload the file bytes to the URL returned in the `X-Goog-Upload-URL`
+    /// response header, using the resumable upload protocol.
+    ///
+    ///
+    /// - Remark: HTTP `PUT /upload/{api_version}/environments/{environment}/files/{path}`.
+    /// - Remark: Generated from `#/paths//upload/{api_version}/environments/{environment}/files/{path}/put(StartEnvironmentFileUpload)`.
+    public func startEnvironmentFileUpload(
+        path: Operations.StartEnvironmentFileUpload.Input.Path,
+        query: Operations.StartEnvironmentFileUpload.Input.Query = .init(),
+        headers: Operations.StartEnvironmentFileUpload.Input.Headers
+    ) async throws -> Operations.StartEnvironmentFileUpload.Output {
+        try await startEnvironmentFileUpload(Operations.StartEnvironmentFileUpload.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Lists all Agents.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/agents`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/get(ListAgents)`.
+    public func listAgents(
+        path: Operations.ListAgents.Input.Path,
+        query: Operations.ListAgents.Input.Query,
+        headers: Operations.ListAgents.Input.Headers = .init()
+    ) async throws -> Operations.ListAgents.Output {
+        try await listAgents(Operations.ListAgents.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Creates a new Agent (Typed version for SDK).
+    ///
+    /// - Remark: HTTP `POST /{api_version}/agents`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/post(CreateAgent)`.
+    public func createAgent(
+        path: Operations.CreateAgent.Input.Path,
+        query: Operations.CreateAgent.Input.Query,
+        headers: Operations.CreateAgent.Input.Headers = .init(),
+        body: Operations.CreateAgent.Input.Body
+    ) async throws -> Operations.CreateAgent.Output {
+        try await createAgent(Operations.CreateAgent.Input(
+            path: path,
+            query: query,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Gets a specific Agent.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/agents/{agentsId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/{agentsId}/get(GetAgent)`.
+    public func getAgent(
+        path: Operations.GetAgent.Input.Path,
+        headers: Operations.GetAgent.Input.Headers = .init()
+    ) async throws -> Operations.GetAgent.Output {
+        try await getAgent(Operations.GetAgent.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Deletes an Agent.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/agents/{agentsId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/agents/{agentsId}/delete(DeleteAgent)`.
+    public func deleteAgent(
+        path: Operations.DeleteAgent.Input.Path,
+        headers: Operations.DeleteAgent.Input.Headers = .init()
+    ) async throws -> Operations.DeleteAgent.Output {
+        try await deleteAgent(Operations.DeleteAgent.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Lists credentials.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/credentials`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/get(ListCredentials)`.
+    public func listCredentials(
+        path: Operations.ListCredentials.Input.Path,
+        query: Operations.ListCredentials.Input.Query = .init(),
+        headers: Operations.ListCredentials.Input.Headers = .init()
+    ) async throws -> Operations.ListCredentials.Output {
+        try await listCredentials(Operations.ListCredentials.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Creates a new credential.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/credentials`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/post(CreateCredential)`.
+    public func createCredential(
+        path: Operations.CreateCredential.Input.Path,
+        headers: Operations.CreateCredential.Input.Headers = .init(),
+        body: Operations.CreateCredential.Input.Body
+    ) async throws -> Operations.CreateCredential.Output {
+        try await createCredential(Operations.CreateCredential.Input(
+            path: path,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Gets a credential by ID.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/get(GetCredential)`.
+    public func getCredential(
+        path: Operations.GetCredential.Input.Path,
+        headers: Operations.GetCredential.Input.Headers = .init()
+    ) async throws -> Operations.GetCredential.Output {
+        try await getCredential(Operations.GetCredential.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Updates a credential.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/patch(UpdateCredential)`.
+    public func updateCredential(
+        path: Operations.UpdateCredential.Input.Path,
+        query: Operations.UpdateCredential.Input.Query = .init(),
+        headers: Operations.UpdateCredential.Input.Headers = .init(),
+        body: Operations.UpdateCredential.Input.Body
+    ) async throws -> Operations.UpdateCredential.Output {
+        try await updateCredential(Operations.UpdateCredential.Input(
+            path: path,
+            query: query,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Deletes a credential.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/credentials/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/credentials/{id}/delete(DeleteCredential)`.
+    public func deleteCredential(
+        path: Operations.DeleteCredential.Input.Path,
+        headers: Operations.DeleteCredential.Input.Headers = .init()
+    ) async throws -> Operations.DeleteCredential.Output {
+        try await deleteCredential(Operations.DeleteCredential.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Lists environments.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/get(InteractionsListEnvironments)`.
+    public func interactionsListEnvironments(
+        path: Operations.InteractionsListEnvironments.Input.Path,
+        query: Operations.InteractionsListEnvironments.Input.Query = .init(),
+        headers: Operations.InteractionsListEnvironments.Input.Headers = .init()
+    ) async throws -> Operations.InteractionsListEnvironments.Output {
+        try await interactionsListEnvironments(Operations.InteractionsListEnvironments.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Creates an environment.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/environments`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/post(InteractionsCreateEnvironment)`.
+    public func interactionsCreateEnvironment(
+        path: Operations.InteractionsCreateEnvironment.Input.Path,
+        headers: Operations.InteractionsCreateEnvironment.Input.Headers = .init(),
+        body: Operations.InteractionsCreateEnvironment.Input.Body
+    ) async throws -> Operations.InteractionsCreateEnvironment.Output {
+        try await interactionsCreateEnvironment(Operations.InteractionsCreateEnvironment.Input(
+            path: path,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Retrieves file metadata or directory contents from an environment's snapshot. To download file content, use the download URL returned in the response.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments/{environment}/files/{path}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{environment}/files/{path}/get(GetEnvironmentFiles)`.
+    public func getEnvironmentFiles(
+        path: Operations.GetEnvironmentFiles.Input.Path,
+        query: Operations.GetEnvironmentFiles.Input.Query = .init(),
+        headers: Operations.GetEnvironmentFiles.Input.Headers = .init()
+    ) async throws -> Operations.GetEnvironmentFiles.Output {
+        try await getEnvironmentFiles(Operations.GetEnvironmentFiles.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Gets an environment.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/environments/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{id}/get(InteractionsGetEnvironment)`.
+    public func interactionsGetEnvironment(
+        path: Operations.InteractionsGetEnvironment.Input.Path,
+        headers: Operations.InteractionsGetEnvironment.Input.Headers = .init()
+    ) async throws -> Operations.InteractionsGetEnvironment.Output {
+        try await interactionsGetEnvironment(Operations.InteractionsGetEnvironment.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Deletes an environment.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/environments/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/environments/{id}/delete(InteractionsDeleteEnvironment)`.
+    public func interactionsDeleteEnvironment(
+        path: Operations.InteractionsDeleteEnvironment.Input.Path,
+        headers: Operations.InteractionsDeleteEnvironment.Input.Headers = .init()
+    ) async throws -> Operations.InteractionsDeleteEnvironment.Output {
+        try await interactionsDeleteEnvironment(Operations.InteractionsDeleteEnvironment.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Creating an interaction
+    ///
+    /// Creates a new interaction.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/interactions`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/post(CreateInteraction)`.
+    public func createInteraction(
+        path: Operations.CreateInteraction.Input.Path,
+        headers: Operations.CreateInteraction.Input.Headers = .init(),
+        body: Operations.CreateInteraction.Input.Body
+    ) async throws -> Operations.CreateInteraction.Output {
+        try await createInteraction(Operations.CreateInteraction.Input(
+            path: path,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Retrieving an interaction
+    ///
+    /// Retrieves the full details of a single interaction based on its `Interaction.id`.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/interactions/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/get(getInteractionById)`.
+    public func getInteractionById(
+        path: Operations.GetInteractionById.Input.Path,
+        query: Operations.GetInteractionById.Input.Query = .init(),
+        headers: Operations.GetInteractionById.Input.Headers = .init()
+    ) async throws -> Operations.GetInteractionById.Output {
+        try await getInteractionById(Operations.GetInteractionById.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Deleting an interaction
+    ///
+    /// Deletes the interaction by id.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/interactions/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/delete(deleteInteraction)`.
+    public func deleteInteraction(
+        path: Operations.DeleteInteraction.Input.Path,
+        headers: Operations.DeleteInteraction.Input.Headers = .init()
+    ) async throws -> Operations.DeleteInteraction.Output {
+        try await deleteInteraction(Operations.DeleteInteraction.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Canceling an interaction
+    ///
+    /// Cancels an interaction by id. This only applies to background interactions that are still running.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/interactions/{id}/cancel`.
+    /// - Remark: Generated from `#/paths//{api_version}/interactions/{id}/cancel/post(cancelInteractionById)`.
+    public func cancelInteractionById(
+        path: Operations.CancelInteractionById.Input.Path,
+        headers: Operations.CancelInteractionById.Input.Headers = .init()
+    ) async throws -> Operations.CancelInteractionById.Output {
+        try await cancelInteractionById(Operations.CancelInteractionById.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Lists triggers for a project.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/get(ListTriggers)`.
+    public func listTriggers(
+        path: Operations.ListTriggers.Input.Path,
+        query: Operations.ListTriggers.Input.Query = .init(),
+        headers: Operations.ListTriggers.Input.Headers = .init()
+    ) async throws -> Operations.ListTriggers.Output {
+        try await listTriggers(Operations.ListTriggers.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Creates a new trigger that will invoke the specified agent on the given
+    /// cron schedule.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/triggers`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/post(CreateTrigger)`.
+    public func createTrigger(
+        path: Operations.CreateTrigger.Input.Path,
+        headers: Operations.CreateTrigger.Input.Headers = .init(),
+        body: Operations.CreateTrigger.Input.Body
+    ) async throws -> Operations.CreateTrigger.Output {
+        try await createTrigger(Operations.CreateTrigger.Input(
+            path: path,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Gets details of a single trigger.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/get(GetTrigger)`.
+    public func getTrigger(
+        path: Operations.GetTrigger.Input.Path,
+        headers: Operations.GetTrigger.Input.Headers = .init()
+    ) async throws -> Operations.GetTrigger.Output {
+        try await getTrigger(Operations.GetTrigger.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Updates a trigger.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/patch(UpdateTrigger)`.
+    public func updateTrigger(
+        path: Operations.UpdateTrigger.Input.Path,
+        headers: Operations.UpdateTrigger.Input.Headers = .init(),
+        body: Operations.UpdateTrigger.Input.Body
+    ) async throws -> Operations.UpdateTrigger.Output {
+        try await updateTrigger(Operations.UpdateTrigger.Input(
+            path: path,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Deletes a trigger.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/triggers/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{id}/delete(DeleteTrigger)`.
+    public func deleteTrigger(
+        path: Operations.DeleteTrigger.Input.Path,
+        headers: Operations.DeleteTrigger.Input.Headers = .init()
+    ) async throws -> Operations.DeleteTrigger.Output {
+        try await deleteTrigger(Operations.DeleteTrigger.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Lists executions for a trigger.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/triggers/{triggerId}/executions`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{triggerId}/executions/get(ListTriggerExecutions)`.
+    public func listTriggerExecutions(
+        path: Operations.ListTriggerExecutions.Input.Path,
+        query: Operations.ListTriggerExecutions.Input.Query = .init(),
+        headers: Operations.ListTriggerExecutions.Input.Headers = .init()
+    ) async throws -> Operations.ListTriggerExecutions.Output {
+        try await listTriggerExecutions(Operations.ListTriggerExecutions.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Runs a trigger immediately.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/triggers/{triggerId}/executions`.
+    /// - Remark: Generated from `#/paths//{api_version}/triggers/{triggerId}/executions/post(RunTrigger)`.
+    public func runTrigger(
+        path: Operations.RunTrigger.Input.Path,
+        headers: Operations.RunTrigger.Input.Headers = .init()
+    ) async throws -> Operations.RunTrigger.Output {
+        try await runTrigger(Operations.RunTrigger.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Lists custom stored voices owned by the caller (ordered newest first)
+    /// followed by prebuilt system voices from Google's voice catalog.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/voices`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/get(ListVoices)`.
+    public func listVoices(
+        path: Operations.ListVoices.Input.Path,
+        query: Operations.ListVoices.Input.Query = .init(),
+        headers: Operations.ListVoices.Input.Headers = .init()
+    ) async throws -> Operations.ListVoices.Output {
+        try await listVoices(Operations.ListVoices.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Creates a custom voice from a natural-language prompt
+    /// (`VOICE_TYPE_PROMPTED`) or from reference and consent audio recordings
+    /// (`VOICE_TYPE_REPLICATED`).
+    ///
+    /// - Remark: HTTP `POST /{api_version}/voices`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/post(CreateVoice)`.
+    public func createVoice(
+        path: Operations.CreateVoice.Input.Path,
+        headers: Operations.CreateVoice.Input.Headers = .init(),
+        body: Operations.CreateVoice.Input.Body
+    ) async throws -> Operations.CreateVoice.Output {
+        try await createVoice(Operations.CreateVoice.Input(
+            path: path,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Gets a custom stored voice (`store = true`) by resource name.
+    /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be retrieved via
+    /// `GetVoice`; use `ListVoices` instead.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/voices/{voicesId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/{voicesId}/get(GetVoice)`.
+    public func getVoice(
+        path: Operations.GetVoice.Input.Path,
+        headers: Operations.GetVoice.Input.Headers = .init()
+    ) async throws -> Operations.GetVoice.Output {
+        try await getVoice(Operations.GetVoice.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Deletes a custom stored voice (`store = true`) by resource name.
+    /// Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be deleted.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/voices/{voicesId}`.
+    /// - Remark: Generated from `#/paths//{api_version}/voices/{voicesId}/delete(DeleteVoice)`.
+    public func deleteVoice(
+        path: Operations.DeleteVoice.Input.Path,
+        headers: Operations.DeleteVoice.Input.Headers = .init()
+    ) async throws -> Operations.DeleteVoice.Output {
+        try await deleteVoice(Operations.DeleteVoice.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Lists all Webhooks.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/webhooks`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/get(ListWebhooks)`.
+    public func listWebhooks(
+        path: Operations.ListWebhooks.Input.Path,
+        query: Operations.ListWebhooks.Input.Query = .init(),
+        headers: Operations.ListWebhooks.Input.Headers = .init()
+    ) async throws -> Operations.ListWebhooks.Output {
+        try await listWebhooks(Operations.ListWebhooks.Input(
+            path: path,
+            query: query,
+            headers: headers
+        ))
+    }
+    /// Creates a new Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/post(CreateWebhook)`.
+    public func createWebhook(
+        path: Operations.CreateWebhook.Input.Path,
+        query: Operations.CreateWebhook.Input.Query = .init(),
+        headers: Operations.CreateWebhook.Input.Headers = .init(),
+        body: Operations.CreateWebhook.Input.Body
+    ) async throws -> Operations.CreateWebhook.Output {
+        try await createWebhook(Operations.CreateWebhook.Input(
+            path: path,
+            query: query,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Gets a specific Webhook.
+    ///
+    /// - Remark: HTTP `GET /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/get(GetWebhook)`.
+    public func getWebhook(
+        path: Operations.GetWebhook.Input.Path,
+        headers: Operations.GetWebhook.Input.Headers = .init()
+    ) async throws -> Operations.GetWebhook.Output {
+        try await getWebhook(Operations.GetWebhook.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Updates an existing Webhook.
+    ///
+    /// - Remark: HTTP `PATCH /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/patch(UpdateWebhook)`.
+    public func updateWebhook(
+        path: Operations.UpdateWebhook.Input.Path,
+        headers: Operations.UpdateWebhook.Input.Headers = .init(),
+        body: Operations.UpdateWebhook.Input.Body
+    ) async throws -> Operations.UpdateWebhook.Output {
+        try await updateWebhook(Operations.UpdateWebhook.Input(
+            path: path,
+            headers: headers,
+            body: body
+        ))
+    }
+    /// Deletes a Webhook.
+    ///
+    /// - Remark: HTTP `DELETE /{api_version}/webhooks/{id}`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}/delete(DeleteWebhook)`.
+    public func deleteWebhook(
+        path: Operations.DeleteWebhook.Input.Path,
+        headers: Operations.DeleteWebhook.Input.Headers = .init()
+    ) async throws -> Operations.DeleteWebhook.Output {
+        try await deleteWebhook(Operations.DeleteWebhook.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Sends a ping event to a Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks/{id}:ping`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}:ping/post(PingWebhook)`.
+    public func pingWebhook(
+        path: Operations.PingWebhook.Input.Path,
+        headers: Operations.PingWebhook.Input.Headers = .init()
+    ) async throws -> Operations.PingWebhook.Output {
+        try await pingWebhook(Operations.PingWebhook.Input(
+            path: path,
+            headers: headers
+        ))
+    }
+    /// Generates a new signing secret for a Webhook.
+    ///
+    /// - Remark: HTTP `POST /{api_version}/webhooks/{id}:rotateSigningSecret`.
+    /// - Remark: Generated from `#/paths//{api_version}/webhooks/{id}:rotateSigningSecret/post(RotateSigningSecret)`.
+    public func rotateSigningSecret(
+        path: Operations.RotateSigningSecret.Input.Path,
+        headers: Operations.RotateSigningSecret.Input.Headers = .init()
+    ) async throws -> Operations.RotateSigningSecret.Output {
+        try await rotateSigningSecret(Operations.RotateSigningSecret.Input(
+            path: path,
+            headers: headers
         ))
     }
 }
