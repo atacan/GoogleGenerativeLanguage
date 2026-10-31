@@ -1,0 +1,51 @@
+{
+  "overlay": "1.0.0",
+  "info": {
+    "title": "Gemini beta Interactions compatibility for Swift",
+    "version": "1.0.0"
+  },
+  "actions": [
+    {
+      "target": "$.components.schemas.ModelOption.enum",
+      "remove": true,
+      "description": "Google marks this as an open enum via a Speakeasy extension. Use strings so documented transcription and future models work."
+    },
+    {
+      "target": "$.components.securitySchemes",
+      "remove": true
+    },
+    {
+      "target": "$.components",
+      "update": {
+        "securitySchemes": {
+          "GoogleAPIKey": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "x-goog-api-key"
+          },
+          "bearer_auth": {
+            "type": "http",
+            "scheme": "bearer"
+          }
+        }
+      }
+    },
+    {
+      "target": "$.security",
+      "remove": true
+    },
+    {
+      "target": "$",
+      "update": {
+        "security": [
+          {
+            "GoogleAPIKey": []
+          },
+          {
+            "bearer_auth": []
+          }
+        ]
+      }
+    }
+  ]
+}

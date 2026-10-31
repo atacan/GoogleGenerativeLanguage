@@ -1,6 +1,8 @@
 import CustomDump
 import Foundation
 import GoogleGenerativeLanguage
+import GoogleGenerativeLanguageAsyncHTTPClient
+import GoogleGenerativeLanguageTypes
 import OpenAPIAsyncHTTPClient
 import OpenAPIRuntime
 import Testing
@@ -15,6 +17,7 @@ import struct Foundation.Data
 import struct Foundation.Date
 #endif
 
+@Suite(.enabled(if: ProcessInfo.processInfo.environment["RUN_LIVE_TESTS"] == "1" && ProcessInfo.processInfo.environment["GEMINI_API_KEY"] != nil))
 struct GoogleGenerativeLanguageTestsTests {
 
     let client = try! createClient(apiKey: getEnvironmentVariable("GEMINI_API_KEY")!)
@@ -30,7 +33,7 @@ struct GoogleGenerativeLanguageTestsTests {
                     contents: [
                         .init(
                             parts: [
-                                .TextPart(.init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?"))
+                                .init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?")
                             ],
                             role: .user
                         )
@@ -54,17 +57,17 @@ struct GoogleGenerativeLanguageTestsTests {
     @Test
     func streamingResponse() async throws {
         let response = try await client.streamGenerateContent(
-            path: .init(model: Components.Schemas.ModelID.gemini2_0Flash.rawValue),
+            path: .init(model: "gemini-2.5-flash"),
             query: .init(_dollar_alt: .sse),
             body: .json(
                 .init(
                     contents: [
                         .init(
-                            parts: [.TextPart(.init(text: "Write me a long poem about the Swift programming language's compilation speed"))],
+                            parts: [.init(text: "Write me a long poem about the Swift programming language's compilation speed")],
                             role: .user
                         )
                     ],
-                    model: Components.Schemas.ModelID.gemini2_0Flash.rawValue
+                    model: "gemini-2.5-flash"
                 )
             )
         )
@@ -73,11 +76,8 @@ struct GoogleGenerativeLanguageTestsTests {
             .asDecodedServerSentEventsWithJSONData(of: Components.Schemas.GenerateContentResponse.self)
 
         for try await event in stream {
-            switch event.data?.candidates?.first?.content?.value1.parts?.first {
-            case .TextPart(let textPart):
-                print(textPart.text, terminator: "")
-            default:
-                break
+            if let text = event.data?.candidates?.first?.content?.value1.parts?.first?.text {
+                print(text, terminator: "")
             }
         }
     }
@@ -90,18 +90,18 @@ struct GoogleGenerativeLanguageTestsTests {
 
     @Test func functionDeclarations() async throws {
         let response = try await client.generateContent(
-            path: .init(model: Components.Schemas.ModelID.gemini2_0Flash.rawValue),
+            path: .init(model: "gemini-2.5-flash"),
             body: .json(
                 .init(
                     contents: [
                         .init(
                             parts: [
-                                .TextPart(.init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?"))
+                                .init(text: "tell me the weather in Tokyo right now and also find what is the current population of Tokyo?")
                             ],
                             role: .user
                         )
                     ],
-                    model: Components.Schemas.ModelID.gemini2_0Flash.rawValue,
+                    model: "gemini-2.5-flash",
                     tools: [
                         .init(
                             functionDeclarations: [
@@ -118,7 +118,7 @@ struct GoogleGenerativeLanguageTestsTests {
 
     @Test func transcribeAudio() async throws {
         let audioData = try Data(contentsOf: URL(fileURLWithPath: "/Users/atacan/Developer/Repositories/GoogleGenerativeLanguage/assets/speech.mp3"))
-        let modelID = Components.Schemas.ModelID.gemini2_5FlashPreview0520.rawValue
+        let modelID = "gemini-2.5-flash"
         let response = try await client.generateContent(
             path: .init(model: modelID),
             body: .json(
@@ -126,15 +126,15 @@ struct GoogleGenerativeLanguageTestsTests {
                     contents: [
                         .init(
                             parts: [
-                                .InlineDataPart(
-                                    .init(
-                                        inlineData: .init(
+                                .init(
+                                    inlineData: .init(
+                                        value1: .init(
                                             data: Base64EncodedData(audioData),
                                             mimeType: "audio/mpeg"
                                         )
                                     )
                                 ),
-                                .TextPart(.init(text: "transcribe the audio")),
+                                .init(text: "transcribe the audio"),
                             ],
                             role: .user
                         )
@@ -154,7 +154,7 @@ struct GoogleGenerativeLanguageTestsTests {
             headers: .init(
                 xGoogUploadCommand: .start,
                 xGoogUploadProtocol: .resumable,
-                xGoogUploadHeaderContentType: .audioMpeg
+                xGoogUploadHeaderContentType: "audio/mpeg"
             ),
             body: .json(
                 .init(
@@ -192,7 +192,7 @@ struct GoogleGenerativeLanguageTestsTests {
             throw NSError(domain: "UploadError", code: 1, userInfo: [NSLocalizedDescriptionKey: "File URI not found in response"])
         }
 
-        let modelID = Components.Schemas.ModelID.gemini2_5FlashPreview0520.rawValue
+        let modelID = "gemini-2.5-flash"
         let response = try await client.generateContent(
             path: .init(model: modelID),
             body: .json(
@@ -200,10 +200,8 @@ struct GoogleGenerativeLanguageTestsTests {
                     contents: [
                         .init(
                             parts: [
-                                .TextPart(
-                                    Components.Schemas.TextPart(text: "describe the audio")
-                                ),
-                                .FileDataPart(.init(fileData: .init(fileUri: uri))),
+                                Components.Schemas.Part(text: "describe the audio"),
+                                .init(fileData: .init(value1: .init(fileUri: uri))),
                             ],
                             role: .user
                         )
