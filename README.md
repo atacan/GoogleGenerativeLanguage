@@ -172,6 +172,14 @@ The Discovery overlay retains API-key/OAuth/bearer alternatives, streaming respo
 
 Offline tests use stub responses and do not load API keys. The existing live tests require explicit opt-in with exported `RUN_LIVE_TESTS=1` and `GEMINI_API_KEY`; audio tests also need their local fixture paths updated. The migration did not run live API requests.
 
+To run only the live `gemini-3.5-transcribe` test, export `GEMINI_API_KEY` and place `60s_speech.wav` in the package root, then run:
+
+```sh
+RUN_LIVE_TESTS=1 swift test --filter 'TranscriptionLiveTests/transcribesWAVWithGemini35Transcribe'
+```
+
+This sends inline WAV audio to `/v1beta/interactions`, with response storage disabled, and checks completed transcription, word timestamps, and speaker annotations. Google can omit the interaction `id` when `store: false`, so that response property is optional in the SDK. Set `GEMINI_TRANSCRIPTION_AUDIO_PATH` to use a different local WAV. Audio fixtures are ignored by Git. The test is skipped unless live tests are explicitly enabled and the API key is exported. Failures report HTTP status and decoding paths without authenticated request headers or the audio body.
+
 Deprecated properties are deleted from the generated SDK, including their initializer parameters and `required` entries. Unused deprecated models are also removed. This changes the public API; use the replacement fields documented by Google. The downloaded originals retain deprecation metadata. The pruned schema members no longer emit Swift deprecation annotations or their compiler warnings. See the migration notes for the removed models.
 
 ## License
