@@ -17,3 +17,7 @@ auth/
 # Secret scanning reports
 gitleaks-report.json
 trufflehog-report.json
+
+# Local byte relocation transactions and interrupted spec downloads
+.srcmv/
+.original-openapi.*

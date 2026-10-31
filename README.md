@@ -3,220 +3,140 @@
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fatacan%2FGoogleGenerativeLanguage%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/atacan/GoogleGenerativeLanguage)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fatacan%2FGoogleGenerativeLanguage%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/atacan/GoogleGenerativeLanguage)
 
-A community-driven Swift SDK for the [Google Generative Language API](https://ai.google.dev/) (Gemini). Google does not provide an official Swift SDK -- this package fills that gap.
+A community Swift client generated from Google's [Gemini API](https://ai.google.dev/api) v1beta OpenAPI specification. The checked-in spec was refreshed on October 31, 2026; generation uses Swift OpenAPI Generator 1.14.3.
 
-Auto-generated from Google's OpenAPI spec using [Swift OpenAPI Generator](https://github.com/apple/swift-openapi-generator), so every endpoint and type stays in sync with the upstream API.
-
-## Features
-
-- Full coverage of the Generative Language API v1beta (79 endpoints)
-- Text generation and streaming responses (SSE)
-- Multimodal inputs -- text, images, audio, video, files
-- Function calling / tool use
-- Embeddings (single and batch)
-- File uploads with resumable protocol
-- Cached content for cost optimization
-- Semantic search via corpora, documents, and chunks
-- Model fine-tuning
-- Token counting
-- Built with Swift concurrency (`async`/`await`, `Sendable`)
-
-## Requirements
-
-- Swift 6.1+
-- iOS 16.0+ / macOS 13.0+ / watchOS 9.0+ / tvOS 16.0+ / visionOS 1.0+
-- Linux is also supported
+Requires Swift 6.2+ and iOS 16, macOS 13, watchOS 9, tvOS 16, or visionOS 1. Linux is also supported by the package dependencies; this migration was verified on macOS.
 
 ## Installation
 
-Add the package to your `Package.swift`:
+Add the package dependency, then the core, types, and your chosen transport products:
 
 ```swift
-dependencies: [
-    .package(url: "https://github.com/atacan/GoogleGenerativeLanguage", from: "0.1.0"),
-]
+.package(url: "https://github.com/atacan/GoogleGenerativeLanguage", from: "0.1.0")
 ```
 
-Then add it to your target:
-
 ```swift
-.target(
-    name: "YourTarget",
-    dependencies: [
-        .product(name: "GoogleGenerativeLanguage", package: "GoogleGenerativeLanguage"),
-    ]
-)
+.product(name: "GoogleGenerativeLanguage", package: "GoogleGenerativeLanguage"),
+.product(name: "GoogleGenerativeLanguageTypes", package: "GoogleGenerativeLanguage"),
+.product(name: "GoogleGenerativeLanguageURLSession", package: "GoogleGenerativeLanguage"),
 ```
 
-## Quick Start
+Use `GoogleGenerativeLanguageAsyncHTTPClient` instead of the URLSession product for the other transport. The core client accepts any OpenAPI `ClientTransport`.
 
-### Create a Client
+## Create a client
 
 ```swift
+import Foundation
 import GoogleGenerativeLanguage
+import GoogleGenerativeLanguageTypes
+import GoogleGenerativeLanguageURLSession
 
-let client = try createClient(apiKey: "YOUR_API_KEY")
+let client = Client.urlSession(
+    serverURL: try Servers.Server1.url(),
+    authentication: .apiKey("YOUR_API_KEY")
+)
 ```
 
-### Generate Content
+The AsyncHTTPClient factory returns the same `Client`:
 
 ```swift
-let response = try await client.generateContent(
-    path: .init(model: "gemini-2.0-flash"),
-    body: .json(
-        .init(
-            contents: [
-                .init(
-                    parts: [.TextPart(.init(text: "Explain quantum computing in one paragraph"))],
-                    role: .user
-                )
-            ],
-            model: "gemini-2.0-flash"
-        )
-    )
-)
+import GoogleGenerativeLanguageAsyncHTTPClient
 
-let text = try response.default.body.json.candidates?.first?
-    .content?.value1.parts?.first
-// .TextPart contains the generated text
+let client = Client.asyncHTTPClient(
+    serverURL: try Servers.Server1.url(),
+    authentication: .apiKey("YOUR_API_KEY")
+)
+// The existing convenience function now lives in this transport module:
+let legacyClient = try createClient(apiKey: "YOUR_API_KEY")
 ```
 
-### Streaming Responses
+Both factories decode fractional-second timestamps and correct upload header escaping. The AsyncHTTPClient factory and `createClient` retain a 20-minute timeout. Runtime configuration, transport configuration, and extra middleware can be supplied explicitly. Direct `Client(...)` initialization needs its own date configuration and upload middleware.
+
+`.apiKey(...)` sends `x-goog-api-key`. `.bearer(...)` supports operations with an upstream bearer alternative; it does not supply an API key for API-key-only operations. The upstream OAuth schemes `google_oauth_code` and `google_oauth_implicit` require custom middleware and the original `Client` initializer. Static credentials and async credential providers are supported.
+
+## Generate content
+
+Choose an available model ID for your project:
+
+```swift
+let modelID = "YOUR_MODEL_ID"
+let response = try await client.generateContent(
+    path: .init(model: modelID),
+    body: .json(.init(
+        contents: [.init(parts: [.init(text: "Explain Swift concurrency")], role: .user)],
+        model: modelID
+    ))
+)
+let text = try response.default.body.json.candidates?.first?.content?.value1.parts?.first?.text
+```
+
+`Part` is Google's complete object model. Text, thought signatures, and media metadata can coexist. Reference properties retain the generator's `value1` wrappers, for example:
+
+```swift
+let part = Components.Schemas.Part(
+    fileData: .init(value1: .init(fileUri: "YOUR_FILE_URI"))
+)
+```
+
+## Stream content
 
 ```swift
 let response = try await client.streamGenerateContent(
-    path: .init(model: "gemini-2.0-flash"),
+    path: .init(model: modelID),
     query: .init(_dollar_alt: .sse),
-    body: .json(
-        .init(
-            contents: [
-                .init(
-                    parts: [.TextPart(.init(text: "Write a poem about Swift"))],
-                    role: .user
-                )
-            ],
-            model: "gemini-2.0-flash"
-        )
-    )
+    body: .json(.init(
+        contents: [.init(parts: [.init(text: "Write a poem")], role: .user)],
+        model: modelID
+    ))
 )
-
-let stream = try response.default.body.textEventStream
+let events = try response.default.body.textEventStream
     .asDecodedServerSentEventsWithJSONData(of: Components.Schemas.GenerateContentResponse.self)
-
-for try await event in stream {
-    if case .TextPart(let part) = event.data?.candidates?.first?.content?.value1.parts?.first {
-        print(part.text, terminator: "")
+for try await event in events {
+    if let text = event.data?.candidates?.first?.content?.value1.parts?.first?.text {
+        print(text, terminator: "")
     }
 }
 ```
 
-### Function Calling
+Without SSE, the streaming endpoint returns a JSON array. The overlay covers model, tuned-model, and dynamic streaming routes.
+
+## Upload files
 
 ```swift
-let weatherFunction = Components.Schemas.FunctionDeclaration(
-    description: "Get the weather in a city",
-    name: "get_weather",
-    parameters: .init(
-        value1: .init(
-            properties: .init(
-                additionalProperties: [
-                    "city": .init(
-                        description: "The city to get weather for",
-                        _type: .init(value1: .string)
-                    )
-                ]
-            ),
-            required: ["city"],
-            _type: .init(value1: .object)
-        )
-    ),
-    response: nil
-)
-
-let response = try await client.generateContent(
-    path: .init(model: "gemini-2.0-flash"),
-    body: .json(
-        .init(
-            contents: [
-                .init(
-                    parts: [.TextPart(.init(text: "What's the weather in Tokyo?"))],
-                    role: .user
-                )
-            ],
-            model: "gemini-2.0-flash",
-            tools: [.init(functionDeclarations: [weatherFunction])]
-        )
-    )
-)
-```
-
-### File Upload
-
-```swift
-import Foundation
 import OpenAPIRuntime
 
-let fileData = try Data(contentsOf: URL(fileURLWithPath: "audio.mp3"))
+let data = try Data(contentsOf: URL(fileURLWithPath: "image.png"))
 let uri = try await uploadFileToGemini(
-    client: client,
-    fileData: HTTPBody(fileData),
-    mimeType: "audio/mpeg",
-    sizeBytes: fileData.count
-)
-
-// Use the uploaded file in a request
-let response = try await client.generateContent(
-    path: .init(model: "gemini-2.0-flash"),
-    body: .json(
-        .init(
-            contents: [
-                .init(
-                    parts: [
-                        .FileDataPart(.init(fileData: .init(fileUri: uri))),
-                        .TextPart(.init(text: "Describe this audio")),
-                    ],
-                    role: .user
-                )
-            ],
-            model: "gemini-2.0-flash"
-        )
-    )
+    client: client, fileData: HTTPBody(data),
+    mimeType: "image/png", sizeBytes: data.count
 )
 ```
 
-### Google Search Grounding
+The helper starts a resumable session and uploads the bytes. The supplied MIME type and byte count are sent in upload headers; an omitted MIME type defaults to `application/octet-stream`.
 
-```swift
-let response = try await client.generateContent(
-    path: .init(model: "gemini-2.0-flash"),
-    body: .json(
-        .init(
-            contents: [
-                .init(
-                    parts: [.TextPart(.init(text: "What happened in the news today?"))],
-                    role: .user
-                )
-            ],
-            model: "gemini-2.0-flash",
-            tools: [.init(googleSearch: .init(value1: .init()))]
-        )
-    )
-)
+## Regenerate
+
+Install `uv`, Swift 6.2+, Python 3, curl, and Speakeasy's `openapi` CLI (`brew install openapi`). Then:
+
+```sh
+make prepare-openapi   # Download the latest spec, sanitize, overlay, generate
+make download-openapi  # Only download and sort; no API key needed
+make regenerate        # Regenerate from the checked-in source spec
+make build
+make test-offline
 ```
 
-## How It Works
+`make regenerate` runs the latest upstream bootstrapper. To use the sibling development checkout, including its local changes:
 
-The SDK is generated from Google's official [Generative Language API OpenAPI specification](https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta&key=placeholder). The generation pipeline:
+```sh
+make regenerate BOOTSTRAPPER='uv run --directory ../swift-package-generator-based-on-openapi swift-bootstrapper'
+```
 
-1. Fetches the latest OpenAPI spec from Google's Discovery Service
-2. Applies overlays and formatting
-3. Generates Swift client code using [Swift OpenAPI Generator](https://github.com/apple/swift-openapi-generator)
+`original_openapi.json` is the downloaded source; `openapi.json` and `Sources/*/GeneratedSources/` are generated. Edit `openapi-overlay.json` for Google-specific corrections. Regeneration starts from the original spec and preserves handwritten helpers and configuration. `generate`, `generate-openapi`, and `overlay-openapi` remain compatibility aliases for full regeneration.
 
-This means the SDK is always a faithful representation of the API surface -- no hand-written wrappers that can drift out of date.
+The overlay adds missing API-key security while retaining OAuth/bearer alternatives, streaming response types and `sse`, the resumable upload operation, a role enum, and relaxed model response requirements. These are Google-specific semantics and should remain outside the general sanitizer. No common schema blocker required a new transformer. A general Makefile compatibility bug was fixed in the generator template: shell flags now work with macOS GNU Make 3.81, which ignores `.SHELLFLAGS`. See [MIGRATION.md](MIGRATION.md) for source compatibility changes and validation notes.
 
-## API Key
-
-Get your API key from [Google AI Studio](https://aistudio.google.com/apikey).
+Offline tests use stub responses and do not load API keys. The existing live tests require explicit opt-in with exported `RUN_LIVE_TESTS=1` and `GEMINI_API_KEY`; audio tests also need their local fixture paths updated. The migration did not run live API requests.
 
 ## License
 

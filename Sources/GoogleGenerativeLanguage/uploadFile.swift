@@ -1,3 +1,4 @@
+import GoogleGenerativeLanguageTypes
 import OpenAPIRuntime
 
 /// Uploads a file to the Google Generative Language API and returns the file URI.
@@ -14,7 +15,8 @@ public func uploadFileToGemini(client: Client, fileData: HTTPBody, mimeType: Str
         headers: .init(
             xGoogUploadCommand: .start,
             xGoogUploadProtocol: .resumable,
-            xGoogUploadHeaderContentType: .audioMpeg
+            xGoogUploadHeaderContentLength: sizeBytes,
+            xGoogUploadHeaderContentType: mimeType ?? "application/octet-stream"
         ),
         body: .json(
             .init(
