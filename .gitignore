@@ -5,7 +5,8 @@ xcuserdata/
 DerivedData/
 .swiftpm
 .netrc
-.env
+*.env
+*.envrc
 auth/
 
 # Audio files
