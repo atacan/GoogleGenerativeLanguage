@@ -11,19 +11,6 @@
       "description": "Google marks this as an open enum via a Speakeasy extension. Use strings so documented transcription and future models work."
     },
     {
-      "target": "$.components.schemas.*.properties.type",
-      "description": "The upstream string const tags omit type; preserve tagged-union decoding after const-to-enum normalization.",
-      "update": {
-        "type": "string"
-      }
-    },
-    {
-      "target": "$.components.schemas.*.properties.event_type",
-      "update": {
-        "type": "string"
-      }
-    },
-    {
       "target": "$.components.securitySchemes",
       "remove": true
     },

@@ -142,6 +142,29 @@ class MergeTests(unittest.TestCase):
                         set(ROOT.glob(".original-openapi.*")), temporary_files
                     )
 
+    def test_all_upstream_const_only_tags_are_typed_by_the_generator(self):
+        original = json.loads(
+            (ROOT / "specifications/interactions/original_openapi.json").read_text()
+        )
+        merged = json.loads((ROOT / "original_openapi.json").read_text())
+        count = 0
+        for name, schema in original["components"]["schemas"].items():
+            for property_name, prop in schema.get("properties", {}).items():
+                if "type" not in prop and isinstance(prop.get("const"), str):
+                    target = (
+                        name
+                        if name.startswith("Interactions")
+                        else "Interactions" + name
+                    )
+                    typed = merged["components"]["schemas"][target]["properties"][
+                        property_name
+                    ]
+                    with self.subTest(schema=name, property=property_name):
+                        self.assertEqual(typed["type"], "string")
+                        self.assertEqual(typed["enum"], [prop["const"]])
+                    count += 1
+        self.assertGreater(count, 0)
+
     def test_real_combined_schema_keeps_all_sources_and_resolves_local_references(self):
         merged = json.loads((ROOT / "original_openapi.json").read_text())
         discovery = json.loads(

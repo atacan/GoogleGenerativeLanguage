@@ -7726,10 +7726,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "antigravity"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -7744,10 +7744,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "arguments_delta"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -7822,10 +7822,10 @@
             "type": "integer"
           },
           "type": {
+            "type": "string",
             "enum": [
               "audio"
-            ],
-            "type": "string"
+            ]
           },
           "uri": {
             "description": "The URI of the audio.",
@@ -7923,10 +7923,10 @@
             "type": "integer"
           },
           "type": {
+            "type": "string",
             "enum": [
               "audio"
-            ],
-            "type": "string"
+            ]
           },
           "uri": {
             "type": "string"
@@ -7995,10 +7995,10 @@
             "type": "integer"
           },
           "type": {
+            "type": "string",
             "enum": [
               "audio"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -8011,10 +8011,10 @@
         "description": "A tool that can be used by the model to execute code.",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "code_execution"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -8085,10 +8085,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "code_execution_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -8130,10 +8130,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "code_execution_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -8183,10 +8183,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "code_execution_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -8230,10 +8230,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "code_execution_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -8298,10 +8298,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "computer_use"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -8884,10 +8884,10 @@
             "description": "Whether to include thought summaries in the response."
           },
           "type": {
+            "type": "string",
             "enum": [
               "deep-research"
-            ],
-            "type": "string"
+            ]
           },
           "visualization": {
             "description": "Whether to include visualizations in the response.",
@@ -8947,10 +8947,10 @@
             ]
           },
           "type": {
+            "type": "string",
             "enum": [
               "document"
-            ],
-            "type": "string"
+            ]
           },
           "uri": {
             "description": "The URI of the document.",
@@ -8982,10 +8982,10 @@
             ]
           },
           "type": {
+            "type": "string",
             "enum": [
               "document"
-            ],
-            "type": "string"
+            ]
           },
           "uri": {
             "type": "string"
@@ -9004,10 +9004,10 @@
         "description": "Configuration for dynamic agents.",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "dynamic"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9263,10 +9263,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "remote"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9405,10 +9405,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "environment_variable"
-            ],
-            "type": "string"
+            ]
           },
           "value": {
             "description": "Required. Input only. Secret value of the environment variable. Write-only; never\nreturned in responses.",
@@ -9450,10 +9450,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "environment_variable"
-            ],
-            "type": "string"
+            ]
           },
           "value": {
             "description": "Optional. Input only. Secret value of the environment variable. Write-only; never\nreturned in responses.",
@@ -9506,10 +9506,10 @@
             "type": "string"
           },
           "event_type": {
+            "type": "string",
             "enum": [
               "error"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9560,10 +9560,10 @@
             "type": "integer"
           },
           "type": {
+            "type": "string",
             "enum": [
               "file_citation"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9592,10 +9592,10 @@
             "type": "integer"
           },
           "type": {
+            "type": "string",
             "enum": [
               "file_search"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9640,10 +9640,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "file_search_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9677,10 +9677,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "file_search_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9710,10 +9710,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "file_search_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9748,10 +9748,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "file_search_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9776,10 +9776,10 @@
             "description": "The JSON Schema for the function's parameters.\n\nSupports a subset of JSON Schema. `minLength`, `maxLength`,\n`minProperties`, `maxProperties`, `uniqueItems`, `contains`,\n`minContains`, and `maxContains` are ignored and not enforced."
           },
           "type": {
+            "type": "string",
             "enum": [
               "function"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9849,10 +9849,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "function_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9896,10 +9896,10 @@
             ]
           },
           "type": {
+            "type": "string",
             "enum": [
               "function_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -9967,10 +9967,10 @@
             ]
           },
           "type": {
+            "type": "string",
             "enum": [
               "function_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10112,10 +10112,10 @@
             "type": "number"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_maps"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10178,10 +10178,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_maps_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10223,10 +10223,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_maps_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10285,10 +10285,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_maps_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10373,10 +10373,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_maps_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10406,10 +10406,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_search"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10471,10 +10471,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_search_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10528,10 +10528,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_search_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10586,10 +10586,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_search_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10654,10 +10654,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "google_search_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10730,10 +10730,10 @@
             "writeOnly": true
           },
           "type": {
+            "type": "string",
             "enum": [
               "bearer_token"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10761,10 +10761,10 @@
             "writeOnly": true
           },
           "type": {
+            "type": "string",
             "enum": [
               "bearer_token"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -10866,10 +10866,10 @@
             "description": "The resolution of the media."
           },
           "type": {
+            "type": "string",
             "enum": [
               "image"
-            ],
-            "type": "string"
+            ]
           },
           "uri": {
             "description": "The URI of the image.",
@@ -10917,10 +10917,10 @@
             "description": "The resolution of the media."
           },
           "type": {
+            "type": "string",
             "enum": [
               "image"
-            ],
-            "type": "string"
+            ]
           },
           "uri": {
             "type": "string"
@@ -11023,10 +11023,10 @@
             ]
           },
           "type": {
+            "type": "string",
             "enum": [
               "image"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -11347,10 +11347,10 @@
             "type": "string"
           },
           "event_type": {
+            "type": "string",
             "enum": [
               "interaction.completed"
-            ],
-            "type": "string"
+            ]
           },
           "interaction": {
             "$ref": "#/components/schemas/InteractionsInteractionSseEventInteraction",
@@ -11405,10 +11405,10 @@
             "type": "string"
           },
           "event_type": {
+            "type": "string",
             "enum": [
               "interaction.created"
-            ],
-            "type": "string"
+            ]
           },
           "interaction": {
             "$ref": "#/components/schemas/InteractionsInteractionSseEventInteraction",
@@ -11571,10 +11571,10 @@
             "type": "string"
           },
           "event_type": {
+            "type": "string",
             "enum": [
               "interaction.status_update"
-            ],
-            "type": "string"
+            ]
           },
           "interaction_id": {
             "type": "string"
@@ -11795,10 +11795,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "mcp_server"
-            ],
-            "type": "string"
+            ]
           },
           "url": {
             "description": "The full URL for the MCPServer endpoint.\nExample: \"https://api.example.com/mcp\"",
@@ -11853,10 +11853,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "mcp_server_tool_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -11908,10 +11908,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "mcp_server_tool_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -11956,10 +11956,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "mcp_server_tool_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12025,10 +12025,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "mcp_server_tool_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12155,10 +12155,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "model_output"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12199,10 +12199,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "oauth2"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12245,10 +12245,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "oauth2"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12319,10 +12319,10 @@
             "type": "integer"
           },
           "type": {
+            "type": "string",
             "enum": [
               "place_citation"
-            ],
-            "type": "string"
+            ]
           },
           "url": {
             "description": "URI reference of the place.",
@@ -12370,10 +12370,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "processing_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12396,10 +12396,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "processing_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12419,10 +12419,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "processing_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12445,10 +12445,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "processing_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12639,8 +12639,7 @@
           },
           "type": {
             "$ref": "#/components/schemas/InteractionsHarmCategory",
-            "description": "Required. The type of harm category to be blocked.",
-            "type": "string"
+            "description": "Required. The type of harm category to be blocked."
           }
         },
         "required": [
@@ -12686,10 +12685,10 @@
         "description": "Configuration for smart transcription mode.",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "smart"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12770,10 +12769,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "speech_metadata"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12819,10 +12818,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "static"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -12920,10 +12919,10 @@
             "type": "string"
           },
           "event_type": {
+            "type": "string",
             "enum": [
               "step.delta"
-            ],
-            "type": "string"
+            ]
           },
           "index": {
             "format": "int32",
@@ -13051,10 +13050,10 @@
             "type": "string"
           },
           "event_type": {
+            "type": "string",
             "enum": [
               "step.start"
-            ],
-            "type": "string"
+            ]
           },
           "index": {
             "format": "int32",
@@ -13090,10 +13089,10 @@
             "type": "string"
           },
           "event_type": {
+            "type": "string",
             "enum": [
               "step.stop"
-            ],
-            "type": "string"
+            ]
           },
           "index": {
             "format": "int32",
@@ -13125,10 +13124,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "text_annotation_delta"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13163,10 +13162,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "text"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13182,10 +13181,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "text"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13247,10 +13246,10 @@
             "type": "object"
           },
           "type": {
+            "type": "string",
             "enum": [
               "text"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13296,10 +13295,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "thought_signature"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13342,10 +13341,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "thought"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13373,10 +13372,10 @@
             "description": "A new summary item to be added to the thought."
           },
           "type": {
+            "type": "string",
             "enum": [
               "thought_summary"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13816,10 +13815,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "url_citation"
-            ],
-            "type": "string"
+            ]
           },
           "url": {
             "description": "The URL.",
@@ -13837,10 +13836,10 @@
         "description": "A tool that can be used by the model to fetch URL context.",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "url_context"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13904,10 +13903,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "url_context_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -13952,10 +13951,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "url_context_call"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -14013,10 +14012,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "url_context_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -14070,10 +14069,10 @@
             "x-speakeasy-base64-input-mode": "file"
           },
           "type": {
+            "type": "string",
             "enum": [
               "url_context_result"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -14189,10 +14188,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "user_input"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -14216,10 +14215,10 @@
             "type": "array"
           },
           "type": {
+            "type": "string",
             "enum": [
               "verbatim"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -14327,10 +14326,10 @@
             "description": "The resolution of the media."
           },
           "type": {
+            "type": "string",
             "enum": [
               "video"
-            ],
-            "type": "string"
+            ]
           },
           "uri": {
             "description": "The URI of the video.",
@@ -14382,10 +14381,10 @@
             "description": "The resolution of the media."
           },
           "type": {
+            "type": "string",
             "enum": [
               "video"
-            ],
-            "type": "string"
+            ]
           },
           "uri": {
             "type": "string"
@@ -14458,10 +14457,10 @@
             ]
           },
           "type": {
+            "type": "string",
             "enum": [
               "video"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
@@ -14545,8 +14544,7 @@
           },
           "type": {
             "$ref": "#/components/schemas/InteractionsVoiceType",
-            "description": "Required. The type of the voice. In `CreateVoice`, must be `\"replicated\"`\nor `\"prompted\"`. In `ListVoices` responses, may also be `\"prebuilt\"`.",
-            "type": "string"
+            "description": "Required. The type of the voice. In `CreateVoice`, must be `\"replicated\"`\nor `\"prompted\"`. In `ListVoices` responses, may also be `\"prebuilt\"`."
           },
           "usage": {
             "$ref": "#/components/schemas/InteractionsUsage",
@@ -14733,10 +14731,10 @@
             "type": "string"
           },
           "type": {
+            "type": "string",
             "enum": [
               "word_info"
-            ],
-            "type": "string"
+            ]
           }
         },
         "required": [
