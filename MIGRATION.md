@@ -27,7 +27,7 @@ The merge script prefixes added component names and rewrites references/discrimi
 
 The Interactions overlay removes the closed `ModelOption` enum because Google's `x-speakeasy-unknown-values: allow` denotes an open enum and its list omits the documented transcription model. It maps custom Speakeasy authentication to standard header API-key/bearer alternatives. The generic const converter supplies missing scalar types before overlays run, supporting correct step, content, annotation, and SSE event decoding without a Google-specific tag update.
 
-`make regenerate` pins bootstrapper commit `dacae24fb9bc4342f52a3638ac888d1ae45d5a13` from [generator PR #5](https://github.com/atacan/swift-package-generator-based-on-openapi/pull/5). This makes the removed overlay workaround safe to regenerate before that PR merges. The local `BOOTSTRAPPER` override remains available.
+`make regenerate` pins bootstrapper commit `44ab96744ff63458027dad22accea6f513cfc42b` from [generator PR #5](https://github.com/atacan/swift-package-generator-based-on-openapi/pull/5). It supplies const-only tag inference and recursively removes `x-codeSamples` metadata from the generated specifications, retaining that metadata in the downloaded source documents. This makes the removed overlay workaround safe to regenerate before that PR merges. The local `BOOTSTRAPPER` override remains available.
 
 ## Validation
 

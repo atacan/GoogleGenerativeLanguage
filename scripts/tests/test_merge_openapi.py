@@ -165,6 +165,26 @@ class MergeTests(unittest.TestCase):
                     count += 1
         self.assertGreater(count, 0)
 
+    def test_code_samples_are_removed_only_from_generated_specifications(self):
+        def count_samples(node):
+            if isinstance(node, dict):
+                return int("x-codeSamples" in node) + sum(
+                    count_samples(value) for value in node.values()
+                )
+            if isinstance(node, list):
+                return sum(count_samples(value) for value in node)
+            return 0
+
+        source = json.loads(
+            (ROOT / "specifications/interactions/original_openapi.json").read_text()
+        )
+        self.assertGreater(count_samples(source), 0)
+        for name in ("original_openapi.json", "openapi.json"):
+            with self.subTest(generated=name):
+                self.assertEqual(
+                    count_samples(json.loads((ROOT / name).read_text())), 0
+                )
+
     def test_real_combined_schema_keeps_all_sources_and_resolves_local_references(self):
         merged = json.loads((ROOT / "original_openapi.json").read_text())
         discovery = json.loads(

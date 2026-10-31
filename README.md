@@ -158,7 +158,7 @@ make build
 make test-offline
 ```
 
-`make regenerate` uses bootstrapper commit `dacae24fb9bc4342f52a3638ac888d1ae45d5a13`, which includes automatic const-only tag inference from [generator PR #5](https://github.com/atacan/swift-package-generator-based-on-openapi/pull/5). The pinned commit keeps regeneration reproducible while that PR is open. To use the sibling development checkout, including its local changes:
+`make regenerate` uses bootstrapper commit `44ab96744ff63458027dad22accea6f513cfc42b`, which includes automatic const-only tag inference and recursive `x-codeSamples` cleanup from [generator PR #5](https://github.com/atacan/swift-package-generator-based-on-openapi/pull/5). The pinned commit keeps regeneration reproducible while that PR is open. To use the sibling development checkout, including its local changes:
 
 ```sh
 make regenerate BOOTSTRAPPER='uv run --directory ../swift-package-generator-based-on-openapi swift-bootstrapper'
@@ -166,7 +166,7 @@ make regenerate BOOTSTRAPPER='uv run --directory ../swift-package-generator-base
 
 The downloaded sources and editable overlays live in `specifications/discovery/` and `specifications/interactions/`. `make regenerate` sanitizes and overlays each input independently, then `scripts/merge_openapi.py` combines them while preserving existing operation IDs and namespacing added components. It carries Interactions authentication onto each operation so the Discovery root security does not override it.
 
-The root `original_openapi.json` is the generated combined bootstrapper input; `openapi.json` is its final sanitized output. Both are checked in with the generated Swift. Per-source intermediates live in ignored `.generation/`. Edit the overlays under `specifications/`; the root `openapi-overlay.json` intentionally has no actions. `generate`, `generate-openapi`, and `overlay-openapi` remain compatibility aliases for full regeneration.
+The root `original_openapi.json` is the generated combined bootstrapper input; `openapi.json` is its final sanitized output. Both are checked in with the generated Swift. The sanitizer removes `x-codeSamples` from these generated specifications while the downloaded originals retain Google's metadata. Per-source intermediates live in ignored `.generation/`. Edit the overlays under `specifications/`; the root `openapi-overlay.json` intentionally has no actions. `generate`, `generate-openapi`, and `overlay-openapi` remain compatibility aliases for full regeneration.
 
 The Discovery overlay retains API-key/OAuth/bearer alternatives, streaming responses, resumable uploads, a role enum, and relaxed model response requirements. The Interactions overlay makes Google's open model enum a string and maps Speakeasy authentication to API-key/bearer alternatives. The bootstrapper infers missing scalar types when converting `const` values, including Interactions union tags; tag typing needs no provider overlay. The Makefile also handles shell failures on macOS GNU Make 3.81. See [MIGRATION.md](MIGRATION.md) for source compatibility changes and validation notes.
 

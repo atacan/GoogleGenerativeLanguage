@@ -5,8 +5,8 @@ SHELL := /bin/bash -eu -o pipefail
 
 # Override with a local checkout, for example:
 # make regenerate BOOTSTRAPPER='uv run --directory ../swift-package-generator-based-on-openapi swift-bootstrapper'
-# Includes const-only tag inference from generator PR #5; pin for reproducible generation.
-BOOTSTRAPPER_SOURCE := git+https://github.com/atacan/swift-package-generator-based-on-openapi.git@dacae24fb9bc4342f52a3638ac888d1ae45d5a13
+# Includes const-only tag inference and code-sample cleanup from generator PR #5.
+BOOTSTRAPPER_SOURCE := git+https://github.com/atacan/swift-package-generator-based-on-openapi.git@44ab96744ff63458027dad22accea6f513cfc42b
 BOOTSTRAPPER ?= uvx --refresh --from $(BOOTSTRAPPER_SOURCE) swift-bootstrapper
 INTERACTIONS_OPENAPI_URL := https://ai.google.dev/static/api/interactions.openapi.json
 OPENAPI_URL := https://generativelanguage.googleapis.com/$$discovery/OPENAPI3_0?version=v1beta
