@@ -21264,10 +21264,10 @@ extension Components {
             public var errors: [Components.Schemas.InteractionsError]?
             /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/generation_config`.
             public var generationConfig: Components.Schemas.InteractionsGenerationConfig?
-            /// Required. Output only. A unique identifier for the interaction completion.
+            /// Output only. A unique identifier for a stored interaction completion. May be absent when store is false.
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/id`.
-            public var id: Swift.String
+            public var id: Swift.String?
             /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/input`.
             public var input: Components.Schemas.InteractionsInput?
             /// The labels with user-defined metadata for the request.
@@ -21421,7 +21421,7 @@ extension Components {
             ///   - environmentId: Output only. The environment ID for the interaction. Only populated if environment
             ///   - errors: Output only. Diagnostic faults / platform errors recorded on the interaction.
             ///   - generationConfig:
-            ///   - id: Required. Output only. A unique identifier for the interaction completion.
+            ///   - id: Output only. A unique identifier for a stored interaction completion. May be absent when store is false.
             ///   - input:
             ///   - labels: The labels with user-defined metadata for the request.
             ///   - maxTotalTokens: Max total tokens for the agent run.
@@ -21449,7 +21449,7 @@ extension Components {
                 environmentId: Swift.String? = nil,
                 errors: [Components.Schemas.InteractionsError]? = nil,
                 generationConfig: Components.Schemas.InteractionsGenerationConfig? = nil,
-                id: Swift.String,
+                id: Swift.String? = nil,
                 input: Components.Schemas.InteractionsInput? = nil,
                 labels: Components.Schemas.InteractionsInteraction.LabelsPayload? = nil,
                 maxTotalTokens: Swift.String? = nil,

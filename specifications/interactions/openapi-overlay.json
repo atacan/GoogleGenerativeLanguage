@@ -6,6 +6,17 @@
   },
   "actions": [
     {
+      "target": "$.components.schemas.Interaction.required[?(@ == 'id')]",
+      "remove": true,
+      "description": "Google omits id from completed responses when store is false. Keep every other required response field."
+    },
+    {
+      "target": "$.components.schemas.Interaction.properties.id",
+      "update": {
+        "description": "Output only. A unique identifier for a stored interaction completion. May be absent when store is false."
+      }
+    },
+    {
       "target": "$.components.schemas.ModelOption.enum",
       "remove": true,
       "description": "Google marks this as an open enum via a Speakeasy extension. Use strings so documented transcription and future models work."

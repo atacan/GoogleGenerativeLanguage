@@ -53,8 +53,7 @@ struct TranscriptionLiveTests {
                 )
             )
         } catch {
-            // ClientError can include authenticated request headers and the audio body.
-            Issue.record("Live Interactions request failed with error type \(String(reflecting: type(of: error)))")
+            Issue.record("\(transcriptionLiveFailureDescription(error))")
             return
         }
 
@@ -69,7 +68,6 @@ struct TranscriptionLiveTests {
 
         #expect(interaction.status == .completed)
         #expect(interaction.model == "gemini-3.5-transcribe")
-        #expect(!interaction.id.isEmpty)
         #expect(!interaction.outputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
 
         let words = interaction.wordAnnotations
@@ -87,4 +85,30 @@ struct TranscriptionLiveTests {
             #expect(endSeconds >= startSeconds)
         }
     }
+}
+
+// ClientError descriptions include authenticated headers and the audio input.
+// Report only status, error category, and coding path instead of dumping the error.
+func transcriptionLiveFailureDescription(_ error: any Error) -> String {
+    let clientError = error as? ClientError
+    let cause = clientError?.underlyingError ?? error
+    let status = clientError?.response.map { "HTTP \($0.status.code)" } ?? "no HTTP response"
+    let detail: String
+    switch cause {
+    case DecodingError.keyNotFound(let key, let context):
+        detail = "missing required key '\(key.stringValue)' at \(transcriptionCodingPath(context.codingPath))"
+    case DecodingError.typeMismatch(let type, let context):
+        detail = "expected \(type) at \(transcriptionCodingPath(context.codingPath))"
+    case DecodingError.valueNotFound(let type, let context):
+        detail = "missing \(type) value at \(transcriptionCodingPath(context.codingPath))"
+    case DecodingError.dataCorrupted(let context):
+        detail = "invalid encoded value at \(transcriptionCodingPath(context.codingPath))"
+    default:
+        detail = String(reflecting: type(of: cause))
+    }
+    return "Live Interactions request failed (\(status)): \(detail)"
+}
+
+private func transcriptionCodingPath(_ path: [any CodingKey]) -> String {
+    (["$"] + path.map(\.stringValue)).joined(separator: ".")
 }

@@ -41,6 +41,47 @@ private func requestJSON(_ body: HTTPBody?) async throws -> [String: Any] {
 struct TranscriptionTests {
     private let serverURL = URL(string: "https://generativelanguage.googleapis.com")!
 
+    @Test func nonStoredTranscriptionDecodesWithoutAnInteractionID() async throws {
+        let transport = TranscriptionTransport(
+            response: transcriptionResponse.replacingOccurrences(of: #""id": "interactions/example", "#, with: "")
+        )
+        let client = Client(serverURL: serverURL, transport: transport, authentication: .apiKey("test-key"))
+        let response = try await client.createInteraction(
+            path: .init(apiVersion: "v1beta"),
+            body: .json(
+                .InteractionsCreateModelInteractionParams(
+                    .init(input: .case3([.InteractionsAudioContent(.init(_type: .audio, uri: "https://example.com/audio"))]), model: "gemini-3.5-transcribe", store: false)
+                )
+            )
+        )
+        let interaction = try response.ok.body.json
+        #expect(interaction.id == nil)
+        #expect(interaction.status == .completed)
+        #expect(interaction.outputText == "Hello world!")
+        #expect(interaction.wordAnnotations.count == 2)
+    }
+
+    @Test func liveFailureDiagnosticsReportDecodingPathWithoutRequestSecrets() {
+        let secret = "sensitive-api-key-and-audio"
+        let error = ClientError(
+            operationID: "CreateInteraction",
+            operationInput: secret,
+            request: HTTPRequest(method: .post, scheme: "https", authority: "example.com", path: "/v1beta/interactions", headerFields: [HTTPField.Name("x-goog-api-key")!: secret]),
+            requestBody: HTTPBody(secret),
+            response: HTTPResponse(status: .ok),
+            causeDescription: secret,
+            underlyingError: DecodingError.keyNotFound(
+                TranscriptionDiagnosticKey.id,
+                .init(codingPath: [], debugDescription: secret)
+            )
+        )
+        let diagnostic = transcriptionLiveFailureDescription(error)
+        #expect(diagnostic.contains("HTTP 200"))
+        #expect(diagnostic.contains("missing required key 'id' at $"))
+        #expect(!diagnostic.contains(secret))
+        #expect(!diagnostic.contains("x-goog-api-key"))
+    }
+
     @Test func transcriptionUsesBetaRouteAndAPIKeyWithSmartConfiguration() async throws {
         let transport = TranscriptionTransport(check: { request, body in
             #expect(request.method == .post)
@@ -194,4 +235,8 @@ struct TranscriptionTests {
         #expect(code == 400)
         #expect(try failure.body.json.error.message == "bad audio")
     }
+}
+
+private enum TranscriptionDiagnosticKey: String, CodingKey {
+    case id
 }

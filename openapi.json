@@ -10813,7 +10813,7 @@
           },
           "id": {
             "default": "",
-            "description": "Required. Output only. A unique identifier for the interaction completion.",
+            "description": "Output only. A unique identifier for a stored interaction completion. May be absent when store is false.",
             "readOnly": true,
             "type": "string"
           },
@@ -10948,7 +10948,6 @@
         "required": [
           "status",
           "created",
-          "id",
           "steps",
           "updated"
         ],
