@@ -185,6 +185,39 @@ class MergeTests(unittest.TestCase):
                     count_samples(json.loads((ROOT / name).read_text())), 0
                 )
 
+    def test_deprecated_properties_and_unused_models_are_absent_from_the_sdk(self):
+        merged = json.loads((ROOT / "original_openapi.json").read_text())
+        models = merged["components"]["schemas"]
+        count = 0
+        for source in ("discovery", "interactions"):
+            original = json.loads(
+                (ROOT / "specifications" / source / "original_openapi.json").read_text()
+            )
+            for name, schema in original["components"]["schemas"].items():
+                target = name
+                if source == "interactions" and not name.startswith("Interactions"):
+                    target = "Interactions" + name
+                for property_name, prop in schema.get("properties", {}).items():
+                    if isinstance(prop, dict) and prop.get("deprecated") is True:
+                        count += 1
+                        if target in models:
+                            self.assertNotIn(
+                                property_name, models[target].get("properties", {})
+                            )
+                            self.assertNotIn(
+                                property_name, models[target].get("required", [])
+                            )
+        self.assertGreater(count, 0)
+        for name in ("LanguageAuto", "LanguageHints", "InteractionsImageConfig"):
+            self.assertNotIn(name, models)
+        for generated in (ROOT / "Sources").rglob("*.swift"):
+            if "GeneratedSources" in generated.parts:
+                # Ignore the generator's renamed server compatibility aliases;
+                # schema-driven annotations use the plain deprecated attribute.
+                self.assertFalse(
+                    "@available(*, deprecated)" in generated.read_text(), str(generated)
+                )
+
     def test_real_combined_schema_keeps_all_sources_and_resolves_local_references(self):
         merged = json.loads((ROOT / "original_openapi.json").read_text())
         discovery = json.loads(

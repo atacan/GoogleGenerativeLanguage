@@ -303,14 +303,6 @@
       "AudioTranscriptionConfig": {
         "description": "The audio transcription configuration.",
         "properties": {
-          "adaptationPhrases": {
-            "deprecated": true,
-            "description": "Optional. A list of phrases used for speech adaptation, which biases the ASR model to\nimprove recognition of these specific terms.",
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          },
           "customVocabulary": {
             "description": "Optional. A list of custom vocabulary phrases to bias the speech recognition model\ntoward recognizing specific terms (product names, proper nouns, jargon).",
             "items": {
@@ -322,30 +314,12 @@
             "description": "Optional. Configures speaker diarization.",
             "type": "boolean"
           },
-          "languageAuto": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LanguageAuto"
-              }
-            ],
-            "deprecated": true,
-            "description": "Optional. The model will detect the language automatically."
-          },
           "languageCodes": {
             "description": "Optional. BCP-47 language codes providing hints about the languages present in the\naudio. If omitted or empty, defaults to automatic language detection.",
             "items": {
               "type": "string"
             },
             "type": "array"
-          },
-          "languageHints": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LanguageHints"
-              }
-            ],
-            "deprecated": true,
-            "description": "Optional. Specifies one or more languages in the audio."
           },
           "mode": {
             "description": "Optional. Configures transcription mode. Supported values: `VERBATIM`,\n`SMART`. If unspecified, defaults to `VERBATIM` transcription.\nIn `SMART` mode, the model performs disfluency removal (eliminating\nfiller words, repetitions, and false starts), light grammatical cleanup,\nautomatic formatting (paragraphs, bullet points, numbered lists), and\nminor user edits (inline self-corrections).\nTimestamps and diarization are incompatible with mode `SMART`.",
@@ -1160,12 +1134,6 @@
       "CompositeMedia": {
         "description": "A sequence of media data references representing composite data.\nIntroduced to support Bigstore composite objects. For details, visit\nhttp://go/bigstore-composites.",
         "properties": {
-          "blobRef": {
-            "deprecated": true,
-            "description": "Blobstore v1 reference, set if reference_type is BLOBSTORE_REF\nThis should be the byte representation of a blobstore.BlobRef.\nSince Blobstore is deprecating v1, use blobstore2_info instead.\nFor now, any v2 blob will also be represented in this field as\nv1 BlobRef.",
-            "format": "byte",
-            "type": "string"
-          },
           "blobstore2Info": {
             "allOf": [
               {
@@ -2247,26 +2215,6 @@
           "model": {
             "description": "Required. The model's resource name. This serves as an ID for the Model to use.\n\nThis name should match a model name returned by the `ListModels` method.\n\nFormat: `models/{model}`",
             "type": "string"
-          },
-          "outputDimensionality": {
-            "deprecated": true,
-            "description": "Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality instead.\nOptional reduced dimension for the output embedding. If set, excessive\nvalues in the output embedding are truncated from the end. Supported by\nnewer models since 2024 only. You cannot set this value if using the\nearlier model (`models/embedding-001`).",
-            "format": "int32",
-            "type": "integer"
-          },
-          "taskType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TaskType"
-              }
-            ],
-            "deprecated": true,
-            "description": "Optional. Deprecated: Please use EmbedContentConfig.task_type instead.\nOptional task type for which the embeddings will be used. Not supported on\nearlier models (`models/embedding-001`)."
-          },
-          "title": {
-            "deprecated": true,
-            "description": "Optional. Deprecated: Please use EmbedContentConfig.title instead.\nAn optional title for the text. Only applicable when TaskType is\n`RETRIEVAL_DOCUMENT`.\n\nNote: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality\nembeddings for retrieval.",
-            "type": "string"
           }
         },
         "required": [
@@ -3030,23 +2978,6 @@
       "GdataMedia": {
         "description": "A reference to data stored on the filesystem, on GFS or in blobstore.",
         "properties": {
-          "algorithm": {
-            "deprecated": true,
-            "description": "Deprecated, use one of explicit hash type fields instead.\nAlgorithm used for calculating the hash.\nAs of 2011/01/21, \"MD5\" is the only possible value for this field.\nNew values may be added at any time.",
-            "type": "string"
-          },
-          "bigstoreObjectRef": {
-            "deprecated": true,
-            "description": "Use object_id instead.",
-            "format": "byte",
-            "type": "string"
-          },
-          "blobRef": {
-            "deprecated": true,
-            "description": "Blobstore v1 reference, set if reference_type is BLOBSTORE_REF\nThis should be the byte representation of a blobstore.BlobRef.\nSince Blobstore is deprecating v1, use blobstore2_info instead.\nFor now, any v2 blob will also be represented in this field as\nv1 BlobRef.",
-            "format": "byte",
-            "type": "string"
-          },
           "blobstore2Info": {
             "allOf": [
               {
@@ -3136,11 +3067,6 @@
           },
           "filename": {
             "description": "Original file name",
-            "type": "string"
-          },
-          "hash": {
-            "deprecated": true,
-            "description": "Deprecated, use one of explicit hash type fields instead.\nThese two hash related fields will only be populated on Scotty based media\nuploads and will contain the content of the hash group in the\nNotificationRequest:\nhttp://cs/#google3/blobstore2/api/scotty/service/proto/upload_listener.proto&q=class:Hash\nHex encoded hash value of the uploaded media.",
             "type": "string"
           },
           "hashVerified": {
@@ -3763,10 +3689,6 @@
       "GenerationConfig": {
         "description": "Configuration options for model generation and outputs. Not all parameters\nare configurable for every model.",
         "properties": {
-          "_responseJsonSchema": {
-            "deprecated": true,
-            "description": "Optional. Output schema of the generated response. This is an alternative to\n`response_schema` that accepts [JSON Schema](https://json-schema.org/).\n\nIf set, `response_schema` must be omitted, but `response_mime_type` is\nrequired.\n\nWhile the full JSON Schema may be sent, not all features are supported.\nSpecifically, only the following properties are supported:\n\n- `$id`\n- `$defs`\n- `$ref`\n- `$anchor`\n- `type`\n- `format`\n- `title`\n- `description`\n- `enum` (for strings and numbers)\n- `items`\n- `prefixItems`\n- `minItems`\n- `maxItems`\n- `minimum`\n- `maximum`\n- `anyOf`\n- `oneOf` (interpreted the same as `anyOf`)\n- `properties`\n- `additionalProperties`\n- `required`\n\nThe non-standard `propertyOrdering` property may also be set.\n\nCyclic references are unrolled to a limited degree and, as such, may only\nbe used within non-required properties. (Nullable properties are not\nsufficient.) If `$ref` is set on a sub-schema, no other properties, except\nfor than those starting as a `$`, may be set.\n\nDeprecated. Use `response_format` instead."
-          },
           "audioTranscriptionConfig": {
             "allOf": [
               {
@@ -3869,15 +3791,6 @@
               ]
             },
             "type": "array"
-          },
-          "responseSchema": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Schema"
-              }
-            ],
-            "deprecated": true,
-            "description": "Optional. Output schema of the generated candidate text. Schemas must be a\nsubset of the [OpenAPI schema](https://spec.openapis.org/oas/v3.0.3#schema)\nand can be objects, primitives or arrays.\n\nIf set, a compatible `response_mime_type` must also be set.\nCompatible MIME types:\n`application/json`: Schema for JSON response.\nRefer to the [JSON text generation\nguide](https://aistudio.google.com/docs/structured-output) for more\ndetails.\n\nDeprecated. Use `response_format` instead."
           },
           "seed": {
             "description": "Optional. Seed used in decoding. If not set, the request uses a randomly generated\nseed.",
@@ -4840,29 +4753,6 @@
             "type": "string"
           }
         },
-        "type": "object"
-      },
-      "LanguageAuto": {
-        "deprecated": true,
-        "description": "Indicates the language of the audio should be automatically detected.",
-        "type": "object"
-      },
-      "LanguageHints": {
-        "deprecated": true,
-        "description": "Provides hints to the model about possible languages present in the audio.",
-        "properties": {
-          "languageCodes": {
-            "deprecated": true,
-            "description": "Required. BCP-47 language codes.",
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          }
-        },
-        "required": [
-          "languageCodes"
-        ],
         "type": "object"
       },
       "LatLng": {
@@ -7911,12 +7801,6 @@
               "WEBM audio format"
             ]
           },
-          "rate": {
-            "deprecated": true,
-            "description": "Deprecated. Use sample_rate instead. The value is ignored.",
-            "format": "int32",
-            "type": "integer"
-          },
           "sample_rate": {
             "description": "The sample rate of the audio.",
             "format": "int32",
@@ -8392,19 +8276,6 @@
               }
             ]
           },
-          "response_mime_type": {
-            "deprecated": true,
-            "description": "The mime type of the response. This is required if response_format is set.",
-            "type": "string"
-          },
-          "response_modalities": {
-            "deprecated": true,
-            "description": "The requested modalities of the response (TEXT, IMAGE, AUDIO).",
-            "items": {
-              "$ref": "#/components/schemas/InteractionsResponseModality"
-            },
-            "type": "array"
-          },
           "safety_settings": {
             "description": "Safety settings for the interaction.",
             "items": {
@@ -8601,19 +8472,6 @@
                 "type": "array"
               }
             ]
-          },
-          "response_mime_type": {
-            "deprecated": true,
-            "description": "The mime type of the response. This is required if response_format is set.",
-            "type": "string"
-          },
-          "response_modalities": {
-            "deprecated": true,
-            "description": "The requested modalities of the response (TEXT, IMAGE, AUDIO).",
-            "items": {
-              "$ref": "#/components/schemas/InteractionsResponseModality"
-            },
-            "type": "array"
           },
           "safety_settings": {
             "description": "Safety settings for the interaction.",
@@ -9876,11 +9734,6 @@
       "InteractionsGenerationConfig": {
         "description": "Configuration parameters for model interactions.",
         "properties": {
-          "image_config": {
-            "$ref": "#/components/schemas/InteractionsImageConfig",
-            "deprecated": true,
-            "description": "Configuration for image interaction."
-          },
           "max_output_tokens": {
             "description": "The maximum number of tokens to include in the response.",
             "format": "int32",
@@ -9911,12 +9764,6 @@
                 "type": "array"
               }
             ]
-          },
-          "temperature": {
-            "deprecated": true,
-            "description": "Controls the randomness of the output.",
-            "format": "float",
-            "type": "number"
           },
           "thinking_level": {
             "$ref": "#/components/schemas/InteractionsThinkingLevel",
@@ -9949,12 +9796,6 @@
                 "x-speakeasy-model-namespace": "interactions"
               }
             ]
-          },
-          "top_p": {
-            "deprecated": true,
-            "description": "The maximum cumulative probability of tokens to consider when sampling.",
-            "format": "float",
-            "type": "number"
           },
           "transcription_config": {
             "$ref": "#/components/schemas/InteractionsTranscriptionConfig",
@@ -10638,22 +10479,6 @@
         "type": "object",
         "x-speakeasy-model-namespace": "interactions"
       },
-      "InteractionsImageConfig": {
-        "deprecated": true,
-        "description": "The configuration for image interaction.",
-        "properties": {
-          "aspect_ratio": {
-            "description": "The aspect ratio of the image to generate. Supported aspect ratios: 1:1,\n2:3, 3:2, 3:4, 4:3, 9:16, 16:9, 21:9.\n\nIf not specified, the model will choose a default aspect ratio based on any\nreference images provided.",
-            "type": "string"
-          },
-          "image_size": {
-            "description": "Specifies the size of generated images. Supported values are `1K`, `2K`,\n`4K`. If not specified, the model will use default value `1K`.",
-            "type": "string"
-          }
-        },
-        "type": "object",
-        "x-speakeasy-model-namespace": "interactions"
-      },
       "InteractionsImageContent": {
         "description": "An image content block.",
         "examples": [
@@ -11029,19 +10854,6 @@
                 "type": "array"
               }
             ]
-          },
-          "response_mime_type": {
-            "deprecated": true,
-            "description": "The mime type of the response. This is required if response_format is set.",
-            "type": "string"
-          },
-          "response_modalities": {
-            "deprecated": true,
-            "description": "The requested modalities of the response (TEXT, IMAGE, AUDIO).",
-            "items": {
-              "$ref": "#/components/schemas/InteractionsResponseModality"
-            },
-            "type": "array"
           },
           "safety_settings": {
             "description": "Safety settings for the interaction.",
@@ -13248,25 +13060,12 @@
       "InteractionsTranscriptionConfig": {
         "description": "Configuration for speech recognition (transcription).",
         "properties": {
-          "adaptation_phrases": {
-            "deprecated": true,
-            "description": "Optional. A list of phrases to bias the ASR model towards.",
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          },
           "custom_vocabulary": {
             "description": "Optional. A list of custom vocabulary phrases to bias the speech recognition model\ntoward recognizing specific terms.",
             "items": {
               "type": "string"
             },
             "type": "array"
-          },
-          "diarization_mode": {
-            "deprecated": true,
-            "description": "Optional. Configures speaker diarization. Supported values: \"speaker\".",
-            "type": "string"
           },
           "language_codes": {
             "description": "Optional. BCP-47 language codes providing hints about the languages present in the\naudio. If omitted or empty, defaults to automatic language detection.",
@@ -13293,14 +13092,6 @@
                 ]
               }
             ]
-          },
-          "timestamp_granularities": {
-            "deprecated": true,
-            "description": "Optional. The granularity of timestamps to include in the transcription output.\nSupported values: \"word\". If empty, no timestamps are generated.",
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
           }
         },
         "type": "object",

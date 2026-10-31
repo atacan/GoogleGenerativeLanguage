@@ -158,7 +158,7 @@ make build
 make test-offline
 ```
 
-`make regenerate` uses bootstrapper commit `44ab96744ff63458027dad22accea6f513cfc42b`, which includes automatic const-only tag inference and recursive `x-codeSamples` cleanup from [generator PR #5](https://github.com/atacan/swift-package-generator-based-on-openapi/pull/5). The pinned commit keeps regeneration reproducible while that PR is open. To use the sibling development checkout, including its local changes:
+`make regenerate` uses bootstrapper commit `d503170685af59c63a44129e15e97174595b5343`, which includes deprecated property removal, automatic const-only tag inference, and recursive `x-codeSamples` cleanup from [generator PR #5](https://github.com/atacan/swift-package-generator-based-on-openapi/pull/5). The pinned commit keeps regeneration reproducible while that PR is open. To use the sibling development checkout, including its local changes:
 
 ```sh
 make regenerate BOOTSTRAPPER='uv run --directory ../swift-package-generator-based-on-openapi swift-bootstrapper'
@@ -171,6 +171,8 @@ The root `original_openapi.json` is the generated combined bootstrapper input; `
 The Discovery overlay retains API-key/OAuth/bearer alternatives, streaming responses, resumable uploads, a role enum, and relaxed model response requirements. The Interactions overlay makes Google's open model enum a string and maps Speakeasy authentication to API-key/bearer alternatives. The bootstrapper infers missing scalar types when converting `const` values, including Interactions union tags; tag typing needs no provider overlay. The Makefile also handles shell failures on macOS GNU Make 3.81. See [MIGRATION.md](MIGRATION.md) for source compatibility changes and validation notes.
 
 Offline tests use stub responses and do not load API keys. The existing live tests require explicit opt-in with exported `RUN_LIVE_TESTS=1` and `GEMINI_API_KEY`; audio tests also need their local fixture paths updated. The migration did not run live API requests.
+
+Deprecated properties are deleted from the generated SDK, including their initializer parameters and `required` entries. Unused deprecated models are also removed. This changes the public API; use the replacement fields documented by Google. The downloaded originals retain deprecation metadata. The pruned schema members no longer emit Swift deprecation annotations or their compiler warnings. See the migration notes for the removed models.
 
 ## License
 

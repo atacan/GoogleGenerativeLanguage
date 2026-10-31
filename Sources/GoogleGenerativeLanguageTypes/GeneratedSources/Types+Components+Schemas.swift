@@ -334,12 +334,6 @@ extension Components {
         ///
         /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig`.
         public struct AudioTranscriptionConfig: Codable, Hashable, Sendable {
-            /// Optional. A list of phrases used for speech adaptation, which biases the ASR model to
-            /// improve recognition of these specific terms.
-            ///
-            /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/adaptationPhrases`.
-            @available(*, deprecated)
-            public var adaptationPhrases: [Swift.String]?
             /// Optional. A list of custom vocabulary phrases to bias the speech recognition model
             /// toward recognizing specific terms (product names, proper nouns, jargon).
             ///
@@ -349,61 +343,11 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/diarization`.
             public var diarization: Swift.Bool?
-            /// Optional. The model will detect the language automatically.
-            ///
-            /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/languageAuto`.
-            public struct LanguageAutoPayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/languageAuto/value1`.
-                public var value1: Components.Schemas.LanguageAuto
-                /// Creates a new `LanguageAutoPayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.LanguageAuto) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Swift.Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Swift.Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// Optional. The model will detect the language automatically.
-            ///
-            /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/languageAuto`.
-            @available(*, deprecated)
-            public var languageAuto: Components.Schemas.AudioTranscriptionConfig.LanguageAutoPayload?
             /// Optional. BCP-47 language codes providing hints about the languages present in the
             /// audio. If omitted or empty, defaults to automatic language detection.
             ///
             /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/languageCodes`.
             public var languageCodes: [Swift.String]?
-            /// Optional. Specifies one or more languages in the audio.
-            ///
-            /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/languageHints`.
-            public struct LanguageHintsPayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/languageHints/value1`.
-                public var value1: Components.Schemas.LanguageHints
-                /// Creates a new `LanguageHintsPayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.LanguageHints) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Swift.Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Swift.Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// Optional. Specifies one or more languages in the audio.
-            ///
-            /// - Remark: Generated from `#/components/schemas/AudioTranscriptionConfig/languageHints`.
-            @available(*, deprecated)
-            public var languageHints: Components.Schemas.AudioTranscriptionConfig.LanguageHintsPayload?
             /// Optional. Configures transcription mode. Supported values: `VERBATIM`,
             /// `SMART`. If unspecified, defaults to `VERBATIM` transcription.
             /// In `SMART` mode, the model performs disfluency removal (eliminating
@@ -435,40 +379,28 @@ extension Components {
             /// Creates a new `AudioTranscriptionConfig`.
             ///
             /// - Parameters:
-            ///   - adaptationPhrases: Optional. A list of phrases used for speech adaptation, which biases the ASR model to
             ///   - customVocabulary: Optional. A list of custom vocabulary phrases to bias the speech recognition model
             ///   - diarization: Optional. Configures speaker diarization.
-            ///   - languageAuto: Optional. The model will detect the language automatically.
             ///   - languageCodes: Optional. BCP-47 language codes providing hints about the languages present in the
-            ///   - languageHints: Optional. Specifies one or more languages in the audio.
             ///   - mode: Optional. Configures transcription mode. Supported values: `VERBATIM`,
             ///   - wordTimestamp: Optional. Configures word-level timestamp generation.
             public init(
-                adaptationPhrases: [Swift.String]? = nil,
                 customVocabulary: [Swift.String]? = nil,
                 diarization: Swift.Bool? = nil,
-                languageAuto: Components.Schemas.AudioTranscriptionConfig.LanguageAutoPayload? = nil,
                 languageCodes: [Swift.String]? = nil,
-                languageHints: Components.Schemas.AudioTranscriptionConfig.LanguageHintsPayload? = nil,
                 mode: Components.Schemas.AudioTranscriptionConfig.ModePayload? = nil,
                 wordTimestamp: Swift.Bool? = nil
             ) {
-                self.adaptationPhrases = adaptationPhrases
                 self.customVocabulary = customVocabulary
                 self.diarization = diarization
-                self.languageAuto = languageAuto
                 self.languageCodes = languageCodes
-                self.languageHints = languageHints
                 self.mode = mode
                 self.wordTimestamp = wordTimestamp
             }
             public enum CodingKeys: String, CodingKey {
-                case adaptationPhrases
                 case customVocabulary
                 case diarization
-                case languageAuto
                 case languageCodes
-                case languageHints
                 case mode
                 case wordTimestamp
             }
@@ -2150,15 +2082,6 @@ extension Components {
         ///
         /// - Remark: Generated from `#/components/schemas/CompositeMedia`.
         public struct CompositeMedia: Codable, Hashable, Sendable {
-            /// Blobstore v1 reference, set if reference_type is BLOBSTORE_REF
-            /// This should be the byte representation of a blobstore.BlobRef.
-            /// Since Blobstore is deprecating v1, use blobstore2_info instead.
-            /// For now, any v2 blob will also be represented in this field as
-            /// v1 BlobRef.
-            ///
-            /// - Remark: Generated from `#/components/schemas/CompositeMedia/blobRef`.
-            @available(*, deprecated)
-            public var blobRef: OpenAPIRuntime.Base64EncodedData?
             /// Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers
             /// to a v2 blob.
             ///
@@ -2259,7 +2182,6 @@ extension Components {
             /// Creates a new `CompositeMedia`.
             ///
             /// - Parameters:
-            ///   - blobRef: Blobstore v1 reference, set if reference_type is BLOBSTORE_REF
             ///   - blobstore2Info: Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers
             ///   - cosmoBinaryReference: A binary data reference for a media download. Serves as a
             ///   - crc32cHash: crc32.c hash for the payload.
@@ -2271,7 +2193,6 @@ extension Components {
             ///   - referenceType: Describes what the field reference contains.
             ///   - sha1Hash: SHA-1 hash for the payload.
             public init(
-                blobRef: OpenAPIRuntime.Base64EncodedData? = nil,
                 blobstore2Info: Components.Schemas.CompositeMedia.Blobstore2InfoPayload? = nil,
                 cosmoBinaryReference: OpenAPIRuntime.Base64EncodedData? = nil,
                 crc32cHash: Swift.Int64? = nil,
@@ -2283,7 +2204,6 @@ extension Components {
                 referenceType: Components.Schemas.CompositeMedia.ReferenceTypePayload? = nil,
                 sha1Hash: OpenAPIRuntime.Base64EncodedData? = nil
             ) {
-                self.blobRef = blobRef
                 self.blobstore2Info = blobstore2Info
                 self.cosmoBinaryReference = cosmoBinaryReference
                 self.crc32cHash = crc32cHash
@@ -2296,7 +2216,6 @@ extension Components {
                 self.sha1Hash = sha1Hash
             }
             public enum CodingKeys: String, CodingKey {
-                case blobRef
                 case blobstore2Info
                 case cosmoBinaryReference
                 case crc32cHash
@@ -4525,85 +4444,25 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/model`.
             public var model: Swift.String
-            /// Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality instead.
-            /// Optional reduced dimension for the output embedding. If set, excessive
-            /// values in the output embedding are truncated from the end. Supported by
-            /// newer models since 2024 only. You cannot set this value if using the
-            /// earlier model (`models/embedding-001`).
-            ///
-            /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/outputDimensionality`.
-            @available(*, deprecated)
-            public var outputDimensionality: Swift.Int32?
-            /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead.
-            /// Optional task type for which the embeddings will be used. Not supported on
-            /// earlier models (`models/embedding-001`).
-            ///
-            /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/taskType`.
-            public struct TaskTypePayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/taskType/value1`.
-                public var value1: Components.Schemas.TaskType
-                /// Creates a new `TaskTypePayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.TaskType) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Swift.Decoder) throws {
-                    self.value1 = try decoder.decodeFromSingleValueContainer()
-                }
-                public func encode(to encoder: any Swift.Encoder) throws {
-                    try encoder.encodeToSingleValueContainer(self.value1)
-                }
-            }
-            /// Optional. Deprecated: Please use EmbedContentConfig.task_type instead.
-            /// Optional task type for which the embeddings will be used. Not supported on
-            /// earlier models (`models/embedding-001`).
-            ///
-            /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/taskType`.
-            @available(*, deprecated)
-            public var taskType: Components.Schemas.EmbedContentRequest.TaskTypePayload?
-            /// Optional. Deprecated: Please use EmbedContentConfig.title instead.
-            /// An optional title for the text. Only applicable when TaskType is
-            /// `RETRIEVAL_DOCUMENT`.
-            ///
-            /// Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality
-            /// embeddings for retrieval.
-            ///
-            /// - Remark: Generated from `#/components/schemas/EmbedContentRequest/title`.
-            @available(*, deprecated)
-            public var title: Swift.String?
             /// Creates a new `EmbedContentRequest`.
             ///
             /// - Parameters:
             ///   - content: Required. The content to embed. Only the `parts.text` fields will be counted.
             ///   - embedContentConfig: Optional. Configuration for the EmbedContent request.
             ///   - model: Required. The model's resource name. This serves as an ID for the Model to use.
-            ///   - outputDimensionality: Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality instead.
-            ///   - taskType: Optional. Deprecated: Please use EmbedContentConfig.task_type instead.
-            ///   - title: Optional. Deprecated: Please use EmbedContentConfig.title instead.
             public init(
                 content: Components.Schemas.EmbedContentRequest.ContentPayload,
                 embedContentConfig: Components.Schemas.EmbedContentRequest.EmbedContentConfigPayload? = nil,
-                model: Swift.String,
-                outputDimensionality: Swift.Int32? = nil,
-                taskType: Components.Schemas.EmbedContentRequest.TaskTypePayload? = nil,
-                title: Swift.String? = nil
+                model: Swift.String
             ) {
                 self.content = content
                 self.embedContentConfig = embedContentConfig
                 self.model = model
-                self.outputDimensionality = outputDimensionality
-                self.taskType = taskType
-                self.title = title
             }
             public enum CodingKeys: String, CodingKey {
                 case content
                 case embedContentConfig
                 case model
-                case outputDimensionality
-                case taskType
-                case title
             }
         }
         /// The response to an `EmbedContentRequest`.
@@ -6097,28 +5956,6 @@ extension Components {
         ///
         /// - Remark: Generated from `#/components/schemas/GdataMedia`.
         public struct GdataMedia: Codable, Hashable, Sendable {
-            /// Deprecated, use one of explicit hash type fields instead.
-            /// Algorithm used for calculating the hash.
-            /// As of 2011/01/21, "MD5" is the only possible value for this field.
-            /// New values may be added at any time.
-            ///
-            /// - Remark: Generated from `#/components/schemas/GdataMedia/algorithm`.
-            @available(*, deprecated)
-            public var algorithm: Swift.String?
-            /// Use object_id instead.
-            ///
-            /// - Remark: Generated from `#/components/schemas/GdataMedia/bigstoreObjectRef`.
-            @available(*, deprecated)
-            public var bigstoreObjectRef: OpenAPIRuntime.Base64EncodedData?
-            /// Blobstore v1 reference, set if reference_type is BLOBSTORE_REF
-            /// This should be the byte representation of a blobstore.BlobRef.
-            /// Since Blobstore is deprecating v1, use blobstore2_info instead.
-            /// For now, any v2 blob will also be represented in this field as
-            /// v1 BlobRef.
-            ///
-            /// - Remark: Generated from `#/components/schemas/GdataMedia/blobRef`.
-            @available(*, deprecated)
-            public var blobRef: OpenAPIRuntime.Base64EncodedData?
             /// Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers
             /// to a v2 blob.
             ///
@@ -6349,16 +6186,6 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/GdataMedia/filename`.
             public var filename: Swift.String?
-            /// Deprecated, use one of explicit hash type fields instead.
-            /// These two hash related fields will only be populated on Scotty based media
-            /// uploads and will contain the content of the hash group in the
-            /// NotificationRequest:
-            /// http://cs/#google3/blobstore2/api/scotty/service/proto/upload_listener.proto&q=class:Hash
-            /// Hex encoded hash value of the uploaded media.
-            ///
-            /// - Remark: Generated from `#/components/schemas/GdataMedia/hash`.
-            @available(*, deprecated)
-            public var hash: Swift.String?
             /// For Scotty uploads only. If a user sends a hash code and the backend has
             /// requested that Scotty verify the upload against the client hash,
             /// Scotty will perform the check on behalf of the backend and will reject it
@@ -6466,9 +6293,6 @@ extension Components {
             /// Creates a new `GdataMedia`.
             ///
             /// - Parameters:
-            ///   - algorithm: Deprecated, use one of explicit hash type fields instead.
-            ///   - bigstoreObjectRef: Use object_id instead.
-            ///   - blobRef: Blobstore v1 reference, set if reference_type is BLOBSTORE_REF
             ///   - blobstore2Info: Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers
             ///   - compositeMedia: A composite media composed of one or more media objects, set if
             ///   - contentType: MIME type of the data
@@ -6482,7 +6306,6 @@ extension Components {
             ///   - diffVersionResponse: Set if reference_type is DIFF_VERSION_RESPONSE.
             ///   - downloadParameters: Parameters for a media download.
             ///   - filename: Original file name
-            ///   - hash: Deprecated, use one of explicit hash type fields instead.
             ///   - hashVerified: For Scotty uploads only. If a user sends a hash code and the backend has
             ///   - inline: Media data, set if reference_type is INLINE
             ///   - isPotentialRetry: |is_potential_retry| is set false only when Scotty is
@@ -6498,9 +6321,6 @@ extension Components {
             ///   - timestamp: Time at which the media data was last updated,
             ///   - token: A unique fingerprint/version id for the media data
             public init(
-                algorithm: Swift.String? = nil,
-                bigstoreObjectRef: OpenAPIRuntime.Base64EncodedData? = nil,
-                blobRef: OpenAPIRuntime.Base64EncodedData? = nil,
                 blobstore2Info: Components.Schemas.GdataMedia.Blobstore2InfoPayload? = nil,
                 compositeMedia: [Components.Schemas.CompositeMedia]? = nil,
                 contentType: Swift.String? = nil,
@@ -6514,7 +6334,6 @@ extension Components {
                 diffVersionResponse: Components.Schemas.GdataMedia.DiffVersionResponsePayload? = nil,
                 downloadParameters: Components.Schemas.GdataMedia.DownloadParametersPayload? = nil,
                 filename: Swift.String? = nil,
-                hash: Swift.String? = nil,
                 hashVerified: Swift.Bool? = nil,
                 inline: OpenAPIRuntime.Base64EncodedData? = nil,
                 isPotentialRetry: Swift.Bool? = nil,
@@ -6530,9 +6349,6 @@ extension Components {
                 timestamp: Swift.String? = nil,
                 token: Swift.String? = nil
             ) {
-                self.algorithm = algorithm
-                self.bigstoreObjectRef = bigstoreObjectRef
-                self.blobRef = blobRef
                 self.blobstore2Info = blobstore2Info
                 self.compositeMedia = compositeMedia
                 self.contentType = contentType
@@ -6546,7 +6362,6 @@ extension Components {
                 self.diffVersionResponse = diffVersionResponse
                 self.downloadParameters = downloadParameters
                 self.filename = filename
-                self.hash = hash
                 self.hashVerified = hashVerified
                 self.inline = inline
                 self.isPotentialRetry = isPotentialRetry
@@ -6563,9 +6378,6 @@ extension Components {
                 self.token = token
             }
             public enum CodingKeys: String, CodingKey {
-                case algorithm
-                case bigstoreObjectRef
-                case blobRef
                 case blobstore2Info
                 case compositeMedia
                 case contentType
@@ -6579,7 +6391,6 @@ extension Components {
                 case diffVersionResponse
                 case downloadParameters
                 case filename
-                case hash
                 case hashVerified
                 case inline
                 case isPotentialRetry
@@ -7928,48 +7739,6 @@ extension Components {
         ///
         /// - Remark: Generated from `#/components/schemas/GenerationConfig`.
         public struct GenerationConfig: Codable, Hashable, Sendable {
-            /// Optional. Output schema of the generated response. This is an alternative to
-            /// `response_schema` that accepts [JSON Schema](https://json-schema.org/).
-            ///
-            /// If set, `response_schema` must be omitted, but `response_mime_type` is
-            /// required.
-            ///
-            /// While the full JSON Schema may be sent, not all features are supported.
-            /// Specifically, only the following properties are supported:
-            ///
-            /// - `$id`
-            /// - `$defs`
-            /// - `$ref`
-            /// - `$anchor`
-            /// - `type`
-            /// - `format`
-            /// - `title`
-            /// - `description`
-            /// - `enum` (for strings and numbers)
-            /// - `items`
-            /// - `prefixItems`
-            /// - `minItems`
-            /// - `maxItems`
-            /// - `minimum`
-            /// - `maximum`
-            /// - `anyOf`
-            /// - `oneOf` (interpreted the same as `anyOf`)
-            /// - `properties`
-            /// - `additionalProperties`
-            /// - `required`
-            ///
-            /// The non-standard `propertyOrdering` property may also be set.
-            ///
-            /// Cyclic references are unrolled to a limited degree and, as such, may only
-            /// be used within non-required properties. (Nullable properties are not
-            /// sufficient.) If `$ref` is set on a sub-schema, no other properties, except
-            /// for than those starting as a `$`, may be set.
-            ///
-            /// Deprecated. Use `response_format` instead.
-            ///
-            /// - Remark: Generated from `#/components/schemas/GenerationConfig/_responseJsonSchema`.
-            @available(*, deprecated)
-            public var _responseJsonSchema: OpenAPIRuntime.OpenAPIValueContainer?
             /// Optional. Config for audio transcription (speech recognition).
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/audioTranscriptionConfig`.
@@ -8173,53 +7942,6 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseModalities`.
             public var responseModalities: Components.Schemas.GenerationConfig.ResponseModalitiesPayload?
-            /// Optional. Output schema of the generated candidate text. Schemas must be a
-            /// subset of the [OpenAPI schema](https://spec.openapis.org/oas/v3.0.3#schema)
-            /// and can be objects, primitives or arrays.
-            ///
-            /// If set, a compatible `response_mime_type` must also be set.
-            /// Compatible MIME types:
-            /// `application/json`: Schema for JSON response.
-            /// Refer to the [JSON text generation
-            /// guide](https://aistudio.google.com/docs/structured-output) for more
-            /// details.
-            ///
-            /// Deprecated. Use `response_format` instead.
-            ///
-            /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseSchema`.
-            public struct ResponseSchemaPayload: Codable, Hashable, Sendable {
-                /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseSchema/value1`.
-                public var value1: Components.Schemas.Schema
-                /// Creates a new `ResponseSchemaPayload`.
-                ///
-                /// - Parameters:
-                ///   - value1:
-                public init(value1: Components.Schemas.Schema) {
-                    self.value1 = value1
-                }
-                public init(from decoder: any Swift.Decoder) throws {
-                    self.value1 = try .init(from: decoder)
-                }
-                public func encode(to encoder: any Swift.Encoder) throws {
-                    try self.value1.encode(to: encoder)
-                }
-            }
-            /// Optional. Output schema of the generated candidate text. Schemas must be a
-            /// subset of the [OpenAPI schema](https://spec.openapis.org/oas/v3.0.3#schema)
-            /// and can be objects, primitives or arrays.
-            ///
-            /// If set, a compatible `response_mime_type` must also be set.
-            /// Compatible MIME types:
-            /// `application/json`: Schema for JSON response.
-            /// Refer to the [JSON text generation
-            /// guide](https://aistudio.google.com/docs/structured-output) for more
-            /// details.
-            ///
-            /// Deprecated. Use `response_format` instead.
-            ///
-            /// - Remark: Generated from `#/components/schemas/GenerationConfig/responseSchema`.
-            @available(*, deprecated)
-            public var responseSchema: Components.Schemas.GenerationConfig.ResponseSchemaPayload?
             /// Optional. Seed used in decoding. If not set, the request uses a randomly generated
             /// seed.
             ///
@@ -8358,7 +8080,6 @@ extension Components {
             /// Creates a new `GenerationConfig`.
             ///
             /// - Parameters:
-            ///   - _responseJsonSchema: Optional. Output schema of the generated response. This is an alternative to
             ///   - audioTranscriptionConfig: Optional. Config for audio transcription (speech recognition).
             ///   - candidateCount: Optional. Number of generated responses to return. If unset, this will default
             ///   - enableAffectiveDialog: Optional. If enabled, the model will detect emotions and adapt its responses
@@ -8374,7 +8095,6 @@ extension Components {
             ///   - responseLogprobs: Optional. If true, export the logprobs results in response.
             ///   - responseMimeType: Optional. MIME type of the generated candidate text.
             ///   - responseModalities: Optional. The requested modalities of the response. Represents the set of modalities
-            ///   - responseSchema: Optional. Output schema of the generated candidate text. Schemas must be a
             ///   - seed: Optional. Seed used in decoding. If not set, the request uses a randomly generated
             ///   - speechConfig: Optional. The speech generation config.
             ///   - stopSequences: Optional. The set of character sequences (up to 5) that will stop output generation.
@@ -8384,7 +8104,6 @@ extension Components {
             ///   - topP: Optional. The maximum cumulative probability of tokens to consider when sampling.
             ///   - translationConfig: Optional. Config for translation.
             public init(
-                _responseJsonSchema: OpenAPIRuntime.OpenAPIValueContainer? = nil,
                 audioTranscriptionConfig: Components.Schemas.GenerationConfig.AudioTranscriptionConfigPayload? = nil,
                 candidateCount: Swift.Int32? = nil,
                 enableAffectiveDialog: Swift.Bool? = nil,
@@ -8400,7 +8119,6 @@ extension Components {
                 responseLogprobs: Swift.Bool? = nil,
                 responseMimeType: Swift.String? = nil,
                 responseModalities: Components.Schemas.GenerationConfig.ResponseModalitiesPayload? = nil,
-                responseSchema: Components.Schemas.GenerationConfig.ResponseSchemaPayload? = nil,
                 seed: Swift.Int32? = nil,
                 speechConfig: Components.Schemas.GenerationConfig.SpeechConfigPayload? = nil,
                 stopSequences: [Swift.String]? = nil,
@@ -8410,7 +8128,6 @@ extension Components {
                 topP: Swift.Float? = nil,
                 translationConfig: Components.Schemas.GenerationConfig.TranslationConfigPayload? = nil
             ) {
-                self._responseJsonSchema = _responseJsonSchema
                 self.audioTranscriptionConfig = audioTranscriptionConfig
                 self.candidateCount = candidateCount
                 self.enableAffectiveDialog = enableAffectiveDialog
@@ -8426,7 +8143,6 @@ extension Components {
                 self.responseLogprobs = responseLogprobs
                 self.responseMimeType = responseMimeType
                 self.responseModalities = responseModalities
-                self.responseSchema = responseSchema
                 self.seed = seed
                 self.speechConfig = speechConfig
                 self.stopSequences = stopSequences
@@ -8437,7 +8153,6 @@ extension Components {
                 self.translationConfig = translationConfig
             }
             public enum CodingKeys: String, CodingKey {
-                case _responseJsonSchema
                 case audioTranscriptionConfig
                 case candidateCount
                 case enableAffectiveDialog
@@ -8453,7 +8168,6 @@ extension Components {
                 case responseLogprobs
                 case responseMimeType
                 case responseModalities
-                case responseSchema
                 case seed
                 case speechConfig
                 case stopSequences
@@ -10371,31 +10085,6 @@ extension Components {
             public enum CodingKeys: String, CodingKey {
                 case endTime
                 case startTime
-            }
-        }
-        /// Indicates the language of the audio should be automatically detected.
-        ///
-        /// - Remark: Generated from `#/components/schemas/LanguageAuto`.
-        public typealias LanguageAuto = OpenAPIRuntime.OpenAPIObjectContainer
-        /// Provides hints to the model about possible languages present in the audio.
-        ///
-        /// - Remark: Generated from `#/components/schemas/LanguageHints`.
-        @available(*, deprecated)
-        public struct LanguageHints: Codable, Hashable, Sendable {
-            /// Required. BCP-47 language codes.
-            ///
-            /// - Remark: Generated from `#/components/schemas/LanguageHints/languageCodes`.
-            @available(*, deprecated)
-            public var languageCodes: [Swift.String]
-            /// Creates a new `LanguageHints`.
-            ///
-            /// - Parameters:
-            ///   - languageCodes: Required. BCP-47 language codes.
-            public init(languageCodes: [Swift.String]) {
-                self.languageCodes = languageCodes
-            }
-            public enum CodingKeys: String, CodingKey {
-                case languageCodes
             }
         }
         /// An object that represents a latitude/longitude pair. This is expressed as a
@@ -16994,11 +16683,6 @@ extension Components {
             }
             /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/mime_type`.
             public var mimeType: Components.Schemas.InteractionsAudioDelta.MimeTypePayload?
-            /// Deprecated. Use sample_rate instead. The value is ignored.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/rate`.
-            @available(*, deprecated)
-            public var rate: Swift.Int32?
             /// The sample rate of the audio.
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsAudioDelta/sample_rate`.
@@ -17017,7 +16701,6 @@ extension Components {
             ///   - channels: The number of audio channels.
             ///   - data:
             ///   - mimeType:
-            ///   - rate: Deprecated. Use sample_rate instead. The value is ignored.
             ///   - sampleRate: The sample rate of the audio.
             ///   - _type:
             ///   - uri:
@@ -17025,7 +16708,6 @@ extension Components {
                 channels: Swift.Int32? = nil,
                 data: OpenAPIRuntime.Base64EncodedData? = nil,
                 mimeType: Components.Schemas.InteractionsAudioDelta.MimeTypePayload? = nil,
-                rate: Swift.Int32? = nil,
                 sampleRate: Swift.Int32? = nil,
                 _type: Components.Schemas.InteractionsAudioDelta._TypePayload,
                 uri: Swift.String? = nil
@@ -17033,7 +16715,6 @@ extension Components {
                 self.channels = channels
                 self.data = data
                 self.mimeType = mimeType
-                self.rate = rate
                 self.sampleRate = sampleRate
                 self._type = _type
                 self.uri = uri
@@ -17042,7 +16723,6 @@ extension Components {
                 case channels
                 case data
                 case mimeType = "mime_type"
-                case rate
                 case sampleRate = "sample_rate"
                 case _type = "type"
                 case uri
@@ -17745,16 +17425,6 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_format`.
             public var responseFormat: Components.Schemas.InteractionsCreateAgentInteractionParams.ResponseFormatPayload?
-            /// The mime type of the response. This is required if response_format is set.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_mime_type`.
-            @available(*, deprecated)
-            public var responseMimeType: Swift.String?
-            /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/response_modalities`.
-            @available(*, deprecated)
-            public var responseModalities: [Components.Schemas.InteractionsResponseModality]?
             /// Safety settings for the interaction.
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsCreateAgentInteractionParams/safety_settings`.
@@ -17816,8 +17486,6 @@ extension Components {
             ///   - labels: The labels with user-defined metadata for the request.
             ///   - previousInteractionId: The ID of the previous interaction, if any.
             ///   - responseFormat: Enforces that the generated response is a JSON object that complies with
-            ///   - responseMimeType: The mime type of the response. This is required if response_format is set.
-            ///   - responseModalities: The requested modalities of the response (TEXT, IMAGE, AUDIO).
             ///   - safetySettings: Safety settings for the interaction.
             ///   - serviceTier:
             ///   - status: Required. Output only. The status of the interaction.
@@ -17840,8 +17508,6 @@ extension Components {
                 labels: Components.Schemas.InteractionsCreateAgentInteractionParams.LabelsPayload? = nil,
                 previousInteractionId: Swift.String? = nil,
                 responseFormat: Components.Schemas.InteractionsCreateAgentInteractionParams.ResponseFormatPayload? = nil,
-                responseMimeType: Swift.String? = nil,
-                responseModalities: [Components.Schemas.InteractionsResponseModality]? = nil,
                 safetySettings: [Components.Schemas.InteractionsSafetySetting]? = nil,
                 serviceTier: Components.Schemas.InteractionsServiceTier? = nil,
                 status: Components.Schemas.InteractionsCreateAgentInteractionParams.StatusPayload? = nil,
@@ -17864,8 +17530,6 @@ extension Components {
                 self.labels = labels
                 self.previousInteractionId = previousInteractionId
                 self.responseFormat = responseFormat
-                self.responseMimeType = responseMimeType
-                self.responseModalities = responseModalities
                 self.safetySettings = safetySettings
                 self.serviceTier = serviceTier
                 self.status = status
@@ -17889,8 +17553,6 @@ extension Components {
                 case labels
                 case previousInteractionId = "previous_interaction_id"
                 case responseFormat = "response_format"
-                case responseMimeType = "response_mime_type"
-                case responseModalities = "response_modalities"
                 case safetySettings = "safety_settings"
                 case serviceTier = "service_tier"
                 case status
@@ -18142,16 +17804,6 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_format`.
             public var responseFormat: Components.Schemas.InteractionsCreateModelInteractionParams.ResponseFormatPayload?
-            /// The mime type of the response. This is required if response_format is set.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_mime_type`.
-            @available(*, deprecated)
-            public var responseMimeType: Swift.String?
-            /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/response_modalities`.
-            @available(*, deprecated)
-            public var responseModalities: [Components.Schemas.InteractionsResponseModality]?
             /// Safety settings for the interaction.
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsCreateModelInteractionParams/safety_settings`.
@@ -18213,8 +17865,6 @@ extension Components {
             ///   - model:
             ///   - previousInteractionId: The ID of the previous interaction, if any.
             ///   - responseFormat: Enforces that the generated response is a JSON object that complies with
-            ///   - responseMimeType: The mime type of the response. This is required if response_format is set.
-            ///   - responseModalities: The requested modalities of the response (TEXT, IMAGE, AUDIO).
             ///   - safetySettings: Safety settings for the interaction.
             ///   - serviceTier:
             ///   - status: Required. Output only. The status of the interaction.
@@ -18237,8 +17887,6 @@ extension Components {
                 model: Components.Schemas.InteractionsModelOption,
                 previousInteractionId: Swift.String? = nil,
                 responseFormat: Components.Schemas.InteractionsCreateModelInteractionParams.ResponseFormatPayload? = nil,
-                responseMimeType: Swift.String? = nil,
-                responseModalities: [Components.Schemas.InteractionsResponseModality]? = nil,
                 safetySettings: [Components.Schemas.InteractionsSafetySetting]? = nil,
                 serviceTier: Components.Schemas.InteractionsServiceTier? = nil,
                 status: Components.Schemas.InteractionsCreateModelInteractionParams.StatusPayload? = nil,
@@ -18261,8 +17909,6 @@ extension Components {
                 self.model = model
                 self.previousInteractionId = previousInteractionId
                 self.responseFormat = responseFormat
-                self.responseMimeType = responseMimeType
-                self.responseModalities = responseModalities
                 self.safetySettings = safetySettings
                 self.serviceTier = serviceTier
                 self.status = status
@@ -18286,8 +17932,6 @@ extension Components {
                 case model
                 case previousInteractionId = "previous_interaction_id"
                 case responseFormat = "response_format"
-                case responseMimeType = "response_mime_type"
-                case responseModalities = "response_modalities"
                 case safetySettings = "safety_settings"
                 case serviceTier = "service_tier"
                 case status
@@ -20186,8 +19830,6 @@ extension Components {
         ///
         /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig`.
         public struct InteractionsGenerationConfig: Codable, Hashable, Sendable {
-            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/image_config`.
-            public var imageConfig: Components.Schemas.InteractionsImageConfig?
             /// The maximum number of tokens to include in the response.
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/max_output_tokens`.
@@ -20241,11 +19883,6 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/structured_speech_config`.
             public var structuredSpeechConfig: Components.Schemas.InteractionsGenerationConfig.StructuredSpeechConfigPayload?
-            /// Controls the randomness of the output.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/temperature`.
-            @available(*, deprecated)
-            public var temperature: Swift.Float?
             /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/thinking_level`.
             public var thinkingLevel: Components.Schemas.InteractionsThinkingLevel?
             /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/thinking_summaries`.
@@ -20298,11 +19935,6 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/tool_choice`.
             public var toolChoice: Components.Schemas.InteractionsGenerationConfig.ToolChoicePayload?
-            /// The maximum cumulative probability of tokens to consider when sampling.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/top_p`.
-            @available(*, deprecated)
-            public var topP: Swift.Float?
             /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/transcription_config`.
             public var transcriptionConfig: Components.Schemas.InteractionsTranscriptionConfig?
             /// - Remark: Generated from `#/components/schemas/InteractionsGenerationConfig/video_config`.
@@ -20310,56 +19942,44 @@ extension Components {
             /// Creates a new `InteractionsGenerationConfig`.
             ///
             /// - Parameters:
-            ///   - imageConfig:
             ///   - maxOutputTokens: The maximum number of tokens to include in the response.
             ///   - seed: Seed used in decoding for reproducibility.
             ///   - stopSequences: A list of character sequences that will stop output interaction.
             ///   - structuredSpeechConfig: Speech and multi-speaker configuration.
-            ///   - temperature: Controls the randomness of the output.
             ///   - thinkingLevel:
             ///   - thinkingSummaries:
             ///   - toolChoice: The tool choice configuration.
-            ///   - topP: The maximum cumulative probability of tokens to consider when sampling.
             ///   - transcriptionConfig:
             ///   - videoConfig:
             public init(
-                imageConfig: Components.Schemas.InteractionsImageConfig? = nil,
                 maxOutputTokens: Swift.Int32? = nil,
                 seed: Swift.Int32? = nil,
                 stopSequences: [Swift.String]? = nil,
                 structuredSpeechConfig: Components.Schemas.InteractionsGenerationConfig.StructuredSpeechConfigPayload? = nil,
-                temperature: Swift.Float? = nil,
                 thinkingLevel: Components.Schemas.InteractionsThinkingLevel? = nil,
                 thinkingSummaries: Components.Schemas.InteractionsThinkingSummaries? = nil,
                 toolChoice: Components.Schemas.InteractionsGenerationConfig.ToolChoicePayload? = nil,
-                topP: Swift.Float? = nil,
                 transcriptionConfig: Components.Schemas.InteractionsTranscriptionConfig? = nil,
                 videoConfig: Components.Schemas.InteractionsVideoConfig? = nil
             ) {
-                self.imageConfig = imageConfig
                 self.maxOutputTokens = maxOutputTokens
                 self.seed = seed
                 self.stopSequences = stopSequences
                 self.structuredSpeechConfig = structuredSpeechConfig
-                self.temperature = temperature
                 self.thinkingLevel = thinkingLevel
                 self.thinkingSummaries = thinkingSummaries
                 self.toolChoice = toolChoice
-                self.topP = topP
                 self.transcriptionConfig = transcriptionConfig
                 self.videoConfig = videoConfig
             }
             public enum CodingKeys: String, CodingKey {
-                case imageConfig = "image_config"
                 case maxOutputTokens = "max_output_tokens"
                 case seed
                 case stopSequences = "stop_sequences"
                 case structuredSpeechConfig = "structured_speech_config"
-                case temperature
                 case thinkingLevel = "thinking_level"
                 case thinkingSummaries = "thinking_summaries"
                 case toolChoice = "tool_choice"
-                case topP = "top_p"
                 case transcriptionConfig = "transcription_config"
                 case videoConfig = "video_config"
             }
@@ -21292,41 +20912,6 @@ extension Components {
                 case extensions
             }
         }
-        /// The configuration for image interaction.
-        ///
-        /// - Remark: Generated from `#/components/schemas/InteractionsImageConfig`.
-        @available(*, deprecated)
-        public struct InteractionsImageConfig: Codable, Hashable, Sendable {
-            /// The aspect ratio of the image to generate. Supported aspect ratios: 1:1,
-            /// 2:3, 3:2, 3:4, 4:3, 9:16, 16:9, 21:9.
-            ///
-            /// If not specified, the model will choose a default aspect ratio based on any
-            /// reference images provided.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsImageConfig/aspect_ratio`.
-            public var aspectRatio: Swift.String?
-            /// Specifies the size of generated images. Supported values are `1K`, `2K`,
-            /// `4K`. If not specified, the model will use default value `1K`.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsImageConfig/image_size`.
-            public var imageSize: Swift.String?
-            /// Creates a new `InteractionsImageConfig`.
-            ///
-            /// - Parameters:
-            ///   - aspectRatio: The aspect ratio of the image to generate. Supported aspect ratios: 1:1,
-            ///   - imageSize: Specifies the size of generated images. Supported values are `1K`, `2K`,
-            public init(
-                aspectRatio: Swift.String? = nil,
-                imageSize: Swift.String? = nil
-            ) {
-                self.aspectRatio = aspectRatio
-                self.imageSize = imageSize
-            }
-            public enum CodingKeys: String, CodingKey {
-                case aspectRatio = "aspect_ratio"
-                case imageSize = "image_size"
-            }
-        }
         /// An image content block.
         ///
         /// - Remark: Generated from `#/components/schemas/InteractionsImageContent`.
@@ -21772,16 +21357,6 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_format`.
             public var responseFormat: Components.Schemas.InteractionsInteraction.ResponseFormatPayload?
-            /// The mime type of the response. This is required if response_format is set.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_mime_type`.
-            @available(*, deprecated)
-            public var responseMimeType: Swift.String?
-            /// The requested modalities of the response (TEXT, IMAGE, AUDIO).
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/response_modalities`.
-            @available(*, deprecated)
-            public var responseModalities: [Components.Schemas.InteractionsResponseModality]?
             /// Safety settings for the interaction.
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsInteraction/safety_settings`.
@@ -21853,8 +21428,6 @@ extension Components {
             ///   - model:
             ///   - previousInteractionId: The ID of the previous interaction, if any.
             ///   - responseFormat: Enforces that the generated response is a JSON object that complies with
-            ///   - responseMimeType: The mime type of the response. This is required if response_format is set.
-            ///   - responseModalities: The requested modalities of the response (TEXT, IMAGE, AUDIO).
             ///   - safetySettings: Safety settings for the interaction.
             ///   - serviceTier:
             ///   - status: Required. Output only. The status of the interaction.
@@ -21883,8 +21456,6 @@ extension Components {
                 model: Components.Schemas.InteractionsModelOption? = nil,
                 previousInteractionId: Swift.String? = nil,
                 responseFormat: Components.Schemas.InteractionsInteraction.ResponseFormatPayload? = nil,
-                responseMimeType: Swift.String? = nil,
-                responseModalities: [Components.Schemas.InteractionsResponseModality]? = nil,
                 safetySettings: [Components.Schemas.InteractionsSafetySetting]? = nil,
                 serviceTier: Components.Schemas.InteractionsServiceTier? = nil,
                 status: Components.Schemas.InteractionsInteraction.StatusPayload,
@@ -21913,8 +21484,6 @@ extension Components {
                 self.model = model
                 self.previousInteractionId = previousInteractionId
                 self.responseFormat = responseFormat
-                self.responseMimeType = responseMimeType
-                self.responseModalities = responseModalities
                 self.safetySettings = safetySettings
                 self.serviceTier = serviceTier
                 self.status = status
@@ -21944,8 +21513,6 @@ extension Components {
                 case model
                 case previousInteractionId = "previous_interaction_id"
                 case responseFormat = "response_format"
-                case responseMimeType = "response_mime_type"
-                case responseModalities = "response_modalities"
                 case safetySettings = "safety_settings"
                 case serviceTier = "service_tier"
                 case status
@@ -25191,21 +24758,11 @@ extension Components {
         ///
         /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig`.
         public struct InteractionsTranscriptionConfig: Codable, Hashable, Sendable {
-            /// Optional. A list of phrases to bias the ASR model towards.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/adaptation_phrases`.
-            @available(*, deprecated)
-            public var adaptationPhrases: [Swift.String]?
             /// Optional. A list of custom vocabulary phrases to bias the speech recognition model
             /// toward recognizing specific terms.
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/custom_vocabulary`.
             public var customVocabulary: [Swift.String]?
-            /// Optional. Configures speaker diarization. Supported values: "speaker".
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/diarization_mode`.
-            @available(*, deprecated)
-            public var diarizationMode: Swift.String?
             /// Optional. BCP-47 language codes providing hints about the languages present in the
             /// audio. If omitted or empty, defaults to automatic language detection.
             ///
@@ -25257,43 +24814,25 @@ extension Components {
             ///
             /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/mode`.
             public var mode: Components.Schemas.InteractionsTranscriptionConfig.ModePayload?
-            /// Optional. The granularity of timestamps to include in the transcription output.
-            /// Supported values: "word". If empty, no timestamps are generated.
-            ///
-            /// - Remark: Generated from `#/components/schemas/InteractionsTranscriptionConfig/timestamp_granularities`.
-            @available(*, deprecated)
-            public var timestampGranularities: [Swift.String]?
             /// Creates a new `InteractionsTranscriptionConfig`.
             ///
             /// - Parameters:
-            ///   - adaptationPhrases: Optional. A list of phrases to bias the ASR model towards.
             ///   - customVocabulary: Optional. A list of custom vocabulary phrases to bias the speech recognition model
-            ///   - diarizationMode: Optional. Configures speaker diarization. Supported values: "speaker".
             ///   - languageCodes: Optional. BCP-47 language codes providing hints about the languages present in the
             ///   - mode: Discriminated transcription mode options or enum.
-            ///   - timestampGranularities: Optional. The granularity of timestamps to include in the transcription output.
             public init(
-                adaptationPhrases: [Swift.String]? = nil,
                 customVocabulary: [Swift.String]? = nil,
-                diarizationMode: Swift.String? = nil,
                 languageCodes: [Swift.String]? = nil,
-                mode: Components.Schemas.InteractionsTranscriptionConfig.ModePayload? = nil,
-                timestampGranularities: [Swift.String]? = nil
+                mode: Components.Schemas.InteractionsTranscriptionConfig.ModePayload? = nil
             ) {
-                self.adaptationPhrases = adaptationPhrases
                 self.customVocabulary = customVocabulary
-                self.diarizationMode = diarizationMode
                 self.languageCodes = languageCodes
                 self.mode = mode
-                self.timestampGranularities = timestampGranularities
             }
             public enum CodingKeys: String, CodingKey {
-                case adaptationPhrases = "adaptation_phrases"
                 case customVocabulary = "custom_vocabulary"
-                case diarizationMode = "diarization_mode"
                 case languageCodes = "language_codes"
                 case mode
-                case timestampGranularities = "timestamp_granularities"
             }
         }
         /// Configuration for transcription mode.
